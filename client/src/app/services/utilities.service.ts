@@ -40,7 +40,7 @@ export class UtilitiesService {
 
   prePendHttp(link) {
     if (link != undefined && link != null) {
-      if (link.indexOf('http://www.') == -1 || link.indexOf('https://wwww.') == -1) {
+      if (link.indexOf('http://www.') == -1 || link.indexOf('https://www.') == -1) {
         return 'http://www.' + link;
       } else {
         return link;
@@ -297,4 +297,6 @@ export class UtilitiesService {
     let url = 'https://s3.amazonaws.com/' + environment.s3bucketReplays + '/' + replay;
     return url;
   }
+
+  //branch merge test
 }
