@@ -5,34 +5,16 @@ const util = require('../utils');
 const passport = require("passport");
 const _ = require('lodash');
 const router = require('express').Router();
-const AWS = require('aws-sdk');
 const uniqid = require('uniqid');
 const levelRestrict = require("../configs/admin-leveling");
 const scheduleGenerator = require('../subroutines/schedule-subs');
 const logger = require('../subroutines/sys-logging-subs');
 const Scheduling = require('../models/schedule-models');
-const fs = require('fs');
-const n_util = require('util');
 const Division = require('../models/division-models');
 const matchCommon = require('../methods/matchCommon');
 const SeasonInfoCommon = require('../methods/seasonInfoMethods');
 const archiveMethods = require('../methods/archivalMethods');
-
-
-
-fs.readFileAsync = n_util.promisify(fs.readFile);
-
-AWS.config.update({
-    accessKeyId: process.env.S3accessKeyId,
-    secretAccessKey: process.env.S3secretAccessKey,
-    region: process.env.S3region
-});
-
-const s3replayBucket = new AWS.S3({
-    params: {
-        Bucket: process.env.s3bucketReplays
-    }
-});
+const uploadMethod = require('../methods/replayUpload');
 
 /**
  * returns matches that are generated
@@ -222,6 +204,57 @@ router.post('/get/matches/all',
             res.status(500).send(util.returnMessaging(path, 'Error finding matches', err));
         });
     });
+
+
+//match query route
+router.post('/query/matches',
+    passport.authenticate('jwt', {
+        session: false
+    }), (req, res) => {
+        const path = '/query/matches';
+        Match.find(req.body).lean().then(
+            found => {
+                res.status(200).send(util.returnMessaging(path, 'Query results', false, found));
+            },
+            err => {
+                res.status(500).send(util.returnMessaging(path, 'Query Error', err))
+            }
+        )
+    });
+
+router.get('/get/matches/casted/playing', (req, res) => {
+    const path = 'schedule/get/matches/casted/playing';
+    let now = Date.now();
+    let query = {
+        $and: [{
+            casterUrl: {
+                $exists: true
+            }
+        }, {
+            "scheduledTime.endTime": {
+                $gt: now
+            }
+        }, {
+            "scheduledTime.startTime": {
+                $lt: now
+            }
+        }]
+    }
+    Match.find(query).lean().then((found) => {
+        if (found) {
+            let teams = findTeamIds(found);
+            addTeamNamesToMatch(teams, found).then((processed) => {
+                res.status(200).send(util.returnMessaging(path, 'Found matches', false, processed));
+            }, (err) => {
+                res.status(400).send(util.returnMessaging(path, 'Error compiling match info', err));
+            });
+        } else {
+            res.status(200).send(util.returnMessaging(path, 'No matches found for criteria', false, found));
+        }
+    }, (err) => {
+        res.status(500).send(util.returnMessaging(path, 'Error finding matches', err));
+    });
+});
 
 router.post('/get/matchup/history', (req, res) => {
 
@@ -731,41 +764,16 @@ router.post('/report/match', passport.authenticate('jwt', {
                                 }
 
                                 let fileName = replayfilenames[i].fileName;
-
-                                fs.readFileAsync(files[fileKeys[i]].path).then(
-                                    buffer => {
-                                        var data = {
-                                            Key: fileName,
-                                            Body: buffer
-                                        };
-                                        s3replayBucket.putObject(data, function(err, data) {
-                                            util.errLogger(path, data, 'replay data..');
-                                            if (err) {
-                                                //log object
-                                                let sysLog = {};
-                                                sysLog.actor = 'SYS';
-                                                sysLog.action = ' upload replay ';
-                                                sysLog.logLevel = 'ERROR';
-                                                sysLog.target = data.Key
-                                                sysLog.timeStamp = new Date().getTime();
-                                                sysLog.error = err;
-                                                logger(sysLog);
-                                            } else {
-                                                //log object
-                                                let sysLog = {};
-                                                sysLog.actor = 'SYS';
-                                                sysLog.action = ' upload replay ';
-                                                sysLog.logLevel = 'SYSTEM';
-                                                sysLog.target = data.Key
-                                                sysLog.timeStamp = new Date().getTime();
-                                                logger(sysLog);
-                                            }
-                                        });
+                                let file = files[fileKeys[i]].path;
+                                uploadMethod.uploadReplayToS3(file, fileName).then(
+                                    ret => {
+                                        console.log('s3upload success', ret);
                                     },
                                     err => {
-                                        util.errLogger(path, err, 'replay upload error');
+                                        console.log('s3upload err', err)
                                     }
                                 )
+
                             }
 
                             //if we have failed parse - remove those junk objects from the array before inserting them into the database.

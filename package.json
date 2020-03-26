@@ -1,6 +1,6 @@
 {
     "name": "ngsMeanCore",
-    "version": "2.1.7",
+    "version": "2.1.8",
     "description": "Large package encompassing several capabilities for e-sports leagues",
     "main": "server.js",
     "scripts": {
@@ -8,8 +8,8 @@
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install"
     },
     "engines": {
-        "node": "10.10.0",
-        "npm": "6.4.1"
+        "node": "13.8.0",
+        "npm": "6.13.6"
     },
     "author": "",
     "license": "ISC",
@@ -21,9 +21,9 @@
         "express-https-redirect": "^1.0.0",
         "formidable": "^1.2.1",
         "googleapis": "^39.2.0",
-        "hots-parser": "^7.49.4",
-        "hots-parser-fallback": "^7.46.1",
+        "hots-parser": "git+https://github.com/nexusgamingseries/hots-parser.git",
         "image-data-uri": "^2.0.1",
+        "jimp": "^0.9.3",
         "jsonwebtoken": "^8.5.1",
         "lodash": "^4.17.15",
         "mongoose": "^5.8.6",

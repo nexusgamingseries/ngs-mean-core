@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { NgxCroppieComponent } from 'ngx-croppie';
 import { CroppieOptions } from 'croppie';
 import { UtilitiesService } from '../services/utilities.service';
 import { AdminService } from '../services/admin.service';
@@ -10,9 +9,6 @@ import { AdminService } from '../services/admin.service';
   styleUrls: ['./general-image-upload.component.css']
 })
 export class GeneralImageUploadComponent implements OnInit {
-
-
-  @ViewChild('ngxCroppie', { static: false }) ngxCroppie: NgxCroppieComponent;
 
   editedImage:string;
 
@@ -164,11 +160,18 @@ export class GeneralImageUploadComponent implements OnInit {
     const file = evt.target.files[0];
     if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif' && file.type !== 'image/jpg') { return; }
     const fr = new FileReader();
-    fr.onloadend = (loadEvent) => {
-      this.croppieImage = '';
+    this.util.imageToPng(file).then(
+      ret => {
+        // fr.readAsDataURL(ret);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    fr.onloadend = loadEvent => {
+      this.croppieImage = "";
       this.croppieImage = <string>fr.result;
     };
-    fr.readAsDataURL(file);
   }
 
 

@@ -13,6 +13,11 @@ export class ScheduleService {
 
    }
 
+   matchQuery(obj){
+    let url = "schedule/query/matches";
+    return this.httpService.httpPost(url, obj);
+   }
+
   //returns all generated matches
   getAllMatches(){
     let url = 'schedule/get/matches/all';
@@ -54,6 +59,11 @@ export class ScheduleService {
       payload['season']=season
     };
     return this.httpService.httpPost(url, payload, false);
+  }
+
+  getLiveMatches(){
+    let url = "schedule/get/matches/casted/playing";
+    return this.httpService.httpGet(url, [], false);
   }
 
   //returns matches that match criteria of season, division

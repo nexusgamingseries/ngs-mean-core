@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { CroppieOptions } from 'croppie';
-import { NgxCroppieComponent } from 'ngx-croppie';
 import { UtilitiesService } from '../../services/utilities.service';
 import { AdminService } from '../../services/admin.service';
 import { UserService } from 'src/app/services/user.service';
@@ -11,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./avatar-upload.component.css']
 })
 export class AvatarUploadComponent implements OnInit {
-  @ViewChild('ngxCroppie', { static: false }) ngxCroppie: NgxCroppieComponent;
 
   _playerName: string
   @Input() set playerName(name) {
@@ -130,11 +128,18 @@ export class AvatarUploadComponent implements OnInit {
     const file = evt.target.files[0];
     if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif' && file.type !== 'image/jpg') { return; }
     const fr = new FileReader();
-    fr.onloadend = (loadEvent) => {
-      this.croppieImage = '';
+    this.util.imageToPng(file).then(
+      ret => {
+        // fr.readAsDataURL(ret);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+    fr.onloadend = loadEvent => {
+      this.croppieImage = "";
       this.croppieImage = <string>fr.result;
     };
-    fr.readAsDataURL(file);
   }
 
 }

@@ -1,11 +1,11 @@
-import { Component, OnInit, NgModule, Input} from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ActivatedRoute, NavigationEnd } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { Profile } from '../../classes/profile.class';
 import { Subscription } from 'rxjs';
-import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { merge } from 'lodash';
 import { HotsLogsService } from '../../services/hots-logs.service';
 import { Router } from '@angular/router';
@@ -14,12 +14,8 @@ import { UtilitiesService } from '../../services/utilities.service';
 import { HeroesProfileService } from '../../services/heroes-profile.service';
 import { TeamService } from '../../services/team.service';
 import { AdminService } from '../../services/admin.service';
-
-@NgModule({
-  imports:[
-    ReactiveFormsModule
-  ]
-})
+import { MvpService } from 'src/app/services/mvp.service';
+import { TabTrackerService } from 'src/app/services/tab-tracker.service';
 
 @Component({
   selector: 'app-profile-edit',
@@ -29,9 +25,11 @@ import { AdminService } from '../../services/admin.service';
 export class ProfileEditComponent implements OnInit {
 
   navigationSubscription
+  mvpCounts = 0;
 
   constructor(public user: UserService, public auth: AuthService, private router: Router, private route: ActivatedRoute,
-    public hotsLogsService: HotsLogsService, public dialog: MatDialog, public util:UtilitiesService, public hotsProfile: HeroesProfileService, public team:TeamService, private admin:AdminService) {
+    public hotsLogsService: HotsLogsService, public dialog: MatDialog, public util:UtilitiesService, public hotsProfile: HeroesProfileService, public team:TeamService, private admin:AdminService,
+    private mvpServ:MvpService, private tabTracker:TabTrackerService) {
 
       //so that people can manually enter different tags from currently being on a profile page; we can reinitialize the component with the new info
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
@@ -45,6 +43,12 @@ export class ProfileEditComponent implements OnInit {
 
   //active tab
   index=0;
+
+  setTab(ind){
+    this.tabTracker.lastRoute = 'profile';
+    this.tabTracker.lastTab = ind;
+    this.index = ind;
+  }
 
   errors = [];
 
@@ -90,7 +94,7 @@ export class ProfileEditComponent implements OnInit {
 
       },
       err=>{
-        console.log(err);
+        console.warn(err);
       }
     )
   }
@@ -102,7 +106,7 @@ export class ProfileEditComponent implements OnInit {
         this.returnedProfile.teamName = null;
       },
       err=>{
-        console.log(err);
+        console.warn(err);
       }
     )
   }
@@ -139,7 +143,7 @@ export class ProfileEditComponent implements OnInit {
         this.returnedProfile.teamName = res.teamName;
       },
       err=>{
-        console.log(err);
+        console.warn(err);
       }
     )
   }
@@ -169,7 +173,7 @@ export class ProfileEditComponent implements OnInit {
           res =>{
           this.auth.destroyAuth('/logout');
          },err=>{
-            console.log(err);
+            console.warn(err);
           }
         )
       }
@@ -214,7 +218,7 @@ export class ProfileEditComponent implements OnInit {
          });
 
      }else{
-       console.log('the data was invalid we cant save');
+       console.warn('the data was invalid we cant save');
      }
    }
 
@@ -237,6 +241,17 @@ export class ProfileEditComponent implements OnInit {
     this.discordTagFormControl.markAsTouched();
     this.profSub = this.user.getUser(getProfile).subscribe((res) => {
       merge(this.returnedProfile, res);
+      this.index = this.tabTracker.returnTabIndexIfSameRoute('profile');
+      this.mvpServ.getMvpById('player_id', this.returnedProfile._id).subscribe(
+        res=>{
+          if(res){
+            this.mvpCounts = res.length;
+          }
+        },
+        err=>{
+          console.warn(err);
+        }
+      )
       } );
   }
 

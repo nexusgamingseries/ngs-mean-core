@@ -71,8 +71,14 @@ returnMessaging = function(route, message, err, obj, additional, logInfo) {
         "route": route,
         "message": message
     };
+
     if (!isNullorUndefined(err) && err) {
-        ret.err = err;
+        if (err.hasOwnProperty('toString')) {
+            ret.err = err.toString();
+        } else {
+            ret.err = JSON.stringify(err);
+        }
+
     }
     if (!isNullorUndefined(obj) && obj) {
         ret.returnObject = obj;
@@ -224,11 +230,16 @@ function sortMatchesByTime(matches) {
 }
 
 function objectify(obj) {
-    try {
-        return obj.toObject();
-    } catch {
+    if (obj) {
+        try {
+            return obj.toObject();
+        } catch {
+            return obj;
+        }
+    } else {
         return obj;
     }
+
 }
 
 //simple console log for server side errors that will give me more info from the papertrail than a simple console.log;
