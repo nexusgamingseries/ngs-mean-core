@@ -185,7 +185,7 @@ export class ImageUploadComponent implements OnInit {
         width: wB,
         height: hB
       },
-      enforceBoundary:true
+      enforceBoundary:false
     });
   }
 
@@ -194,7 +194,7 @@ export class ImageUploadComponent implements OnInit {
       .croppie("result", {
         type: "base64",
         size: "viewport",
-        format: "jpeg",
+        format: "png",
         quality: 0.8
       })
       .then(

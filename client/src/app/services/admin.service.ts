@@ -5,7 +5,7 @@ import { Team } from '../classes/team.class';
 import { FilterService } from '../services/filter.service';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AdminService {
   constructor(
@@ -24,13 +24,18 @@ export class AdminService {
     return this.httpService.httpGet(url, [], false);
   }
 
+  archiveSeason() {
+    let url = "admin/season/reset";
+    return this.httpService.httpPost(url, {}, true);
+  }
+
   teamLogoUpload(img, teamName?) {
     let url = "/admin/team/uploadLogo";
     let imgInput;
     if (typeof img != "object") {
       imgInput = {
         logo: img,
-        teamName: teamName
+        teamName: teamName,
       };
     } else {
       imgInput = img;
@@ -41,7 +46,7 @@ export class AdminService {
   teamRemoveLogo(team) {
     let url = "/admin/team/removeLogo";
     let payload = {
-      teamName: team
+      teamName: team,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -62,7 +67,7 @@ export class AdminService {
   generateSeason(seas) {
     let url = "schedule/generate/schedules";
     let payload = {
-      season: seas
+      season: seas,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -79,7 +84,7 @@ export class AdminService {
       tournamentName: name,
       division: division,
       cupNumber: cupNumber,
-      description: description
+      description: description,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -87,7 +92,16 @@ export class AdminService {
   validateSeason(seas) {
     let url = "schedule/check/valid";
     let payload = {
-      season: seas
+      season: seas,
+    };
+    return this.httpService.httpPost(url, payload, true);
+  }
+
+  //forfeit games
+  forfeitTeam(team: string) {
+    let url = "admin/forfeit/team";
+    let payload = {
+      teamName: team
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -98,7 +112,16 @@ export class AdminService {
     let url = "admin/team/removeMember";
     let payload = {
       teamName: team,
-      removeUser: member
+      removeUser: member,
+    };
+    return this.httpService.httpPost(url, payload, true);
+  }
+
+  removeInvitedMembers(team: string, member) {
+    let url = "admin/team/removeInvitedMember";
+    let payload = {
+      teamName: team,
+      removeUser: member,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -107,7 +130,7 @@ export class AdminService {
   refreshTeamMMR(team) {
     let url = "admin/team/refreshMmr";
     let payload = {
-      teamName: team
+      teamName: team,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -117,7 +140,7 @@ export class AdminService {
     let url = "admin/upsertDivision";
     let payload = {
       divObj: divobj,
-      divName: divname
+      divName: divname,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -127,7 +150,7 @@ export class AdminService {
     let url = "/admin/resultantmmr";
     let payload = {
       userMmr: userMmr,
-      teamName: teamName
+      teamName: teamName,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -138,7 +161,7 @@ export class AdminService {
     let url = "admin/divisionTeams";
     let payload = {
       teamInfo: teamArr,
-      divisionName: divisionName
+      divisionName: divisionName,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -149,7 +172,7 @@ export class AdminService {
     let url = "admin/removeTeams";
     let payload = {
       teams: teamArr,
-      divName: divName
+      divName: divName,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -159,7 +182,7 @@ export class AdminService {
     let url = "admin/getDivisionInfo";
 
     return this.httpService.httpGet(url, []).pipe(
-      map(res => {
+      map((res) => {
         let divisionArr = res;
         divisionArr.sort((a, b) => {
           return this.FS.arrangeDivisions(a, b);
@@ -175,7 +198,26 @@ export class AdminService {
     let payload = {
       teamId: teamName,
       memberId: memberName,
-      approved: action
+      approved: action,
+    };
+    return this.httpService.httpPost(url, payload, true);
+  }
+
+  //add notes to pmq item
+  pmqAddNote(queueObj, note) {
+    let url = "admin/pmq/addnote";
+    let payload = {
+      queue: queueObj,
+      note,
+    };
+    return this.httpService.httpPost(url, payload, true);
+  }
+
+  //delete pending member add queue item
+  deleteQueueItem(queueObj) {
+    let url = "admin/pmq/delete";
+    let payload = {
+      queue: queueObj,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -186,7 +228,7 @@ export class AdminService {
     let payload = {
       userId: id,
       fileName: fileName,
-      approved: action
+      approved: action,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -201,7 +243,7 @@ export class AdminService {
   saveUser(user) {
     let url = "/admin/user/save";
     let payload = {
-      user: user
+      user: user,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -210,7 +252,7 @@ export class AdminService {
     let url = "admin/team/memberAdd";
     let payload = {
       teamName: team,
-      user: user
+      user: user,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -229,7 +271,7 @@ export class AdminService {
 
     let payload = {
       teamName: teamName.toLowerCase(),
-      teamObj: teamObj
+      teamObj: teamObj,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -259,7 +301,7 @@ export class AdminService {
   matchUpdate(match) {
     let url = "admin/match/update";
     let payload = {
-      match: match
+      match: match,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -269,7 +311,7 @@ export class AdminService {
     let payload = {
       division: div,
       date: time,
-      endWeek: endWeek
+      endWeek: endWeek,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -284,7 +326,7 @@ export class AdminService {
   getUserAcls(id) {
     let url = "admin/user/get/usersacl";
     let payload = {
-      id: id
+      id: id,
     };
     return this.httpService.httpPost(url, payload);
   }
@@ -299,7 +341,7 @@ export class AdminService {
     let url = "admin/match/deletereplay";
     const payload = {
       matchId: matchId,
-      replayProp: prop
+      replayProp: prop,
     };
     return this.httpService.httpPost(url, payload, true);
   }
@@ -309,21 +351,21 @@ export class AdminService {
     let input = new FormData();
 
     let keys = Object.keys(payload);
-    keys.forEach(element => {
+    keys.forEach((element) => {
       input.append(element, payload[element]);
     });
 
     return this.httpService.httpPost(url, input, true);
   }
 
-  createStream(obj){
+  createStream(obj) {
     let url = "/admin/match/create/stream/link";
     return this.httpService.httpPost(url, obj, true);
   }
 
-  deleteStream(id){
+  deleteStream(id) {
     let url = "/admin/match/delete/stream/link";
-    let payload = {matchId:id};
+    let payload = { matchId: id };
     return this.httpService.httpPost(url, payload, true);
   }
 }

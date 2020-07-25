@@ -13,6 +13,7 @@ const logger = require('../subroutines/sys-logging-subs');
 const ParsedReplay = require('../models/replay-parsed-models');
 const uploadMethods = require('../methods/replayUpload');
 const streamMethod = require('../methods/streamEventCreator');
+const ArchiveMethods = require('../methods/archivalMethods');
 
 
 router.post('/match/update', passport.authenticate('jwt', {
@@ -145,33 +146,6 @@ router.post('/match/set/schedule/deadline', passport.authenticate('jwt', { sessi
     }, (err) => {
         res.status(500).send(util.returnMessaging(path, 'Error getting matches', err, null, null, logInfo));
     })
-
-    // Match.find({
-    //     divisionConcat: div
-    // }).then((foundMatches) => {
-    //     if (foundMatches) {
-    //         for (var i = 1; i <= endWeek; i++) {
-    //             foundMatches.forEach(match => {
-    //                 if (match.round == i) {
-    //                     match.scheduleDeadline = date;
-    //                 }
-    //             });
-    //             date = date + (1000 * 60 * 60 * 24 * 7);
-    //         }
-    //         foundMatches.save().then(saved => {
-    //             res.status(400).send(util.returnMessaging(path, 'Matches saved', false, saved, null, logInfo));
-    //         }, err => {
-    //             res.status(500).send(util.returnMessaging(path, 'Error saving matches', err, null, null, logInfo));
-    //         });
-
-    //     } else {
-    //         logInfo.logLevel = 'STD';
-    //         logInfo.error = 'Match not found';
-    //         res.status(400).send(util.returnMessaging(path, 'Match not found', false, null, null, logInfo));
-    //     }
-    // }, (err) => {
-    //     res.status(500).send(util.returnMessaging(path, 'Error getting matches', err, null, null, logInfo));
-    // })
 
 });
 
@@ -389,21 +363,27 @@ router.post('/match/uploadreplay', passport.authenticate('jwt', {
                                             sysLog.target = '';
                                             sysLog.timeStamp = new Date().getTime();
                                             logger(sysLog);
-
-                                            foundMatch.reported = true;
-                                            foundMatch.postedToHP = false;
-                                            foundMatch.save((saved) => {
-                                                res.status(200).send(util.returnMessaging(path, 'Match reported', false, saved, null, logObj));
-                                            }, (err) => {
-                                                res.status(500).send(util.returnMessaging(path, 'Error reporting match result', err, null, null, logObj));
-                                            })
                                         },
                                         (err) => {
-                                            res.status(500).send(util.returnMessaging(path, 'Error (2) reporting match result', err, null, null, logObj));
+                                            let sysLog = {};
+                                            sysLog.actor = 'SYS';
+                                            sysLog.action = ' parsed replay error';
+                                            sysLog.logLevel = 'ERROR';
+                                            sysLog.error = err;
+                                            sysLog.target = '';
+                                            sysLog.timeStamp = new Date().getTime();
+                                            logger(sysLog);
                                         }
                                     )
                                 }
                             );
+                            foundMatch.reported = true;
+                            foundMatch.postedToHP = false;
+                            foundMatch.save((saved) => {
+                                res.status(200).send(util.returnMessaging(path, 'Match reported', false, saved, null, logObj));
+                            }, (err) => {
+                                res.status(500).send(util.returnMessaging(path, 'Error reporting match result', err, null, null, logObj));
+                            })
 
                         }, (err) => {
                             res.status(500).send(util.returnMessaging(path, 'Error reporting match result', err, null, null, logObj));
@@ -448,10 +428,62 @@ router.post('/match/deletereplay', passport.authenticate('jwt', {
     }
 });
 
+router.post('/match/create/grandfinal', passport.authenticate('jwt', {
+    session: false
+}), levelRestrict.multi(['MATCH']), util.appendResHeader, (req, res) => {
+    const path = '/match/create/grandfinal';
+
+    const logInfo = {}
+    logInfo.action = 'create grand final match';
+    logInfo.admin = 'ADMIN';
+    logInfo.actor = req.user.displayName;
+    logInfo.target = `${req.body.home.teamName} vs ${req.body.away.teamName}`;
+
+    new Match(req.body).save(
+        success => {
+            console.log('success', success)
+            res.status(200).send(util.returnMessaging(path, 'Match Created', false, success, null, logInfo));
+        },
+        err => {
+            logInfo.status = 'ERROR';
+            logInfo.error = err;
+            res.status(500).send(util.returnMessaging(path, 'Match Creation Failed', err, null, null, logInfo));
+        }
+    )
+
+
+});
+
+router.post('/match/delete/grandfinal', passport.authenticate('jwt', {
+    session: false
+}), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
+    const path = '/match/delete/grandfinal';
+
+    const logInfo = {}
+    logInfo.action = 'delete grand final match';
+    logInfo.admin = 'ADMIN';
+    logInfo.actor = req.user.displayName;
+    logInfo.target = `${req.body.matchId}`;
+
+    Match.findOneAndDelete({ matchId: req.body.matchId })
+        .then(
+            success => {
+                res.status(200).send(util.returnMessaging(path, 'Match Created', false, success, null, logInfo));
+            },
+            err => {
+                logInfo.status = 'ERROR';
+                logInfo.error = err;
+                res.status(500).send(util.returnMessaging(path, 'Match Creation Failed', err, null, null, logInfo));
+            }
+        )
+
+
+});
+
 
 router.post('/match/create/stream/link', passport.authenticate('jwt', {
     session: false
-}), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
+}), levelRestrict.multi(['MATCH', 'CASTER']), util.appendResHeader, (req, res) => {
     const path = '/match/create/stream/link';
 
     streamMethod.createStreamEvent(req.body).then(
@@ -459,6 +491,7 @@ router.post('/match/create/stream/link', passport.authenticate('jwt', {
             res.status(200).send(util.returnMessaging(path, 'Stream info created', false, answer));
         },
         err => {
+            console.log(err);
             if (err instanceof Error) {
                 err = err.message;
             }
@@ -482,6 +515,41 @@ router.post('/match/delete/stream/link', passport.authenticate('jwt', {
         }
     )
 });
+
+router.post('/season/reset', passport.authenticate('jwt', {
+    session: false
+}), levelRestrict.matchLevel, util.appendResHeader, async(req, res) => {
+
+    const Division = require('../models/division-models');
+
+    let path = 'admin/season/reset';
+
+    let logObj = {};
+
+
+
+    let archived = await ArchiveMethods.archiveDivisions().then(
+        suc => {
+            return {
+                success: true,
+                data: suc
+            };
+        },
+        fail => {
+            return { success: false, data: fail };
+        }
+    );
+
+    if (archived.success) {
+
+        res.status(200).send(util.returnMessaging(path, 'Season Reset', false, archived, null, logObj));
+    } else {
+        res.status(500).send(util.returnMessaging(path, 'Error resetting teams registration division', teams.data, null, null, logObj));
+    }
+
+
+
+})
 
 
 module.exports = router;

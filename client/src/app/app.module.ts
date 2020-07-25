@@ -153,7 +153,7 @@ import { DivisionTournamentResultsTilesComponent } from './division/division-tou
 import { DivisionCupScheduleComponent } from './division/division-cup-schedule/division-cup-schedule.component';
 import { TeamTournamentScheduleTableComponent } from './schedule/team-tournament-schedule-table/team-tournament-schedule-table.component';
 import { TeamTournamentResultsTilesComponent } from './team/team-tournament-results-tiles/team-tournament-results-tiles.component';
-import { SeasonInfoManagerComponent } from './admin/match-management/season-info-manager/season-info-manager.component';
+import { SeasonInfoManagerComponent } from './admin/season-info-manager/season-info-manager.component';
 import { DatePickerComponent } from './formComponents/date-picker/date-picker.component';
 import { AssistantCaptainMgmtComponent } from './modal/assistant-captain-mgmt/assistant-captain-mgmt.component';
 import { PastSeasonsComponent } from './past-seasons/past-seasons.component';
@@ -181,6 +181,18 @@ import { MvpPageComponent } from './mvp-page/mvp-page.component';
 import { StreamManagerComponent } from './admin/stream-manager/stream-manager.component';
 import { CommonPipePipe } from './common/common-pipe.pipe';
 import { TeamNameComponent } from './formComponents/team-name/team-name.component';
+import { RoundColumnComponent } from './elements/schedule-table/round-column/round-column.component';
+import { ActiveTournamentViewerComponent } from './active-tournament-viewer/active-tournament-viewer.component';
+
+import { TeamRegisteredComponent } from './team/team-registered/team-registered.component';
+import { ArchiveSeasonComponent } from './admin/archive-season/archive-season.component';
+import { DisplayNameForIdComponent } from './elements/display-name-for-id/display-name-for-id.component';
+import { NotesComponent } from './admin/approve-member/approve-member-view/notes/notes.component';
+import { ReplayCastsComponent } from './caster-tools/replay-casts/replay-casts.component';
+import { LiveCastsComponent } from './caster-tools/live-casts/live-casts.component';
+import { MatchPaginatorComponent } from './caster-tools/match-paginator/match-paginator.component';
+import { DateTimePickerComponent } from './formComponents/date-time-picker/date-time-picker.component';
+import { GrandFinalGeneratorComponent } from './admin/grand-final-generator/grand-final-generator.component';
 
 const config: SocketIoConfig = { url: environment.socketURL, options:{} }
 
@@ -348,7 +360,18 @@ const config: SocketIoConfig = { url: environment.socketURL, options:{} }
     MvpPageComponent,
     StreamManagerComponent,
     CommonPipePipe,
-    TeamNameComponent
+    TeamNameComponent,
+    TeamRegisteredComponent,
+    ArchiveSeasonComponent,
+    RoundColumnComponent,
+    ActiveTournamentViewerComponent,
+    DisplayNameForIdComponent,
+    NotesComponent,
+    ReplayCastsComponent,
+    LiveCastsComponent,
+    MatchPaginatorComponent,
+    DateTimePickerComponent,
+    GrandFinalGeneratorComponent
   ],
   entryComponents:[
     DeleteConfrimModalComponent,

@@ -7,7 +7,7 @@ import { Match } from 'src/app/classes/match.class';
 @Component({
   selector: "app-caster-dashboard-match-display",
   templateUrl: "./caster-dashboard-match-display.component.html",
-  styleUrls: ["./caster-dashboard-match-display.component.css"]
+  styleUrls: ["./caster-dashboard-match-display.component.css"],
 })
 export class CasterDashboardMatchDisplayComponent implements OnInit {
   constructor(
@@ -17,55 +17,34 @@ export class CasterDashboardMatchDisplayComponent implements OnInit {
   ) {}
 
   @Input() set recMatch(val) {
-    if(val){
+    if (val) {
       this.match = val;
     }
   }
 
   match = new Match();
 
+  castTime;
+
   casterValid;
   @Input() ind;
+  @Input() replayView = false;
 
   ngOnInit(): void {
     this.casterValid = this.checkRights();
   }
 
-  claimMatch(match) {
-    this.scheduleService.addCasterOcc(match).subscribe(
-      res => {
-        this.ngOnInit();
-      },
-      err => {
-        console.log(err);
-      }
-    );
+  updateView(match){
+    this.match = match;
   }
+
 
   removeCaster(match) {
     this.scheduleService.addCaster(match.matchId, "", "").subscribe(
-      res => {
-        match.casterName = "";
-        match.casterUrl = "";
-        // let i = -1;
-        // this.originalMatches.forEach((match, index) => {
-        //   if (match.matchId == res.matchId) {
-        //     i = index;
-        //   }
-        // });
-        // if (i > -1) {
-        //   this.originalMatches[i] = res;
-        // }
-        // this.displayArray.forEach((match, index) => {
-        //   if (match.matchId == res.matchId) {
-        //     i = index;
-        //   }
-        // });
-        // if (i > -1) {
-        //   this.displayArray[i] = res;
-        // }
+      (res) => {
+        this.match = res;
       },
-      err => {
+      (err) => {
         console.log(err);
       }
     );
@@ -78,5 +57,4 @@ export class CasterDashboardMatchDisplayComponent implements OnInit {
     }
     return ret;
   }
-
 }

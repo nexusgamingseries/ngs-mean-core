@@ -15,7 +15,6 @@ import { ApproveMemberComponent } from "./admin/approve-member/approve-member.co
 import { ManageMemberComponent } from "./admin/manage-member/manage-member.component";
 import { ManageSelectTeamComponent } from "./admin/manage-team/manage-select-team.component";
 import { DivisionManagementComponent } from "./admin/division-management/division-management.component";
-import { ScheduleViewComponent } from "./schedule/schedule-view/schedule-view.component";
 import { MatchSchedulerComponent } from "./schedule/match-scheduler/match-scheduler.component";
 import { ReportingComponent } from "./reporting/reporting.component";
 import { DashboardComponent } from "./admin/dashboard/dashboard.component";
@@ -37,7 +36,6 @@ import { UserMarketplaceComponent } from "./marketplace/user-marketplace/user-ma
 import { GenerateSeasonComponent } from "./admin/match-management/generate-season/generate-season.component";
 import { TournamentGeneratorComponent } from "./admin/match-management/tournament-generator/tournament-generator.component";
 import { ReplayBrowserComponent } from "./replay-browser/replay-browser.component";
-import { TournamentViewComponent } from "./tournament-view/tournament-view.component";
 import { TeamScheduleComboComponent } from "./schedule/team-schedule-combo/team-schedule-combo.component";
 import { EventCreateComponent } from './admin/events/event-create/event-create.component';
 import { EventListComponent } from './admin/events/event-list/event-list.component';
@@ -46,7 +44,7 @@ import { ApprovePendingAvatarComponent } from "./admin/approve-pending-avatar/ap
 import { AllTeamsComponent } from "./team/all-teams/all-teams.component";
 import { MatchResultsViewComponent } from './match/match-results-view/match-results-view.component';
 import { ChallongeTournComponent } from "./challonge-tourn/challonge-tourn.component";
-import { SeasonInfoManagerComponent } from "./admin/match-management/season-info-manager/season-info-manager.component";
+import { SeasonInfoManagerComponent } from "./admin/season-info-manager/season-info-manager.component";
 import { PastSeasonsComponent } from "./past-seasons/past-seasons.component";
 import { AuthorPageComponent } from "./blog/author-page/author-page.component";
 import { CasterPageComponent } from "./caster-tools/caster-page/caster-page.component";
@@ -55,6 +53,9 @@ import { MatchupHistoryComponent } from './match/matchup-history/matchup-history
 import { PotgPageComponent } from "./potg-page/potg-page.component";
 import { MvpPageComponent } from "./mvp-page/mvp-page.component";
 import { StreamManagerComponent } from './admin/stream-manager/stream-manager.component';
+import { ArchiveSeasonComponent } from './admin/archive-season/archive-season.component';
+import { ActiveTournamentViewerComponent } from "./active-tournament-viewer/active-tournament-viewer.component";
+import { GrandFinalGeneratorComponent } from './admin/grand-final-generator/grand-final-generator.component';
 
 const APP_ROUTES: Routes = [
   { path: "challonge", component: ChallongeTournComponent },
@@ -65,18 +66,18 @@ const APP_ROUTES: Routes = [
   {
     path: "volunteers",
     component: BlogViewComponent,
-    data: { slug: "volunteers" }
+    data: { slug: "volunteers" },
   },
   {
     path: "rulestest",
     component: StaticHtmlLoaderComponent,
-    data: { template: "rules", headerText: "Rules" }
+    data: { template: "rules", headerText: "Rules" },
   },
   { path: "logout", component: LogoutComponent },
   {
     path: "faq",
     component: StaticHtmlLoaderComponent,
-    data: { template: "faq", headerText: "Frequently Asked Questions" }
+    data: { template: "faq", headerText: "Frequently Asked Questions" },
   },
   { path: "login/:token", component: LoginComponent },
   { path: "profile/:id", component: ProfileEditComponent },
@@ -88,7 +89,7 @@ const APP_ROUTES: Routes = [
   {
     path: "division/:division",
     component: DivisionComponent,
-    runGuardsAndResolvers: "paramsChange"
+    runGuardsAndResolvers: "paramsChange",
   },
   { path: "email/invite/:id", component: OutreachEmailResponseComponent },
   { path: "blog", component: BlogListComponent },
@@ -100,97 +101,103 @@ const APP_ROUTES: Routes = [
     path: "_admin/logs",
     component: LogsViewerComponent,
     canActivate: [AuthGuardService],
-    data: { role: "logs" }
+    data: { role: "logs" },
   },
   {
     path: "_admin/approveTeamQueue",
     component: ApproveMemberComponent,
     canActivate: [AuthGuardService],
-    data: { role: "team" }
+    data: { role: "team" },
   },
   {
     path: "_admin/approveAvatarQueue",
     component: ApprovePendingAvatarComponent,
     canActivate: [AuthGuardService],
-    data: { role: "user" }
+    data: { role: "user" },
   },
   {
     path: "_admin/manageUser",
     component: ManageMemberComponent,
     canActivate: [AuthGuardService],
-    data: { role: "user" }
+    data: { role: "user" },
   },
   {
     path: "_admin/manageTeam",
     component: ManageSelectTeamComponent,
     canActivate: [AuthGuardService],
-    data: { role: "team" }
+    data: { role: "team" },
   },
   {
     path: "_admin/manageTeam/:id",
     component: ManageTeamViewComponent,
     canActivate: [AuthGuardService],
-    data: { role: "team" }
+    data: { role: "team" },
   },
   {
     path: "_admin/divisionMgmt",
     component: DivisionManagementComponent,
     canActivate: [AuthGuardService],
-    data: { role: "division" }
+    data: { role: "division" },
   },
   {
     path: "_admin/matchMgmt",
     component: MatchManagementComponent,
     canActivate: [AuthGuardService],
-    data: { role: "match" }
+    data: { role: "match" },
   },
   {
     path: "_admin/streamMgmt",
     component: StreamManagerComponent,
     canActivate: [AuthGuardService],
-    data: { role: "match" }
+    data: { role: "match" },
   },
   {
     path: "_admin/matchMgmt/match/:id",
     component: MatchEditComponent,
     canActivate: [AuthGuardService],
-    data: { role: "match" }
+    data: { role: "match" },
   },
   {
     path: "_admin/userACLMgmt",
     component: AdminAclManagementComponent,
     canActivate: [AuthGuardService],
-    data: { role: "acl" }
+    data: { role: "acl" },
   },
   {
     path: "_admin/userACLMgmt/:id",
     component: UpdateRolesComponent,
     canActivate: [AuthGuardService],
-    data: { role: "acl" }
+    data: { role: "acl" },
   },
   {
     path: "_admin/scheduleGenerator",
     component: GenerateSeasonComponent,
     canActivate: [AuthGuardService],
-    data: { role: "schedulegen" }
+    data: { role: "schedulegen" },
   },
   {
     path: "_admin/tournamentGenerator",
     component: TournamentGeneratorComponent,
     canActivate: [AuthGuardService],
-    data: { role: "schedulegen" }
+    data: { role: "schedulegen" },
   },
   {
     path: "_admin/eventList",
     component: EventListComponent,
     canActivate: [AuthGuardService],
-    data: { role: "event" }
+    data: { role: "event" },
   },
   {
     path: "_admin/eventMgmt/:id",
     component: EventCreateComponent,
     canActivate: [AuthGuardService],
-    data: { role: "event" }
+    data: { role: "event" },
+  },
+  {
+    path: "_admin/grandFinalCreator",
+    component: GrandFinalGeneratorComponent,
+    canActivate: [AuthGuardService],
+    data: { role: "event" },
   },
   { path: "schedule/scheduleMatch/:id", component: MatchSchedulerComponent },
   { path: "schedule/teamSchedule", component: TeamScheduleComboComponent },
@@ -198,19 +205,25 @@ const APP_ROUTES: Routes = [
   {
     path: "_admin/dashboard",
     component: DashboardComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: "_admin/archiveSeason",
+    component: ArchiveSeasonComponent,
+    canActivate: [AuthGuardService],
+    data: { role: "schedulegen" },
   },
   {
     path: "_casterDashboard",
     component: CasterDashboardComponent,
     canActivate: [AuthGuardService],
-    data: { role: "caster" }
+    data: { role: "caster" },
   },
   {
     path: "_casterPage",
     component: CasterPageComponent,
     canActivate: [AuthGuardService],
-    data: { role: "caster" }
+    data: { role: "caster" },
   },
   { path: "noAccess/:id", component: NoAccessComponent },
   { path: "sessionTimeOut", component: SessionTimeoutComponent },
@@ -221,22 +234,22 @@ const APP_ROUTES: Routes = [
     path: "_admin/matchMgmt/weekDeadline",
     component: SetDeadlineComponent,
     canActivate: [AuthGuardService],
-    data: { role: "match" }
+    data: { role: "match" },
   },
   { path: "messageCenter", component: UserMessageCenterComponent },
   { path: "findTeams", component: TeamMarketComponent },
   { path: "matchupHistory", component: MatchupHistoryComponent },
   { path: "findPlayers", component: UserMarketplaceComponent },
   { path: "replayBrowser", component: ReplayBrowserComponent },
-  { path: "tournament", component: TournamentViewComponent },
+  { path: "tournament", component: ActiveTournamentViewerComponent },
   { path: "page/:id", component: StaticHtmlLoaderComponent },
   { path: "potg", component: PotgPageComponent },
   { path: "mvp", component: MvpPageComponent },
   {
     path: "**",
     component: StaticHtmlLoaderComponent,
-    data: { template: "404", headerText: "Not Found" }
-  }
+    data: { template: "404", headerText: "Not Found" },
+  },
 ];
 
 @NgModule({

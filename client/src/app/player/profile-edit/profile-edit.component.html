@@ -1,5 +1,5 @@
 <!-- Section Title -->
-<app-banner-image [bannerAdditionalClasses]="'single-player'" [bannerTitle]="'Player Profile'"></app-banner-image>
+<app-banner-image [bannerAdditionalClasses]="'single-player'" [bannerTitle]="'Player Profile'" [special]="returnedProfile.displayName"></app-banner-image>
 <!-- End Section Title -->
 
 <!-- Section Area - Content Central -->
@@ -253,7 +253,7 @@
                         <!-- Tab Theree - stats -->
                         <div class="tab-pane pb-5" [ngClass]="{'active': index==2}" *ngIf="index==2">
                             <div *ngIf="index==2">
-                                <app-player-stats [playerID]="returnedProfile.displayName" [hotslogsID]="returnedProfile.hotsLogsPlayerID" [playerToon]="returnedProfile.toonHandle">
+                                <app-player-stats [playerID]="returnedProfile.displayName" [playerToon]="returnedProfile.toonHandle">
                                 </app-player-stats>
                             </div>
                         </div>

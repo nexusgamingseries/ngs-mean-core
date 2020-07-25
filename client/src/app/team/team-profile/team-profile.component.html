@@ -26,10 +26,10 @@
                             <li>
 
                             </li>
-                            <li>
+                            <!-- <li>
                                 <h6><strong>HotSLogs MMR:</strong> {{returnedProfile.teamMMRAvg}}
                                 </h6>
-                            </li>
+                            </li> -->
                             <li>
                                 <h6><strong>HeroesProfile MMR:</strong> {{returnedProfile.hpMmrAvg}}
                                 </h6>
@@ -47,6 +47,11 @@
                         </ul>
 
                         <ul class="social-teams">
+                            <li>
+                                <a href="{{hpLink}}" target="_blank">
+                                    <img style="max-width: 30px;" src="/assets/heroesprofilelogo.png">
+                                </a>
+                            </li>
                             <li *ngIf="returnedProfile.twitch">
                                 <div>
                                     <a href="{{returnedProfile.twitch | commonPipe:util.prePendHttp }}" target="_blank" class="facebook">
@@ -89,11 +94,13 @@
                 <div class="col-xl-12 col-md-12">
                     <!-- Nav Tabs -->
                     <ul class="nav nav-tabs" id="myTab">
+                        <li *ngIf="registrationOpen" class="finger" [ngClass]="{'active': index==5}"><a (click)="setTab(5)">Registration</a></li>
                         <li class="finger" [ngClass]="{'active': index==0}"><a (click)="setTab(0)">Overview</a></li>
                         <li class="finger" [ngClass]="{'active': index==1}"><a (click)="setTab(1)">Squad</a></li>
                         <li class="finger" [ngClass]="{'active': index==2}"><a (click)="setTab(2)">Schedule</a></li>
                         <li class="finger" [ngClass]="{'active': index==3}"><a (click)="setTab(3)">Results</a></li>
-                        <li class="finger" [ngClass]="{'active': index==4}"><a (click)="setTab(4)">Stats</a></li>
+                        <li class="finger" [ngClass]="{'active': index==4}"><a (click)="setTab(4)">Tournaments</a></li>
+
                     </ul>
                     <!-- End Nav Tabs -->
                 </div>
@@ -101,63 +108,83 @@
                 <div class="col-lg-9 padding-top-mini">
                     <!-- Content Tabs -->
                     <div class="tab-content pb-5">
+                        <div class="tab_pane" [ngClass]="{active: index==5}" *ngIf="index==5">
+                            <div *ngIf="registrationOpen">
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <app-questionnaire [team]="returnedProfile">
+                                        </app-questionnaire>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Tab One - overview -->
                         <div class="tab-pane" [ngClass]="{'active': index==0}" *ngIf="index==0">
                             <div>
                                 <!-- captain buttons for editing -->
+
                                 <div class="row" *ngIf="showEditDialog()">
-                                    <div class="col-6">
-                                        <p>Welcome to your team profile!</p>
-                                        <p>The more info you complete in your profile the more information players will have to find you!</p>
-                                    </div>
-                                    <div class="col-6">
-                                        <div *ngIf="disabled == true">
-                                            <button type="button" (click)="openEdit()" class="btn btn-primary float-right">Edit</button>
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col text-center text-success">
+                                                <app-team-registered [team]="returnedProfile"></app-team-registered>
+                                            </div>
                                         </div>
-                                        <div *ngIf="!disabled">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="dropdown">
-                                                        <button type="button" class="mt-1 btn btn-danger dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="icon-align">
-                                              <i class="material-icons md-18">settings</i>
-                                              Manage
-                                            </span>
-                                          </button>
-                                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                            <a class="dropdown-item finger" (click)="openCaptainChangeDialog()"><span
-                                                class="icon-align"><i class="material-icons">cached</i>Change
-                                                captain</span></a>
-                                                            <!-- <a class="dropdown-item finger" (click)="openDialog()"><span class="icon-align"><i class="material-icons">delete_forever</i>Delete team</span></a> -->
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <p>Welcome to your team profile!</p>
+                                                <p>The more info you complete in your profile the more information players will have to find you!</p>
+                                            </div>
+                                            <div class="col-6">
+                                                <div *ngIf="disabled == true">
+                                                    <button type="button" (click)="openEdit()" class="btn btn-primary float-right">Edit</button>
+                                                </div>
+                                                <div *ngIf="!disabled">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="dropdown">
+                                                                <button type="button" class="mt-1 btn btn-danger dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <span class="icon-align">
+                                                  <i class="material-icons md-18">settings</i>
+                                                  Manage
+                                                </span>
+                                              </button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                    <a class="dropdown-item finger" (click)="openCaptainChangeDialog()"><span
+                                                    class="icon-align"><i class="material-icons">cached</i>Change
+                                                    captain</span></a>
+                                                                    <!-- <a class="dropdown-item finger" (click)="openDialog()"><span class="icon-align"><i class="material-icons">delete_forever</i>Delete team</span></a> -->
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <div class="col">
+                                                            <button type="button" [disabled]="!validate()" (click)="save()" class="mt-1 btn btn-success ">Save</button>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <button type="button" (click)="cancel()" class="mt-1 btn btn-danger">Cancel</button>
                                                         </div>
                                                     </div>
+                                                    <div class="row mt-1" *ngIf="errors.length>0">
+                                                        <div class="col text-center">
+                                                            <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <button type="button" (click)="adminRefreshMMR()" class="mt-1 btn btn-primary">Update Team
+                                              MMR</button>
+                                                        </div>
+                                                        <div class="col">
+                                                            <button class="btn btn-dark assCapt" (click)="openAssCaptainChangeDialog()">Add Assistant Captain(s) <i
+                                                           class="fas fa-baby-carriage"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                                </div>
-                                                <div class="col">
-                                                    <button type="button" [disabled]="!validate()" (click)="save()" class="mt-1 btn btn-success ">Save</button>
-                                                </div>
-
-                                                <div class="col">
-                                                    <button type="button" (click)="cancel()" class="mt-1 btn btn-danger">Cancel</button>
-                                                </div>
-                                            </div>
-                                            <div class="row mt-1" *ngIf="errors.length>0">
-                                                <div class="col text-center">
-                                                    <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <button type="button" (click)="adminRefreshMMR()" class="mt-1 btn btn-primary">Update Team
-                                          MMR</button>
-                                                </div>
-                                                <div class="col">
-                                                    <button class="btn btn-dark assCapt" (click)="openAssCaptainChangeDialog()">Add Assistant Captain(s) <i
-                                                       class="fas fa-baby-carriage"></i></button>
-                                                </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <!-- non template conforming captain functions -->
@@ -284,15 +311,6 @@
                                                 </div>
                                             </div>
 
-                                            <div *ngIf="!disabled">
-                                                <div class="row mt-3">
-                                                    <div class="col">
-                                                        <app-questionnaire [team]="returnedProfile">
-                                                        </app-questionnaire>
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -332,8 +350,7 @@
                             <div *ngIf=" index==2 ">
                                 <app-team-schedule-table [teamName]="returnedProfile.teamName " [season]="season "></app-team-schedule-table>
                                 <div class="mt-4 ">
-                                    <app-team-tournament-schedule-table [team]="returnedProfile " [season]="season ">
-                                    </app-team-tournament-schedule-table>
+                                    <app-team-tournament-schedule-table [team]="returnedProfile " [season]="season "></app-team-tournament-schedule-table>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +370,7 @@
                         <!-- Tab Theree - stats -->
                         <div class="tab-pane " [ngClass]="{ 'active': index==4} " *ngIf="index==4">
                             <div *ngIf="index==4 ">
-                                <app-team-stats [team]="returnedProfile.teamName "></app-team-stats>
+                                <app-team-tournaments [team]="returnedProfile" [season]="season"></app-team-tournaments>
                             </div>
                         </div>
                         <!-- End Tab Theree - stats -->

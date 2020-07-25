@@ -49,7 +49,7 @@
                 </ng-template>
             </div>
         </div>
-        <div class="row mt-2 ">
+        <div class="row mt-2 " *ngIf="!replayView">
             <div class="col ">
                 <div *ngIf="match | commonPipe:util.returnBoolByPath:'casterName' else addCasterButton ">
                     <div class="row ">
@@ -69,24 +69,32 @@
                     </div>
 
                 </div>
-                <ng-template #addCasterButton>
-                    <div class="row">
-                        <div class="col">
-                            <app-caster-inputs [(match)]="match" [matchId]="match.matchId"></app-caster-inputs>
-                        </div>
-                        <!-- NOTE: caster changes -->
-                        <div class="col">
-                            <button class="btn btn-success" (click)="claimMatch(match.matchId)">One Click Claim</button>
-                        </div>
-                    </div>
 
-
-                </ng-template>
             </div>
         </div>
+        <div class="row mt-2 " *ngIf="replayView">
+            <div class="col ">
+                <app-date-time-picker [(selectedTime)]="castTime"></app-date-time-picker>
+            </div>
+        </div>
+        <div *ngIf="castTime">
+            <ng-template [ngTemplateOutlet]="addCasterButton"></ng-template>
+        </div>
+
+
 
     </div>
 </div>
 <ng-template #tbd>
     <span> TBD </span>
+</ng-template>
+
+<ng-template #addCasterButton>
+    <div class="row">
+        <div class="col">
+            <app-caster-inputs [(match)]="match" [matchId]="match.matchId" [replayCastTime]="castTime" [replay]="replayView" (matchChange)="updateView($event)"></app-caster-inputs>
+        </div>
+    </div>
+
+
 </ng-template>

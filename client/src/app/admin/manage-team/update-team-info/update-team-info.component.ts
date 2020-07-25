@@ -251,4 +251,30 @@ export class UpdateTeamInfoComponent implements OnInit {
         }
       );
   }
+
+  forfeit(){
+    this.admin.forfeitTeam(this.returnedProfile.teamName).subscribe(
+      res=>{
+        alert('Team matches forfeited');
+      },
+      err=>{
+        console.log(err);
+      }
+    )
+  }
+
+  removeInvited(player){
+
+    this.admin
+      .removeInvitedMembers(this.returnedProfile.teamName_lower, player)
+      .subscribe(
+        (res) => {
+          // console.log('user removed');
+          this.init();
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  }
 }
