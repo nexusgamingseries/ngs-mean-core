@@ -21,6 +21,7 @@ const SeasonInfoCommon = require('../methods/seasonInfoMethods');
 router.get('/get', (req, res) => {
     const path = '/user/get';
     let query = {};
+    let single = true;
     if (req.query.user) {
         var user = req.query.user;
         user = decodeURIComponent(user);
@@ -29,20 +30,55 @@ router.get('/get', (req, res) => {
         var id = req.query.userId;
         id = decodeURIComponent(id);
         query['_id'] = id;
+    } else if (req.query.userIds) {
+        single = false;
+        var idarr = decodeURIComponent(req.query.userIds).split(',');
+        query['_id'] = { $in: idarr };
+    } else if (req.query.users) {
+        single = false;
+        var idarr = decodeURIComponent(req.query.users).split(',');
+        query['displayName'] = {
+            $in: idarr
+        };
+    }
+    if (single) {
+        User.findOne(query).lean().then(
+            (foundUser) => {
+                if (foundUser) {
+                    var temp = removeUneeded(foundUser);
+                    res.status(200).send(util.returnMessaging(path, 'User Found', false, temp));
+                } else {
+                    res.status(400).send({
+                        "message": "User not found"
+                    });
+                }
+            }, (err) => {
+                res.status(500).send({
+                    "message": "Error querying users.",
+                    "error": err
+                });
+            }
+        )
+    } else {
+        User.find(query).lean().then(
+            (foundUser) => {
+                if (foundUser) {
+                    var temp = removeUneeded(foundUser);
+                    res.status(200).send(util.returnMessaging(path, 'User Found', false, temp));
+                } else {
+                    res.status(400).send({
+                        "message": "User not found"
+                    });
+                }
+            }, (err) => {
+                res.status(500).send({
+                    "message": "Error querying users.",
+                    "error": err
+                });
+            }
+        )
     }
 
-    User.findOne(query).lean().then(
-        (foundUser) => {
-            if (foundUser) {
-                var temp = removeUneeded(foundUser);
-                res.status(200).send(util.returnMessaging(path, 'User Found', false, temp));
-            } else {
-                res.status(400).send({ "message": "User not found" });
-            }
-        }, (err) => {
-            res.status(500).send({ "message": "Error querying users.", "error": err });
-        }
-    )
 });
 
 router.get('/delete', passport.authenticate('jwt', {
@@ -231,6 +267,7 @@ router.get('/update/mmr', passport.authenticate('jwt', {
         }
     });
 
+//needs to be moved to own API
 router.get('/frontPageStats', async(req, res) => {
 
     const path = '/user/frontPageStats';
@@ -267,6 +304,7 @@ router.get('/frontPageStats', async(req, res) => {
 
 });
 
+//needs to be moved to own API
 router.get('/leagueOverallStats', (req, res) => {
 
     const path = '/user/leagueOverallStats';
@@ -291,35 +329,6 @@ router.get('/leagueOverallStats', (req, res) => {
         }
     );
 
-
-
-});
-
-router.get('/statistics', (req, res) => {
-
-    const path = '/user/statistics';
-    var id = decodeURIComponent(req.query.id);
-
-    User.findOne({ displayName: id }).then(
-        found => {
-            if (found) {
-                let id = found._id.toString();
-                Stats.find({ associateId: id }).then(
-                    foundStats => {
-                        res.status(200).send(util.returnMessaging(path, 'Found stat', false, foundStats));
-                    },
-                    err => {
-                        res.status(400).send(util.returnMessaging(path, 'Error finding stats.', err, null, null));
-                    }
-                )
-            } else {
-                res.status(400).send(util.returnMessaging(path, 'User ID not found.', false, null, null, logObj));
-            }
-        },
-        err => {
-            res.status(400).send(util.returnMessaging(path, 'Error finding user.', err, null, null));
-        }
-    )
 
 
 });
@@ -404,9 +413,18 @@ router.post('/upload/avatar', passport.authenticate('jwt', {
 
 
 function removeUneeded(user) {
-    if (user.hasOwnProperty('bNetId')) {
-        delete user.bNetId;
+    if (Array.isArray(user)) {
+        user.forEach(u => {
+            if (u.hasOwnProperty('bNetId')) {
+                delete u.bNetId;
+            }
+        })
+    } else {
+        if (user.hasOwnProperty('bNetId')) {
+            delete user.bNetId;
+        }
     }
+
     return user;
 }
 
