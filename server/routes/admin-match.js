@@ -441,7 +441,6 @@ router.post('/match/create/grandfinal', passport.authenticate('jwt', {
 
     new Match(req.body).save(
         success => {
-            console.log('success', success)
             res.status(200).send(util.returnMessaging(path, 'Match Created', false, success, null, logInfo));
         },
         err => {
@@ -450,7 +449,6 @@ router.post('/match/create/grandfinal', passport.authenticate('jwt', {
             res.status(500).send(util.returnMessaging(path, 'Match Creation Failed', err, null, null, logInfo));
         }
     )
-
 
 });
 
