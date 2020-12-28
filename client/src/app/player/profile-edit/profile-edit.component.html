@@ -11,7 +11,7 @@
             <div class="row">
                 <!-- Side info single team-->
                 <div class="col-lg-4 col-xl-3">
-
+                    <!--  -->
                     <div class="item-player single-player">
                         <div class="head-player">
                             <img src="{{returnedProfile.avatar| commonPipe:user.avatarFQDN}}" alt="player-avatar">
@@ -20,7 +20,7 @@
                         <div class="info-player">
                             <span class="number-player">
 
-              </span>
+                            </span>
                             <h4>
                                 {{returnedProfile.displayName}}
                                 <!-- <span>Main Role</span> -->
@@ -74,7 +74,29 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="row p-3">
+
+                            <div class="col text-center" *ngIf="returnedProfile.toonHandle && returnedProfile.displayName">
+
+                                <a style="transition:none; touch-action: none;" href="{{hotsProfile.getNgsHpPlayerLink(returnedProfile.toonHandle,returnedProfile.displayName)}}" target="_blank">
+                                    <img style="max-width: 30px; transition:none; touch-action: none;" src="/assets/heroesprofilelogo.png">
+                                    <p style="font-size: .65rem;">League Heroes Profile</p>
+                                    <!-- <i class="fab fa-twitter"></i> -->
+                                </a>
+                            </div>
+
+
+                            <div class="col text-center" *ngIf="hpProfileLink">
+                                <a href="{{hpProfileLink}}" target="_blank">
+                                    <img style="max-width: 30px;" src="/assets/heroesprofilelogo.png">
+                                    <p style="font-size: .65rem;">General Heroes Profile</p>
+                                    <!-- <i class="fab fa-youtube"></i> -->
+                                </a>
+                            </div>
+
+                        </div>
                     </div>
+
 
                 </div>
                 <!-- end Side info single team-->
@@ -84,7 +106,6 @@
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="finger" [ngClass]="{'active': index==0}"><a (click)="setTab(0)">Overview</a></li>
                         <li class="finger" [ngClass]="{'active': index==1}"><a (click)="setTab(1)">History</a></li>
-                        <li class="finger" [ngClass]="{'active': index==2}"><a (click)="setTab(2)">STATS</a></li>
                     </ul>
                     <!-- End Nav Tabs -->
 
@@ -212,9 +233,27 @@
                                 <!-- storm league rank -->
                                 <div class="row mt-5">
                                     <div class="col">
+
+                                        <h6>Verified Storm League Rankings:</h6>
+                                        <div class="row">
+                                            <div class="col">
+                                                <app-verified-storm-league-ranks-view [userId]="returnedProfile._id" [teamName]="returnedProfile.teamName" [verifiedUserRanks]="returnedProfile.verifiedRankHistory">
+                                                </app-verified-storm-league-ranks-view>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+                                    <!-- <div class="col">
+                                        <app-storm-league [disabled]="disabled" [(division)]="returnedProfile.hlRankMetal" [(rank)]="returnedProfile.hlRankDivision"></app-storm-league>
+                                    </div> -->
+                                </div>
+                                <!-- <div class="row mt-5">
+                                    <div class="col">
                                         <app-storm-league [disabled]="disabled" [(division)]="returnedProfile.hlRankMetal" [(rank)]="returnedProfile.hlRankDivision"></app-storm-league>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- looking for group -->
                                 <div class="row mt-5" *ngIf="hideLookingForGroup()">
                                     <div class="col">
@@ -250,14 +289,6 @@
                         </div>
                         <!-- Tab Theree - career -->
 
-                        <!-- Tab Theree - stats -->
-                        <div class="tab-pane pb-5" [ngClass]="{'active': index==2}" *ngIf="index==2">
-                            <div *ngIf="index==2">
-                                <app-player-stats [playerID]="returnedProfile.displayName" [playerToon]="returnedProfile.toonHandle">
-                                </app-player-stats>
-                            </div>
-                        </div>
-                        <!-- End Tab Theree - stats -->
                     </div>
                     <!-- Content Tabs -->
                 </div>

@@ -1,28 +1,29 @@
+/**
+ * DELETE REPLAY
+ * reviewed 10-2-2020
+ * reviewer wraith
+ */
 const Match = require('../models/match-model');
 const Replay = require('../models/replay-parsed-models');
 const Team = require('../models/team-models');
 const utls = require('../utils');
 const User = require('../models/user-models');
-const AWS = require('aws-sdk');
 const logger = require('../subroutines/sys-logging-subs').logger;
 const HP = require('./heroesProfileAPI');
-
-AWS.config.update({
-    accessKeyId: process.env.S3accessKeyId,
-    secretAccessKey: process.env.S3secretAccessKey,
-    region: process.env.S3region
-});
-
-const s3replayBucket = new AWS.S3({
-    params: {
-        Bucket: process.env.s3bucketReplays
-    }
-});
+const { s3deleteFile } = require('../methods/aws-s3/delete-s3-file');
 
 const notFound = 'not found';
 
+/**
+ * @name deleteReplay
+ * @function
+ * @description deletes the replay information of the match of the index provided; removes from heroes profile as well
+ * @param {string} matchId 
+ * @param {string} indexProp 
+ */
 async function deleteReplay(matchId, indexProp) {
 
+    //get match
     let match = await Match.findOne({ matchId: matchId }).then(
         found => {
             if (found) {
@@ -48,37 +49,55 @@ async function deleteReplay(matchId, indexProp) {
 
     if (replayToDelete) {
         try {
+
             if (replayToDelete.data) {
+                try {
+                    //remove the parsed data from database
+                    replayDeleteResult = await removeParsedFileFromDatabase(replayToDelete.data).then(res => {
+                        return res;
+                    });
 
-                replayDeleteResult = await removeParsedFileFromDatabase(replayToDelete.data).then(res => {
-                    return res;
-                });
+                    //remove association from home team
+                    removedFromTeamResult[0] = await removeParsedIdFromTeam(matchObj.home.id, replayToDelete.data).then(res => {
+                        return res;
+                    });
+                    //remove association from away team
+                    removedFromTeamResult[1] = await removeParsedIdFromTeam(matchObj.away.id, replayToDelete.data).then(res => {
+                        return res;
+                    });
+                } catch (e) {
+                    console.log("catch1", e)
+                }
 
-                removedFromTeamResult[0] = await removeParsedIdFromTeam(matchObj.home.id, replayToDelete.data).then(res => {
-                    return res;
-                });
-                removedFromTeamResult[1] = await removeParsedIdFromTeam(matchObj.away.id, replayToDelete.data).then(res => {
-                    return res;
-                });
             }
 
             if (replayToDelete.url) {
                 //remove from s3
-                removedFromS3Result = await deleteFile(replayToDelete.url).then(answer => {
-                    return answer;
-                });
+                try {
+                    removedFromS3Result = await s3deleteFile(process.env.s3bucketReplays, null, replayToDelete.url).then(answer => {
+                        return answer;
+                    });
+                } catch (e) {
+                    console.log("catch2", e)
+                }
+
             }
 
             if (replayToDelete.parsedUrl) {
                 //remove from hero profile
-                removeFromHPResult = await HP.deleteReplayAPI(replayToDelete.parsedUrl).then(
-                    res => {
-                        return true;
-                    },
-                    err => {
-                        return 'Error occured deleting this replay';
-                    }
-                );
+                try {
+                    removeFromHPResult = await HP.deleteReplayAPI(replayToDelete.parsedUrl).then(
+                        res => {
+                            return true;
+                        },
+                        err => {
+                            return 'Error occured deleting this replay';
+                        }
+                    );
+                } catch (e) {
+                    console.log("catch3", e)
+                }
+
             }
 
             delete matchObj.replays[indexProp];
@@ -102,6 +121,7 @@ async function deleteReplay(matchId, indexProp) {
             };
 
         } catch (e) {
+            console.log('try', e);
             throw e;
         }
     } else {
@@ -112,8 +132,13 @@ async function deleteReplay(matchId, indexProp) {
 
 }
 
-//remove parsed file from database;
 
+/**
+ * @name removeParsedFileFromDatabase
+ * @function
+ * @description remove parsed file from database
+ * @param {string} dataId parsed replay id
+ */
 async function removeParsedFileFromDatabase(dataId) {
     return Replay.findOneAndDelete({ systemId: dataId }).lean().then(
         deleted => {
@@ -129,8 +154,16 @@ async function removeParsedFileFromDatabase(dataId) {
     )
 }
 
-//remove references to parsed file from team
+
+/**
+ * @name removeParsedIdFromTeam
+ * @function
+ * @description remove references to parsed file from team
+ * @param {string} teamId 
+ * @param {string} replayId 
+ */
 async function removeParsedIdFromTeam(teamId, replayId) {
+    //get team
     let team = await Team.findById(teamId).then(
         found => {
             if (found) {
@@ -145,9 +178,11 @@ async function removeParsedIdFromTeam(teamId, replayId) {
     );
     let teamObj = utls.objectify(team);
     let savedResult;
+    //check replays array 
     if (utls.returnBoolByPath(teamObj, 'replays')) {
         let replayArr = utls.returnByPath(teamObj, 'replays');
         let index = replayArr.indexOf(replayId);
+        //remove the replay id from the array if its there
         if (index > -1) {
             replayArr = replayArr.splice(index);
             team.replays = replayArr;
@@ -175,6 +210,8 @@ async function removeParsedIdFromTeam(teamId, replayId) {
     teamObj.teamMembers.forEach(teamMemb => {
         players.push(teamMemb.displayName);
     });
+
+    //remove the replay ID from the team's players
     removedFromUsers = await removeParsedFileFromUsersList(players, replayId);
 
 
@@ -185,6 +222,13 @@ async function removeParsedIdFromTeam(teamId, replayId) {
     };
 }
 
+/**
+ * @name removeParsedFileFromUsersList
+ * @function
+ * @description removes association of provided replay from the list of users
+ * @param {Array.<string>} users array of user displaynames
+ * @param {string} replayid id of replay
+ */
 async function removeParsedFileFromUsersList(users, replayid) {
     let promArr = [];
     users.forEach(user => {
@@ -200,7 +244,14 @@ async function removeParsedFileFromUsersList(users, replayid) {
     return x;
 }
 
-//remove reference to parsed file from player
+
+/**
+ * @name removeParsedFileFromUser
+ * @function
+ * @description remove reference to parsed file from player
+ * @param {string} userName 
+ * @param {string} replayId 
+ */
 async function removeParsedFileFromUser(userName, replayId) {
     let user = await User.findOne({ displayName: userName }).then(
         found => {
@@ -241,46 +292,5 @@ async function removeParsedFileFromUser(userName, replayId) {
     }
     return savedResult;
 }
-//remove file from S3 
-async function deleteFile(path) {
-    let data = {
-        Bucket: process.env.s3bucketReplays,
-        Key: path
-    };
-    return new Promise((resolve, reject) => {
-        s3replayBucket.deleteObject(data, (err, data) => {
-            let returnVal = false;
-            if (err) {
-                //log object
-                let sysObj = {};
-                sysObj.actor = 'SYSTEM';
-                sysObj.action = 'error deleting from AWS ';
-                sysObj.location = 'delete replay'
-                sysObj.logLevel = 'ERROR';
-                sysObj.error = err;
-                sysObj.target = path;
-                sysObj.timeStamp = new Date().getTime();
-                logger(sysObj);
-            } else {
-                returnVal = true;
-                //log object
-                let sysObj = {};
-                sysObj.actor = 'SYSTEM';
-                sysObj.action = 'deleted from AWS ';
-                sysObj.location = 'delete replay'
-                sysObj.logLevel = 'STD';
-                sysObj.target = path;
-                sysObj.timeStamp = new Date().getTime();
-                logger(sysObj);
-            }
-            resolve(returnVal);
-        });
-    });
-}
-
-//remove the reference from match
-
-
-//delete replay info from heroesprofile
 
 module.exports = { deleteReplay };

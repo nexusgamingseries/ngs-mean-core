@@ -1,3 +1,12 @@
+/**
+ * Passport manages the bulk of authentication for the app, dont touch it for the most part its black magic.
+ * This config happens to be a convenient place to fiddle with the http request as they come in and some user authentication bootstrapping;
+ * This is where we add the JWT to the request that carries the auth info for a user and is the users API key
+ * 
+ * reviewed: 9-30-2020
+ * reviewr: wraith
+ */
+
 const passport = require('passport');
 const BnetStrategy = require('passport-bnet');
 const JwtStrategy = require('passport-jwt').Strategy;
@@ -12,9 +21,19 @@ const util = require('../utils');
 const archive = require('../methods/archivalMethods');
 const _ = require('lodash');
 
+/*
+this is a custom token extractor method that allows us to pull a jwt from other places besides header bearer:
+using this method we are able to look for api keys in other places like the json body or even the query of a get request
+this change allowed API usage outside being logged into the website and knowing how to add the api key to headers.. 
+it also replaced some earlier middleware that looked for API keys in the utility routes
+*/
 var tokenExtractor = function(req) {
+
         let token = null;
         let header = req.headers.authorization;
+        //if the request has a header authorization bearer; we default to that
+        //next we look in the body of a post request 
+        //finally we will begrudingly accept the apikey from a get request param 
         if (header) {
             const bearerStr = "Bearer ";
             header = header.replace(bearerStr, '');
@@ -58,7 +77,7 @@ passport.use(new JwtStrategy(jwtOptions, function(jwt_payload, next) {
                     //this user has some admin access
                     adminLevel = adminLevel.toObject();
                     //convert the reply to object so we can work with it..
-                    reply = reply.toObject();
+                    reply = util.objectify(reply);
                     //add admin level info into the reply
                     reply.adminLevel = adminLevel;
                     //generate a new token from this new compounded reply
@@ -128,12 +147,13 @@ passport.use(new BnetStrategy({
                         //dont wanna lose those smurfs!
                         userObj.smurfAccount = found.smurfAccount;
                     }
-                    if (found.history) {
-                        userObj.history = found.history;
-                    }
-                    if (found.replays) {
-                        userObj.replays = found.replays;
-                    }
+                    //removing these for now since this might be afoul of the expecations of a has-been-deleted account
+                    // if (found.history) {
+                    //     userObj.history = found.history;
+                    // }
+                    // if (found.replays) {
+                    //     userObj.replays = found.replays;
+                    // }
                     logObj.action += ' restored from archive ';
                     //pass this partial object on to the create user object
                     createNewProfile(userObj, logObj, done);
@@ -151,7 +171,15 @@ passport.use(new BnetStrategy({
     })
 }));
 
-//helper method to create a new profile
+//
+/**
+ * @name
+ * @function
+ * @description helper method to create a new profile
+ * @param {Object} userObj 
+ * @param {Object} logObj 
+ * @callback done 
+ */
 function createNewProfile(userObj, logObj, done) {
     //get the players MMRs!
     mmrMethods.comboMmr(userObj.displayName).then(
@@ -192,6 +220,14 @@ function createNewProfile(userObj, logObj, done) {
         });
 }
 
+/**
+ * @name generateNewToken
+ * @function
+ * @description this method will generate the JWT token user for authorization / api key of an auth 'ed user
+ * 
+ * @param {User} prof user-object
+ * @param {Admin} admin admin-object
+ */
 //helper method to generate new JWT token
 function generateNewToken(prof, admin) {
     let tokenObject = {};
@@ -201,9 +237,9 @@ function generateNewToken(prof, admin) {
     tokenObject.teamInfo.teamId = prof.teamId;
     tokenObject.id = prof._id;
     tokenObject.displayName = prof.displayName;
-    admin = util.objectify(admin);
 
     if (admin) {
+        admin = util.objectify(admin);
         tokenObject.adminLevel = compressAdmin(admin);
     }
 
@@ -214,6 +250,13 @@ function generateNewToken(prof, admin) {
 }
 
 //middleware helper function for log-in
+/**
+ * @name returnUserToClient
+ * @function
+ * @description middleware to return info to client
+ * @param {User} prof 
+ * @callback done 
+ */
 function returnUserToClient(prof, done) {
     Admin.AdminLevel.findOne({
         adminId: prof._id
@@ -227,7 +270,12 @@ function returnUserToClient(prof, done) {
     });
 }
 
-//helper method to remove unwanteds from the admin object
+/**
+ * @name compressAdmin
+ * @function
+ * @description helper method to remove unwanteds from the admin object
+ * @param {Object} obj 
+ */
 function compressAdmin(obj) {
     let retVal = [];
     _.forEach(obj, (value, key) => {

@@ -26,7 +26,13 @@ export class AdminService {
 
   archiveSeason() {
     let url = "admin/season/reset";
-    return this.httpService.httpPost(url, {}, true);
+    return this.httpService.httpPost(
+      url,
+      {
+        password: "resetseason",
+      },
+      true
+    );
   }
 
   teamLogoUpload(img, teamName?) {
@@ -147,10 +153,11 @@ export class AdminService {
   }
 
   //calculates the teams MMR based on the provided usersMmr and the team's name
-  resultantMmr(userMmr, teamName) {
+  resultantMmr(userMmr, userName, teamName) {
     let url = "/admin/resultantmmr";
     let payload = {
       userMmr: userMmr,
+      displayName:userName,
       teamName: teamName,
     };
     return this.httpService.httpPost(url, payload, true);
@@ -349,14 +356,8 @@ export class AdminService {
 
   uploadReplay(payload) {
     let url = "admin/match/uploadreplay";
-    let input = new FormData();
 
-    let keys = Object.keys(payload);
-    keys.forEach((element) => {
-      input.append(element, payload[element]);
-    });
-
-    return this.httpService.httpPost(url, input, true);
+    return this.httpService.httpPost(url, payload, true);
   }
 
   createStream(obj) {

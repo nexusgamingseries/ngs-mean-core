@@ -1,10 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
-import { TeamService } from 'src/app/services/team.service';
-import { Profile } from '../../../classes/profile.class';
-import { Team } from '../../../classes/team.class';
-import { AdminService } from '../../../services/admin.service';
-import { UtilitiesService } from 'src/app/services/utilities.service';
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { UserService } from "src/app/services/user.service";
+import { TeamService } from "src/app/services/team.service";
+import { Profile } from "../../../classes/profile.class";
+import { Team } from "../../../classes/team.class";
+import { AdminService } from "../../../services/admin.service";
+import { UtilitiesService } from "src/app/services/utilities.service";
 
 @Component({
   selector: "app-approve-member-view",
@@ -51,7 +51,10 @@ export class ApproveMemberViewComponent implements OnInit {
     null,
     null
   ); //local team profile - blank team profile
-  resultantMmr: number; //local var for holding returned resultant MMR calculation
+  resultantMmr: {
+    resultantMmr: null;
+    stormRankAvg: null;
+  }; //local var for holding returned resultant MMR calculation
   _info: any; //local var, holds the bindings passed to this component
   note: string = "";
 
@@ -89,6 +92,7 @@ export class ApproveMemberViewComponent implements OnInit {
           this.admin
             .resultantMmr(
               this.player.heroesProfileMmr,
+              this.player.displayName,
               this.viewTeam.teamName_lower
             )
             .subscribe(
@@ -116,18 +120,18 @@ export class ApproveMemberViewComponent implements OnInit {
     );
   }
 
-  submitNote(){
-    if(this.note.length>0){
+  submitNote() {
+    if (this.note.length > 0) {
       this.admin.pmqAddNote(this._info, this.note).subscribe(
-        res=>{
-          console.log(res);
+        (res) => {
+          // console.log(res);
           this._info = res;
-          this.note = '';
+          this.note = "";
         },
-        err=>{
+        (err) => {
           console.log(err);
         }
-      )
+      );
     }
   }
 

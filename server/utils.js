@@ -1,6 +1,93 @@
 const logger = require('./subroutines/sys-logging-subs').logger;
 const _ = require('lodash');
 
+validateInputs = {};
+
+validateInputs.array = function(input) {
+    var retVal = { valid: false };;
+    if (!isNullOrEmpty(input)) {
+        retVal.valid = input instanceof Array ? true : false;
+        if (retVal.valid) {
+            retVal.value = input;
+        }
+
+    }
+    return retVal;
+}
+
+validateInputs.string = function(input) {
+    var retVal = { valid: false };
+    if (!isNullOrEmpty(input)) {
+        retVal.valid = typeof(input) == 'string' ? true : false;
+        if (retVal.valid) {
+            retVal.value = input;
+        }
+    }
+    return retVal;
+}
+
+validateInputs.object = function(input) {
+    var retVal = {
+        valid: false
+    };
+    if (!isNullOrEmpty(input)) {
+        retVal.valid = typeof(input) == 'object' ? true : false;
+        if (retVal.valid) {
+            retVal.type = 'object';
+            retVal.value = input;
+        }
+    }
+    return retVal;
+}
+
+validateInputs.number = function(input) {
+    var retVal = { valid: false };;
+    if (!isNullOrEmpty(input)) {
+        retVal.valid = typeof(parseInt(input)) == 'number' ? true : false;
+        if (retVal.valid) {
+            retVal.value = parseInt(input);
+        }
+    }
+    return retVal;
+}
+
+validateInputs.stringOrArrayOfStrings = function(input) {
+    var retVal = { valid: false };;
+    if (!isNullOrEmpty(input)) {
+        if (typeof(input) == 'string') {
+            retVal.valid = true;
+        }
+        if (input instanceof Array) {
+            retVal.valid = true;
+        }
+        if (retVal.valid) {
+            retVal.value = input;
+        }
+    }
+    return retVal;
+}
+
+validateInputs.boolean = function(input) {
+    var retVal = { valid: false };;
+    if (!isNullOrEmpty(input)) {
+        if (typeof(input) == 'string') {
+            if (input == 'true') {
+                retVal.valid = true;
+                retVal.value = true;
+            } else if (input == 'false') {
+                retVal.valid = true;
+                retVal.value = false;
+            }
+        }
+        if (typeof(input) == 'boolean') {
+            retVal.valid = true;
+            retVal.value = input;
+        }
+    }
+    return retVal;
+}
+
+
 isNullOrEmpty = function(dat) {
     if (dat == null || dat == undefined) {
         return true;
@@ -64,9 +151,14 @@ isNullorUndefined = function(dat) {
 
 returnMessaging = function(route, message, err, obj, additional, logInfo) {
     var ret = {
-        "route": route,
         "message": message
     };
+
+    if (route.indexOf('/api/') > -1) {
+        ret.route = route;
+    } else {
+        ret.route = `/api/${route}`
+    }
 
     if (!isNullorUndefined(err) && err) {
         if (err.hasOwnProperty('toString')) {
@@ -249,6 +341,10 @@ function objectify(obj) {
 
 }
 
+function JSONCopy(obj) {
+    return JSON.parse(JSON.stringify(obj));
+}
+
 //simple console log for server side errors that will give me more info from the papertrail than a simple console.log;
 //simple method to add a few peices of data together to log out
 function errLogger(location, err, add) {
@@ -277,5 +373,7 @@ module.exports = {
     sortMatchesByTime: sortMatchesByTime,
     objectify: objectify,
     removeInactiveTeams: removeInactiveTeams,
-    errLogger: errLogger
+    errLogger: errLogger,
+    JSONCopy: JSONCopy,
+    validateInputs: validateInputs
 };

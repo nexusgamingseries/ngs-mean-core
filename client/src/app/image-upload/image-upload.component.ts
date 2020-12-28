@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, Output, EventEmitter } from '@angular/core';
 import { TeamService } from '../services/team.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { AdminService } from '../services/admin.service';
@@ -10,6 +10,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ["./image-upload.component.css"]
 })
 export class ImageUploadComponent implements OnInit {
+  randomName;
   _teamName: string;
   @Input() set teamName(name) {
     if (name != null && name != undefined && name.length) {
@@ -95,6 +96,8 @@ export class ImageUploadComponent implements OnInit {
   widthPx;
   heightPx;
 
+  @Output() imageParsed = new EventEmitter();
+
   @Input() set width(w) {
     if (this.util.isNullOrEmpty(w)) {
       this.widthPx = "350";
@@ -124,7 +127,9 @@ export class ImageUploadComponent implements OnInit {
     private teamService: TeamService,
     private util: UtilitiesService,
     private admin: AdminService
-  ) {}
+  ) {
+    this.randomName = Math.floor(Math.random() * Math.floor(1000));
+  }
 
   removeImage() {
     this.admin.teamRemoveLogo(this._teamName).subscribe(
@@ -167,6 +172,9 @@ export class ImageUploadComponent implements OnInit {
     } else if (this._imageType == "avatar") {
       this.imageHeader = "Avatar Image:";
       this.actionText = "Upload New Avatar:";
+    }else if (this._imageType == "stormVerification") {
+      this.imageHeader = "Verification Image:";
+      this.actionText = "Upload New Image:";
     }
   }
 
@@ -175,7 +183,8 @@ export class ImageUploadComponent implements OnInit {
     console.log(this.widthPx, this.heightPx);
     let wB = this.widthPx*1.2;
     let hB = this.heightPx*1.2;
-    this.croppieObject = $("#cropImg").croppie({
+    let ele = `#${this.randomName}`;
+    this.croppieObject = $(ele).croppie({
       viewport: {
         width: this.widthPx,
         height: this.heightPx,
@@ -260,6 +269,13 @@ export class ImageUploadComponent implements OnInit {
                 console.log(err);
               }
             );
+          }else if(this._imageType == "stormVerification"){
+            //do a kick flip!
+            //this is unheard of but... i want this image string outside of this component.
+            this.currentImage = result;
+            this.croppieImage = null;
+            this.editClicked = true;
+            this.imageParsed.emit(result);
           }
         },
         err => {

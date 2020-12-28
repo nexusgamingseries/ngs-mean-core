@@ -18,8 +18,7 @@ export class ScheduleService {
     return this.httpService.httpPost(url, obj);
   }
 
-
-  getPastNonSeasonalTournaments(){
+  getPastNonSeasonalTournaments() {
     let url = "/schedule/get/tournament/past";
     return this.httpService.httpGet(url, []);
   }
@@ -200,7 +199,7 @@ export class ScheduleService {
   }
 
   //get tournament
-  getTournamentsByIds(ids:Array<string>) {
+  getTournamentsByIds(ids: Array<string>) {
     let url = "/schedule/fetch/tournament";
     let payload = {};
 
@@ -236,15 +235,16 @@ export class ScheduleService {
   */
   reportMatch(payload) {
     let url = "schedule/report/match";
-    let input = new FormData();
-
-    let keys = Object.keys(payload);
-    keys.forEach((element) => {
-      input.append(element, payload[element]);
-    });
-
-    return this.httpService.httpPost(url, input, true);
+    return this.httpService.httpPost(url, payload, true);
   }
+
+  deleteTournament(tournChallongId){
+    let url = "/schedule/delete/tournament";
+    let query = [
+      {'tournId':tournChallongId}
+    ];
+    return this.httpService.httpGet(url, query, true);
+  };
 
   // /match/add / caster
   addCaster(matchId: string, casterName: string, casterUrl: string) {
@@ -273,7 +273,7 @@ export class ScheduleService {
     return this.httpService.httpPost(url, payload, false);
   }
 
-  getGrandFinals(){
+  getGrandFinals() {
     let url = "/schedule/get/grandchampions";
     return this.httpService.httpGet(url, [], false);
   }

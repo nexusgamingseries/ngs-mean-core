@@ -70,7 +70,7 @@ import { UserMessageCenterComponent } from './messageCenter/user-message-center/
 import { TeamMarketComponent } from './marketplace/team-market/team-market.component';
 import { UserMarketplaceComponent } from './marketplace/user-marketplace/user-marketplace.component';
 import { UserDeckComponent } from './marketplace/user-marketplace/user-deck/user-deck.component';
- import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+//  import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { ConfirmRemoveMemberComponent } from './modal/confirm-remove-member/confirm-remove-member.component';
 import { TournamentGeneratorComponent } from './admin/match-management/tournament-generator/tournament-generator.component';
 import { GenerateSeasonComponent } from './admin/match-management/generate-season/generate-season.component';
@@ -82,16 +82,14 @@ import { DivisionSelectorComponent } from './division-selector/division-selector
 import { DragScrollModule } from 'ngx-drag-scroll';
 import { TeamScheduleComboComponent } from './schedule/team-schedule-combo/team-schedule-combo.component';
 import { TeamTournamentsComponent } from './schedule/team-tournaments/team-tournaments.component';
-import { MatchScheduleComponent } from './match/match-schedule/match-schedule.component';
 import { TournamentReportingComponent } from './reporting/tournament-reporting/tournament-reporting.component';
 import { EventDisplayComponent } from './events/event-display/event-display.component';
 import { EventCreateComponent } from './admin/events/event-create/event-create.component';
 import { EventListComponent } from './admin/events/event-list/event-list.component';
 // import { GeneralImageUploadComponent } from './general-image-upload/general-image-upload.component';
-import { MiniCarouselComponent } from './mini-carousel/mini-carousel.component';
 import { MatchViewVerticleComponent } from './match/match-view-verticle/match-view-verticle.component';
 import { LargeCarouselComponent } from './large-carousel/large-carousel.component';
-import { MatchViewModalComponent } from './modal/match-view-modal/match-view-modal.component';
+
 import { NewsNoSidebarComponent } from './news-no-sidebar/news-no-sidebar.component';
 import { DivisionStandingsComponent } from './division-standings/division-standings.component';
 import { RecentResultsComponent } from './recent-results/recent-results.component';
@@ -201,8 +199,15 @@ import { GrandChampionsViewerComponent } from './grand-champions-viewer/grand-ch
 import { ChampExpanderComponent } from './grand-champions-viewer/champ-expander/champ-expander.component';
 import { MatchResultsHeaderComponent } from './match/match-results-view/match-results-header/match-results-header.component';
 import { LoadingComponent } from './elements/loading/loading.component';
+import { RankRequirementsComponent } from './admin/rank-requirements/set-rank-requirements/rank-requirements.component';
+import { ValidateRankComponent } from './admin/rank-requirements/validate-rank/validate-rank.component';
+import { ApproveRankViewComponent } from './admin/rank-requirements/validate-rank/approve-rank-view/approve-rank-view.component';
+import { VerifiedStormLeagueRanksViewComponent } from './verified-storm-league-ranks-view/verified-storm-league-ranks-view.component';
+import { DeleteTournamentComponent } from './admin/match-management/delete-tournament/delete-tournament.component';
+import { MembersReportingComponent } from './storm-rank-tools/members-reporting/members-reporting.component';
+import { VerifiedStormRanksDisplayNameComponent } from './storm-rank-tools/verified-storm-ranks-display-name/verified-storm-ranks-display-name.component';
 
-const config: SocketIoConfig = { url: environment.socketURL, options:{} }
+// const config: SocketIoConfig = { url: environment.socketURL, options:{} }
 
 @NgModule({
   declarations: [
@@ -261,7 +266,7 @@ const config: SocketIoConfig = { url: environment.socketURL, options:{} }
     EventLargeComponent,
     SetDeadlineComponent,
     MatchViewComponent,
-    MatchViewModalComponent,
+
     DropDownTimeComponent,
     UserMessageCenterComponent,
     TeamMarketComponent,
@@ -275,12 +280,10 @@ const config: SocketIoConfig = { url: environment.socketURL, options:{} }
     DivisionSelectorComponent,
     TeamScheduleComboComponent,
     TeamTournamentsComponent,
-    MatchScheduleComponent,
     TournamentReportingComponent,
     EventDisplayComponent,
     EventCreateComponent,
     EventListComponent,
-    MiniCarouselComponent,
     MatchViewVerticleComponent,
     LargeCarouselComponent,
     NewsNoSidebarComponent,
@@ -387,14 +390,21 @@ const config: SocketIoConfig = { url: environment.socketURL, options:{} }
     GrandChampionsViewerComponent,
     ChampExpanderComponent,
     MatchResultsHeaderComponent,
-    LoadingComponent
+    LoadingComponent,
+    RankRequirementsComponent,
+    ValidateRankComponent,
+    ApproveRankViewComponent,
+    VerifiedStormLeagueRanksViewComponent,
+    DeleteTournamentComponent,
+    MembersReportingComponent,
+    VerifiedStormRanksDisplayNameComponent
   ],
   entryComponents:[
     DeleteConfrimModalComponent,
     ChangeCaptainModalComponent,
     ConfirmRemoveMemberComponent,
     EventModalComponent,
-    MatchViewModalComponent,
+
     NgsAccordianComponent,
     AssistantCaptainMgmtComponent
 
@@ -412,7 +422,7 @@ const config: SocketIoConfig = { url: environment.socketURL, options:{} }
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    SocketIoModule.forRoot(config),
+    // SocketIoModule.forRoot(config),
     DragDropModule,
     DragScrollModule
   ],

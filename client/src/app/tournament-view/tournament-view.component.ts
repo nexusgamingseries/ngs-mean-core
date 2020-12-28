@@ -3,7 +3,6 @@ import { ScheduleService } from '../services/schedule.service';
 import { TeamService } from '../services/team.service';
 import { UtilitiesService } from '../services/utilities.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { MatchViewModalComponent } from '../modal/match-view-modal/match-view-modal.component';
 
 @Component({
   selector: 'app-tournament-view',
@@ -15,7 +14,6 @@ export class TournamentViewComponent implements OnInit {
   _bracket;
 
   hasBracket=true;
-  dialogRef: MatDialogRef<MatchViewModalComponent>;
 
   constructor(private scheduleService:ScheduleService, public _team:TeamService, private util: UtilitiesService, private dialog: MatDialog) {
    }
@@ -52,6 +50,9 @@ export class TournamentViewComponent implements OnInit {
     //  }
    }
 
+   ClickMatch(){
+     console.log('xxx');
+   }
 
   matches: any = [];
   tournamentObject:any;
@@ -70,16 +71,20 @@ export class TournamentViewComponent implements OnInit {
       this.scheduleService.getTournamentGames( this._name, this._season, this._division).subscribe(res => {
         if (res['tournInfo'][0]['matches']){
           this.matches = res['tournInfo'][0]['matches'];
-          this.scheduleService.getMatchList(this.matches, this._season).subscribe(
-            res=>{
-              this.matches = res;
-              this.tournamentObject = this.arrangeMatches();
-              this.hasBracket = true;
-            },
-            err=>{
-              console.log(err);
-            }
-          )
+          if(this.matches.length>0){
+                      this.scheduleService
+                        .getMatchList(this.matches, this._season)
+                        .subscribe(
+                          (res) => {
+                            this.matches = res;
+                            this.tournamentObject = this.arrangeMatches();
+                            this.hasBracket = true;
+                          },
+                          (err) => {
+                            console.log(err);
+                          }
+                        );
+          }
         }
       }, err => {
         this.hasBracket = false;
@@ -98,14 +103,6 @@ export class TournamentViewComponent implements OnInit {
       return false;
     }
 
-  }
-
-  ClickMatch(match: any)
-  {
-    this.dialog.closeAll();
-    this.dialogRef = this.dialog.open(MatchViewModalComponent, {
-      data: { match: match }
-    });
   }
 
   championship:any;

@@ -145,7 +145,7 @@
             </div>
 
             <div class="row" *ngIf="hasSearched && localResults.length==0">
-                <div class="col">
+                <div class="col text-center">
                     <h3>We did not find any players that matched your criteria.</h3>
                 </div>
             </div>
@@ -175,7 +175,12 @@
                     </div>
                 </div>
             </div>
-
+            <!-- if there are no results -->
+            <div class="row mt-4" *ngIf="displayArray.length == 0">
+                <div class="col text-center">
+                    <h3>No Free Agents Currently!</h3>
+                </div>
+            </div>
             <div class="info-panel">
                 <div class="row">
                     <div class="col-md-12">
@@ -186,6 +191,7 @@
 
         </div>
         <!-- End Content Text-->
+
     </div>
 </section>
 <!-- End Section Area -  Content Central -->

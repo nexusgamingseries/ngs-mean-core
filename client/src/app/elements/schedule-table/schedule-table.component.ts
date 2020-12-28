@@ -19,45 +19,79 @@ export class ScheduleTableComponent implements OnInit {
 
   matchesVal = [];
 
+  colSpanInt = 4;
+
 @Input() sortOrder = 'round';
 
+@Input() showBye = false;
 
-  @Input() set matches(val){
-    if(val){
-      val.forEach(
-        match=>{
-          if(this.util.returnBoolByPath(match, 'home.logo')){
-            match.home.logo = this.teamServ.imageFQDN(match.home.logo);
-          }
-          if(this.util.returnBoolByPath(match, 'away.logo')){
-            match.away.logo = this.teamServ.imageFQDN(match.away.logo);
-          }
 
+@Input() set matches(val){
+  if(val){
+    val.forEach(
+      match=>{
+        if(this.util.returnBoolByPath(match, 'home.logo')){
+          match.home.logo = this.teamServ.imageFQDN(match.home.logo);
         }
-      );
-      if(this.sortOrder == ROUND){
-              val.sort((a, b) => {
-                if (
-                  !this.util.returnBoolByPath(a, "round") ||
-                  !this.util.returnBoolByPath(b, "round")
-                ) {
-                  return 0;
-                } else if (a.round > b.round) {
-                  return 1;
-                } else {
-                  return -1;
-                }
-              });
-      }else if(this.sortOrder == SCHEDULEDTIME){
-          val = this.util.sortMatchesByTime(val);
+        if(this.util.returnBoolByPath(match, 'away.logo')){
+          match.away.logo = this.teamServ.imageFQDN(match.away.logo);
+        }
       }
-
-      this.matchesVal = val;
-
-    }else{
-      this.matchesVal = [];
+    );
+    if(this.sortOrder == ROUND){
+            val.sort((a, b) => {
+              if (
+                !this.util.returnBoolByPath(a, "round") ||
+                !this.util.returnBoolByPath(b, "round")
+              ) {
+                return 0;
+              } else if (a.round > b.round) {
+                return 1;
+              } else {
+                return -1;
+              }
+            });
+    }else if(this.sortOrder == SCHEDULEDTIME){
+        val = this.util.sortMatchesByTime(val);
     }
-  };
+
+    if(this.showBye){
+      let missingRound;
+      let index = 0;
+        for (var i = 0; i < val.length; i++) {
+
+          let round = i + 1;
+          let found = false;
+          val.forEach((match) => {
+            if (match.round == round) {
+              found = true;
+            }
+          });
+          if (found == false) {
+            missingRound = round;
+            index = i;
+          }
+        }
+
+        console.log('missing round', missingRound);
+
+        if(missingRound){
+          val.splice(index, 0, {
+            round: missingRound,
+            type:'bye'
+          });
+          console.log(val);
+        }
+
+    }
+
+    this.matchesVal = val;
+
+  }else{
+    this.matchesVal = [];
+  }
+};
+
   @Input() seasonVal;
   @Input() showRound = true;
   @Input() showCaster = false;
@@ -70,6 +104,12 @@ export class ScheduleTableComponent implements OnInit {
   ngOnInit() {
     this.todayDate = new Date().getTime();
     this.isCaster = this.auth.isCaster();
+    if(this.divColumn){
+      this.colSpanInt+=1;
+    }
+    if(this.showRound){
+      this.colSpanInt+=1;
+    }
   }
 
   userCanSchedule(match) {
