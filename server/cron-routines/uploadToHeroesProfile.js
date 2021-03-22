@@ -67,11 +67,14 @@ async function postToHotsProfileHandler(limNum) {
         }
     );
 
+    util.errLogger(location, null, ' reporting ' + matches.length + ' matches')
+
     try {
         let pq = promiseQueue();
         if (matches.length > 0) {
             let divisionList = [];
             //get a list of divisions we need from the matches we have and get the division info from db
+
             matches.forEach(match => {
                 if (divisionList.indexOf(match.divisionConcat) == -1) {
                     divisionList.push(match.divisionConcat);
@@ -87,12 +90,10 @@ async function postToHotsProfileHandler(limNum) {
                     return reply;
                 },
                 err => {
-                    util.errLogger(location, err);
+                    util.errLogger(location, err, 'ln:90, error in the division query.');
                     return null;
                 }
             );
-
-            util.errLogger(location, null, matches.length)
 
             //run through the array of matches to be reported
             for (var i = 0; i < matches.length; i++) {
@@ -100,6 +101,8 @@ async function postToHotsProfileHandler(limNum) {
                 let logObj = {};
                 logObj.actor = 'SYSTEM; CRON; Hots-Profile Submit';
                 let match = matches[i];
+
+                util.errLogger(location, null, ' working ' + match.matchId)
 
                 let matchCopy = _.cloneDeep(util.objectify(match));
                 //get the team info for each team in the match in case it isnt there all ready
@@ -121,19 +124,13 @@ async function postToHotsProfileHandler(limNum) {
                                 return saved;
                             },
                             err => {
-                                util.errLogger(location, err);
+                                util.errLogger(location, err, 'ln:122 error saving match that was a forfeit');
                                 return null;
                             }
                         )
 
                     } else {
-
-                        pq.addToQueue(
-                            () => {
-                                return sendToHp(divisions, matchCopy, match, logObj)
-                            }
-                        );
-
+                        await sendToHp(divisions, matchCopy, match, logObj)
                     }
 
                 } else {
@@ -181,7 +178,7 @@ function promiseQueue() {
         if (promiseQueue.queue.length > 0 && promiseQueue.active == false) {
             promiseQueue.active = true;
             let worker = promiseQueue.queue.shift();
-            Promise.resolve(worker.apply()).then(
+            Promise.resolve(worker).then(
                 doWorkResolved => {
                     promiseQueue.active = false;
                     promiseQueue.doWork();
@@ -300,14 +297,16 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
             for (var j = 0; j < replayKeys.length; j++) {
                 let localKey = j + 1;
 
-                postObj['game'] = (j + 1).toString();
+                console.log('iterating match replays', localKey);
 
-                let replayObj = matchCopy.replays[(j + 1).toString()];
+                postObj['game'] = (localKey).toString();
+
+                let replayObj = matchCopy.replays[(localKey).toString()];
 
                 // if the specific replay object is not null or undefined and the replay does NOT have a valid submission to HP all ready
                 if (!util.isNullorUndefined(replayObj) && !util.returnBoolByPath(replayObj, 'parsedUrl')) {
 
-
+                    console.log('decided to send to HP:', matchCopy.matchId, replayObj.data);
                     postObj['replay_url'] = process.env.heroProfileReplay + replayObj.url;
                     logObj.target = 'Match Id: ' + matchCopy.matchId;
                     if (replayObj.data) {
@@ -317,6 +316,10 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
                     logObj.logLevel = 'STD';
 
                     if (screenPostObject(postObj)) {
+
+                        setTimeout(() => {
+                            // wait 1 second before making the call to HP to rate limit.
+                        }, 1000);
 
                         //Post to Heroes Profile >>>>>>>>>>>>>>>>>>>>>>>>
                         let errorReturn = false;
@@ -328,7 +331,7 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
                         });
 
                         //finished post to Heroes Profile >>>>>>>>>>>>>>>
-
+                        util.errLogger(location, null, 'HP post return:' + posted);
                         if (!errorReturn) {
                             fallThroughCheck = false;
                             logObj.action = ' logging reply from hots-profile ' + JSON.stringify(posted);
@@ -354,8 +357,11 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
                         }
 
                     } else {
+                        console.log('failed screener ', matchCopy.matchId, replayObj.data);
                         logObj.logLevel = "ERROR";
                         logObj.error = "This replay failed the screen, NOT SENT TO HEROSPROFILE!!";
+                        // 3-21-2021 - i am going to mark this as a success so that this is removed from the queue to be sent...
+                        postedReplays += 1;
                         logger(logObj);
                     }
                 } // if this replay DOES HAVE a valid submission to HP then count it as submitted
@@ -372,17 +378,21 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
         }
 
         // if we had any succes posting to HP then set reported flag to true to remove this match from submission queue; if problems are reported with it later check the logs.
+        console.log('reporting status ', postedReplays, postedReplays > 0)
         match['postedToHP'] = postedReplays > 0;
+        match.markModified('postedToHP');
+        // console.log('mmm', match);
         //util.errLogger(location, null,'match ' + match )
         let saved = await match.save().then(saved => {
+            // util.errLogger(location, err, 'saving match after report to HP', saved['postedToHP']);
             return saved;
         }, err => {
-            util.errLogger(location, err);
+            util.errLogger(location, err, 'ln 376 error saving match after posting to heroes profile');
             return null;
         });
 
     } catch (e) {
-        util.errLogger(location, e);
+        util.errLogger(location, e, 'ln 381 try/catch caught');
     }
     return null;
 }
@@ -487,3 +497,88 @@ function getDivisionByTeamName(divisionList, teamName) {
         }
     });
 }
+
+
+// 3-19-2021 promise queue work
+
+// function promMock(delay, toReturn, toReject) {
+//   return new Promise((resolve, reject) => {
+//     console.log('starting ', toReturn)
+//     setTimeout(() => {
+//       console.log('careful im making network calls out of order..', toReturn)
+//       if (toReject) {
+//         reject(toReturn);
+//       } else {
+//         console.log('finishing ', toReturn)
+//         resolve(toReturn)
+//       }
+//     }, delay);
+//   })
+// }
+
+// function promiseQueue() {
+
+//   let promiseQueue = {
+
+//   };
+
+//   promiseQueue.queue = [];
+
+//   promiseQueue.active = false;
+
+//   promiseQueue.doWork = function () {
+//     console.log('doing work: ')
+//     if (promiseQueue.queue.length > 0 && promiseQueue.active == false) {
+//       promiseQueue.active = true;
+//       let worker = promiseQueue.queue.shift();
+//       Promise.resolve(worker).then(
+//         doWorkResolved => {
+//           promiseQueue.active = false;
+//           promiseQueue.doWork();
+//         });
+//       /*                 worker.apply();
+//                                       promiseQueue.active = false;
+//                                       promiseQueue.doWork(); */
+//     }
+
+//   }
+
+//   promiseQueue.addToQueue = function (fn) {
+//     console.log('adding to queue :', promiseQueue.queue.length);
+//     promiseQueue.queue.push(fn);
+//     promiseQueue.doWork();
+//   }
+
+//   return promiseQueue;
+
+// }
+
+// async function promAsync(delay, toReturn, toReject) {
+//   let x = await promMock(delay, toReturn, toReject);
+//   return x;
+// }
+
+// promAsync(4000, 'asdfasdfasdf', false).then((res) => {
+//   console.log('res ', res);
+// })
+
+// /*         promMock(4000, 'delay test').then((res)=>{
+//         console.log('res', res);
+//         }); */
+
+// var pq = promiseQueue();
+// var responseList = ['she', 'sells', 'sea', 'shells', 'down', 'by', 'the', 'sea', 'shore'];
+
+// for (var i = 0; i < responseList.length; i++) {
+//   /* promMock(1000*i, responseList[i]).then((res)=>{
+//         console.log('res ', res);
+//         }) */
+//   /*  pq.addToQueue(
+//    promMock(2000 * i, responseList[i], false).then((res)=>{
+//           console.log('res ', res);
+//           })
+//           promAsync(2000 * i, responseList[i], false).then((res)=>{
+//              console.log('res ', res);
+//           })
+//           ); */
+// }
