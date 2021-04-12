@@ -55,11 +55,12 @@ const replaySchema = new Schema({
  * @typedef Match
  * @type {object}
  * @property {number} matchId - Divisions sort order in lists
- * @property {string} season - Name for display of division
+ * @property {string} season - Season number
+ * @property {string} event - Name for event
  * @property {string} divisionConcat - system name of division
- * @property {string} round  - coast of the division, if applicable
- * @property {Object} home  - combination of the divisionName and divisionCoast
- * @property {Object} away  - top level mmr for division
+ * @property {string} round  - round number of season
+ * @property {Object} home  - home team info
+ * @property {Object} away  - away team info
  * @property {boolean} [streamOnly] flag whether this entry is a stream only
  * @property {Object} scheduledTime - object with the start and end times of the entry
  * @property {string} [scheduleDeadline] - time by which this match should be scheduled
@@ -88,6 +89,7 @@ const replaySchema = new Schema({
 const matchSchema = new Schema({
     "matchId": String,
     "season": Number,
+    "event": String,
     "divisionConcat": String,
     "round": Number,
     "home": team,

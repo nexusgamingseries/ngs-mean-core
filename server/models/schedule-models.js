@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const matchSchema = new Schema({
     "season": Number,
+    "event": String,
     "division": Object,
     "active": Boolean
 }, { strict: false, useNestedStrict: false });

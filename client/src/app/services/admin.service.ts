@@ -71,7 +71,7 @@ export class AdminService {
   }
 
   generateSeason(seas) {
-    let url = "schedule/generate/schedules";
+    let url = "schedule/generate/schedules/season";
     let payload = {
       season: seas,
     };

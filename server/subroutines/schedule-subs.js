@@ -18,11 +18,132 @@ const logger = require('./sys-logging-subs').logger;
 const challonge = require('../methods/challongeAPI');
 const divSubs = require('./division-subs');
 const lodash = require('lodash');
+const { eventNames } = require('hots-parser/pino');
 
 
 const SEASONAL = 'seasonal';
 const TOURNAMENT = 'tournament';
+const EVENT = 'event';
 
+
+/**
+ * @name generateEventSchedule
+ * @function
+ * @description generates the framework for scheduling for an event.  should only be run once ever per event;
+ * !!!after this is ran, division changes should not be performed!!!!!!!
+ * @param {string} event 
+ */
+async function generateEventSchedule(event) {
+
+    let logObj = {};
+    logObj.actor = 'Schedule Generater Sub; generateEventSchedule';
+    logObj.action = ' create schedule framework for event ';
+    logObj.target = event + ' framework ';
+    logObj.timeStamp = new Date().getTime();
+    logObj.logLevel = 'STD';
+
+    let returnVal = false;
+
+    try {
+
+        let divObj = {};
+        //get list of divisions
+        let getDivision = await Division.find({
+            $and: [{
+                    $or: [{
+                            cupDiv: false
+                        },
+                        {
+                            cupDiv: {
+                                $exists: false
+                            }
+                        }
+                    ]
+                },
+                {
+                    event: event
+                }
+            ]
+        }).lean().then((res) => {
+            return res;
+        });
+
+        //loop through the divisions
+        for (var i = 0; i < getDivision.length; i++) {
+
+            //local div variable
+            let thisDiv = getDivision[i];
+            divObj[thisDiv.divisionConcat] = {};
+
+            //create an array of teams from the division
+            let lowerTeam = [];
+            thisDiv.teams.forEach(iterTeam => {
+                lowerTeam.push(iterTeam.toLowerCase());
+            });
+
+            //pull the teams info from the dB and create an array of strings of the teams _ids
+            // let participants = [];
+            let participants = await TeamModel.find({
+                teamName_lower: {
+                    $in: lowerTeam
+                }
+            }).then((teams) => {
+                //create an array of strings of the teams _ids and return
+                let returnParticipants = [];
+                if (teams && teams.length > 0) {
+                    teams.forEach(team => {
+                        returnParticipants.push(team._id.toString());
+                    });
+                }
+                return returnParticipants;
+            });
+
+            //schedule object will have
+            /*
+            {
+                participants:[ String ], <- string array of team _ids
+                matches:[ Object ], <- object array of matches
+                roundSchedules[ Object ] <- object array of matches
+            }
+             */
+
+            divObj[thisDiv.divisionConcat]['participants'] = participants;
+            divObj[thisDiv.divisionConcat]['matches'] = [];
+            divObj[thisDiv.divisionConcat]['DRR'] = !!util.returnByPath(thisDiv, 'DRR');
+            divObj[thisDiv.divisionConcat]['roundSchedules'] = {};
+        }
+
+        // create the schedule object
+        let schedObj = {
+                'event': event,
+                "type": EVENT,
+                "division": divObj
+            }
+            //save the schedule object to db
+        let sched = await new Scheduling(
+            schedObj
+        ).save().then((saved) => {
+            return true;
+        }, (err) => {
+            return false;
+        });
+        //log results
+        if (sched) {
+            logger(logObj);
+        } else {
+            logObj.logLevel = 'ERROR';
+            logger(logObj);
+        }
+        returnVal = sched;
+
+    } catch (e) {
+        logObj.logLevel = 'ERROR';
+        logger(logObj);
+        util.errLogger('schedule-sub', e, 'Error in generateEventSchedule');
+    }
+    return returnVal;
+
+}
 
 
 /**
@@ -138,32 +259,79 @@ async function generateSeason(season) {
 
 }
 
+/**
+ * @name generateSeasonRoundRobinSchedule
+ * @function
+ * @description generates a round robin schedule for a season
+ * @param {number} season 
+ */
+function generateSeasonRoundRobinSchedule(season) {
+    return generateRoundRobinSchedule(SEASONAL, season);
+}
 
-//
-//season:string - the season for which to generate the matches
+/**
+ * @name generateEventRoundRobinSchedule
+ * @function
+ * @description generates a round robin schedule for a event
+ * @param {string} eventName
+ */
+function generateEventRoundRobinSchedule(eventName) {
+    return generateRoundRobinSchedule(EVENT, null, eventName);
+}
+
+
+
 /**
  * @name generateRoundRobinSchedule
  * @function
- * @description generates a round robin schedule
+ * @description generates a round robin schedule for a season or event
+ * @param {string} type
  * @param {number} season 
+ * @param {string} eventName
  */
-function generateRoundRobinSchedule(season) {
+function generateRoundRobinSchedule(type, season, eventName) {
     let logObj = {};
     logObj.actor = 'Schedule Generater Sub; generateRoundRobinSchedule';
-    logObj.action = ' create regular season matches ';
-    logObj.target = 'Season: ' + season + ' matches ';
+    logObj.action = ' create RR matches ';
+    logObj.target = season ? season : '' + eventName ? eventName : '' + ' matches';
     logObj.timeStamp = new Date().getTime();
     logObj.logLevel = 'STD';
 
-    const query = {
-        $and: [{
-                "season": season
-            },
-            {
-                'type': SEASONAL
-            }
-        ]
-    };
+    let query = null;
+    let matchObj = {
+        'divisionConcat': '',
+        "matchId": 0,
+        "round": 0,
+        home: {},
+        away: {}
+    }
+
+    if (type === SEASONAL) {
+        matchObj.season = season;
+        query = {
+            $and: [{
+                    "season": season
+                },
+                {
+                    'type': SEASONAL
+                }
+            ]
+        };
+    }
+
+    if (type === EVENT) {
+        matchObj.event = eventName;
+        matchObj.type = EVENT;
+        query = {
+            $and: [{
+                    'event': eventName
+                },
+                {
+                    'type': EVENT
+                }
+            ]
+        };
+    }
 
     //grab the schedule of the season in question
     Scheduling.findOne(query).then((found) => {
@@ -208,20 +376,26 @@ function generateRoundRobinSchedule(season) {
                     let round = roundRobin[j];
                     round.forEach(match => { //loop through the particular rounds matches
                         //create a match object from the round number and the information provided by the robin method
-                        let matchObj = {
-                                'season': season,
-                                'divisionConcat': key,
-                                "matchId": uniqid(),
-                                "round": roundNum,
-                                home: {
-                                    id: match[0]
-                                },
-                                away: {
-                                    id: match[1]
-                                }
-                            }
-                            //push the match object into the schedule matches array
-                        matches.push(matchObj);
+                        let match = JSON.parse(JSON.stringify(matchObj));
+                        match.home.id = match[0];
+                        match.away.id = match[1];
+                        match.round = roundNum;
+                        match.divisionConcat = key;
+                        match.matchId = uniqid();
+                        // let matchObj = {
+                        //         'season': season,
+                        //         'divisionConcat': key,
+                        //         "matchId": uniqid(),
+                        //         "round": roundNum,
+                        //         home: {
+                        //             id: match[0]
+                        //         },
+                        //         away: {
+                        //             id: match[1]
+                        //         }
+                        //     }
+                        //push the match object into the schedule matches array
+                        matches.push(match);
                     });
                 }
                 //create dB objects for each match generated.
@@ -594,6 +768,8 @@ async function generateTournament(teams, season, division, cup, name, descriptio
 
 module.exports = {
     generateSeason: generateSeason,
-    generateRoundRobinSchedule: generateRoundRobinSchedule,
+    generateEvent: generateEventSchedule,
+    generateSeasonRoundRobinSchedule: generateSeasonRoundRobinSchedule,
+    generateEventRoundRobinSchedule: generateEventRoundRobinSchedule,
     generateTournament: generateTournament
 };

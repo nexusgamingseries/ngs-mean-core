@@ -101,10 +101,16 @@ Auth: Authenticated, caster
 Params: matchId (string)
 Return: Returns match updated with the requestors casting info
 
-Route: api/schedule/generate/schedules
+Route: api/schedule/generate/schedules/season
 Method: post
 Auth: Authenticated, scheduleGenerator
 Params: season (string)
+Return: Returns message of success or error of the schedule generator
+
+Route: api/schedule/generate/schedules/event
+Method: post
+Auth: Authenticated, scheduleGenerator
+Params: event (string)
 Return: Returns message of success or error of the schedule generator
 
 Route: api/schedule/check/valid

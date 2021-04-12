@@ -1144,12 +1144,12 @@ router.post('/match/add/caster/occ', passport.authenticate('jwt', {
 
 
 /*
-generates the schedules
+generates season schedules
 */
-router.post('/generate/schedules', passport.authenticate('jwt', {
+router.post('/generate/schedules/season', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.scheduleGenerator, utils.appendResHeader, (req, res) => {
-    const path = 'schedule/generate/schedules';
+    const path = 'schedule/generate/schedules/season';
 
 
     const requiredParameters = [{
@@ -1168,7 +1168,52 @@ router.post('/generate/schedules', passport.authenticate('jwt', {
         logObj.target = 'season: ' + season;
         return scheduleGenerator.generateSeason(season).then((process) => {
             if (process) {
-                scheduleGenerator.generateRoundRobinSchedule(season);
+                scheduleGenerator.generateSeasonRoundRobinSchedule(season);
+                response.status = 200;
+                response.message = utils.returnMessaging(req.originalUrl, 'Schedules generating', false, null, null, logObj)
+                return response;
+            } else {
+                logObj.logLevel = 'ERROR';
+                logObj.error = 'Error occured in schedule generator, got null schedule';
+                response.status = 500;
+                response.message = utils.returnMessaging(req.originalUrl, 'Error occured in schedule generator', false, null, null, logObj)
+                return response;
+            }
+        }, (err) => {
+            response.status = 500;
+            response.message = utils.returnMessaging(req.originalUrl, 'Error occured in schedule generator', err, null, null, logObj)
+            return response;
+        })
+    })
+
+});
+
+/*
+generates season schedules
+*/
+router.post('/generate/schedules/event', passport.authenticate('jwt', {
+    session: false
+}), levelRestrict.scheduleGenerator, utils.appendResHeader, (req, res) => {
+    const path = 'schedule/generate/schedules/event';
+
+
+    const requiredParameters = [{
+        name: 'eventName',
+        type: 'string'
+    }]
+
+    commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
+        const response = {};
+        let event = requiredParameters.eventName.value;
+        //log object
+        let logObj = {};
+        logObj.actor = req.user.displayName;
+        logObj.action = ' generated event schedules ';
+        logObj.logLevel = 'STD';
+        logObj.target = 'event: ' + event;
+        return scheduleGenerator.generateEventSchedule(event).then((process) => {
+            if (process) {
+                scheduleGenerator.generateEventRoundRobinSchedule(event);
                 response.status = 200;
                 response.message = utils.returnMessaging(req.originalUrl, 'Schedules generating', false, null, null, logObj)
                 return response;
