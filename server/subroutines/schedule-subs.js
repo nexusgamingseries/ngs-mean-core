@@ -338,7 +338,10 @@ function generateRoundRobinSchedule(type, season, eventName) {
 
         //get the divisions
         let divisions = found.division;
-
+        console.log('divisions', divisions);
+        if (!divisions) {
+            return;
+        }
         //make an array of the divisions as keys to iterate through
         let keys = Object.keys(divisions);
 
@@ -376,12 +379,12 @@ function generateRoundRobinSchedule(type, season, eventName) {
                     let round = roundRobin[j];
                     round.forEach(match => { //loop through the particular rounds matches
                         //create a match object from the round number and the information provided by the robin method
-                        let match = JSON.parse(JSON.stringify(matchObj));
-                        match.home.id = match[0];
-                        match.away.id = match[1];
-                        match.round = roundNum;
-                        match.divisionConcat = key;
-                        match.matchId = uniqid();
+                        let matchCopy = JSON.parse(JSON.stringify(matchObj));
+                        matchCopy.home.id = match[0];
+                        matchCopy.away.id = match[1];
+                        matchCopy.round = roundNum;
+                        matchCopy.divisionConcat = key;
+                        matchCopy.matchId = uniqid();
                         // let matchObj = {
                         //         'season': season,
                         //         'divisionConcat': key,
@@ -395,7 +398,8 @@ function generateRoundRobinSchedule(type, season, eventName) {
                         //         }
                         //     }
                         //push the match object into the schedule matches array
-                        matches.push(match);
+                        matches.push(matchCopy);
+                        console.log(matchCopy);
                     });
                 }
                 //create dB objects for each match generated.
@@ -768,7 +772,7 @@ async function generateTournament(teams, season, division, cup, name, descriptio
 
 module.exports = {
     generateSeason: generateSeason,
-    generateEvent: generateEventSchedule,
+    generateEventSchedule: generateEventSchedule,
     generateSeasonRoundRobinSchedule: generateSeasonRoundRobinSchedule,
     generateEventRoundRobinSchedule: generateEventRoundRobinSchedule,
     generateTournament: generateTournament
