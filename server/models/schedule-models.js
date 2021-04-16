@@ -5,6 +5,10 @@ const Schema = mongoose.Schema;
 const matchSchema = new Schema({
     "season": Number,
     "event": String,
+    "startDate": Number,
+    "endDate": Number,
+    "registrationOpen": Number,
+    "registrationClose": Number,
     "division": Object,
     "active": Boolean
 }, { strict: false, useNestedStrict: false });

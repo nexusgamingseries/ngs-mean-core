@@ -1,1 +1,13 @@
-Check out User-Deck ; see about adding hero profile links there.
+adding event to schedule type;
+
+can generate a schedule off of new Event type; by event name;
+
+matches must have type; if event, event name
+
+division must have type; if event, event name
+
+create route for generating schedules for events
+
+division entry needs event input
+
+teams need to register for specific events

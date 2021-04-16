@@ -4,7 +4,6 @@
  * 
  * reviewed: 10-1-2020
  * reviewer: wraith
- * it's high time generatetournamenttwo became generatetournament dont you think
  */
 
 const TeamModel = require('../models/team-models');
@@ -18,7 +17,6 @@ const logger = require('./sys-logging-subs').logger;
 const challonge = require('../methods/challongeAPI');
 const divSubs = require('./division-subs');
 const lodash = require('lodash');
-const { eventNames } = require('hots-parser/pino');
 
 
 const SEASONAL = 'seasonal';
@@ -32,8 +30,12 @@ const EVENT = 'event';
  * @description generates the framework for scheduling for an event.  should only be run once ever per event;
  * !!!after this is ran, division changes should not be performed!!!!!!!
  * @param {string} event 
+ * @param {number} startDate
+ * @param {number} endDate
+ * @param {number} registrationOpen
+ * @param {number} registrationClose      
  */
-async function generateEventSchedule(event) {
+async function generateEventSchedule(event, startDate, endDate, registrationOpen, registrationClose) {
 
     let logObj = {};
     logObj.actor = 'Schedule Generater Sub; generateEventSchedule';
@@ -46,78 +48,82 @@ async function generateEventSchedule(event) {
 
     try {
 
-        let divObj = {};
-        //get list of divisions
-        let getDivision = await Division.find({
-            $and: [{
-                    $or: [{
-                            cupDiv: false
-                        },
-                        {
-                            cupDiv: {
-                                $exists: false
-                            }
-                        }
-                    ]
-                },
-                {
-                    event: event
-                }
-            ]
-        }).lean().then((res) => {
-            return res;
-        });
+        // let divObj = {};
+        // //get list of divisions
+        // let getDivision = await Division.find({
+        //     $and: [{
+        //             $or: [{
+        //                     cupDiv: false
+        //                 },
+        //                 {
+        //                     cupDiv: {
+        //                         $exists: false
+        //                     }
+        //                 }
+        //             ]
+        //         },
+        //         {
+        //             event: event
+        //         }
+        //     ]
+        // }).lean().then((res) => {
+        //     return res;
+        // });
 
         //loop through the divisions
-        for (var i = 0; i < getDivision.length; i++) {
+        // for (var i = 0; i < getDivision.length; i++) {
 
-            //local div variable
-            let thisDiv = getDivision[i];
-            divObj[thisDiv.divisionConcat] = {};
+        //     //local div variable
+        //     let thisDiv = getDivision[i];
+        //     divObj[thisDiv.divisionConcat] = {};
 
-            //create an array of teams from the division
-            let lowerTeam = [];
-            thisDiv.teams.forEach(iterTeam => {
-                lowerTeam.push(iterTeam.toLowerCase());
-            });
+        //     //create an array of teams from the division
+        //     let lowerTeam = [];
+        //     thisDiv.teams.forEach(iterTeam => {
+        //         lowerTeam.push(iterTeam.toLowerCase());
+        //     });
 
-            //pull the teams info from the dB and create an array of strings of the teams _ids
-            // let participants = [];
-            let participants = await TeamModel.find({
-                teamName_lower: {
-                    $in: lowerTeam
-                }
-            }).then((teams) => {
-                //create an array of strings of the teams _ids and return
-                let returnParticipants = [];
-                if (teams && teams.length > 0) {
-                    teams.forEach(team => {
-                        returnParticipants.push(team._id.toString());
-                    });
-                }
-                return returnParticipants;
-            });
+        //     //pull the teams info from the dB and create an array of strings of the teams _ids
+        //     // let participants = [];
+        //     let participants = await TeamModel.find({
+        //         teamName_lower: {
+        //             $in: lowerTeam
+        //         }
+        //     }).then((teams) => {
+        //         //create an array of strings of the teams _ids and return
+        //         let returnParticipants = [];
+        //         if (teams && teams.length > 0) {
+        //             teams.forEach(team => {
+        //                 returnParticipants.push(team._id.toString());
+        //             });
+        //         }
+        //         return returnParticipants;
+        //     });
 
-            //schedule object will have
-            /*
-            {
-                participants:[ String ], <- string array of team _ids
-                matches:[ Object ], <- object array of matches
-                roundSchedules[ Object ] <- object array of matches
-            }
-             */
+        //     //schedule object will have
+        //     /*
+        //     {
+        //         participants:[ String ], <- string array of team _ids
+        //         matches:[ Object ], <- object array of matches
+        //         roundSchedules[ Object ] <- object array of matches
+        //     }
+        //      */
 
-            divObj[thisDiv.divisionConcat]['participants'] = participants;
-            divObj[thisDiv.divisionConcat]['matches'] = [];
-            divObj[thisDiv.divisionConcat]['DRR'] = !!util.returnByPath(thisDiv, 'DRR');
-            divObj[thisDiv.divisionConcat]['roundSchedules'] = {};
-        }
+        //     divObj[thisDiv.divisionConcat]['participants'] = participants;
+        //     divObj[thisDiv.divisionConcat]['matches'] = [];
+        //     divObj[thisDiv.divisionConcat]['DRR'] = !!util.returnByPath(thisDiv, 'DRR');
+        //     divObj[thisDiv.divisionConcat]['roundSchedules'] = {};
+        // }
 
         // create the schedule object
         let schedObj = {
                 'event': event,
                 "type": EVENT,
-                "division": divObj
+                "division": divObj,
+                "registrationOpen": registrationOpen,
+                "registrationClose": registrationClose,
+                "startDate": startDate,
+                "endDate": endDate
             }
             //save the schedule object to db
         let sched = await new Scheduling(

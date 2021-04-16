@@ -1251,7 +1251,7 @@ router.post('/generate/schedules/season', passport.authenticate('jwt', {
 });
 
 /*
-generates season schedules
+create a new event, 
 */
 router.post('/generate/schedules/event', passport.authenticate('jwt', {
     session: false
@@ -1262,18 +1262,34 @@ router.post('/generate/schedules/event', passport.authenticate('jwt', {
     const requiredParameters = [{
         name: 'eventName',
         type: 'string'
+    }, {
+        name: 'startDate',
+        type: 'number'
+    }, {
+        name: 'endDate',
+        type: 'number'
+    }, {
+        name: 'registrationOpen',
+        type: 'number'
+    }, {
+        name: 'registrationClose',
+        type: 'number'
     }]
 
     commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
         const response = {};
         let event = requiredParameters.eventName.value;
+        let startDate = requiredParameters.startDate.value;
+        let endDate = requiredParameters.endDate.value;
+        let registrationOpen = requiredParameters.registrationOpen.value;
+        let registrationClose = requiredParameters.registrationClose.value;
         //log object
         let logObj = {};
         logObj.actor = req.user.displayName;
         logObj.action = ' generated event schedules ';
         logObj.logLevel = 'STD';
         logObj.target = 'event: ' + event;
-        return scheduleGenerator.generateEventSchedule(event).then((process) => {
+        return scheduleGenerator.generateEventSchedule(event, startDate, endDate, registrationOpen, registrationClose).then((process) => {
             if (process) {
                 scheduleGenerator.generateEventRoundRobinSchedule(event);
                 response.status = 200;
