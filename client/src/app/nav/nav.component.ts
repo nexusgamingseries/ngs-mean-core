@@ -8,7 +8,7 @@ import { MessagesService } from '../services/messages.service';
 import { NotificationService } from '../services/notification.service';
 // import { Socket } from 'ngx-socket-io';
 // import { WebsocketService } from '../services/websocket.service';
-import { TimeserviceService } from '../services/timeservice.service';
+import { TimeService } from '../services/time.service';
 
 declare var Mmenu: any;
 
@@ -23,16 +23,7 @@ export class NavComponent implements OnInit {
 
   constructor(public Auth:AuthService, private router: Router, public team:TeamService,
     public user:UserService, private divisionService: DivisionService, private messages:MessagesService,
-    private notificationService:NotificationService, private timeService:TimeserviceService) {
-      if(this.Auth.isAuthenticated()){
-        this.user.heartbeat().subscribe(res=>{
-
-        },err=>{
-
-        });
-      }
-
-      this.timeService.getSesasonInfo();
+    private notificationService:NotificationService) {
 
       this.notificationService.updateLogin.subscribe(
         res => {
@@ -86,33 +77,16 @@ createMobileNav(){
     });
 
     //get any user messages
-    this.messages.getMessageNumbers(this.Auth.getUserId()).subscribe( (res)=>{
-      if(res){
-         this.userMessages = parseInt(res);
-      }
-    }, err=>{
-      console.warn(err);
-    })
-
-    //set up socket connection for the logged in user
     if(this.Auth.getUserId()){
-      // this.socket.emit('storeClientInfo', { userId: this.Auth.getUserId() });
+      this.messages.getMessageNumbersInterval(this.Auth.getUserId());
     }
+
 
     //updates the unread messages bubble...
     this.notificationService.updateMessages.subscribe(
       message=>{
-        this.messages.getMessageNumbers(this.Auth.getUserId()).subscribe((res) => {
-          if(res){
-            this.userMessages = res;
-          }else{
-            this.userMessages = 0;
-          }
-
-        }, err => {
-          console.warn(err);
-        });
-      }
+        this.userMessages = parseInt(message);
+        }
     )
 
   }
