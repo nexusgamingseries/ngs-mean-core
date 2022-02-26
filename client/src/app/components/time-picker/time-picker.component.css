@@ -1,0 +1,12 @@
+.days{
+  display: flex;
+}
+
+.days .day{
+  margin: 0 auto;
+}
+
+.active{
+  background-color: green;
+  color: white;
+}

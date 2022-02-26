@@ -1,0 +1,28 @@
+<div class="days">
+  <div class="day" *ngFor="let day of days">
+    <div class="header"  >
+    {{day}}
+  </div>
+  <div
+    (click)="selectTime(hour, day)"
+
+    (mouseover)="mouseOver($event, hour, day)"
+    (mouseleave)="mouseLeave($event, hour, day)"
+
+
+
+
+    class="hours"  *ngFor="let hour of hours" [ngClass]="{'active': activate[day+':'+hour]}">
+    {{hour}}
+  </div>
+  </div>
+
+  <div></div>
+</div>
+<!--
+  (drag)="mouseDrag(hour, day)"
+  (mousedown)="mouseStart(hour, day)"
+  (mouseup)="mouseEnd(hour,day)"
+  (dragover)="mouseDragOver(hour, day)"
+  (mouseenter)="mouseEnter($event, hour, day)"
+  -->

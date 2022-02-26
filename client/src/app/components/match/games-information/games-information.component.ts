@@ -124,6 +124,7 @@ export class GamesInformationComponent implements OnInit, OnChanges {
   getWinner(ind) {
     // ind = ind+1;
     // let arg = this.match.other[ind.toString()].winner;
+    console.log(this.match, ind);
     return this.match[ind].teamName;
   }
 

@@ -34,6 +34,7 @@ export class MatchResultsViewComponent implements OnInit {
     console.log("this", this.match, this.recId);
     this.scheduleService.getMatchInfo(this.recId).subscribe(
       (res) => {
+        console.log('match', res);
         this.match = res;
       },
       (err) => {}

@@ -330,10 +330,20 @@ async function generateRoundRobinScheduleTwo(season) {
                         //duplicate the matches... ?
                         if (util.returnByPath(divisions[key], 'DRR')) {
                             let dbl = lodash.clone(roundRobin);
+                            let length = roundRobin.length;
                             dbl.forEach(
-                                r => {
+                                (r, index) => {
+                                    let round = length+index+1;
+                                    // swap home and away 
+                                    let tHome = r.home;
+                                    let tAway = r.away;
+                                    r.home = tAway;
+                                    r.away = tHome;
+                                    // assign a new match id
                                     let ngsID = uniqid();
                                     r["matchId"] = ngsID;
+                                    // assign a new round
+                                    r["round"]=round;
                                     roundRobin.push(r);
                                 }
                             );
