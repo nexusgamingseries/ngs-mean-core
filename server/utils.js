@@ -149,6 +149,10 @@ isNullorUndefined = function(dat) {
     }
 }
 
+isNullEmptyOrUndefined = function(dat){
+    return isNullOrEmpty(dat) || dat === undefined;
+}
+
 returnMessaging = function(route, message, err, obj, additional, logInfo) {
     var ret = {
         "message": message
@@ -369,6 +373,7 @@ function errLogger(location, err, add) {
 module.exports = {
     isNullOrEmpty: isNullOrEmpty,
     isNullorUndefined: isNullorUndefined,
+    isNullEmptyOrUndefined: isNullEmptyOrUndefined,
     returnMessaging: returnMessaging,
     returnByPath: returnByPath,
     returnBoolByPath: returnBoolByPath,

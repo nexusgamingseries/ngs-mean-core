@@ -61,7 +61,14 @@
                             "fileReplacements": [{
                                 "replace": "src/environments/environment.ts",
                                 "with": "src/environments/environment.local.ts"
-                            }]
+                            }],
+                            "optimization": false,
+                            "sourceMap": false,
+                            "namedChunks": false,
+                            "aot": false,
+                            "extractLicenses": false,
+                            "vendorChunk": false,
+                            "buildOptimizer": false
                         },
                         "local-prod": {
                             "fileReplacements": [{

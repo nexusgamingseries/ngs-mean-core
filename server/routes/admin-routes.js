@@ -4,6 +4,45 @@ const passport = require("passport");
 const System = require("../models/system-models");
 const levelRestrict = require("../configs/admin-leveling");
 const seasonInfoCommon = require("../methods/seasonInfoMethods");
+const OpOrg = require('../methods/operationalOrganization/opOrgCRUD');
+const { commonResponseHandler } = require("../commonResponseHandler");
+
+router.post('/upsertOpOrg', passport.authenticate('jwt', {
+    session: false
+}), levelRestrict.scheduleGenerator, (req, res)=>{
+
+    const route = '/admin/upsertOpOrg';
+
+    let requiredParameters = [{
+        name:'opOrg',
+        type:'object'
+    }]
+
+
+    commonResponseHandler(req, res, requiredParameters, [], async (req, res, requiredParameters) => {
+        let response = {};
+        //log object
+        let logObj = {};
+        logObj.actor = req.user.displayName;
+        logObj.action = 'upsert operational organization';
+        logObj.target = requiredParameters.opOrg.value.name;
+        logObj.logLevel = 'ADMIN';
+        console.log('1')
+        await OpOrg.saveOpOrg(requiredParameters.opOrg.value).then(
+            saved=>{
+                console.log('2')
+                console.log('saved', saved);
+                response.status = 200;
+                response.message = util.returnMessaging(req.originalUrl, "Success", false, saved, null, logObj)
+            },err=>{
+                response.status=400;
+                response.message=util.returnMessaging(req.originalUrl, 'failure to upsert', err, null, null, logObj)
+            }
+        )
+        return response;
+    })
+
+})
 
 router.post('/upsertSeasonInfo', passport.authenticate('jwt', {
     session: false

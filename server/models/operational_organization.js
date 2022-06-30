@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const operationalOrganizationSchema = new Schema({
-   "org_id": String,
+   "orgId": String,
    "name": String,
    "abbreviation": String
 });

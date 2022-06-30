@@ -4,6 +4,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { SharedValidatorsService } from 'src/app/services/shared-validators.service';
 
 @Component({
   selector: "app-team-name",
@@ -16,6 +17,7 @@ export class TeamNameComponent implements OnInit, ControlValueAccessor {
   constructor(
     private team: TeamService,
     private http: HttpClient,
+    private sharedValidators: SharedValidatorsService,
     @Optional() @Self() public controlDir: NgControl
   ) {
     this.http.get('../assets/filterWords.json').subscribe(
@@ -32,7 +34,7 @@ export class TeamNameComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
     const control = this.controlDir.control;
-    let validators = [this.checkInvalidCharacters(), this.validateWords(this.filterWords)];
+    let validators = [this.checkInvalidCharacters(), this.sharedValidators.validateWords(this.filterWords)];
     if (control.validator) {
       if (Array.isArray(control.validator)) {
         validators = validators.concat(control.validator);
@@ -87,35 +89,6 @@ export class TeamNameComponent implements OnInit, ControlValueAccessor {
     };
   }
 
-  // filter undesirable words
-  validateWords(filterWords): ValidatorFn {
-    return (control: FormControl) => {
-      let value = control.value;
-
-      if (filterWords && filterWords.length > 0 && value && value.length > 0) {
-        let invalid = false;
-        let valueArr = value.split(' ');
-        valueArr.forEach(element => {
-          if (filterWords.indexOf(element) > -1) {
-            invalid = true;
-          }
-        });
-        valueArr = value.split(',');
-        valueArr.forEach(element => {
-          if (filterWords.indexOf(element) > -1) {
-            invalid = true;
-          }
-        });
-        if (invalid) {
-          return { 'invalidWord': true };
-        } else {
-          return null;
-        }
-      } else {
-        return null;
-      }
-    }
-  }
 
   @Input()
   name: string;

@@ -1,0 +1,47 @@
+<div class="container pt-4 forceFull">
+  <div>
+    <div class="row bg-white">
+      <div class="col pb-4">
+        <div class="row">
+          <div class="col">
+            <a [routerLink]="['/_admin/dashboard']">Back to Dashboard</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <h4>Operational Organization Management</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col">
+                <app-operational-org-selector (orgChange)="catchChange($event)"></app-operational-org-selector>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 mx-auto">
+                <mat-form-field class="mat-FullWidth">
+                  <input matInput placeholder="Enter Organization Name" [(ngModel)]="org.name" [formControl]="nameCtrl">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-5 mx-auto">
+                <mat-form-field class="mat-FullWidth">
+                  <input matInput placeholder="Enter Organization Abbeviation" [(ngModel)]="org.abbreviation"
+                    [formControl]="abbreviationCtrl">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-success" (click)="saveOpOrg()" [disabled]="formGroup.invalid">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

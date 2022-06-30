@@ -64,8 +64,14 @@ import { PlayerSearchComponent } from './pages/player-search/player-search.compo
 import { CasterReportComponent } from './pages/caster-report/caster-report.component';
 import { AdminYoutubeCurator } from "./admin/caster/admin-youtube-curator/admin-youtube-curator.component";
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
+import { OperationalOrganizationComponent } from "./admin/operational-organization/operational-organization.component";
 
 const APP_ROUTES: Routes = [
+  {
+    path:"_admin/operationalOraganization/manage",
+    component: OperationalOrganizationComponent,
+    data: { role: "schedulegen"}
+  },
   {
     path: "_admin/thread/create",
     component: CreateThreadComponent,

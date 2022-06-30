@@ -1,0 +1,11 @@
+
+<div class="row">
+    <div class="col">
+        <mat-form-field class="mat-FullWidth">
+            <mat-select placeholder="Operational Organization:" [(ngModel)]="selectedOrg" (ngModelChange)="orgSelected(selectedOrg)" disableOptionCentering>
+                <mat-option [value]=""></mat-option>
+                <mat-option *ngFor="let org of orgs; let i = index" [value]="org.orgId">{{org.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>

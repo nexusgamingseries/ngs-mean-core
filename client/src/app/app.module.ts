@@ -205,6 +205,8 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
 import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-youtube-curator.component';
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
+import { OperationalOrganizationComponent } from './admin/operational-organization/operational-organization.component';
+import { OperationalOrgSelectorComponent } from './components/operationalOrg/operational-org-selector/operational-org-selector.component';
 
 
 @NgModule({
@@ -394,7 +396,9 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     SingleTeamDisplayComponent,
     AdminYoutubeCurator,
     CreateThreadComponent,
-    GenerateNonSeasonalSchedulesComponent
+    GenerateNonSeasonalSchedulesComponent,
+    OperationalOrganizationComponent,
+    OperationalOrgSelectorComponent
   ],
   entryComponents:[
     DeleteConfrimModalComponent,
