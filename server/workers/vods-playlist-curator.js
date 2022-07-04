@@ -11,7 +11,7 @@ const System = require('../models/system-models').system;
 
 const gsapi = google.youtube("v3");
 
-const UNCURRATED_AMOUNT = 45;
+const UNCURRATED_AMOUNT = 50;
 
 /**
  *   ready (sets up google authentication and gets needed data for currator) ->
@@ -137,7 +137,8 @@ function PlaylistCurator() {
             part: 'snippet, contentDetails',
             channelId: CHANNELID,
             maxResults: 50,
-            auth: this.oauth2Client
+            auth: this.oauth2Client,
+            mine:true
         };
         if (nextPageToken) {
             requestDetails['pageToken'] = nextPageToken;
@@ -168,12 +169,15 @@ function PlaylistCurator() {
             try{
 
             let playListName;
-            if (report.division && report.division.length > 0 && report.division != "undefined") {
+
+            if (report.division && report.division.length > 0 && report.division != "undefined" && report.division != "null") {
                 let reportDiv = report.division;
                 let divInf = _.find(this.divisionInfo, { divisionConcat: reportDiv });
                 playListName = `Season ${this.seasonValue} ${divInf.displayName.trim()} Division`;
-            } else {
+            } else if (report.division && report.division.length > 0) {
                 playListName = `Season ${this.seasonValue} ${report.event.trim()}`;
+            }else{
+
             }
 
             let youtubeplaylist = _.find(this.parsedList, { title: playListName });
@@ -200,6 +204,8 @@ function PlaylistCurator() {
 
             }catch(e){
                 console.log(e);
+                report.error = "ln 207 error"
+                report.playlistCurrated = true;
                 this.matchResultsArr.push({ matchId:report.matchId, vidId:'null', success: false });
             }
 
@@ -438,7 +444,6 @@ function getUncrrated() {
             let totalVideos = 0;
             saved.forEach(
                 s => {
-                    console.log(s);
 
                     if (totalVideos < UNCURRATED_AMOUNT) {
                         totalVideos = totalVideos + s.vodLinks.length;
@@ -452,6 +457,8 @@ function getUncrrated() {
                 thisBatch: toReturn.length,
                 totalBatch: saved.length
             }
+
+            console.log('uncurrated report obj', returnObject);
 
             return returnObject;
         },
