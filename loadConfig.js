@@ -13,9 +13,6 @@ const s3 = new aws.S3({
     }
 });
 
-
-var timer;
-
 function loadConfig() {
     return s3.getObject({
         Key: `${process.env.serverEnv}_server_config.json`
@@ -25,7 +22,6 @@ function loadConfig() {
 
             Object.assign(global.process.env, parsedVars);
 
-            clearTimeout(timer);
         },
         err => {
             console.log('Error loading process vars...',err);

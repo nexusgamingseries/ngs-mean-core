@@ -1,4 +1,25 @@
-const { app } = require('./serverConf');
+//require express and socket io
+const express = require("express");
+
+//host name and port
+const hostname = process.env.hostname;
+const port = process.env.PORT;
+
+//bootstrap express server
+let server
+const app = express();
+let initCallback;
+if(initCallback){
+    server = app.listen(port, hostname, () => {
+    console.log(`Server ${hostname} running at on ${port}`);
+    initCallback();
+});
+}else{
+    //create server listening on port
+    server = app.listen(port, hostname, () => {
+    console.log(`Server ${hostname} running at on ${port}`);
+});
+}
 
 
 if (process.env.runNewRelic != 'false') {
@@ -6,7 +27,6 @@ if (process.env.runNewRelic != 'false') {
     require('newrelic');
 }
 
-const express = require("express");
 //host name and port
 // const hostname = process.env.hostname;
 // const port = process.env.PORT;
@@ -155,3 +175,11 @@ function startApp() {
 
 }
 startApp();
+
+module.exports = {
+    init:function(cb){
+        initCallback = cb;
+    },
+    app:app,
+    server:server
+};

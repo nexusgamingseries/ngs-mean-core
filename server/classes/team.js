@@ -41,7 +41,7 @@ const utls = require('../utils');
 function Team(mongoObj) {
     let TeamClass = {};
 
-    TeamClass.mongoObj = {};
+    TeamClass.dataObj = {};
     TeamClass.jsonObj = {};
 
     if (mongoObj) {
@@ -60,11 +60,18 @@ function Team(mongoObj) {
     }
 
     TeamClass.save = function() {
-        return mongoObj.save();
+        return dataObj.save();
     }
 
     TeamClass.delete = function() {
-        return mongoObj.remove();
+        return dataObj.remove();
+    }
+
+    TeamClass.setTeamName= function(teamName){
+        dataObj.teamName = teamName;
+        jsonObj.teamName = teamName;
+        dataObj.teamName_lower = teamName.toLowerCase();
+        jsonObj.teamName_lower = teamName.toLowerCase();
     }
 
 
