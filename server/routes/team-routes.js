@@ -19,6 +19,8 @@ const logger = require('../subroutines/sys-logging-subs').logger;
 const SeasonInfoCommon = require('../methods/seasonInfoMethods');
 const TeamMethods = require('../methods/team/teamCommon');
 const getRegisteredTeams = require('../methods/team/getRegistered');
+
+
 const {
   commonResponseHandler,
   requireOneInput,
@@ -108,7 +110,6 @@ router.post('/fetch/teams', (req, res) => {
     async (req, res, requiredParameters, o) => {
       const response = {};
       let query = {};
-
       if (requireOneInput(o)) {
         if (o.teams.valid) {
           let searchArray = [];
@@ -123,15 +124,15 @@ router.post('/fetch/teams', (req, res) => {
           o.teamIds.value.forEach(element => {
             searchArray.push(element.toLowerCase());
           });
-          query['_ids'] = {
+          query['_id'] = {
             $in: searchArray
           };
         } else if (o.teamTickers.valid) {
           let searchArray = [];
           o.teamTickers.value.forEach(element => {
-            searchArray.push(element.toLowerCase());
+            searchArray.push(element);
           });
-          query['ticker_lower'] = {
+          query['ticker'] = {
             $in: searchArray
           };
         }
