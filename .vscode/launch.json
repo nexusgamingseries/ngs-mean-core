@@ -16,6 +16,16 @@
       "name":"Debugger",
       "program":"cluster.js",
       "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test Debugger",
+      "program": ".vscode/mocha.js",
+      "envFile": "${workspaceFolder}/.env",
+      "args":[
+        "${workspaceFolder}/server/tests/routes/team-routes.delete.test.js"
+      ]
     }
   ]
 }

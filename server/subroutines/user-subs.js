@@ -69,9 +69,10 @@ function clearUserTeam(user, wasPending) {
         logObj.timeStamp = new Date().getTime();
         logObj.logLevel = 'STD';
         //get the user from the db associated with this user
+        
         SeasonInfoCommon.getSeasonInfo().then(
             (rep) => {
-                let seasonNum = rep.value;
+                let seasonNum = util.returnByPath(rep,'value') ? util.returnByPath(rep,'value'):'';
                 User.findOne({
                     displayName: username
                 }).then((foundUser) => {
@@ -123,8 +124,12 @@ function clearUserTeam(user, wasPending) {
                     logObj.error = err;
                     logger(logObj);
                 });
+            },
+            err=>{
+                console.log('err', err);
             }
-        )
+        )        
+
     }
 
 

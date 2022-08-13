@@ -293,3 +293,5 @@ function compressAdmin(obj) {
 
     return retVal;
 }
+
+module.exports = {generateNewToken};

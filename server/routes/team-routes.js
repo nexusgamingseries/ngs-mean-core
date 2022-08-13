@@ -180,21 +180,25 @@ router.post('/delete', passport.authenticate('jwt', {
     logObj.action = 'delete team ';
     logObj.target = payloadTeamName;
     logObj.logLevel = 'STD';
-
-    return Team.findOneAndDelete({
+    
+    let deletedTeam = await Team.findOneAndDelete({
       teamName_lower: payloadTeamName
-    }).then((deletedTeam) => {
-      if (deletedTeam) {
+    }).then(res=>{return res},err=>{
+      response.status = 500;
+      response.message = utils.returnMessaging(req.originalUrl, 'There was an error deleting the team', err, null, null, logObj)
+      return response;
+    });
+
+    if(deletedTeam){
         //TODO: handle any dangling invited users!
-        UserSub.clearUsersTeam(deletedTeam.teamMembers);
-        TeamSub.markTeamWithdrawnInMatches(deletedTeam.toObject());
-        DivSub.updateTeamNameDivision(deletedTeam.teamName, deletedTeam.teamName + ' (withdrawn)');
+        await UserSub.clearUsersTeam(deletedTeam.teamMembers);
+        await TeamSub.markTeamWithdrawnInMatches(deletedTeam.toObject());
+        await DivSub.updateTeamNameDivision(deletedTeam.teamName, deletedTeam.teamName + ' (withdrawn)');
         //TODO: division sub to handle removing team from the division
         response.status = 200;
         response.message = utils.returnMessaging(req.originalUrl, 'Team has been deleted', false, false, null, logObj)
         return response;
-        // res.status(200).send();
-      } else {
+    } else {
         logObj.logLevel = 'ERROR';
         logObj.error = 'Team was not found';
         response.status = 500;
@@ -202,13 +206,7 @@ router.post('/delete', passport.authenticate('jwt', {
         return response;
         // res.status(500).send(utils.returnMessaging(req.originalUrl, 'Team was not found for deletion', false, null, null, logObj));
       }
-    }, (err) => {
-      response.status = 500;
-      response.message = utils.returnMessaging(req.originalUrl, 'There was an error deleting the team', err, null, null, logObj)
-      return response;
-      // res.status(500).send(utils.returnMessaging(path, 'There was an error deleting the team', err, null, null, logObj));
-    });
-    return response;
+    
   })
 
 

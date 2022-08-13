@@ -623,16 +623,18 @@ function updateDivisionHistory(teams, divisionName) {
  * 
  * @param {Team} team object:Team
  */
-function markTeamWithdrawnInMatches(team) {
+async function markTeamWithdrawnInMatches(team) {
     //find all matches that has the team in the away or home 
+    let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
     let id = team._id.toString();
-    Match.find({
+    Match.find({ $and : [ {
         $or: [{
             'away.id': id
         }, {
             'home.id': id
         }]
-    }).then((found) => {
+    }, { "season" : currentSeasonInfo.value } ] }
+    ).then((found) => {
         if (found) {
             //add the team name to the matches that were found
             team.teamName = team.teamName + ' (withdrawn)';
