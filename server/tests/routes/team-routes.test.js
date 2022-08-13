@@ -152,7 +152,7 @@ describe("team-routes",()=>{
                 console.log("error 1", err);
             }
         )
-    })
+    });
 
 });
 
