@@ -238,8 +238,9 @@ function setCaptain(user) {
     }).then((foundUser) => {
 
         foundUser.isCaptain = true;
-
+        foundUser.markModified("isCaptain");
         foundUser.save().then((save) => {
+        
             logger(logObj);
         }, (err) => {
             logObj.logLevel = 'ERROR';

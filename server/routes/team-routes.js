@@ -393,7 +393,6 @@ router.post('/addMember', passport.authenticate('jwt', {
   session: false
 }), confirmCaptain, (req, res) => {
   const path = '/team/addMember';
-
   try {
     var payloadTeamName = req.body.teamName;
     var payloadMemberToAdd = req.body.addMember;
@@ -411,7 +410,8 @@ router.post('/addMember', passport.authenticate('jwt', {
     }).then((foundTeam) => {
       if (foundTeam) {
         var cont = true;
-        let pendingMembers = utils.returnByPath(foundTeam, 'pendingMembers')
+        let foundTeamObj = utils.objectify(foundTeam);
+        let pendingMembers = utils.returnByPath(foundTeamObj, 'pendingMembers')
         if (pendingMembers && cont) {
           pendingMembers.forEach(function (member) {
             if (member.displayName == payloadMemberToAdd) {
@@ -423,7 +423,7 @@ router.post('/addMember', passport.authenticate('jwt', {
             }
           });
         }
-        let currentMembers = utils.returnByPath(foundTeam, 'teamMembers');
+        let currentMembers = utils.returnByPath(foundTeamObj, 'teamMembers');
         if (currentMembers && cont) { //current members
           currentMembers.forEach(function (member) {
             if (member.displayName == payloadMemberToAdd) {
@@ -440,6 +440,18 @@ router.post('/addMember', passport.authenticate('jwt', {
             displayName: payloadMemberToAdd
           }).then((foundUser) => {
             if (foundUser) {
+              if(foundUser.pendingTeam){
+                logObj.error = 'User has pending member status';
+                res.status(403).send(
+                 utils.returnMessaging(req.originalUrl, "User " + payloadMemberToAdd + " all ready has pending member status", false, null, null, logObj)
+                );
+              }
+              if(foundUser.teamId || foundUser.teamName){
+                  logObj.error = 'User has team info...';
+                  res.status(403).send(
+                    utils.returnMessaging(req.originalUrl, "User " + payloadMemberToAdd + " all ready has team info..", false, null, null, logObj)
+                  );
+              }
               if (!utils.returnBoolByPath(foundTeam.toObject(), 'pendingMembers')) {
                 foundTeam.pendingMembers = [];
               }
@@ -451,8 +463,9 @@ router.post('/addMember', passport.authenticate('jwt', {
 
               foundTeam.save().then((saveOK) => {
                 UserSub.togglePendingTeam(foundUser.displayName);
+                QueueSub.addToPendingTeamMemberQueue(utils.returnIdString(foundTeam._id), foundTeam.teamName_lower, utils.returnIdString(foundUser._id), foundUser.displayName);
                 res.status(200).send(utils.returnMessaging(req.originalUrl, "User added to pending members", false, saveOK, null, logObj));
-                QueueSub.addToPendingTeamMemberQueue(utils.returnIdString(foundTeam._id), foundTeam.teamName_lower, until.returnIdString(foundUser._id), foundUser.displayName);
+                
               }, (teamSaveErr) => {
                 logObj.logLevel = 'ERROR';
                 res.status(500).send(
@@ -476,6 +489,7 @@ router.post('/addMember', passport.authenticate('jwt', {
       }
     });
   } catch (e) {
+    console.log("ERROR",e);
     res.status(500).send(utils.returnMessaging(req.originalUrl, 'Internal Server Error', e));
   }
 
@@ -490,7 +504,6 @@ router.post('/save', passport.authenticate('jwt', {
   session: false
 }), confirmCaptain, (req, res) => {
   const path = '/team/save';
-
   try {
 
     var payloadTeamName = req.body.teamName;
@@ -507,7 +520,7 @@ router.post('/save', passport.authenticate('jwt', {
     //team name was not modified; edit the properties we received.
     Team.findOne({
       teamName_lower: payloadTeamName
-    }).then((foundTeam) => {
+    }).then(async(foundTeam) => {
       if (foundTeam) {
         // this might be something to be changed later -
         var captainRec = false;
@@ -567,14 +580,12 @@ router.post('/save', passport.authenticate('jwt', {
 
 
           if (foundTeam.assistantCaptain) {
+            //get existing team asscaps.
             tempAc = foundTeam.assistantCaptain;
+            //loop through asscaps in payload
             payload.assistantCaptain.forEach(player => {
 
-              if (tempAc.indexOf(player) > -1) {
-
-                //player from payload was all ready in the assistantCaptain list;
-              } else {
-
+              if (tempAc.indexOf(player) == -1) {
                 //new player;
                 tempAc.push(player);
                 toggle.push(player);
@@ -584,7 +595,6 @@ router.post('/save', passport.authenticate('jwt', {
               let index = payload.assistantCaptain.indexOf(player);
 
               if (index == -1) {
-
                 //player was removed;
                 toggle.push(player);
                 tempAc.splice(delInd, 1);
@@ -599,9 +609,14 @@ router.post('/save', passport.authenticate('jwt', {
           }
           foundTeam.assistantCaptain = tempAc;
 
-          toggle.forEach(ele => {
-            UserSub.setCaptain(ele);
-          });
+          for(var i = 0; i<toggle.length;i++){
+            await UserSub.removeCaptain(toggle[i]);
+          }
+
+          for(var i = 0; i<foundTeam.assistantCaptain.length;i++){
+            await UserSub.setCaptain(foundTeam.assistantCaptain[i]);
+          }
+
           foundTeam.markModified('assistantCaptain');
         }
 
