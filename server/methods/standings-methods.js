@@ -8,7 +8,6 @@
  */
 const Match = require('../models/match-model');
 const util = require('../utils');
-const Team = require('../models/team-models');
 const System = require('../models/system-models').system;
 const Schedules = require('../models/schedule-models');
 const challonge = require('./challongeAPI');

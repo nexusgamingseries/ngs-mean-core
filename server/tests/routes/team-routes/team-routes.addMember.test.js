@@ -3,14 +3,14 @@ const chai = require('chai');
 const request = require('supertest');
 const assert = require('assert');
 const mongoUnit = require('mongo-unit');
-const dataForTeamDelete = require('../mock-data/dataForTeamDelete.json');
-const utils = require('../../utils');
+const dataForTeamDelete = require('../../mock-data/dataForTeamDelete.json');
+const utils = require('../../../utils');
 const _ = require('lodash');
 
-const Team = require('../../models/team-models');
-const User = require('../../models/user-models');
-const Division = require('../../models/division-models');
-const Admin = require('../../models/admin-models');
+const Team = require('../../../models/team-models');
+const User = require('../../../models/user-models');
+const Division = require('../../../models/division-models');
+const Admin = require('../../../models/admin-models');
 
 const mongoose = require('mongoose');
 
@@ -21,11 +21,11 @@ let generateNewToken;
 before(() =>{
     return loadConfig().then(
     res=>{
-        generateNewToken = require('../../configs/passport-setup');
+        generateNewToken = require('../../../configs/passport-setup');
        return mongoUnit.start().then(() => {
         console.log('fake mongo is started: ', mongoUnit.getUrl())
         process.env.mongoURI = mongoUnit.getUrl() // this var process.env.DATABASE_URL = will keep link to fake mongo
-        app = require('../../../server');
+        app = require('../../../../server');
         // mocha.run() // this line start mocha tests
         });
     });
@@ -33,7 +33,7 @@ before(() =>{
 
 describe("team-routes",()=>{
 
-        it("/api/team/addMember good data", async ()=>{
+        it("/api/team/removeMember good data", async ()=>{
             let testTeamName = "TEST sunshine mynah birds";
         await mongoUnit.dropDb();
         await mongoUnit.load(dataForTeamDelete); 

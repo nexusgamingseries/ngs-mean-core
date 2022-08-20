@@ -11,13 +11,6 @@ import { TimeService } from 'src/app/services/time.service';
 })
 export class TeamService {
 
-  //returns sys data
-  getSysData(name:string){
-    let url = 'team/get/sys/dat';
-    let payload = {'data':name};
-    return this.httpService.httpPost(url, payload);
-  }
-
   getRegisteredTeams(){
     let url = '/team/get/registered';
     return this.httpService.httpGet(url, []);

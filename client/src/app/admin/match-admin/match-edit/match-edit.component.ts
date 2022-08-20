@@ -69,8 +69,11 @@ export class MatchEditComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(Object.keys(this.match.replays).length == 0){
+    if(this.match.replays && Object.keys(this.match.replays).length == 0){
       this.match.replays['1']={ data:'',parsedUrl:'',url:'' }
+    }else{
+      this.match.replays={};
+      this.match.replays["1"] = { data: "", parsedUrl: "", url: "" };
     }
     this.scheduleService.getMatchInfo(this.matchId).subscribe(
       (res) => {

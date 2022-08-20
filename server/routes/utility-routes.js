@@ -31,25 +31,8 @@ router.get('/replay/map/name', (req, res) => {
 
 });
 
-// router.get('/youtube-curator', (req, res) => {
-//     playlistCurator();
-//     res.status(200).send(util.returnMessaging('/youtube-curator', 'Youtube Curator Started:', null, {}))
-// })
-
-// router.get('/ytoa', passport.authenticate('jwt', {
-//     session: false
-// }), levelRestrict.casterLevel, (req, res) => {
-
-//     const path = 'api/utility/ytoa';
-
-//     const returnVal = { oauth_key: process.env.youtube_oauth, google_api_key: process.env.youtube_apikey };
-
-//     res.status(200).send(util.returnMessaging(path, 'Youtube Oauth:', null, returnVal));
-
-// })
-
 //post
-// path: /team/uploadLogo
+// path: /image/upload
 // requires id, type, and base64 encoded image
 // returns http success or error; json object of updated team if save was successful.
 router.post('/image/upload', passport.authenticate('jwt', {
@@ -110,6 +93,34 @@ router.post('/image/upload', passport.authenticate('jwt', {
             res.status(500).send(util.returnMessaging(path, "File is too big!", false, null, null, logObj));
         }
     );
+
+});
+
+
+router.post('/get/sys/dat', passport.authenticate('jwt', {
+  session: false
+}), (req, res) => {
+  let path = '/team/get/sys/dat'
+
+  try {
+    let request = req.body.data;
+    sysModels.system.findOne({
+      'dataName': request
+    }).then(
+      (found) => {
+        if (found) {
+          res.status(200).send(utils.returnMessaging(req.originalUrl, 'Found sys data', false, found))
+        } else {
+          res.status(404).send(utils.returnMessaging(req.originalUrl, 'Sys data not found', false));
+        }
+      }, (err) => {
+        res.status(500).send(utils.returnMessaging(req.originalUrl, 'error querying data', err));
+      }
+    )
+  } catch (e) {
+    res.status(500).send(utils.returnMessaging(req.originalUrl, 'Internal Server Error', e));
+  }
+
 
 });
 

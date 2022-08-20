@@ -796,34 +796,6 @@ router.post('/reassignCaptain', passport.authenticate('jwt', {
 
 });
 
-//needs to be move to its own API path
-router.post('/get/sys/dat', passport.authenticate('jwt', {
-  session: false
-}), (req, res) => {
-  let path = '/team/get/sys/dat'
-
-  try {
-    let request = req.body.data;
-    sysModels.system.findOne({
-      'dataName': request
-    }).then(
-      (found) => {
-        if (found) {
-          res.status(200).send(utils.returnMessaging(req.originalUrl, 'Found sys data', false, found))
-        } else {
-          res.status(404).send(utils.returnMessaging(req.originalUrl, 'Sys data not found', false));
-        }
-      }, (err) => {
-        res.status(500).send(utils.returnMessaging(req.originalUrl, 'error querying data', err));
-      }
-    )
-  } catch (e) {
-    res.status(500).send(utils.returnMessaging(req.originalUrl, 'Internal Server Error', e));
-  }
-
-
-});
-
 //post route
 //updates the team questionnaire related info
 router.get('/questionnaire', passport.authenticate('jwt', {

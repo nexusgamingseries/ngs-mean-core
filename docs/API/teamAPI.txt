@@ -66,12 +66,6 @@ Auth: Authenticated, captain
 Params: username (string) new captain username AND teamName (string) team name
 Return: returns saved team with new captain
 
-Route: api/team/get/sys/dat
-Method: post
-Auth: Authenticated
-Params: data (string) - data to request
-Return: system data that matches the requested datum
-
 Route: api/team/questionnaire/save
 Method: post
 Auth: Authenticated

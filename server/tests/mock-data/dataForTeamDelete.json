@@ -45,7 +45,24 @@
             "ticker": "qqqq",
             "ticker_lower": "qqqq",
             "divisionDisplayName": "Division D Beast",
-            "divisionConcat": "d-beast"
+            "divisionConcat": "d-beast",
+            "questionnaire": {
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "Egg smackers",
+                "oldDivision": "B East",
+                "returningPlayers": "3",
+                "returningPlayersDiv": "B East",
+                "newPlayers": "Loba",
+                "teamChanges": "Winning not losing",
+                "divisionPlacement": "Low",
+                "priorPlacement": "Hahaha",
+                "otherLeagues": "Okay",
+                "otherInfo": "aphish has a new fish bowl, not sure if that will make him better or worse tho",
+                "eastWest": "east",
+                "acknowledge": true,
+                "registered": true
+            }
         }
     ],
     "users": [
