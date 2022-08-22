@@ -1,0 +1,157 @@
+{
+    "matches": [
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "_id": "63039313980afc2fbd09a5fc",
+            "challonge_match_ref": "286961771",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11648769",
+            "matchId": "5jgv99fhl74uvgq8",
+            "round": 1,
+            "home": {
+                "_id": "63039313980afc2fbd09a5fd",
+                "teamName": "TEST inheriting weasels",
+                "id": "6303931150fa509c0a7f1428"
+            },
+            "away": {
+                "_id": "63039313980afc2fbd09a5fe",
+                "teamName": "TEST woeful impalas",
+                "id": "6303931150fa509c0a7f1429"
+            },
+            "parentId": "5jgv99fhl74uvgq9",
+            "__v": 0
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "5jgv99fhl74uvgq8"
+            ],
+            "challonge_idChildren": [
+                "286961771"
+            ],
+            "_id": "63039313980afc2fbd09a5ff",
+            "challonge_match_ref": "286961772",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11648769",
+            "matchId": "5jgv99fhl74uvgq9",
+            "round": 2,
+            "home": {
+                "_id": "63039313980afc2fbd09a600",
+                "teamName": "Mongoose's Team",
+                "id": "6303931150fa509c0a7f1425"
+            },
+            "parentId": "5jgv99fhl74uvgqb",
+            "__v": 0
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "_id": "63039313980afc2fbd09a601",
+            "challonge_match_ref": "286961773",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11648769",
+            "matchId": "5jgv99fhl74uvgqa",
+            "round": 2,
+            "home": {
+                "_id": "63039313980afc2fbd09a602",
+                "teamName": "TEST assigned daffodils",
+                "id": "6303931150fa509c0a7f1426"
+            },
+            "away": {
+                "_id": "63039313980afc2fbd09a603",
+                "teamName": "TEST sunshine mynah birds",
+                "id": "6303931150fa509c0a7f1427"
+            },
+            "parentId": "5jgv99fhl74uvgqb",
+            "__v": 0
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "5jgv99fhl74uvgq9",
+                "5jgv99fhl74uvgqa"
+            ],
+            "challonge_idChildren": [
+                "286961772",
+                "286961773"
+            ],
+            "_id": "63039313980afc2fbd09a604",
+            "challonge_match_ref": "286961774",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11648769",
+            "matchId": "5jgv99fhl74uvgqb",
+            "round": 3,
+            "__v": 0
+        }
+    ],
+    "schedule": {
+        "_id": "63039313980afc2fbd09a606",
+        "type": "tournament",
+        "name": "5jgv99fhl74uvfhl",
+        "season": 14,
+        "participants": [
+            "6303931150fa509c0a7f1425",
+            "6303931150fa509c0a7f1426",
+            "6303931150fa509c0a7f1427",
+            "6303931150fa509c0a7f1428",
+            "6303931150fa509c0a7f1429"
+        ],
+        "participantsRef": [
+            {
+                "id": "6303931150fa509c0a7f1425",
+                "challonge_ref": 178731045
+            },
+            {
+                "id": "6303931150fa509c0a7f1426",
+                "challonge_ref": 178731046
+            },
+            {
+                "id": "6303931150fa509c0a7f1427",
+                "challonge_ref": 178731047
+            },
+            {
+                "id": "6303931150fa509c0a7f1428",
+                "challonge_ref": 178731048
+            },
+            {
+                "id": "6303931150fa509c0a7f1429",
+                "challonge_ref": 178731049
+            }
+        ],
+        "matches": [
+            "5jgv99fhl74uvgq8",
+            "5jgv99fhl74uvgq9",
+            "5jgv99fhl74uvgqa",
+            "5jgv99fhl74uvgqb"
+        ],
+        "matchesRef": [
+            {
+                "id": "5jgv99fhl74uvgq8",
+                "challonge_ref": 286961771
+            },
+            {
+                "id": "5jgv99fhl74uvgq9",
+                "challonge_ref": 286961772
+            },
+            {
+                "id": "5jgv99fhl74uvgqa",
+                "challonge_ref": 286961773
+            },
+            {
+                "id": "5jgv99fhl74uvgqb",
+                "challonge_ref": 286961774
+            }
+        ],
+        "challonge_ref": 11648769,
+        "challonge_url": "5jgv99fhl74uvfhl_link",
+        "active": true,
+        "__v": 0
+    }
+}

@@ -116,19 +116,26 @@ async function reportMatch(caller, matchReport, requester, bypass) {
             match.mapBans = matchReport.mapBans;
         }
 
-        let keysArray = Object.keys(matchReport.fileTracking);
-        for (var i = 0; i < keysArray.length; i++) {
-            let key = keysArray[i];
-            let v = matchReport.fileTracking[key];
+        let moveAndParse = false;
+        if(matchReport.fileTracking){
+            let keysArray = Object.keys(matchReport.fileTracking);
+            for (var i = 0; i < keysArray.length; i++) {
+                let key = keysArray[i];
+                let v = matchReport.fileTracking[key];
 
-            if (match.replays == undefined || match.replays == null) {
-                match.replays = {};
+                if (match.replays == undefined || match.replays == null) {
+                    match.replays = {};
+                }
+                if (match.replays[(key).toString()] == undefined || match.replays[(key).toString()] == null) {
+                    match.replays[(key).toString()] = {};
+                }
+                match.replays[key].tempUrl = v['filename']
             }
-            if (match.replays[(key).toString()] == undefined || match.replays[(key).toString()] == null) {
-                match.replays[(key).toString()] = {};
-            }
-            match.replays[key].tempUrl = v['filename']
+            moveAndParse=true;
         }
+
+
+
 
         //validate the submitter is a captain OR assistantCaptain of one of the teams
         let isCapt = bypass ? bypass : returnIsCapt(foundTeams, requester);
@@ -145,7 +152,9 @@ async function reportMatch(caller, matchReport, requester, bypass) {
             return match.save((saved) => {
                 //if this match was a tournmanet match then we need to promote the winner to the parent match
                 matchCommon.promoteTournamentMatch(match.toObject());
-                moveAndParseTempFiles(match.matchId);
+                if(moveAndParse){
+                    moveAndParseTempFiles(match.matchId);
+                }
                 return { msg: 'Match reported', obj: saved };
             }, (err) => {
                 errToThrow = 'Error reporting match result'

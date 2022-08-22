@@ -1,4 +1,203 @@
-{"matches":[
+{ 
+    "users":[
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1gmukip64lde",
+            "displayName": "TEST lily#3664",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfg",
+            "displayName": "TEST azalea#9539",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "seasonsPlayed": 2,
+            "isCaptain": true
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixff",
+            "displayName": "TEST narcissus#7376",
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "seasonsPlayed": 2,
+            "isCaptain": true
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfe",
+            "displayName": "TEST hyena#4375",
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "seasonsPlayed": 2
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfd",
+            "displayName": "TEST mountain goat#1399",
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "seasonsPlayed": 2
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfc",
+            "displayName": "TEST zombie#1270",
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "seasonsPlayed": 2
+        },
+{
+    "messageCenter": [],
+    "replays": [],
+    "history": [],
+    "bNetId": "1810kj0jixfg",
+    "displayName": "TEST azalea#9539",
+    "replayArchive": [],
+    "verifiedRankHistory": [],
+    "__v": 0,
+    "teamId": "5fe26e7ec311fadee4afb7e6",
+    "teamName": "TEST sunshine mynah birds",
+    "seasonsPlayed": 2,
+    "isCaptain": true
+}
+],
+    "matches":[
+    {
+        
+        "idChildren": [],
+        "vodLinks": [
+            "https://youtu.be/R-fwlFAmbao"
+        ],
+        "challonge_idChildren": [],
+        "season": 9,
+        "type": "grandfinal",
+        "matchId": "qpbrmznk9bx6anzz",
+        "title": "Big PP Div Champs",
+        "round": 1,
+        "home": {
+
+            "id": "5e893ab2056aba0017015a9a",
+            "score": 0,
+            "teamName": "Luigi&Knuckles@OlympicGmes (withdrawn)"
+        },
+        "away": {
+
+            "id": "5e7d9a32054edf0017b4ba01",
+            "dominator": true,
+            "score": 2,
+            "teamName": "Artemis"
+        },
+        "__v": 112,
+        "scheduledTime": {
+
+            "priorScheduled": true,
+            "startTime": "1588302000000",
+            "endTime": "1588307400000"
+        },
+        "casterName": "Wenis",
+        "casterUrl": "twitch.tv/moistwenis",
+        "scheduleDeadline": "1588575540000",
+        "mapBans": {
+            "awayOne": "Battlefield of Eternity",
+            "awayTwo": "Towers of Doom",
+            "homeOne": "Dragon Shire",
+            "homeTwo": "Braxis Holdout"
+        },
+        "other": {
+            "1": {
+                "winner": "away"
+            },
+            "2": {
+                "winner": "away"
+            },
+            "homeTeamPlayer": "Kid#1932",
+            "awayTeamPlayer": "s3v3n#1960"
+        },
+        "replays": {
+            "1": {
+                "url": "ngs_5-1-2020_Artemis_vs_Luigi_Knuckles_OlympicGmes_Infernal_Shrines.stormReplay",
+                "data": "jyp2nk9nuheyr",
+                "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=18"
+            },
+            "2": {
+                "url": "ngs_5-1-2020_Artemis_vs_Luigi_Knuckles_OlympicGmes_Cursed_Hollow.stormReplay",
+                "data": "jyp2nk9nuheyt",
+                "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=19"
+            }
+
+        },
+        "reported": true,
+        "postedToHP": true
+    },
+    {
+
+        "idChildren": [],
+        "vodLinks": [
+            "https://youtu.be/R-fwlFAmbao"
+        ],
+        "challonge_idChildren": [],
+        "season": 1,
+        "type": "grandfinal",
+        "matchId": "qpbrmznk9bx6anzz",
+        "title": "East Div Champs",
+        "round": 1,
+        "home": {
+
+            "id": "5e893ab2056aba0017015a9a",
+            "score": 0,
+            "teamName": "Luigi&Knuckles@OlympicGmes (withdrawn)"
+        },
+        "away": {
+
+            "id": "5e7d9a32054edf0017b4ba01",
+            "dominator": true,
+            "score": 2,
+            "teamName": "Artemis"
+        },
+        "__v": 112,
+        "scheduledTime": {
+            
+            "priorScheduled": true,
+            "startTime": "1588302000000",
+            "endTime": "1588307400000"
+        },
+        "casterName": "Wenis",
+        "casterUrl": "twitch.tv/moistwenis",
+        "scheduleDeadline": "1588575540000",
+        "reported": true,
+        "postedToHP": true
+    },
     {
 
         "vodLinks": [],
@@ -12,7 +211,6 @@
         "round": 1,
         "divisionConcat": "d-beast",
         "home": {
-            
             "teamName": "TEST assigned daffodils",
             "id": "5fe26e7ec311fadee4afb7d1",
             "teamName_lower": "test assigned daffodils",
@@ -580,6 +778,357 @@
         },
         "dataName": "seasonInfo",
         "__v": 0
+    }
+]  ,  "teams": [
+    {
+
+        "assistantCaptain": [],
+        "invitedUsers": [],
+        "replays": [],
+        "history": [
+            {
+                "timestamp": 1.607976475437E12,
+                "season": 11,
+                "action": "Team Created",
+                "target": "Mongoose's Team"
+            },
+            {
+                "timestamp": 1.60799384609E12,
+                "action": "Joined team",
+                "target": "TEST camellias#2749",
+                "season": 11
+            },
+            {
+                "timestamp": 1.607993867258E12,
+                "action": "Joined team",
+                "target": "TEST orc#8764",
+                "season": 11
+            },
+            {
+                "timestamp": 1.607993882053E12,
+                "action": "Joined team",
+                "target": "TEST ogre#8807",
+                "season": 11
+            },
+            {
+                "timestamp": 1.607993901062E12,
+                "action": "Joined team",
+                "target": "TEST hippopotamus#1374",
+                "season": 11
+            },
+            {
+                "timestamp": 1.60814404834E12,
+                "action": "Joined team",
+                "target": "wraithling#1178",
+                "season": 11
+            },
+            {
+                "timestamp": 1.608224514493E12,
+                "action": "Joined team",
+                "target": "wraithling#1178",
+                "season": 11
+            },
+            {
+                "timestamp": 1.622683637168E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 12
+            }
+        ],
+        "teamName_lower": "mongoose's team",
+        "lookingForMore": true,
+        "availability": {
+            "monday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "tuesday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "wednesday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "thursday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "friday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "saturday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            },
+            "sunday": {
+                "available": false,
+                "startTime": null,
+                "endTime": null
+            }
+        },
+        "competitiveLevel": null,
+        "descriptionOfTeam": null,
+        "rolesNeeded": {
+            "tank": false,
+            "meleeassassin": false,
+            "rangedassassin": false,
+            "support": false,
+            "offlane": false,
+            "flex": false
+        },
+        "timeZone": "",
+        "teamMembers": [
+            {
+
+                "displayName": "Mongoose#11247"
+            },
+            {
+                
+                "displayName": "TEST camellias#2749"
+            },
+            {
+                
+                "displayName": "TEST ogre#8807"
+            }
+        ],
+        "pendingMembers": [],
+        "captain": "Mongoose#11247",
+        "teamMMRAvg": null,
+        "questionnaire": {
+            "registered": true
+        },
+        "ticker": "goose",
+        "hpMmrAvg": 2778,
+        "ngsMmrAvg": null,
+        "twitch": null,
+        "twitter": null,
+        "youtube": null,
+        "stormRankAvg": 0,
+        "teamName": "Mongoose's Team",
+        "__v": 20,
+        "divisionDisplayName": "Division D Beast",
+        "divisionConcat": "d-beast",
+        "ticker_lower": "goose"
+    },
+    {
+        
+        "assistantCaptain": [],
+        "invitedUsers": [],
+        "replays": [],
+        "history": [
+            {
+                "timestamp": 1.622683637168E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 12
+            },
+            {
+                "timestamp": 1.641502184681E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 13
+            }
+        ],
+        "teamName": "TEST assigned daffodils",
+        "teamName_lower": "test assigned daffodils",
+        "teamMembers": [
+            {
+                
+                "displayName": "TEST sheep#6942"
+            },
+            {
+                
+                "displayName": "TEST angel#5626"
+            },
+            {
+                
+                "displayName": "TEST gazelle#9130"
+            },
+            {
+                
+                "displayName": "TEST sylph#7199"
+            }
+        ],
+        "pendingMembers": [],
+        "__v": 8,
+        "captain": "TEST sheep#6942",
+        "hpMmrAvg": null,
+        "ngsMmrAvg": null,
+        "stormRankAvg": 0,
+        "teamMMRAvg": null,
+        "questionnaire": {
+            "registered": true
+        },
+        "ticker": "asdf",
+        "divisionDisplayName": "Division D Beast",
+        "divisionConcat": "d-beast",
+        "ticker_lower": "asdf"
+    },
+    {
+        
+        "assistantCaptain": ["TEST narcissus#7376"],
+        "invitedUsers": [],
+        "replays": [],
+        "history": [
+            {
+                "timestamp": 1.622683637169E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 12
+            }
+        ],
+        "teamName": "TEST sunshine mynah birds",
+        "teamName_lower": "test sunshine mynah birds",
+        "teamMembers": [
+            {
+                
+                "displayName": "TEST azalea#9539"
+            },
+            {
+                
+                "displayName": "TEST narcissus#7376"
+            },
+            {
+                
+                "displayName": "TEST hyena#4375"
+            },
+            {
+                
+                "displayName": "TEST mountain goat#1399"
+            },
+            {
+                
+                "displayName": "TEST zombie#1270"
+            }
+        ],
+        "pendingMembers": [],
+        "__v": 6,
+        "captain": "TEST azalea#9539",
+        "questionnaire": {
+            "registered": true
+        },
+        "ticker": "qqqq",
+        "divisionDisplayName": "Division D Beast",
+        "divisionConcat": "d-beast",
+        "ticker_lower": "qqqq"
+    },
+    {
+        
+        "assistantCaptain": [],
+        "invitedUsers": [],
+        "replays": [],
+        "history": [
+            {
+                "timestamp": 1.622683637169E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 12
+            },
+            {
+                "timestamp": 1.641502184681E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 13
+            }
+        ],
+        "teamName": "TEST inheriting weasels",
+        "teamName_lower": "test inheriting weasels",
+        "teamMembers": [
+            {
+                
+                "displayName": "TEST spectre#3398"
+            },
+            {
+                
+                "displayName": "TEST canary#1347"
+            },
+            {
+                
+                "displayName": "TEST elf#8618"
+            },
+            {
+                
+                "displayName": "TEST babys breath#6455"
+            },
+            {
+                
+                "displayName": "TEST rhododendron#2047"
+            }
+        ],
+        "pendingMembers": [],
+        "__v": 7,
+        "captain": "TEST spectre#3398",
+        "questionnaire": {
+            "registered": true
+        },
+        "ticker": "eeee",
+        "divisionDisplayName": "Division D Beast",
+        "divisionConcat": "d-beast",
+        "ticker_lower": "eeee"
+    },
+    {
+        
+        "assistantCaptain": [
+            "wraithling#1178"
+        ],
+        "invitedUsers": [
+            "wraithling#1178"
+        ],
+        "replays": [],
+        "history": [
+            {
+                "timestamp": 1.622683637169E12,
+                "action": "Added to division",
+                "target": "Division D East",
+                "season": 12
+            }
+        ],
+        "teamName": "TEST woeful impalas",
+        "teamName_lower": "test woeful impalas",
+        "teamMembers": [
+            {
+                
+                "displayName": "TEST delphinium#7009"
+            },
+            {
+                
+                "displayName": "TEST sphinx#2422"
+            },
+            {
+                
+                "displayName": "wraithling#1178"
+            },
+            {
+                
+                "displayName": "TEST raccoon#5861"
+            },
+            {
+                
+                "displayName": "TEST bugbear#6870"
+            }
+        ],
+        "pendingMembers": [
+            {
+                "displayName": "wraithling#1178"
+            }
+        ],
+        "__v": 9,
+        "captain": "wraithling#1178",
+        "questionnaire": {
+            "registered": true
+        },
+        "ticker": "rrrr",
+        "divisionDisplayName": "Division D Beast",
+        "divisionConcat": "d-beast",
+        "ticker_lower": "rrrr"
     }
 ]
 }

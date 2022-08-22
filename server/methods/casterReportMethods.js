@@ -30,7 +30,11 @@ async function handleCasterReportObj(obj) {
         let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
 
         let accountById = [];
-        accountById.push(obj.casterId);
+
+        if(obj.casterId && obj.casterId.length>0){
+            accountById.push(obj.casterId);
+        }
+        
 
         obj.coCasterIds = utils.isNullOrEmpty(obj.coCasterIds) ?  [] : obj.coCasterIds;
         
@@ -50,7 +54,12 @@ async function handleCasterReportObj(obj) {
         
         //need to get account IDs by display names..
         let accountNames = [];
-        accountNames.push(obj.casterName);
+        if(obj.casterName && obj.casterName.length>0){
+            accountNames.push(obj.casterName);
+        }else{
+            throw new Error("Caster name is required!")
+        }
+        
 
         obj.coCasters = utils.isNullOrEmpty(obj.coCasters) ? [] : obj.coCasters;
 
@@ -82,7 +91,6 @@ async function handleCasterReportObj(obj) {
             }
         });
 
-        let xref = [];
         if (totalUsers.length > 0) {
 
 

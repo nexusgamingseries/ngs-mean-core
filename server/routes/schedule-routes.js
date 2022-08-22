@@ -15,7 +15,7 @@ const archiveMethods = require('../methods/archivalMethods');
 const AWS = require('aws-sdk');
 const { commonResponseHandler } = require('./../commonResponseHandler');
 const getMatches = require('../methods/matches/getMatchesBy');
-
+const fs = require('fs');
 
 
 /**
@@ -333,7 +333,7 @@ router.post('/query/matches',
     }), (req, res) => {
         const path = '/schedule/query/matches';
         if (Object.keys(req.body).length == 0) {
-            res.status(500).send(utils.returnMessaging(req.originalUrl, 'No query provided', err))
+            res.status(500).send(utils.returnMessaging(req.originalUrl, 'No query provided'))
         } else {
             commonResponseHandler(req, res, [], [], async(req, res) => {
                 const response = {};
@@ -986,6 +986,10 @@ router.post('/report/cast', passport.authenticate('jwt', {
             if (parentSchedule) {
                 parentSchedule = utils.objectify(parentSchedule[0]);
                 castReportObject.event = parentSchedule.name;
+            }else{
+                response.status = 500;
+                response.message = utils.returnMessaging(req.originalUrl, 'Error reporting match result', err, null)
+                return response;
             }
 
         }
@@ -1034,6 +1038,8 @@ router.get('/report/cast', passport.authenticate('jwt', {
 
 });
 
+
+//OMITING FROM TESTING FOR NOW.. THIS API IS NOT ACTIVLEY USED ANYMORE.
 router.get('/report/cast/uncurrated', passport.authenticate('jwt', {
     session: false
 }), utils.appendResHeader, async(req, res) => {
@@ -1095,7 +1101,7 @@ router.post('/match/add/caster', passport.authenticate('jwt', {
         const response = {};
         let matchid = options.matchId.value;
         let casterName = options.casterName.valid ? options.casterName.value : '';
-        let casterUrl = options.casterUrl.valid ? options.casterName.value : '';
+        let casterUrl = options.casterUrl.valid ? options.casterUrl.value : '';
 
         //log object
         let logObj = {};
@@ -1464,6 +1470,8 @@ router.post('/generate/tournament', passport.authenticate('jwt', {
                 } else {
                     return scheduleGenerator.generateTournament(teams, season, division, cupNumber, tournamentName, description, type).then((process) => {
                         if (process) {
+                            console.log('process',process);
+                            fs.writeFileSync('tourn.json', JSON.stringify(process));
                             response.status = 200;
                             response.message = utils.returnMessaging(req.originalUrl, 'Tournament generated', false, process, null, logObj);
                             return response;
