@@ -18,6 +18,7 @@ const logger = require('./sys-logging-subs').logger;
 const challonge = require('../methods/challongeAPI');
 const divSubs = require('./division-subs');
 const lodash = require('lodash');
+const fs = require('fs');
 
 
 const SEASONAL = 'seasonal';
@@ -48,22 +49,22 @@ async function generateSeasonTwo(season) {
         //get list of divisions
         let getDivision = await Division.find({
             $and: [{
-                    $or: [{
-                            cupDiv: false
-                        },
-                        {
-                            cupDiv: {
-                                $exists: false
-                            }
-                        },
-                        {
-                            public: true
-                        }
-                    ]
+                $or: [{
+                    cupDiv: false
+                },
+                {
+                    cupDiv: {
+                        $exists: false
+                    }
                 },
                 {
                     public: true
                 }
+                ]
+            },
+            {
+                public: true
+            }
             ]
 
         }).lean().then((res) => {
@@ -120,11 +121,11 @@ async function generateSeasonTwo(season) {
 
         // create the schedule object
         let schedObj = {
-                "season": season,
-                "type": SEASONAL,
-                "division": divObj
-            }
-            //save the schedule object to db
+            "season": season,
+            "type": SEASONAL,
+            "division": divObj
+        }
+        //save the schedule object to db
         let sched = await new Scheduling(
             schedObj
         ).save().then((saved) => {
@@ -168,95 +169,85 @@ async function generateRoundRobinScheduleTwo(season) {
 
     const query = {
         $and: [{
-                "season": season
-            },
-            {
-                'type': SEASONAL
-            }
+            "season": season
+        },
+        {
+            'type': SEASONAL
+        }
         ]
     };
 
-    //grab the schedule of the season in question
-    Scheduling.findOne(query).then((found) => {
+    let schedule = await Scheduling.findOne(query);
 
-        //get the divisions
-        let divisions = found.division;
+    try {
+        if (schedule) {
 
-        //make an array of the divisions as keys to iterate through
-        let keys = Object.keys(divisions);
+            let divisions = schedule.division;
+            let keys = Object.keys(divisions);
 
-        //loop through each division and create the matches for it
-        for (var i = 0; i < keys.length; i++) {
+            for (var i = 0; i < keys.length; i++) {
+                let key = keys[i];
+                if (!(util.returnByPath(divisions[key], 'cupDiv'))) {
+                    let participants = divisions[key].participants;
+                    let roundRobinFromChallonge = await generateRoundRobinChallonge(participants, season, key, 'seasonal');
+                    let roundRobin = roundRobinFromChallonge.matches;
 
-            //local key -> this will be divisionConcat
-            let key = keys[i];
-
-            if (!(util.returnByPath(divisions[key], 'cupDiv'))) {
-
-                //local participants -> list of team ids in div
-                let participants = divisions[key].participants;
-
-                //use the robin method to create the round robin matches
-                // let roundRobin = robin(participants.length, participants);
-                generateRoundRobinChallonge(participants, season, key, 'seasonal').then(
-                    (challongeRes) => {
-
-                        let roundRobin = challongeRes.matches;
-
-                        //duplicate the matches... ?
-                        if (util.returnByPath(divisions[key], 'DRR')) {
-                            let firstRounds = returnRoundNumbers(roundRobin);
-                            console.log("firstRounds", firstRounds);
-                            let dbl = lodash.cloneDeep(roundRobin);
-                            dbl.forEach(
-                                (r, index) => {
-                                    let ngsID = uniqid();
-                                    r["matchId"] = ngsID;
-                                    let tHome = util.returnByPath(r, 'home');
-                                    let tAway = util.returnByPath(r, 'away');
-                                    r.home = tAway;
-                                    r.away = tHome;
-                                    r.round = firstRounds+r.round;
-                                    roundRobin.push(r);
-                                }
-                            );
-
-                            //
-                        }
-
-                        divisions[key].matches = [];
-                        roundRobin.forEach(m => {
-                            divisions[key].matches.push(m.matchId);
-                        })
-
-                        Match.insertMany(roundRobin).then(res => {
-                            console.log('matches inserted!');
-                        }, err => {
-                            console.log('error inserting matches');
-                        });
-
-                        //save the matches into the schedule object as well, this will serve as both a back up and 
-                        //a way to further perserve what matches belong to each season
-                        found.markModified('division');
-                        found.save().then((saved) => {
-                            logger(logObj);
-                        }, (err) => {
-                            logObj.logLevel = 'ERROR';
-                            logObj.error = err;
-                            logger(logObj);
-                        })
-
-                    },
-                    err => {
-                        throw err;
+                    //duplicate the matches... ?
+                    if (util.returnByPath(divisions[key], 'DRR')) {
+                        let firstRounds = returnRoundNumbers(roundRobin);
+                        let dbl = lodash.cloneDeep(roundRobin);
+                        dbl.forEach(
+                            (r, index) => {
+                                let ngsID = uniqid();
+                                r["matchId"] = ngsID;
+                                let tHome = util.returnByPath(r, 'home');
+                                let tAway = util.returnByPath(r, 'away');
+                                r.home = tAway;
+                                r.away = tHome;
+                                r.round = firstRounds + r.round;
+                                roundRobin.push(r);
+                            }
+                        );
                     }
-                );
 
+                    divisions[key].matches = [];
+                    roundRobin.forEach(m => {
+                        divisions[key].matches.push(m.matchId);
+                    });
+
+                    await Match.insertMany(roundRobin).then(res => {
+                        console.log('matches inserted!');
+                    }, err => {
+                        console.log('error inserting matches');
+                    });
+
+                }
             }
 
+            //save the matches into the schedule object as well, this will serve as both a back up and 
+            //a way to further perserve what matches belong to each season
+            schedule.markModified('division');
+            let sched = await schedule.save().then((saved) => {
+                console.log('saved..');
+                logger(logObj);
+                return saved;
+            }, (err) => {
+                logObj.logLevel = 'ERROR';
+                logObj.error = err;
+                logger(logObj);
+            });
+
+            return sched;
+
+        } else {
+            throw new Error("Schedule was not found.");
         }
 
-    });
+    } catch (e) {
+        await schedule.remove();
+        throw e;
+    }
+
 }
 
 
@@ -312,7 +303,7 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
     teams.forEach((team, index) => {
         // team id may have been send as team._id or team.id; several receipts;
         let teamid = team._id ? team._id : team.id
-            //add this team id to the array if it isnt there all ready
+        //add this team id to the array if it isnt there all ready
         if (teamIds.indexOf(teamid)) {
             teamIds.push(teamid);
         }
@@ -344,13 +335,15 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
         return response;
     });
 
+    // fs.writeFileSync('newTournament-season.json', JSON.stringify(newTournament));
+
     //check the reply from challonge and make sure it was OK
     if (newTournament.errors && newTournament.errors.length > 0) {
         let s = ''
         newTournament.errors.forEach(err => {
             console.log(err);
             s = +` ${err}`
-                //will probably need some logging or throws to alert client
+            //will probably need some logging or throws to alert client
         });
         throw (new Error('Tournament Creation Error'));
     } else {
@@ -370,10 +363,13 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
             return response;
         });
 
+        // fs.writeFileSync('addParticipants-season.json', JSON.stringify(addParticipants));
+
         //check the return from challonge and make sure that we got no errors
         if (addParticipants.errors && addParticipants.errors.length > 0) {
+            let s = '';
             addParticipants.errors.forEach(err => {
-                console.log(err);
+                s += err + ", ";
                 //will probably need some logging or throws to alert client 
             })
             throw (new Error('Add Participants Error'));
@@ -391,7 +387,7 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
 
             //create a new array that will aggregate all our participant info together
             let finalParticipantArray = []
-                //loop through the return from challonge, each participant has an ID from challonge we need.
+            //loop through the return from challonge, each participant has an ID from challonge we need.
             addParticipants.forEach(part => {
                 //loop through the local particpants to match up the two
                 participantsArray.forEach(locPart => {
@@ -412,6 +408,8 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
                 return response;
             });
 
+            // fs.writeFileSync('startStatus-season.json', JSON.stringify(startStatus));
+
             //check the start tournament response for errors
             if (startStatus.errors && startStatus.errors.length > 0) {
                 startStatus.errors.forEach(err => {
@@ -426,6 +424,8 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
                 let showTournament = await challonge.showTournament(tournamentId).then(response => {
                     return response;
                 });
+
+                // fs.writeFileSync('showTournament-season.json', JSON.stringify(showTournament));
 
                 //check the show tournament response for errors
                 if (showTournament.errors && showTournament.errors.length > 0) {
@@ -564,13 +564,13 @@ async function generateRoundRobinChallonge(teams, season, division, eventType) {
 
 }
 
-function returnRoundNumbers(matchesArray){
+function returnRoundNumbers(matchesArray) {
 
     let rounds = [];
 
     matchesArray.forEach(
-        iter=>{
-            if(rounds.indexOf(iter.round)==-1){
+        iter => {
+            if (rounds.indexOf(iter.round) == -1) {
                 rounds.push(iter.round);
             }
         }
@@ -602,7 +602,7 @@ async function generateTournament(teams, season, division, cup, name, descriptio
     teams.forEach((team, index) => {
         // team id may have been send as team._id or team.id; several receipts;
         let teamid = team._id ? team._id : team.id
-            //add this team id to the array if it isnt there all ready
+        //add this team id to the array if it isnt there all ready
         if (teamIds.indexOf(teamid)) {
             teamIds.push(teamid);
         }
@@ -638,12 +638,19 @@ async function generateTournament(teams, season, division, cup, name, descriptio
         return response;
     });
 
+    // fs.writeFileSync('challonge.createTournament.json', JSON.stringify(newTournament));
+
+
     //check the reply from challonge and make sure it was OK
     if (newTournament.errors && newTournament.errors.length > 0) {
+        let message = ''
         newTournament.errors.forEach(err => {
             console.log(err);
+            message += err + ' ';
             //will probably need some logging or throws to alert client
+
         })
+        throw new Error(`create tournament failed: ${message}`);
     } else {
         // challonge tournamnet create ok
         /*
@@ -661,12 +668,17 @@ async function generateTournament(teams, season, division, cup, name, descriptio
             return response;
         });
 
+        // fs.writeFileSync('challonge.bulkParticpantsAdd.json', JSON.stringify(addParticipants));
+
         //check the return from challonge and make sure that we got no errors
         if (addParticipants.errors && addParticipants.errors.length > 0) {
+            let message = '';
             addParticipants.errors.forEach(err => {
                 console.log(err);
+                message += err + ' ';
                 //will probably need some logging or throws to alert client 
-            })
+            });
+            throw new Error(`add participants failed: ${message}`);
         } else {
             //challonge ; partipants add ok
             /*
@@ -681,7 +693,7 @@ async function generateTournament(teams, season, division, cup, name, descriptio
 
             //create a new array that will aggregate all our participant info together
             let finalParticipantArray = []
-                //loop through the return from challonge, each participant has an ID from challonge we need.
+            //loop through the return from challonge, each participant has an ID from challonge we need.
             addParticipants.forEach(part => {
                 //loop through the local particpants to match up the two
                 participantsArray.forEach(locPart => {
@@ -702,11 +714,16 @@ async function generateTournament(teams, season, division, cup, name, descriptio
                 return response;
             });
 
+            // fs.writeFileSync('challonge.startTournament.json', JSON.stringify(startStatus));
+
             //check the start tournament response for errors
             if (startStatus.errors && startStatus.errors.length > 0) {
+                let message = '';
                 startStatus.errors.forEach(err => {
                     console.log(err);
+                    message += err + ' ';
                 })
+                throw new Error(`start tournament failed: ${message}`);
             } else {
                 // console.log('startStatus ', startStatus);
                 //tournamnet has been started
@@ -716,11 +733,16 @@ async function generateTournament(teams, season, division, cup, name, descriptio
                     return response;
                 });
 
+                // fs.writeFileSync('challonge.showTournament.json', JSON.stringify(showTournament));
+
                 //check the show tournament response for errors
                 if (showTournament.errors && showTournament.errors.length > 0) {
+                    let message = '';
                     showTournament.errors.forEach(err => {
                         console.log(err);
+                        message += err + ' ';
                     })
+                    throw new Error(`show tournament failed: ${message}`);
                 } else {
 
                     let chalMatches = showTournament.tournament.matches;

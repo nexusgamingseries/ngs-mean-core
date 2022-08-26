@@ -21,6 +21,8 @@ const matchUpdateAPI = 'https://api.challonge.com/v1/tournaments/{tournament}/ma
 
 const matchGetAPI = 'https://api.challonge.com/v1/tournaments/{tournament}/matches/{match_id}.json';
 
+const tournamentDeleteAPI = 'https://api.challonge.com/v1/tournaments/{tournament}.json';
+
 /**
  * @name replaceTournamentApi
  * @function
@@ -195,6 +197,19 @@ async function retriveTournaments(tournamentIds) {
     return returnArr;
 }
 
+/**
+ * @name deleteTournaments
+ * @function
+ * @description deletes challong tournament
+ * @param {string} tournamnetId 
+ */
+async function deleteTournament(tournamnetId){
+    let url = replaceTournamentApi(tournamentDeleteAPI, '{tournament}', tournamnetId);
+
+    return axios.delete(url).then(res=>{return res.data},err=>{return err.response.data});
+}
+
+
 module.exports = {
     createTournament: createTournament,
     startTournament: startTournament,
@@ -203,5 +218,6 @@ module.exports = {
     bulkParticpantsAdd: bulkParticpantsAdd,
     matchUpdate: matchUpdate,
     retriveTournaments: retriveTournaments,
-    matchGet: matchGet
+    matchGet: matchGet,
+    deleteTournament:deleteTournament
 }

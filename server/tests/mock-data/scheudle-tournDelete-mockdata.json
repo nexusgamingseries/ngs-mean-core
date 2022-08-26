@@ -1,0 +1,3979 @@
+{
+    "teams": [
+        {
+            "oldId": "600602d10b86d20028380312",
+            "assistantCaptain": [
+                "scH#11574"
+            ],
+            "invitedUsers": [
+                "T0ru#1232",
+                "T0ru#1232"
+            ],
+            "replays": [
+                "185ra14kkgj3c24",
+                "185ra14kkgj3c2b",
+                "3hdhmdykkqui7wk",
+                "3hdhmdykkqui7wn",
+                "h2kurykkvzrqfa",
+                "h2kurykkvzrqfd",
+                "liuzk14kl0cb3zs",
+                "liuzk14kl0cb3zw",
+                "bs7o5ykladfnyf",
+                "bs7o5ykladfnyg",
+                "r7rf6l14kllwyalc",
+                "r7rf6l14kllwyale",
+                "6d5uyklubt4f5",
+                "6d5uyklubt4fd",
+                "6d5uyklubt4fe",
+                "3candykm4a73mx",
+                "3candykm4a73my",
+                "1bu23ykmebvfgc",
+                "1bu23ykmebvfgd",
+                "uzjkd15kmocqwu3",
+                "uzjkd15kmocqwu5",
+                "uzjkd15kmocqwu6",
+                "1c4wc15kmwwssj2",
+                "1c4wc15kmwwssj4",
+                "1c4wc15kmwwssj5",
+                "aevjzj15kn89lno9",
+                "aevjzj15kn89lnoi",
+                "26rqdykngu8n50",
+                "26rqdykngu8n56",
+                "imoyko5eq06l",
+                "imoyko5eq06m",
+                "7rn5ykr4a7643",
+                "7rn5ykr4a7644",
+                "7rn5ykr4aag2v",
+                "7rn5ykr4aag2w",
+                "1oopy8aukre8yz12",
+                "1oopy8aukre8yz13",
+                "4kpk06ukro8r5qq",
+                "4kpk06ukro8r5qr",
+                "5788vkscn3z0j",
+                "5788vkscn3z0k",
+                "5788vkscn3z0l",
+                "5tzm5s8vkso21t8f",
+                "5tzm5s8vkso21t8g",
+                "5tzm5s8vkso21t8h",
+                "rbzqvksqzbcak",
+                "rbzqvksqzbcal",
+                "rbzqvksqzbcam",
+                "1br2yvkti46cls",
+                "1br2yvkti46clt",
+                "3suy3nyvktv4jtqj",
+                "3suy3nyvktv4jtqk",
+                "3suy3nyvktv4jtql",
+                "3bzvku4xjdws",
+                "3bzvku4xjdwt",
+                "1aizvkuf1mis6",
+                "1aizvkuf1mis7",
+                "1aizvkuf1mis8",
+                "ygcm4dvkum59fu3",
+                "ygcm4dvkum59fu4",
+                "ygcm4dvkum59fu5",
+                "33426p9vkvgt86mz",
+                "33426p9vkvgt86n1",
+                "33426p9vkvgt86n2",
+                "fw2awtkz6ezywq",
+                "fw2awtkz6ezywr",
+                "hlrbktkzjj618r",
+                "hlrbktkzjj618s",
+                "4s3d7tkzp2ti5i",
+                "4s3d7tkzp2ti5j",
+                "4s3d7tkzp2ti5k",
+                "16iktkzyildmm",
+                "16iktkzyildmo",
+                "16iktkzyildmp",
+                "c2ei1tl0clhzhb",
+                "c2ei1tl0clhzhc",
+                "c2ei1tl0clhzhd",
+                "8otw8otl0ki7os4",
+                "8otw8otl0ki7os5",
+                "8otw8otl0ki7os6",
+                "3zt78vrtl15w0c7y",
+                "3zt78vrtl15w0c7z",
+                "bwzktntl1u6x58p",
+                "bwzktntl1u6x58q",
+                "bwzktntl1u6x58r",
+                "201ptl1wxwgb5",
+                "201ptl1wxwgb7",
+                "lmmwotl2gy7mii",
+                "lmmwotl2gy7mij",
+                "12a9z6xl6wz66cm",
+                "12a9z6xl6wz66co",
+                "12a9z6xl6wz66cp",
+                "3a3f7xl6zvhkqo",
+                "3a3f7xl6zvhkqp",
+                "3a3f7xl6zvhkqq",
+                "9sryxl79who9b",
+                "9sryxl79who9c"
+            ],
+            "history": [
+                {
+                    "timestamp": 1.611006673845E12,
+                    "season": 11,
+                    "action": "Team Created",
+                    "target": "Vendetta"
+                },
+                {
+                    "timestamp": 1.61103948189E12,
+                    "action": "Joined team",
+                    "target": "ZalgoJack01#1716",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.611039483594E12,
+                    "action": "Joined team",
+                    "target": "IndigoZap#1829",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.611068671649E12,
+                    "action": "Joined team",
+                    "target": "scH#11574",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.61106868154E12,
+                    "action": "Joined team",
+                    "target": "DanielSan#1784",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.611170051003E12,
+                    "action": "Joined team",
+                    "target": "Lusmos#1935",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.612894361892E12,
+                    "action": "Added to division",
+                    "target": "Nexus",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.613837236679E12,
+                    "action": "Joined team",
+                    "target": "Haldir#1130",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.617676753599E12,
+                    "action": "Joined team",
+                    "target": "Legacy#1538",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.617676782794E12,
+                    "action": "Joined team",
+                    "target": "DarkAngel#15100",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1.628046319243E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1.628812951479E12,
+                    "action": "Joined team",
+                    "target": "alekitty1512#1891",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1.643165654403E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.643857612948E12,
+                    "action": "Joined team",
+                    "target": "REBORN#11837",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.644855011543E12,
+                    "action": "Joined team",
+                    "target": "ChampofHorde#1421",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.658590572434E12,
+                    "action": "Joined team",
+                    "target": "T0ru#1232",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.659503526746E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "vendetta",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": null,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "-5",
+            "teamMembers": [
+                {
+                    "displayName": "Gioxerus#1521"
+                },
+                {
+                    "id": "6006039b9ba413002219834e",
+                    "displayName": "ZalgoJack01#1716"
+                },
+                {
+                    "id": "6005fd3e20e4fa00226566e8",
+                    "displayName": "IndigoZap#1829"
+                },
+                {
+                    "id": "6006329c0b86d2002838047a",
+                    "displayName": "scH#11574"
+                },
+                {
+                    "id": "60065c1c0b86d2002838050e",
+                    "displayName": "DanielSan#1784"
+                },
+                {
+                    "id": "5f61940d2b5ed4001763d947",
+                    "displayName": "Lusmos#1935"
+                },
+                {
+                    "id": "60120db9570cea0028f84868",
+                    "displayName": "Haldir#1130"
+                },
+                {
+                    "id": "5f20c54a091b56001714a5bc",
+                    "displayName": "ChampofHorde#1421"
+                },
+                {
+                    "id": "62d5c40764e7e700216ac225",
+                    "displayName": "T0ru#1232"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "Gioxerus#1521",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "acknowledge": true,
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "Vendetta",
+                "oldDivision": "Heroic",
+                "returningPlayers": "Most",
+                "returningPlayersDiv": "Nexus-Heroic",
+                "newPlayers": "T0ru",
+                "divisionPlacement": "Nexus-Heroic",
+                "otherLeagues": "Yes",
+                "eastWest": "east",
+                "registered": true
+            },
+            "ticker": "Vdta",
+            "hpMmrAvg": 3044,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 25,
+            "teamName": "Vendetta",
+            "__v": 146,
+            "logo": "Vendetta_2573.png",
+            "parseStats": true,
+            "ticker_lower": "vdta",
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "61b43752018ad2001fa933e1",
+            "assistantCaptain": [],
+            "invitedUsers": [],
+            "replays": [
+                "3j3b9v6vkx9v0yj0",
+                "3j3b9v6vkx9v0yj2",
+                "3j3b9v6vkx9v0yj3",
+                "zk3kvkxdg4g9t",
+                "zk3kvkxdg4g9u",
+                "zk3kvkxdg4g9v",
+                "3djltky7rk2g8",
+                "3djltky7rk2ga",
+                "3djltky7rk2gb",
+                "68entkyhv3yxu",
+                "68entkyhv3yxw",
+                "1fc4ctkzbx6ryu",
+                "1fc4ctkzbx6ryv",
+                "1fc4ctkzbx6ryw",
+                "1fc4ctkzbx6ryx",
+                "5d6547tkzkq7tr1",
+                "5d6547tkzkq7tr2",
+                "5d6547tkzkq7tr3",
+                "5d6547tkzkq7tr4",
+                "1lhtkzu9w8te",
+                "1lhtkzu9w8tg",
+                "1lhtkzu9w8th",
+                "1lhtkzu9w8ti",
+                "1lhtkzu9w8tj",
+                "6q1tl0bfqimc",
+                "6q1tl0bfqime",
+                "6q1tl0bfqimf",
+                "c2ei1tl0d7cqbm",
+                "c2ei1tl0d7cqbn",
+                "c2ei1tl0d7cqbo",
+                "3xbk9tl0lu8wyw",
+                "3xbk9tl0lu8wyx",
+                "3xbk9tl0lu8wyy",
+                "3xbk9tl0lu8wyz",
+                "4cz37tl0vsiewa",
+                "4cz37tl0vsiewb",
+                "4cz37tl0vsiewc",
+                "2ei0amvtl5adhhm6",
+                "2ei0amvtl5adhhm7",
+                "12a9z6xl6wz66cm",
+                "12a9z6xl6wz66co",
+                "12a9z6xl6wz66cp"
+            ],
+            "history": [
+                {
+                    "timestamp": 1.639200594639E12,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "Baby Diamond Hands"
+                },
+                {
+                    "timestamp": 1.63924966829E12,
+                    "action": "Joined team",
+                    "target": "McGibblets#11997",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.639249669575E12,
+                    "action": "Joined team",
+                    "target": "Casp3r#21720",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.639249670387E12,
+                    "action": "Joined team",
+                    "target": "OXGCascon#2165",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.639271259853E12,
+                    "action": "Joined team",
+                    "target": "Unforgiven#22834",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.639982760406E12,
+                    "action": "Joined team",
+                    "target": "McGibblets#11997",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.640008190385E12,
+                    "action": "Joined team",
+                    "target": "Vivanchey#1516",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.640023217796E12,
+                    "action": "Joined team",
+                    "target": "Casp3r#21720",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.641868314731E12,
+                    "action": "Joined team",
+                    "target": "SimplyDK#2206",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.643165649277E12,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.646956614677E12,
+                    "action": "Joined team",
+                    "target": "Gaflo#21356",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.65637380818E12,
+                    "action": "Joined team",
+                    "target": "WhiteTiger#2619",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.658948293238E12,
+                    "action": "Joined team",
+                    "target": "DHSimplyDK#2387",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.658963205E12,
+                    "action": "Joined team",
+                    "target": "Bob#12778",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.65950352675E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.660526447669E12,
+                    "action": "Joined team",
+                    "target": "DHUnforgiven#2883",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "baby diamond hands",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": "Diamond Hands academy team",
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "DHKee#1552"
+                },
+                {
+                    "id": "5dc5d836fb7c4a00173ed482",
+                    "displayName": "DHMcGibblets#1121"
+                },
+                {
+                    "id": "62b919ce689d8b001d6cb72e",
+                    "displayName": "DHWhiteTiger#2720"
+                },
+                {
+                    "displayName": "DHSimplyDK#2387"
+                },
+                {
+                    "id": "5f3c45cba28b420017c9a3f1",
+                    "displayName": "DHBob#11355"
+                },
+                {
+                    "id": "61b4a90f018ad2001fa9340e",
+                    "displayName": "DHUnforgiven#2883"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "DHKee#1552",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "Baby Diamond Hands",
+                "oldDivision": "Storm",
+                "returningPlayersDiv": "Storm",
+                "newPlayers": "WhiteTiger, Bob",
+                "divisionPlacement": "Heroic",
+                "eastWest": "east",
+                "acknowledge": true,
+                "returningPlayers": "Kee, Simply DK, McGibblets",
+                "registered": true
+            },
+            "ticker": "babydh",
+            "hpMmrAvg": 2988,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": "https://twitter.com/diamondhandsorg",
+            "youtube": "https://www.youtube.com/channel/UCdrisrcn7E86zZwBsLKg5tg",
+            "stormRankAvg": 0,
+            "teamName": "Baby Diamond Hands",
+            "__v": 93,
+            "logo": "Baby_Diamond_Hands_6605.png",
+            "ticker_lower": "bbdh",
+            "parseStats": false,
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "61d20b6505c6c4001fdba4f9",
+            "assistantCaptain": [
+                "Virtuoso#11318"
+            ],
+            "invitedUsers": [
+                "Xatiie#11272"
+            ],
+            "replays": [
+                "fw2awtkz6ezywq",
+                "fw2awtkz6ezywr",
+                "4ctkzm49f2m",
+                "4ctkzm49f2n",
+                "20gxtkzrtdq1p",
+                "20gxtkzrtdq1q",
+                "3s1u2eltl01rwc71",
+                "3s1u2eltl01rwc72",
+                "305f1u8tl0g9r2s8",
+                "305f1u8tl0g9r2s9",
+                "305f1u8tl0g9r2sa",
+                "4cz37tl0vt3hkn",
+                "4cz37tl0vt3hko",
+                "4cz37tl0vt3hkp",
+                "3zt78vrtl15u09fq",
+                "3zt78vrtl15u09fs",
+                "3zt78vrtl15u09fu",
+                "8vvlxvtl1ftnyjd",
+                "8vvlxvtl1ftnyjf",
+                "8vvlxvtl1ftnyjg",
+                "3216btl1rd8ur4",
+                "3216btl1rd8ur5",
+                "3216btl1rd8ur6",
+                "40jf1stl1ydxd2o",
+                "40jf1stl1ydxd2p",
+                "40jf1stl1ydxd2q",
+                "ejiztl2l8niz7",
+                "ejiztl2l8niz8",
+                "4idkpttl2v8zqgj",
+                "4idkpttl2v8zqgk",
+                "4idkpttl2v8zqgl",
+                "2ei0amvtl5ah7art",
+                "2ei0amvtl5ah7pwm",
+                "2ei0amvtl5ah8rx7",
+                "2ei0amvtl5ah8xy4",
+                "1q4lqxl6oeoack",
+                "1q4lqxl6oeoacl",
+                "1q4lqxl6oeoacm",
+                "3a3f7xl6zvhkqo",
+                "3a3f7xl6zvhkqp",
+                "3a3f7xl6zvhkqq",
+                "152lk2xl78iwa8e",
+                "152lk2xl78iwa8f",
+                "152lk2xl78iwa8g"
+            ],
+            "history": [
+                {
+                    "timestamp": 1.641155429018E12,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "IMAGINE"
+                },
+                {
+                    "timestamp": 1.641169200179E12,
+                    "action": "Joined team",
+                    "target": "Virtuoso#11318",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.641616246272E12,
+                    "action": "Joined team",
+                    "target": "RichardGere#11104",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.641616251513E12,
+                    "action": "Joined team",
+                    "target": "FatalRampage#11789",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.641618551101E12,
+                    "action": "Joined team",
+                    "target": "McNulty#1363",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.641854015146E12,
+                    "action": "Joined team",
+                    "target": "Breakwood#11897",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.643165654406E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1.657851703811E12,
+                    "action": "Joined team",
+                    "target": "Xatiie#11272",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.659503526752E12,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "imagine",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "22:00",
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2200
+                },
+                "tuesday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "22:00",
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2200
+                },
+                "wednesday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "22:00",
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2200
+                },
+                "thursday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "22:00",
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2200
+                },
+                "friday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "22:00",
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2200
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "-5",
+            "teamMembers": [
+                {
+                    "displayName": "JTR30k#1755"
+                },
+                {
+                    "id": "5c6109e96626300017219622",
+                    "displayName": "Virtuoso#11318"
+                },
+                {
+                    "id": "5c613a6e662630001721965e",
+                    "displayName": "RichardGere#11104"
+                },
+                {
+                    "id": "5c53ce03bd2054001703012c",
+                    "displayName": "FatalRampage#11789"
+                },
+                {
+                    "id": "5f055191d2606300177523db",
+                    "displayName": "McNulty#1363"
+                },
+                {
+                    "id": "5c516003af677d00179a900c",
+                    "displayName": "Breakwood#11897"
+                },
+                {
+                    "id": "5d02e7073ea4370017be8e8b",
+                    "displayName": "Xatiie#11272"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "JTR30k#1755",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "IMAGINE",
+                "oldDivision": "Heroic",
+                "returningPlayers": "5",
+                "returningPlayersDiv": "Heroic",
+                "newPlayers": "Xatiie#11272",
+                "teamChanges": "30k Violet",
+                "divisionPlacement": "Heroic",
+                "priorPlacement": "Seemed accurate to me!",
+                "otherLeagues": "No other competitions yet",
+                "eastWest": "west",
+                "acknowledge": true,
+                "registered": true
+            },
+            "ticker": "IMGN",
+            "hpMmrAvg": 3040,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 27,
+            "teamName": "IMAGINE",
+            "__v": 64,
+            "logo": "IMAGINE_2457.png",
+            "ticker_lower": "imgn",
+            "parseStats": false,
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "62c317f7df8554001d2b71e8",
+            "assistantCaptain": [],
+            "invitedUsers": [],
+            "replays": [
+                "3vp7vxl6u7exdg",
+                "3vp7vxl6u7exdh",
+                "3vp7vxl6u7exdi",
+                "imxl6yfdybs",
+                "imxl6yfdybt",
+                "imxl6yfdybu"
+            ],
+            "history": [
+                {
+                    "timestamp": 1.656952823098E12,
+                    "season": 14,
+                    "action": "Team Created",
+                    "target": "Team Draft Gap"
+                },
+                {
+                    "timestamp": 1.657350675313E12,
+                    "action": "Joined team",
+                    "target": "BBWcallme#1554",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.657492053065E12,
+                    "action": "Joined team",
+                    "target": "Psyren#11729",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.657595677382E12,
+                    "action": "Joined team",
+                    "target": "Chrissinator#1804",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.657597052821E12,
+                    "action": "Joined team",
+                    "target": "RobotWizard#136992",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1.65950349875E12,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "team draft gap",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 3,
+            "descriptionOfTeam": "Purify the draft griefers",
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "BBWhashmer#1347"
+                },
+                {
+                    "id": "5cfbef2780899b0017d1c2bd",
+                    "displayName": "BBWcallme#1554"
+                },
+                {
+                    "id": "5cfc019780899b0017d1c2de",
+                    "displayName": "Psyren#11729"
+                },
+                {
+                    "id": "61cb82f5ebfb03001f51b3a4",
+                    "displayName": "Chrissinator#1804"
+                },
+                {
+                    "id": "5e8b6cad383bc100171a97b1",
+                    "displayName": "RobotWizard#136992"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "BBWhashmer#1347",
+            "teamMMRAvg": 2746,
+            "divisionDisplayName": "Storm",
+            "divisionConcat": "storm",
+            "questionnaire": {
+                "registered": true,
+                "pickedMaps": [],
+                "lastSeason": "no",
+                "compLevel": "Balance winning with fun",
+                "skillGuess": "Master",
+                "eastWest": "east",
+                "acknowledge": true
+            },
+            "ticker": "tdg",
+            "hpMmrAvg": 3035,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "Team Draft Gap",
+            "__v": 24,
+            "logo": "Team_Draft_Gap_2098.png",
+            "parseStats": false
+        },
+        {
+            "oldId": "5f396cbb0044a90017fad057",
+            "assistantCaptain": [
+                "ellixya#1526"
+            ],
+            "invitedUsers": [
+                "Plasticine#11853"
+            ],
+            "replays": [
+                "3taa3onkez17dhv",
+                "b07rvmnkf4yntgi",
+                "b07rvmnkf4yntgj",
+                "1b4xnkf5z1sv4",
+                "pgrnkfev380q",
+                "pgrnkfev380r",
+                "2qnhonkfr3ylum",
+                "2qnhonkfr3ylup",
+                "a9zdnkg2qg2gt",
+                "a9zdnkg2qg2gv",
+                "75b82nkg4hsdmu",
+                "75b82nkg4hsdmw",
+                "ho0gnkg7bj4p1",
+                "ho0gnkg7bj4p3",
+                "3o84rankg9madq7",
+                "3o84rankg9madqc",
+                "2y8nkgpzqjc1",
+                "2y8nkgpzqjc2",
+                "1moz3rnkgu74nbd",
+                "1moz3rnkgu74nbf",
+                "4iqnkh5rmmhe",
+                "4iqnkh5rmmhg",
+                "4iqnkh5rmmhh",
+                "3ze85nkha5m1rw",
+                "3ze85nkha5m1ry",
+                "3ze2myklc21s4j",
+                "3ze2myklc21s4n",
+                "3ze2myklc21s4o",
+                "r7rf6l14kllsanjg",
+                "r7rf6l14kllsanji",
+                "6d5uyklucgo6d",
+                "6d5uyklucgo6f",
+                "3cand11km4clf6j",
+                "3cand11km4clf6k",
+                "1lf81sykmcqwdx1",
+                "1lf81sykmcqwdx7",
+                "1dbwiquks8g3jre",
+                "1dbwiquks8g3jrf",
+                "1iqe5bvksgejblc",
+                "1iqe5bvksgejbld",
+                "1fl5vkt0zf4nc",
+                "1fl5vkt0zf4nd",
+                "9yo6zuvktf1dv0q",
+                "9yo6zuvktf1dv0r",
+                "9yo6zuvktf1dv0s",
+                "9yo6zuvktf1p2uu",
+                "9yo6zuvktf1p2uw",
+                "9yo6zuvktf1p2ux",
+                "5x5ovktnv736g",
+                "5x5ovktnv736h",
+                "5x5ovktnv736i",
+                "4ftvpmivkttipogq",
+                "3yntd2bvku6af79w",
+                "3yntd2bvku6af79y",
+                "rsvyvkuhvci3h",
+                "rsvyvkuhvci3i",
+                "csycsvkuq5klah",
+                "csycsvkuq5klaj",
+                "cbzqlvkuqcj6ke",
+                "cbzqlvkuqcj6kf",
+                "3dgudvkvah7kzq",
+                "3dgudvkvah7kzr",
+                "3dgudvkvah7kzs",
+                "d28gctkyhl35nv",
+                "d28gctkyhl35nx",
+                "9k6b3tkzgjmrjf",
+                "9k6b3tkzgjmrjg",
+                "9k6b3tkzgjmrjh",
+                "9k6b3tkzgjozt6",
+                "9k6b3tkzgjozt7",
+                "x8trab1tkzz0tsjs",
+                "x8trab1tkzz0tsjt",
+                "x8trab1tkzz0tsju",
+                "5t5ltl090i24o",
+                "5t5ltl090i24p",
+                "5t5ltl090i24q",
+                "dl1t1dtl0nb3cyv",
+                "dl1t1dtl0nb3cyw",
+                "1gmvwtl0v375ej",
+                "1gmvwtl0v375ek",
+                "3zt78vrtl15rjtaw",
+                "3zt78vrtl15rjtay",
+                "3zt78vrtl15rjtaz",
+                "3zt78vrtl15vimie",
+                "3zt78vrtl15vimif",
+                "3zt78vrtl15vimig",
+                "i0iktl1ztrsvl",
+                "i0iktl1ztrsvm",
+                "i0iktl1ztrsvn",
+                "lmmwotl2gza8er",
+                "lmmwotl2gza8et",
+                "lmmwotl2gza8eu",
+                "h6ixvtl2ne5wv1",
+                "h6ixvtl2ne5wv7",
+                "h6ixvtl2ne5wv8",
+                "h6ixvtl2ne5wv9",
+                "1dtrtl36dhh8r",
+                "1dtrtl36dhh8s",
+                "1dtrtl36dhh8t",
+                "1q4lqxl6oeoack",
+                "1q4lqxl6oeoacl",
+                "1q4lqxl6oeoacm",
+                "12a9z6xl6xne4dv",
+                "12a9z6xl6xne4dx",
+                "12a9z6xl6xne4dy",
+                "152lk2xl78g0vv5",
+                "152lk2xl78g0vv6"
+            ],
+            "history": [
+                {
+                    "timestamp": 1597598907441,
+                    "season": 10,
+                    "action": "Team Created",
+                    "target": "Runnin WIld"
+                },
+                {
+                    "timestamp": 1597602282945,
+                    "action": "Joined team",
+                    "target": "FalseTruth#1690",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1597604447515,
+                    "action": "Joined team",
+                    "target": "Thoragnor#1882",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1597604452331,
+                    "action": "Joined team",
+                    "target": "Droslag#1159",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1597610290967,
+                    "action": "Joined team",
+                    "target": "MrExecutive#1692",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1597614295663,
+                    "action": "Joined team",
+                    "target": "Salvaje#11130",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1599019461191,
+                    "action": "Added to division",
+                    "target": "A West",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1599855111373,
+                    "action": "Joined team",
+                    "target": "Plasticine#11853",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1600061390180,
+                    "action": "Joined team",
+                    "target": "Caticide#1421",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1602632186827,
+                    "action": "Joined team",
+                    "target": "Ripper#1267",
+                    "season": 10
+                },
+                {
+                    "timestamp": 1609375773532,
+                    "action": "Joined team",
+                    "target": "AcidSnake#1941",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1609375774126,
+                    "action": "Joined team",
+                    "target": "Legacy#1538",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1609717151789,
+                    "action": "Joined team",
+                    "target": "EasyK#11683",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1609717153584,
+                    "action": "Joined team",
+                    "target": "MrExecutive#1692",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1611527461720,
+                    "action": "Joined team",
+                    "target": "FullOnGritz#1557",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1612894366157,
+                    "action": "Added to division",
+                    "target": "A East",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1614298142796,
+                    "action": "Joined team",
+                    "target": "Zukhini#11503",
+                    "season": 11
+                },
+                {
+                    "timestamp": 1626236559866,
+                    "action": "Joined team",
+                    "target": "C10vurhd1#1416",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626273779544,
+                    "action": "Joined team",
+                    "target": "ellixya#1526",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1628046323923,
+                    "action": "Added to division",
+                    "target": "Nexus",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1643165658798,
+                    "action": "Added to division",
+                    "target": "Nexus",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1659503526745,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "running wild",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": true,
+                    "startTime": "21:00",
+                    "endTime": "23:45",
+                    "startTimeNumber": 2100,
+                    "endTimeNumber": 2345
+                },
+                "tuesday": {
+                    "available": true,
+                    "startTime": "21:00",
+                    "endTime": "23:45",
+                    "startTimeNumber": 2100,
+                    "endTimeNumber": 2345
+                },
+                "wednesday": {
+                    "available": true,
+                    "startTime": "21:00",
+                    "endTime": "23:45",
+                    "startTimeNumber": 2100,
+                    "endTimeNumber": 2345
+                },
+                "thursday": {
+                    "available": true,
+                    "startTime": "21:00",
+                    "endTime": "23:45",
+                    "startTimeNumber": 2100,
+                    "endTimeNumber": 2345
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 3,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "-5",
+            "teamMembers": [
+                {
+                    "displayName": "Cairu#1472"
+                },
+                {
+                    "id": "5f5d1b39f928b60017f80fe4",
+                    "displayName": "Caticide#1421"
+                },
+                {
+                    "id": "5f3973ca0044a90017fad06d",
+                    "displayName": "MrExecutive#1692"
+                },
+                {
+                    "id": "600cc6d870394d0028171545",
+                    "displayName": "FullOnGritz#1557"
+                },
+                {
+                    "id": "5ffdfdbc64fe0f002822ac73",
+                    "displayName": "C10vurhd1#1416"
+                },
+                {
+                    "id": "5dc1ceaf77e9840017cbb3ba",
+                    "displayName": "ellixya#1526"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "Cairu#1472",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "registered": true
+            },
+            "ticker": "rw",
+            "hpMmrAvg": 2928,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "teamName": "Running Wild",
+            "__v": 181,
+            "ticker_lower": "rw",
+            "logo": "Running_Wild_3333.png",
+            "parseStats": false,
+            "stormRankAvg": 25,
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "60f230a5c51f73002270571f",
+            "assistantCaptain": [
+                "SHreddedWInd#11318"
+            ],
+            "invitedUsers": [
+                "GingiBoi#1791",
+                "DHCæsarsalad#1517"
+            ],
+            "replays": [
+                "1oopy8aukrec2v4h",
+                "1oopy8aukrec3313",
+                "1oopy8aukrec3c4s",
+                "1oopy8aukrec68k8",
+                "1oopy8aukrec6jqy",
+                "l0gsukrfsy400",
+                "l0gsukrfsy401",
+                "l0gsukrgkjo3i",
+                "l0gsukrgkjyfl",
+                "l0gsukrgkk9rg",
+                "4kpk06ukrob042j",
+                "4kpk06ukrob042k",
+                "4kpk06ukrob042l",
+                "fsluks6gtea7",
+                "fsluks6gtea8",
+                "fsluks6gtea9",
+                "r5dtzvksk3eiw1",
+                "r5dtzvksk3eiw3",
+                "r5dtzvksk3eiw4",
+                "r5dtzvksk3eiw5",
+                "r5dtzvksk3eiw6",
+                "16yyxavkt2h1qw5",
+                "16yyxavkt2h1qw6",
+                "16yyxavkt2h1qw7",
+                "16yyxavkt2h1qw8",
+                "16yyxavkt2h1qw9",
+                "9yo6zuvktethwv6",
+                "9yo6zuvktethwv7",
+                "9yo6zuvktethwv8",
+                "9yo6zuvktethwv9",
+                "9yo6zuvktethwva",
+                "9yo6zuvktf1obtb",
+                "9yo6zuvktf1obtc",
+                "9yo6zuvktf1obtd",
+                "1mnvvktvo6olf",
+                "1mnvvktvo6olg",
+                "1mnvvktvo6olh",
+                "1mnvvktvo6oli",
+                "u555vku3k5m28",
+                "u555vku3k5m29",
+                "u555vku3k5m2a",
+                "u555vku3k5m2b",
+                "csycsvkuou5mta",
+                "csycsvkuou61kg",
+                "3j3b9v6vkx9v0yj0",
+                "3j3b9v6vkx9v0yj2",
+                "3j3b9v6vkx9v0yj3",
+                "279pctky3tyaq4",
+                "279pctky3tyaq5",
+                "d28gctkyhl35nv",
+                "d28gctkyhl35nx",
+                "68entkyhvrz7s",
+                "68entkyhvrz7t",
+                "68entkyhvrz7u",
+                "68entkyhywfl3",
+                "68entkyhywfl4",
+                "rdzy6tkywdjdx6",
+                "rdzy6tkywdjdx4",
+                "5w7tkz7xmmqp",
+                "5w7tkz7xmmqr",
+                "5w7tkz7xmmqs",
+                "5w7tkz7xmmqt",
+                "1ttq3tkzi2k7tz",
+                "1ttq3tkzi2k7u5",
+                "1ttq3tkzi2k7u6",
+                "1ttq3tkzi2k7u7",
+                "1lhtkzu9w8te",
+                "1lhtkzu9w8tg",
+                "1lhtkzu9w8th",
+                "1lhtkzu9w8ti",
+                "1lhtkzu9w8tj",
+                "2vg4es4tl07g8ohr",
+                "2vg4es4tl07g8ohs",
+                "2vg4es4tl07g8oht",
+                "6q1tl0bye8tr",
+                "6q1tl0bye8ts",
+                "6q1tl0bye8tt",
+                "6q1tl0bye8tu",
+                "8otw8otl0kgx0nz",
+                "8otw8otl0kgx0o0",
+                "8otw8otl0kgx0o1",
+                "yzt52b6tl100sy2j",
+                "yzt52b6tl100sy2k",
+                "yzt52b6tl100sy2l",
+                "yzt52b6tl100sy2m",
+                "8vvlxvtl1fx45gx",
+                "8vvlxvtl1fx45gy",
+                "8vvlxvtl1fx45gz",
+                "8vvlxvtl1fx45h0",
+                "8vvlxvtl1fx45h1",
+                "17sptl1usdo89",
+                "17sptl1usdo8a",
+                "17sptl1usdo8b",
+                "17sptl1usdo8c",
+                "imxl6y9doi2",
+                "imxl6y9doi3",
+                "imxl6y9doi4"
+            ],
+            "history": [
+                {
+                    "timestamp": 1626484901777,
+                    "season": 12,
+                    "action": "Team Created",
+                    "target": "Can't Censor Ship"
+                },
+                {
+                    "timestamp": 1626552320188,
+                    "action": "Joined team",
+                    "target": "Nathanatos#1141",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626552322800,
+                    "action": "Joined team",
+                    "target": "DueDiligence#11602",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626559997699,
+                    "action": "Joined team",
+                    "target": "Marlow#21592",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626560002823,
+                    "action": "Joined team",
+                    "target": "Zeenarus#1597",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626574518136,
+                    "action": "Joined team",
+                    "target": "Troy1010#1679",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1626618011646,
+                    "action": "Joined team",
+                    "target": "HPTNano#2192",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1627842771062,
+                    "action": "Joined team",
+                    "target": "ReT#1484",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1628450041959,
+                    "action": "Joined team",
+                    "target": "CCporky#1344",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1628477858736,
+                    "action": "Joined team",
+                    "target": "Zeenarus#1597",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1630005062779,
+                    "action": "Joined team",
+                    "target": "STRMepic#1442",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1630007872797,
+                    "action": "Joined team",
+                    "target": "Zeenarus#1597",
+                    "season": 12
+                },
+                {
+                    "timestamp": 1639161372711,
+                    "action": "Joined team",
+                    "target": "DueDiligence#11602",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639283880551,
+                    "action": "Joined team",
+                    "target": "Breakwood#11897",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639289302842,
+                    "action": "Joined team",
+                    "target": "Deathstrykes#1950",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639289304268,
+                    "action": "Joined team",
+                    "target": "Xatiie#11529",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639328533812,
+                    "action": "Joined team",
+                    "target": "BBWhashmer#1347",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639372758405,
+                    "action": "Joined team",
+                    "target": "SHreddedWInd#11318",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640008184647,
+                    "action": "Joined team",
+                    "target": "MundaneZebra#11630",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641356590543,
+                    "action": "Joined team",
+                    "target": "RJBarrett5#1280",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1642271660614,
+                    "action": "Joined team",
+                    "target": "GingiBoi#1791",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165654404,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165654405,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1646859281059,
+                    "action": "Joined team",
+                    "target": "GingiBoi#1791",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1658219667121,
+                    "action": "Joined team",
+                    "target": "Pepper#12432",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658466886116,
+                    "action": "Joined team",
+                    "target": "Saikatora#11195",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658635467754,
+                    "action": "Joined team",
+                    "target": "SIMPorky#1435",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1659503498747,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "can't censor ship",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "id": "60f1fda7c51f730022705689",
+                    "displayName": "DueDiligence#11602"
+                },
+                {
+                    "id": "5f17472d4f7f100017cd5009",
+                    "displayName": "Deathstrykes#1950"
+                },
+                {
+                    "id": "5d045d3ef545fe00177fff4d",
+                    "displayName": "SHreddedWInd#11318"
+                },
+                {
+                    "id": "600bbf51027991002985b509",
+                    "displayName": "Pepper#12432"
+                },
+                {
+                    "id": "61b18ee3633ff2001f120c57",
+                    "displayName": "Saikatora#11195"
+                },
+                {
+                    "displayName": "SIMPorky#1435"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "DueDiligence#11602",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "registered": true
+            },
+            "ticker": "c c s",
+            "hpMmrAvg": 3145,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "Can't Censor Ship",
+            "__v": 206,
+            "logo": "Can't_Censor_Ship_1284.png",
+            "ticker_lower": "c c s",
+            "parseStats": false,
+            "divisionConcat": "storm",
+            "divisionDisplayName": "Storm"
+        },
+        {
+            "oldId": "61b0bb8206a4bb001fd1635b",
+            "assistantCaptain": [],
+            "invitedUsers": [
+                "SQUiRREL#1505"
+            ],
+            "replays": [
+                "68entkyhv3yxu",
+                "68entkyhv3yxw",
+                "68entkyhx2izt",
+                "68entkyhx2izu",
+                "20qttkz7a7q6y",
+                "20qttkz7a7q6z",
+                "20qttkz7a7q70",
+                "1lhtkzumm4kc",
+                "1lhtkzumm4kd",
+                "3s1u2eltl01rwc71",
+                "3s1u2eltl01rwc72",
+                "c2ei1tl0dboa8y",
+                "c2ei1tl0dboa8z",
+                "dl1t1dtl0nd3qsw",
+                "dl1t1dtl0nd3qsx",
+                "dl1t1dtl0nd3qsy",
+                "4cz37tl0vwxjyc",
+                "4cz37tl0vwxjye",
+                "4cz37tl0vwxjyf",
+                "2h2stl178vixq",
+                "2h2stl178vixr",
+                "2h2stl178vixs",
+                "8vvlxvtl1fteywr",
+                "8vvlxvtl1fteyws",
+                "bwzktntl1u6x58p",
+                "bwzktntl1u6x58q",
+                "bwzktntl1u6x58r",
+                "40jf1stl1ykh85h",
+                "40jf1stl1ykh85i",
+                "40jf1stl1ykh85j",
+                "1q4lqxl6p99b5k",
+                "1q4lqxl6p99b5m",
+                "imxl6ygzuyk",
+                "imxl6ygzuyl",
+                "imxl6ygzuym"
+            ],
+            "history": [
+                {
+                    "timestamp": 1638972290311,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "The Seven Rings"
+                },
+                {
+                    "timestamp": 1639161369030,
+                    "action": "Joined team",
+                    "target": "Saikatora#11195",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639161370601,
+                    "action": "Joined team",
+                    "target": "Cyrus#1974",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639161374541,
+                    "action": "Joined team",
+                    "target": "UNSCÐiaco#1788",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639249667084,
+                    "action": "Joined team",
+                    "target": "ivIwAwIvi#1586",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639761413118,
+                    "action": "Joined team",
+                    "target": "Zero#124715",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639761419830,
+                    "action": "Joined team",
+                    "target": "RootBeerGuy#1706",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165654405,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1645744334829,
+                    "action": "Joined team",
+                    "target": "GGEZNEW#1128",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1645758658219,
+                    "action": "Joined team",
+                    "target": "Faiser#2720",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1647381587230,
+                    "action": "Joined team",
+                    "target": "Kick#11287",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1652110174235,
+                    "action": "Joined team",
+                    "target": "SQUiRREL#1505",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1659503526747,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1659994956767,
+                    "action": "Joined team",
+                    "target": "zhubaohi#1508",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "the seven rings",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "tuesday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "wednesday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "thursday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "friday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "saturday": {
+                    "available": true,
+                    "startTime": "7:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 700,
+                    "endTimeNumber": 2345
+                },
+                "sunday": {
+                    "available": true,
+                    "startTime": "19:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 1900,
+                    "endTimeNumber": 2345
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": "Champion of Brasil Region, Multiple Finalists on Latam and US Tournaments, looking to increase our skill by playing with the best teams, very competitive experience and also good logistic.",
+            "rolesNeeded": {
+                "tank": true,
+                "meleeassassin": true,
+                "rangedassassin": true,
+                "support": false,
+                "offlane": true,
+                "healer": true,
+                "flex": true
+            },
+            "timeZone": "-6",
+            "teamMembers": [
+                {
+                    "displayName": "AvenaQuaker#11401"
+                },
+                {
+                    "id": "61b1b44f633ff2001f120c65",
+                    "displayName": "Cyrus#1974"
+                },
+                {
+                    "id": "61b26aff633ff2001f120c86",
+                    "displayName": "ivIwAwIvi#1586"
+                },
+                {
+                    "id": "5e6ea6c837146200173dea7a",
+                    "displayName": "RootBeerGuy#1706"
+                },
+                {
+                    "id": "5e9d1d0dd8faf100175a701b",
+                    "displayName": "Faiser#2720"
+                },
+                {
+                    "id": "5e9d1cc7d8faf100175a7017",
+                    "displayName": "Kick#11287"
+                },
+                {
+                    "id": "5f38822463fa1e0017d3cc2f",
+                    "displayName": "SQUiRREL#1505"
+                },
+                {
+                    "id": "62ed8e47c22e15002139e1b2",
+                    "displayName": "zhubaohi#1508"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "AvenaQuaker#11401",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "compLevel": "Very Competitive",
+                "lastSeason": "yes",
+                "oldTeam": "The Seven Rings",
+                "oldDivision": "Heroic",
+                "returningPlayers": "4",
+                "returningPlayersDiv": "Heroic ",
+                "newPlayers": "zhubaohi",
+                "teamChanges": "Not Really",
+                "divisionPlacement": "Heroic",
+                "priorPlacement": "fine",
+                "otherLeagues": "HRCS, TLHT, Nexomania",
+                "otherInfo": "Not Really",
+                "eastWest": "west",
+                "acknowledge": true,
+                "registered": true
+            },
+            "ticker": "07",
+            "hpMmrAvg": 3074,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 27,
+            "teamName": "The Seven Rings",
+            "__v": 90,
+            "ticker_lower": "07",
+            "logo": "The_Seven_Rings_4656.png",
+            "parseStats": false,
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "61b43752018ad2001fa933e1",
+            "assistantCaptain": [],
+            "invitedUsers": [],
+            "replays": [
+                "3j3b9v6vkx9v0yj0",
+                "3j3b9v6vkx9v0yj2",
+                "3j3b9v6vkx9v0yj3",
+                "zk3kvkxdg4g9t",
+                "zk3kvkxdg4g9u",
+                "zk3kvkxdg4g9v",
+                "3djltky7rk2g8",
+                "3djltky7rk2ga",
+                "3djltky7rk2gb",
+                "68entkyhv3yxu",
+                "68entkyhv3yxw",
+                "1fc4ctkzbx6ryu",
+                "1fc4ctkzbx6ryv",
+                "1fc4ctkzbx6ryw",
+                "1fc4ctkzbx6ryx",
+                "5d6547tkzkq7tr1",
+                "5d6547tkzkq7tr2",
+                "5d6547tkzkq7tr3",
+                "5d6547tkzkq7tr4",
+                "1lhtkzu9w8te",
+                "1lhtkzu9w8tg",
+                "1lhtkzu9w8th",
+                "1lhtkzu9w8ti",
+                "1lhtkzu9w8tj",
+                "6q1tl0bfqimc",
+                "6q1tl0bfqime",
+                "6q1tl0bfqimf",
+                "c2ei1tl0d7cqbm",
+                "c2ei1tl0d7cqbn",
+                "c2ei1tl0d7cqbo",
+                "3xbk9tl0lu8wyw",
+                "3xbk9tl0lu8wyx",
+                "3xbk9tl0lu8wyy",
+                "3xbk9tl0lu8wyz",
+                "4cz37tl0vsiewa",
+                "4cz37tl0vsiewb",
+                "4cz37tl0vsiewc",
+                "2ei0amvtl5adhhm6",
+                "2ei0amvtl5adhhm7",
+                "12a9z6xl6wz66cm",
+                "12a9z6xl6wz66co",
+                "12a9z6xl6wz66cp"
+            ],
+            "history": [
+                {
+                    "timestamp": 1639200594639,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "Baby Diamond Hands"
+                },
+                {
+                    "timestamp": 1639249668290,
+                    "action": "Joined team",
+                    "target": "McGibblets#11997",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639249669575,
+                    "action": "Joined team",
+                    "target": "Casp3r#21720",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639249670387,
+                    "action": "Joined team",
+                    "target": "OXGCascon#2165",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639271259853,
+                    "action": "Joined team",
+                    "target": "Unforgiven#22834",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1639982760406,
+                    "action": "Joined team",
+                    "target": "McGibblets#11997",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640008190385,
+                    "action": "Joined team",
+                    "target": "Vivanchey#1516",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640023217796,
+                    "action": "Joined team",
+                    "target": "Casp3r#21720",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641868314731,
+                    "action": "Joined team",
+                    "target": "SimplyDK#2206",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165649277,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1646956614677,
+                    "action": "Joined team",
+                    "target": "Gaflo#21356",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1656373808180,
+                    "action": "Joined team",
+                    "target": "WhiteTiger#2619",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658948293238,
+                    "action": "Joined team",
+                    "target": "DHSimplyDK#2387",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658963205000,
+                    "action": "Joined team",
+                    "target": "Bob#12778",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1659503526750,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1660526447669,
+                    "action": "Joined team",
+                    "target": "DHUnforgiven#2883",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "baby diamond hands",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": "Diamond Hands academy team",
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "DHKee#1552"
+                },
+                {
+                    "id": "5dc5d836fb7c4a00173ed482",
+                    "displayName": "DHMcGibblets#1121"
+                },
+                {
+                    "id": "62b919ce689d8b001d6cb72e",
+                    "displayName": "DHWhiteTiger#2720"
+                },
+                {
+                    "displayName": "DHSimplyDK#2387"
+                },
+                {
+                    "id": "5f3c45cba28b420017c9a3f1",
+                    "displayName": "DHBob#11355"
+                },
+                {
+                    "id": "61b4a90f018ad2001fa9340e",
+                    "displayName": "DHUnforgiven#2883"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "DHKee#1552",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "Baby Diamond Hands",
+                "oldDivision": "Storm",
+                "returningPlayersDiv": "Storm",
+                "newPlayers": "WhiteTiger, Bob",
+                "divisionPlacement": "Heroic",
+                "eastWest": "east",
+                "acknowledge": true,
+                "returningPlayers": "Kee, Simply DK, McGibblets",
+                "registered": true
+            },
+            "ticker": "babydh",
+            "hpMmrAvg": 2988,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": "https://twitter.com/diamondhandsorg",
+            "youtube": "https://www.youtube.com/channel/UCdrisrcn7E86zZwBsLKg5tg",
+            "stormRankAvg": 0,
+            "teamName": "Baby Diamond Hands",
+            "__v": 93,
+            "logo": "Baby_Diamond_Hands_6605.png",
+            "ticker_lower": "bbdh",
+            "parseStats": false,
+            "divisionConcat": "heroic",
+            "divisionDisplayName": "Heroic"
+        },
+        {
+            "oldId": "61cb3c24ebfb03001f51b352",
+            "assistantCaptain": [],
+            "invitedUsers": [
+                "Xatiie#11529",
+                "Marlow30K#2132"
+            ],
+            "replays": [
+                "1418tl1h9a1j7",
+                "17sptl1uxi5v1",
+                "17sptl1uxi5v2",
+                "201ptl1wxwgb5",
+                "201ptl1wxwgb7",
+                "qakntl244imr7",
+                "qakntl244j0a8",
+                "qakntl244jbzu",
+                "uizlvwetl2zf1ojs",
+                "uizlvwetl2zf1ojt",
+                "uizlvwetl2zf1oju",
+                "uizlvwetl2zf1ojv",
+                "509hxtl37xxixp",
+                "509hxtl37xxixr",
+                "509hxtl37xxixs"
+            ],
+            "history": [
+                {
+                    "timestamp": 1640709156426,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "30k Violet"
+                },
+                {
+                    "timestamp": 1640736715563,
+                    "action": "Joined team",
+                    "target": "Limuw30K#2407",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640807238904,
+                    "action": "Joined team",
+                    "target": "Xatiie30K#1101",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640807246347,
+                    "action": "Joined team",
+                    "target": "Marlow30K#2132",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1640831990169,
+                    "action": "Joined team",
+                    "target": "Albatoxx30K#1966",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641854008683,
+                    "action": "Joined team",
+                    "target": "Nagrom30K#2688",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165704862,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643911334463,
+                    "action": "Joined team",
+                    "target": "PandaC30K#2363",
+                    "season": 13
+                }
+            ],
+            "teamName_lower": "30k violet",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "EpicPlayr30K#1708"
+                },
+                {
+                    "id": "61cb85a7ebfb03001f51b3b2",
+                    "displayName": "Limuw30K#2407"
+                },
+                {
+                    "id": "60355d1e22cc5a00223a8e66",
+                    "displayName": "Marlow30K#2132"
+                },
+                {
+                    "id": "5e856956f5a09500176040d0",
+                    "displayName": "Albatoxx30K#1966"
+                },
+                {
+                    "id": "61dc84877d1061001dfe7687",
+                    "displayName": "Nagrom30K#2688"
+                },
+                {
+                    "id": "61f30403459c7f001d0bd75b",
+                    "displayName": "PandaC30K#2363"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "EpicPlayr30K#1708",
+            "teamMMRAvg": null,
+            "questionnaire": {},
+            "ticker": "30k",
+            "hpMmrAvg": 3152,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "30k Violet",
+            "__v": 70,
+            "logo": "30k_Violet_3822.png",
+            "parseStats": false
+        },
+        {
+            "oldId": "61d4869c283fa5001f474060",
+            "assistantCaptain": [],
+            "invitedUsers": [
+                "Goliath#1410",
+                "CTVSatat#1645",
+                "FlyestRaven#1595",
+                "jagermeister#1916"
+            ],
+            "replays": [
+                "68entkyhvdsha",
+                "68entkyhvdshb",
+                "68entkyhvdshc",
+                "68entkyhvrz7s",
+                "68entkyhvrz7t",
+                "68entkyhvrz7u",
+                "mlftkz9dmy8w",
+                "mlftkz9dmy8x",
+                "hlrbktkzjj618r",
+                "hlrbktkzjj618s",
+                "20gxtkzrms9tk",
+                "20gxtkzrms9tl",
+                "20gxtkzrms9tm",
+                "c2ei1tl0dboa8y",
+                "c2ei1tl0dboa8z",
+                "dl1t1dtl0n24qn8",
+                "dl1t1dtl0n24qna",
+                "4cz37tl0vt3hkn",
+                "4cz37tl0vt3hko",
+                "4cz37tl0vt3hkp"
+            ],
+            "history": [
+                {
+                    "timestamp": 1641318044694,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "Rook Gaming"
+                },
+                {
+                    "timestamp": 1641345159497,
+                    "action": "Joined team",
+                    "target": "SQUiRREL#1505",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641345161419,
+                    "action": "Joined team",
+                    "target": "Chakramm#1543",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641345163942,
+                    "action": "Joined team",
+                    "target": "Goliath#1410",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641743998344,
+                    "action": "Joined team",
+                    "target": "CTVSatat#1645",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641744016771,
+                    "action": "Joined team",
+                    "target": "Kuebico#1506",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1642025806172,
+                    "action": "Joined team",
+                    "target": "FlyestRaven#1595",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1642367402151,
+                    "action": "Joined team",
+                    "target": "Silentshoo#11553",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165654407,
+                    "action": "Added to division",
+                    "target": "Heroic",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643244884362,
+                    "action": "Joined team",
+                    "target": "Pudgenox#2777",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1646785034995,
+                    "action": "Joined team",
+                    "target": "jagermeister#1916",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1647373374047,
+                    "action": "Joined team",
+                    "target": "Eragonas#2447",
+                    "season": 13
+                }
+            ],
+            "teamName_lower": "rook gaming (withdrawn)",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "CTVSatat#1645"
+                },
+                {
+                    "displayName": "Kuebico#1506"
+                },
+                {
+                    "id": "5dcc4e008f881700175c45cf",
+                    "displayName": "Silentshoo#11553"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "Kuebico#1506",
+            "teamMMRAvg": null,
+            "questionnaire": {},
+            "ticker": "rkg",
+            "hpMmrAvg": 2913,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": "https://twitter.com/_RookGaming",
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "Rook Gaming (Withdrawn)",
+            "__v": 60,
+            "logo": "Rook_Gaming_8300.png",
+            "ticker_lower": "rkg",
+            "parseStats": false
+        },
+        {
+            "oldId": "61d6e3ed9ad971001fd05d51",
+            "assistantCaptain": [],
+            "invitedUsers": [],
+            "replays": [
+                "68entkyhuhf8k",
+                "68entkyhuhf8l",
+                "1len7htkzes6cng",
+                "1len7htkzes6cnh",
+                "1len7htkzes6cni",
+                "1len7htkzes6cnj",
+                "ggftkznig2sb",
+                "ggftkznig2sc",
+                "ggftkznig2sd",
+                "ggftkznig2se",
+                "ggftkznig2sf",
+                "20gxtkzs1bgbn",
+                "20gxtkzs1bgbo",
+                "20gxtkzs1bgbp",
+                "2vg4es4tl07g8ohr",
+                "2vg4es4tl07g8ohs",
+                "2vg4es4tl07g8oht",
+                "c2ei1tl0d7cqbm",
+                "c2ei1tl0d7cqbn",
+                "c2ei1tl0d7cqbo",
+                "4cz37tl0vuupsh",
+                "4cz37tl0vuupsi",
+                "4cz37tl0vuupsj",
+                "4cz37tl0vuupsk",
+                "4cz37tl0vuupsl",
+                "17sptl1usdo89",
+                "17sptl1usdo8a",
+                "17sptl1usdo8b",
+                "17sptl1usdo8c"
+            ],
+            "history": [
+                {
+                    "timestamp": 1641473005448,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "Million Dollar JPEG"
+                },
+                {
+                    "timestamp": 1641492481033,
+                    "action": "Joined team",
+                    "target": "Chaotic#1227",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641678999557,
+                    "action": "Joined team",
+                    "target": "WHGOON#1337",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641679001199,
+                    "action": "Joined team",
+                    "target": "Pepper#12432",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641745192806,
+                    "action": "Joined team",
+                    "target": "Earth#12702",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165649278,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1645111189442,
+                    "action": "Joined team",
+                    "target": "MSBElectro#1437",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1646956594221,
+                    "action": "Joined team",
+                    "target": "Hyva#1281",
+                    "season": 13
+                }
+            ],
+            "teamName_lower": "million dollar jpeg",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "tuesday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "wednesday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "thursday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "friday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "saturday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                },
+                "sunday": {
+                    "available": true,
+                    "startTime": "00:00",
+                    "endTime": "23:45",
+                    "allDay": true,
+                    "startTimeNumber": 0,
+                    "endTimeNumber": 2345
+                }
+            },
+            "competitiveLevel": 5,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": true,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "-7",
+            "teamMembers": [
+                {
+                    "displayName": "ZaneHyde#1250"
+                },
+                {
+                    "id": "600e4ee1a371010028220505",
+                    "displayName": "WHGOON#1337"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "ZaneHyde#1250",
+            "teamMMRAvg": null,
+            "questionnaire": {},
+            "ticker": "$JPEG",
+            "hpMmrAvg": 2934,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "Million Dollar JPEG",
+            "__v": 56,
+            "logo": "Million_Dollar_JPEG_3950.png",
+            "parseStats": false,
+            "ticker_lower": "$jpeg"
+        },
+        {
+            "oldId": "61d8cd4234bf83001d50d380",
+            "assistantCaptain": [],
+            "invitedUsers": [],
+            "replays": [
+                "68entkyhuhf8k",
+                "68entkyhuhf8l",
+                "68entkyhx2izt",
+                "68entkyhx2izu",
+                "68entkyhywfl3",
+                "68entkyhywfl4",
+                "20qttkz6jqgha",
+                "20qttkz6jqghb",
+                "20qttkz6jqghc",
+                "20qttkz6jqghd",
+                "1ttq3tkzi2k7tz",
+                "1ttq3tkzi2k7u5",
+                "1ttq3tkzi2k7u6",
+                "1ttq3tkzi2k7u7",
+                "x8trab1tkzze40b3",
+                "x8trab1tkzze40b4",
+                "x8trab1tkzze40b5",
+                "x8trab1tkzze40b6",
+                "6q1tl0bfqimc",
+                "6q1tl0bfqime",
+                "6q1tl0bfqimf",
+                "6q1tl0bfsf88",
+                "6q1tl0bfsf89",
+                "6q1tl0bfsf8a",
+                "abv4k2tl0x74u5f",
+                "abv4k2tl0x74u5h",
+                "abv4k2tl0x74u5i",
+                "abv4k2tl0x74u5k",
+                "28qtl1bxw4va",
+                "28qtl1bxw4vc",
+                "28qtl1bxw4vd",
+                "333betl2b9n8fi",
+                "333betl2b9n8fj",
+                "333betl2b9n8fk",
+                "333betl2b9n8fl",
+                "333betl2b9n8fm",
+                "8p6itl2nwkvgo",
+                "8p6itl2nwkvgq",
+                "8p6itl2nwkvgr",
+                "8p6itl2nwkvgs",
+                "8p6itl2nwkvgt",
+                "78zt9xl6riyn54",
+                "78zt9xl6riyn55",
+                "78zt9xl6riyn56",
+                "78zt9xl6riyn57",
+                "152lk2xl78aot1q",
+                "152lk2xl78aot1r",
+                "152lk2xl78aot1u"
+            ],
+            "history": [
+                {
+                    "timestamp": 1641598274179,
+                    "season": 13,
+                    "action": "Team Created",
+                    "target": "Notfans"
+                },
+                {
+                    "timestamp": 1641615977342,
+                    "action": "Joined team",
+                    "target": "Anyproblem#1112",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641615980043,
+                    "action": "Joined team",
+                    "target": "SIMjae#11819",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641620175004,
+                    "action": "Joined team",
+                    "target": "OXGVince#1834",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641620429550,
+                    "action": "Joined team",
+                    "target": "Mokka#11906",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641620459168,
+                    "action": "Joined team",
+                    "target": "MyPalVince#1454",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641625853552,
+                    "action": "Joined team",
+                    "target": "Mokka#11906",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1641743105051,
+                    "action": "Joined team",
+                    "target": "Mokka#11906",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643165649278,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643469200967,
+                    "action": "Joined team",
+                    "target": "Mokka#11906",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1643473248414,
+                    "action": "Joined team",
+                    "target": "STRMCPX#1552",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1644804187296,
+                    "action": "Joined team",
+                    "target": "SIMUnaverted#1862",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1644804198109,
+                    "action": "Joined team",
+                    "target": "SIMLegacY#11385",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1644804208793,
+                    "action": "Joined team",
+                    "target": "OXGNazmas#1135",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1645587309876,
+                    "action": "Joined team",
+                    "target": "Mezmer#1964",
+                    "season": 13
+                },
+                {
+                    "timestamp": 1658244569360,
+                    "action": "Joined team",
+                    "target": "STÖRMBrandon#1395",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658244606531,
+                    "action": "Joined team",
+                    "target": "STÖRMPogX#1385",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658616682249,
+                    "action": "Joined team",
+                    "target": "DHValamar#1311",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1658626482625,
+                    "action": "Joined team",
+                    "target": "DWreck#11778",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1659503498747,
+                    "action": "Added to division",
+                    "target": "Storm",
+                    "season": 14
+                },
+                {
+                    "timestamp": 1659724370716,
+                    "action": "Joined team",
+                    "target": "STÖRMjun#1942",
+                    "season": 14
+                }
+            ],
+            "teamName_lower": "performance enhancing gems",
+            "lookingForMore": false,
+            "availability": {
+                "monday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "tuesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "wednesday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "thursday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "friday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "saturday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                },
+                "sunday": {
+                    "available": false,
+                    "startTime": null,
+                    "endTime": null
+                }
+            },
+            "competitiveLevel": 1,
+            "descriptionOfTeam": null,
+            "rolesNeeded": {
+                "tank": false,
+                "meleeassassin": false,
+                "rangedassassin": false,
+                "support": false,
+                "offlane": false,
+                "healer": false,
+                "flex": false
+            },
+            "timeZone": "",
+            "teamMembers": [
+                {
+                    "displayName": "Mezmer#1964"
+                },
+                {
+                    "displayName": "STÖRMBrandon#1395"
+                },
+                {
+                    "displayName": "STÖRMPogX#1385"
+                },
+                {
+                    "id": "5db22edd87e09a0017c6fe68",
+                    "displayName": "DHValamar#1311"
+                },
+                {
+                    "id": "5d8e900f1f232b0017a141a7",
+                    "displayName": "DWreck#11778"
+                },
+                {
+                    "displayName": "STÖRMjun#1942"
+                }
+            ],
+            "pendingMembers": [],
+            "captain": "Mezmer#1964",
+            "teamMMRAvg": null,
+            "questionnaire": {
+                "registered": true
+            },
+            "ticker": "peng",
+            "hpMmrAvg": 3132,
+            "ngsMmrAvg": null,
+            "twitch": null,
+            "twitter": null,
+            "youtube": null,
+            "stormRankAvg": 0,
+            "teamName": "Performance Enhancing Gems",
+            "__v": 114,
+            "parseStats": false,
+            "ticker_lower": "pwp",
+            "logo": "Pre_Workout_Powah_1393.png",
+            "divisionConcat": "storm",
+            "divisionDisplayName": "Storm"
+        }
+    ],
+    "users": [
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfg",
+            "displayName": "TEST azalea#9539",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "teamId": "5fe26e7ec311fadee4afb7e6",
+            "teamName": "TEST sunshine mynah birds",
+            "seasonsPlayed": 2,
+            "isCaptain": true
+        }
+    ],
+    "schedules": [
+        {
+            "type": "tournament",
+            "name": "Storm Division Season 5 Qualifier 2",
+            "season": 14,
+            "participants": [
+                
+                "61b43752018ad2001fa933e1",
+                "61d20b6505c6c4001fdba4f9",
+                "5c621ed9b343d40017ecc355",
+                "5e77d75832c8730017ec78f8",
+                "62c317f7df8554001d2b71e8",
+                "600602d10b86d20028380312",
+                "62cbb8d30c088a001d52ceb3"
+            ],
+            "participantsRef": [
+     
+                {
+                    "id": "61b43752018ad2001fa933e1",
+                    "challonge_ref": 175636820
+                },
+                {
+                    "id": "61d20b6505c6c4001fdba4f9",
+                    "challonge_ref": 175636821
+                },
+                {
+                    "id": "5c621ed9b343d40017ecc355",
+                    "challonge_ref": 175636822
+                },
+                {
+                    "id": "5e77d75832c8730017ec78f8",
+                    "challonge_ref": 175636823
+                },
+                {
+                    "id": "62c317f7df8554001d2b71e8",
+                    "challonge_ref": 175636824
+                },
+                {
+                    "id": "600602d10b86d20028380312",
+                    "challonge_ref": 175636825
+                },
+                {
+                    "id": "62cbb8d30c088a001d52ceb3",
+                    "challonge_ref": 175636826
+                }
+            ],
+            "matches": [
+                "1isz13xl5hczvfe",
+                "1isz13xl5hczvff",
+                "1isz13xl5hczvfg",
+                "1isz13xl5hczvfh",
+                "1isz13xl5hczvfi",
+                "1isz13xl5hczvfj",
+                "1isz13xl5hczvfk"
+            ],
+            "matchesRef": [
+                {
+                    "id": "1isz13xl5hczvfe",
+                    "challonge_ref": 282471802
+                },
+                {
+                    "id": "1isz13xl5hczvff",
+                    "challonge_ref": 282471803
+                },
+                {
+                    "id": "1isz13xl5hczvfg",
+                    "challonge_ref": 282471804
+                },
+                {
+                    "id": "1isz13xl5hczvfh",
+                    "challonge_ref": 282471805
+                },
+                {
+                    "id": "1isz13xl5hczvfi",
+                    "challonge_ref": 282471806
+                },
+                {
+                    "id": "1isz13xl5hczvfj",
+                    "challonge_ref": 282471807
+                },
+                {
+                    "id": "1isz13xl5hczvfk",
+                    "challonge_ref": 282471808
+                }
+            ],
+            "challonge_ref": 11416653,
+            "challonge_url": "Storm_Division_Season_5_Qualifier_2_link",
+            "active": false,
+            "__v": 0
+        },
+        {
+            "type": "tournament",
+            "name": "Storm Division Season 4 Qualifier 3",
+            "season": 13,
+            "participants": [
+                "61b43752018ad2001fa933e1",
+                "61cb3c24ebfb03001f51b352",
+                "60f230a5c51f73002270571f",
+                "61d8cd4234bf83001d50d380",
+                "61d6e3ed9ad971001fd05d51",
+                "5f396cbb0044a90017fad057",
+                "61d4869c283fa5001f474060",
+                "61b0bb8206a4bb001fd1635b"
+            ],
+            "participantsRef": [
+                {
+                    "id": "61b43752018ad2001fa933e1",
+                    "challonge_ref": 162379912
+                },
+                {
+                    "id": "61cb3c24ebfb03001f51b352",
+                    "challonge_ref": 162379913
+                },
+                {
+                    "id": "60f230a5c51f73002270571f",
+                    "challonge_ref": 162379914
+                },
+                {
+                    "id": "61d8cd4234bf83001d50d380",
+                    "challonge_ref": 162379915
+                },
+                {
+                    "id": "61d6e3ed9ad971001fd05d51",
+                    "challonge_ref": 162379916
+                },
+                {
+                    "id": "5f396cbb0044a90017fad057",
+                    "challonge_ref": 162379917
+                },
+                {
+                    "id": "61d4869c283fa5001f474060",
+                    "challonge_ref": 162379918
+                },
+                {
+                    "id": "61b0bb8206a4bb001fd1635b",
+                    "challonge_ref": 162379919
+                }
+            ],
+            "matches": [
+                "3djltky7fp56m",
+                "3djltky7fp56n",
+                "3djltky7fp56o",
+                "3djltky7fp56p",
+                "3djltky7fp56q",
+                "3djltky7fp56r",
+                "3djltky7fp56s"
+            ],
+            "matchesRef": [
+                {
+                    "id": "3djltky7fp56m",
+                    "challonge_ref": 262257299
+                },
+                {
+                    "id": "3djltky7fp56n",
+                    "challonge_ref": 262257300
+                },
+                {
+                    "id": "3djltky7fp56o",
+                    "challonge_ref": 262257301
+                },
+                {
+                    "id": "3djltky7fp56p",
+                    "challonge_ref": 262257302
+                },
+                {
+                    "id": "3djltky7fp56q",
+                    "challonge_ref": 262257303
+                },
+                {
+                    "id": "3djltky7fp56r",
+                    "challonge_ref": 262257304
+                },
+                {
+                    "id": "3djltky7fp56s",
+                    "challonge_ref": 262257305
+                }
+            ],
+            "challonge_ref": 10681437,
+            "challonge_url": "Storm_Division_Season_4_Qualifier_3_link",
+            "active": false
+        }
+    ],
+    "matches": [
+        {
+            "vodLinks": [
+                "https://www.youtube.com/watch?v=anhkzkDxLn8"
+            ],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "282471805",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfh",
+            "round": 1,
+            "home": {
+                "teamName": "IMAGINE",
+                "id": "61d20b6505c6c4001fdba4f9",
+                "logo": "IMAGINE_2457.png",
+                "teamName_lower": "imagine",
+                "ticker": "IMGN",
+                "score": 0
+            },
+            "away": {
+                "teamName": "Team Draft Gap",
+                "id": "62c317f7df8554001d2b71e8",
+                "logo": "Team_Draft_Gap_2098.png",
+                "teamName_lower": "team draft gap",
+                "ticker": "TDG",
+                "score": 2,
+                "dominator": true
+            },
+            "parentId": "1isz13xl5hczvfj",
+            "__v": 1,
+            "boX": 3,
+            "casterName": "Jazzalene",
+            "casterUrl": "https://www.twitch.tv/Jazzalene",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657756800000",
+                "endTime": "1657762200000"
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "1isz13xl5hczvfe",
+                "1isz13xl5hczvff"
+            ],
+            "challonge_idChildren": [
+                "282471802",
+                "282471803"
+            ],
+            "challonge_match_ref": "282471806",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfi",
+            "round": 2,
+            "parentId": "1isz13xl5hczvfk",
+            "__v": 0,
+            "boX": 3,
+            "casterName": "Krushinator",
+            "casterUrl": "https://www.twitch.tv/nexusgamingseries",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657761300000",
+                "endTime": "1657766700000"
+            },
+            "home": {
+                "id": "5da679ec50c6aa0017e78ec9",
+                "pos": "home",
+                "teamName": "Anti-Clown Association",
+                "logo": "Anti-Clown_Association_2253.png",
+                "teamName_lower": "anti-clown association",
+                "ticker": "aca",
+                "score": 1,
+                "dominator": false
+            },
+            "away": {
+                "id": "5e77d75832c8730017ec78f8",
+                "pos": "away",
+                "teamName": "Caffeinated Knights",
+                "logo": "Caffeinated Knights9674_logo.jpg",
+                "teamName_lower": "caffeinated knights",
+                "ticker": "CafK",
+                "score": 2,
+                "dominator": false
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [
+                "https://youtu.be/3RIV-EoA4fk"
+            ],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "282471803",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvff",
+            "round": 1,
+            "home": {
+                "teamName": "Minion Miners",
+                "id": "5c621ed9b343d40017ecc355",
+                "logo": "Minion Miners5506_logo.png",
+                "teamName_lower": "minion miners",
+                "ticker": "MM",
+                "score": 1,
+                "dominator": false
+            },
+            "away": {
+                "teamName": "Caffeinated Knights",
+                "id": "5e77d75832c8730017ec78f8",
+                "logo": "Caffeinated Knights9674_logo.jpg",
+                "teamName_lower": "caffeinated knights",
+                "ticker": "CafK",
+                "score": 2,
+                "dominator": false
+            },
+            "parentId": "1isz13xl5hczvfi",
+            "__v": 1,
+            "boX": 3,
+            "casterName": "Taco",
+            "casterUrl": "https://www.twitch.tv/eltaquito",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657756800000",
+                "endTime": "1657762200000"
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "282471802",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfe",
+            "round": 1,
+            "home": {
+                "teamName": "Anti-Clown Association",
+                "id": "5da679ec50c6aa0017e78ec9",
+                "logo": "Anti-Clown_Association_2253.png",
+                "teamName_lower": "anti-clown association",
+                "ticker": "aca",
+                "score": 2,
+                "dominator": true
+            },
+            "away": {
+                "teamName": "ManChicken 7 (withdrawn)",
+                "id": "62cbb8d30c088a001d52ceb3",
+                "teamName_lower": "manchicken 7",
+                "ticker": "MC",
+                "score": 0
+            },
+            "parentId": "1isz13xl5hczvfi",
+            "__v": 0,
+            "boX": 3,
+            "casterName": "Krushinator",
+            "casterUrl": "https://www.twitch.tv/nexusgamingseries",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657756800000",
+                "endTime": "1657762200000"
+            },
+            "forfeit": false,
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [
+                "https://www.youtube.com/watch?v=DcBdVWRKwp0"
+            ],
+            "idChildren": [
+                "1isz13xl5hczvfi",
+                "1isz13xl5hczvfj"
+            ],
+            "challonge_idChildren": [
+                "282471806",
+                "282471807"
+            ],
+            "challonge_match_ref": "282471808",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfk",
+            "round": 3,
+            "__v": 1,
+            "boX": 3,
+            "casterName": "Krushinator",
+            "casterUrl": "https://www.twitch.tv/nexusgamingseries",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657765800000",
+                "endTime": "1657771200000"
+            },
+            "away": {
+                "id": "62c317f7df8554001d2b71e8",
+                "pos": "away",
+                "teamName": "Team Draft Gap",
+                "logo": "Team_Draft_Gap_2098.png",
+                "teamName_lower": "team draft gap",
+                "ticker": "TDG",
+                "score": 2,
+                "dominator": false
+            },
+            "home": {
+                "id": "5e77d75832c8730017ec78f8",
+                "pos": "away",
+                "teamName": "Caffeinated Knights",
+                "logo": "Caffeinated Knights9674_logo.jpg",
+                "teamName_lower": "caffeinated knights",
+                "ticker": "CafK",
+                "score": 1,
+                "dominator": false
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "282471804",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfg",
+            "round": 1,
+            "home": {
+                "teamName": "Baby Diamond Hands",
+                "id": "61b43752018ad2001fa933e1",
+                "logo": "Baby_Diamond_Hands_6605.png",
+                "teamName_lower": "baby diamond hands",
+                "ticker": "babydh",
+                "score": 2,
+                "dominator": true
+            },
+            "away": {
+                "teamName": "Vendetta",
+                "id": "600602d10b86d20028380312",
+                "logo": "Vendetta_2573.png",
+                "teamName_lower": "vendetta",
+                "ticker": "Vdta",
+                "score": 0
+            },
+            "parentId": "1isz13xl5hczvfj",
+            "__v": 0,
+            "boX": 3,
+            "casterName": "EternallyBlueTV",
+            "casterUrl": "https://www.twitch.tv/EternallyBlueTV",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657756800000",
+                "endTime": "1657762200000"
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [
+                "https://www.youtube.com/watch?v=_guOZSnWNZM"
+            ],
+            "idChildren": [
+                "1isz13xl5hczvfg",
+                "1isz13xl5hczvfh"
+            ],
+            "challonge_idChildren": [
+                "282471804",
+                "282471805"
+            ],
+            "challonge_match_ref": "282471807",
+            "type": "tournament",
+            "season": 14,
+            "challonge_tournament_ref": "11416653",
+            "matchId": "1isz13xl5hczvfj",
+            "round": 2,
+            "parentId": "1isz13xl5hczvfk",
+            "__v": 1,
+            "boX": 3,
+            "casterName": "Jazzalene",
+            "casterUrl": "https://www.twitch.tv/Jazzalene",
+            "other": {},
+            "scheduledTime": {
+                "startTime": "1657761300000",
+                "endTime": "1657766700000"
+            },
+            "home": {
+                "id": "61b43752018ad2001fa933e1",
+                "pos": "home",
+                "teamName": "Baby Diamond Hands",
+                "logo": "Baby_Diamond_Hands_6605.png",
+                "teamName_lower": "baby diamond hands",
+                "ticker": "babydh",
+                "score": 1,
+                "dominator": false
+            },
+            "away": {
+                "id": "62c317f7df8554001d2b71e8",
+                "pos": "away",
+                "teamName": "Team Draft Gap",
+                "logo": "Team_Draft_Gap_2098.png",
+                "teamName_lower": "team draft gap",
+                "ticker": "TDG",
+                "score": 2,
+                "dominator": false
+            },
+            "reported": true,
+            "notes": "setting this as postedToHP:true because it was stuck in the reporter..",
+            "postedToHP": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "3djltky7fp56o",
+                "3djltky7fp56p"
+            ],
+            "challonge_idChildren": [
+                "262257301",
+                "262257302"
+            ],
+            "challonge_match_ref": "262257304",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56r",
+            "round": 2,
+            "parentId": "3djltky7fp56s",
+            "__v": 0,
+            "away": {
+                "id": "60f230a5c51f73002270571f",
+                "pos": "home",
+                "teamName": "Can't Censor Ship",
+                "score": 2
+            },
+            "home": {
+                "id": "61d4869c283fa5001f474060",
+                "pos": "away",
+                "teamName": "Rook Gaming",
+                "score": 1
+            },
+            "mapBans": {
+                "awayOne": "Volskaya Foundry",
+                "awayTwo": "Cursed Hollow",
+                "homeOne": "Sky Temple",
+                "homeTwo": "Infernal Shrines"
+            },
+            "other": {
+                "1": {
+                    "winner": "home"
+                },
+                "2": {
+                    "winner": "away"
+                },
+                "3": {
+                    "winner": "away"
+                },
+                "homeTeamPlayer": "Kuebico#1506",
+                "awayTeamPlayer": "BBWhashmer#1347"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhvrz7s",
+                    "url": "ngs_Can_t_Censor_Ship_vs_Rook_Gaming_Dragon_Shire.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11468"
+                },
+                "2": {
+                    "data": "68entkyhvrz7t",
+                    "url": "ngs_Can_t_Censor_Ship_vs_Rook_Gaming_Battlefield_of_Eternity.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11469"
+                },
+                "3": {
+                    "data": "68entkyhvrz7u",
+                    "url": "ngs_Can_t_Censor_Ship_vs_Rook_Gaming_Alterac_Pass.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11470"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "262257300",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56n",
+            "round": 1,
+            "home": {
+                "teamName": "Notfans",
+                "id": "61d8cd4234bf83001d50d380",
+                "dominator": true,
+                "score": 2
+            },
+            "away": {
+                "teamName": "Million Dollar JPEG",
+                "id": "61d6e3ed9ad971001fd05d51",
+                "score": 0
+            },
+            "parentId": "3djltky7fp56q",
+            "__v": 0,
+            "mapBans": {
+                "awayOne": "Cursed Hollow",
+                "awayTwo": "Infernal Shrines",
+                "homeOne": "Volskaya Foundry",
+                "homeTwo": "Alterac Pass"
+            },
+            "other": {
+                "1": {
+                    "winner": "home"
+                },
+                "2": {
+                    "winner": "home"
+                },
+                "homeTeamPlayer": "OXGVince#1834",
+                "awayTeamPlayer": "ZaneHyde#1250"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhuhf8k",
+                    "url": "ngs_Million_Dollar_JPEG_vs_Notfans_Battlefield_of_Eternity.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11471"
+                },
+                "2": {
+                    "data": "68entkyhuhf8l",
+                    "url": "ngs_Million_Dollar_JPEG_vs_Notfans_Sky_Temple.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11472"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "262257301",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56o",
+            "round": 1,
+            "home": {
+                "teamName": "30k Violet",
+                "id": "61cb3c24ebfb03001f51b352",
+                "score": 1
+            },
+            "away": {
+                "teamName": "Rook Gaming",
+                "id": "61d4869c283fa5001f474060",
+                "score": 2
+            },
+            "parentId": "3djltky7fp56r",
+            "__v": 0,
+            "mapBans": {
+                "awayOne": "Infernal Shrines",
+                "awayTwo": "Dragon Shire",
+                "homeOne": "Sky Temple",
+                "homeTwo": "Battlefield of Eternity"
+            },
+            "other": {
+                "1": {
+                    "winner": "home"
+                },
+                "2": {
+                    "winner": "away"
+                },
+                "3": {
+                    "winner": "away"
+                },
+                "homeTeamPlayer": "EpicPlayr30K#1708",
+                "awayTeamPlayer": "Kuebico#1506"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhvdsha",
+                    "url": "ngs_30k_Violet_vs_Rook_Gaming_Infernal_Shrines.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11473"
+                },
+                "2": {
+                    "data": "68entkyhvdshb",
+                    "url": "ngs_30k_Violet_vs_Rook_Gaming_Towers_of_Doom.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11474"
+                },
+                "3": {
+                    "data": "68entkyhvdshc",
+                    "url": "ngs_30k_Violet_vs_Rook_Gaming_Towers_of_Doom.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11475"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "262257299",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56m",
+            "round": 1,
+            "home": {
+                "teamName": "Baby Diamond Hands",
+                "id": "61b43752018ad2001fa933e1",
+                "score": 0
+            },
+            "away": {
+                "teamName": "The Seven Rings",
+                "id": "61b0bb8206a4bb001fd1635b",
+                "dominator": true,
+                "score": 2
+            },
+            "parentId": "3djltky7fp56q",
+            "__v": 0,
+            "mapBans": {
+                "awayOne": "Battlefield of Eternity",
+                "awayTwo": "Cursed Hollow",
+                "homeOne": "Infernal Shrines",
+                "homeTwo": "Tomb of the Spider Queen"
+            },
+            "other": {
+                "1": {
+                    "winner": "away"
+                },
+                "2": {
+                    "winner": "away"
+                },
+                "homeTeamPlayer": "McGibblets#11997",
+                "awayTeamPlayer": "AvenaQuaker#11401"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhv3yxu",
+                    "url": "ngs_The_Seven_Rings_vs_Baby_Diamond_Hands_Towers_of_Doom.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11476"
+                },
+                "2": {
+                    "data": "68entkyhv3yxw",
+                    "url": "ngs_The_Seven_Rings_vs_Baby_Diamond_Hands_Dragon_Shire.stormReplay"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [],
+            "challonge_idChildren": [],
+            "challonge_match_ref": "262257302",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56p",
+            "round": 1,
+            "home": {
+                "teamName": "Can't Censor Ship",
+                "id": "60f230a5c51f73002270571f",
+                "dominator": true,
+                "score": 2
+            },
+            "away": {
+                "teamName": "Running Wild",
+                "id": "5f396cbb0044a90017fad057",
+                "score": 0
+            },
+            "parentId": "3djltky7fp56r",
+            "__v": 0,
+            "mapBans": {
+                "awayOne": "Dragon Shire",
+                "awayTwo": "Alterac Pass",
+                "homeOne": "Volskaya Foundry",
+                "homeTwo": "Cursed Hollow"
+            },
+            "other": {
+                "1": {
+                    "winner": "home"
+                },
+                "2": {
+                    "winner": "home"
+                },
+                "homeTeamPlayer": "BBWhashmer#1347",
+                "awayTeamPlayer": "Cairu#1472"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "d28gctkyhl35nv",
+                    "url": "ngs_Running_Wild_vs_Can_t_Censor_Ship_Infernal_Shrines.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11466"
+                },
+                "2": {
+                    "data": "d28gctkyhl35nx",
+                    "url": "ngs_Running_Wild_vs_Can_t_Censor_Ship_Towers_of_Doom.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11467"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "3djltky7fp56m",
+                "3djltky7fp56n"
+            ],
+            "challonge_idChildren": [
+                "262257299",
+                "262257300"
+            ],
+            "challonge_match_ref": "262257303",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56q",
+            "round": 2,
+            "parentId": "3djltky7fp56s",
+            "__v": 0,
+            "away": {
+                "id": "61d8cd4234bf83001d50d380",
+                "pos": "home",
+                "teamName": "Notfans",
+                "dominator": true,
+                "score": 2
+            },
+            "home": {
+                "id": "61b0bb8206a4bb001fd1635b",
+                "pos": "away",
+                "teamName": "The Seven Rings",
+                "score": 0
+            },
+            "mapBans": {
+                "awayOne": "Alterac Pass",
+                "awayTwo": "Volskaya Foundry",
+                "homeOne": "Battlefield of Eternity",
+                "homeTwo": "Cursed Hollow"
+            },
+            "other": {
+                "1": {
+                    "winner": "away"
+                },
+                "2": {
+                    "winner": "away"
+                },
+                "homeTeamPlayer": "AvenaQuaker#11401",
+                "awayTeamPlayer": "Nathanatos#1141"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhx2izt",
+                    "url": "ngs_The_Seven_Rings_vs_Notfans_Dragon_Shire.stormReplay"
+                },
+                "2": {
+                    "data": "68entkyhx2izu",
+                    "url": "ngs_The_Seven_Rings_vs_Notfans_Towers_of_Doom.stormReplay"
+                }
+            },
+            "reported": true
+        },
+        {
+            "vodLinks": [],
+            "idChildren": [
+                "3djltky7fp56q",
+                "3djltky7fp56r"
+            ],
+            "challonge_idChildren": [
+                "262257303",
+                "262257304"
+            ],
+            "challonge_match_ref": "262257305",
+            "type": "tournament",
+            "season": 13,
+            "challonge_tournament_ref": "10681437",
+            "matchId": "3djltky7fp56s",
+            "round": 3,
+            "__v": 0,
+            "away": {
+                "id": "60f230a5c51f73002270571f",
+                "pos": "away",
+                "teamName": "Can't Censor Ship",
+                "score": 0
+            },
+            "home": {
+                "id": "61d8cd4234bf83001d50d380",
+                "pos": "away",
+                "teamName": "Notfans",
+                "dominator": true,
+                "score": 2
+            },
+            "mapBans": {
+                "awayOne": "Volskaya Foundry",
+                "awayTwo": "Infernal Shrines",
+                "homeOne": "Alterac Pass",
+                "homeTwo": "Garden of Terror"
+            },
+            "other": {
+                "1": {
+                    "winner": "home"
+                },
+                "2": {
+                    "winner": "home"
+                },
+                "homeTeamPlayer": "OXGVince#1834",
+                "awayTeamPlayer": "BBWhashmer#1347"
+            },
+            "postedToHP": true,
+            "replays": {
+                "1": {
+                    "data": "68entkyhywfl3",
+                    "url": "ngs_Can_t_Censor_Ship_vs_Notfans_Infernal_Shrines.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11480"
+                },
+                "2": {
+                    "data": "68entkyhywfl4",
+                    "url": "ngs_Can_t_Censor_Ship_vs_Notfans_Towers_of_Doom.stormReplay",
+                    "parsedUrl": "https://www.heroesprofile.com/NGS/Match/Single/?replayID=11481"
+                }
+            },
+            "reported": true
+        }
+    ],
+    "systems": [
+        {
+            "data": {
+                "value": 13,
+                "registrationOpen": true,
+                "seasonStartDate": 1.63998E12,
+                "seasonEndDate": 1.6436088E12,
+                "registrationEndDate": 1.6398936E12
+            },
+            "dataName": "seasonInfo",
+            "__v": 0
+        }
+    ]
+}

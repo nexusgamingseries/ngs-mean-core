@@ -16,6 +16,8 @@ const AWS = require('aws-sdk');
 const { commonResponseHandler } = require('./../commonResponseHandler');
 const getMatches = require('../methods/matches/getMatchesBy');
 const fs = require('fs');
+const challongeApi = require('../methods/challongeAPI');
+const challongeAPI = require('../methods/challongeAPI');
 
 
 /**
@@ -1297,10 +1299,20 @@ router.post('/generate/schedules', passport.authenticate('jwt', {
         logObj.target = 'season: ' + season;
         return scheduleGenerator.generateSeasonTwo(season).then((process) => {
             if (process) {
-                scheduleGenerator.generateRoundRobinScheduleTwo(season);
-                response.status = 200;
-                response.message = utils.returnMessaging(req.originalUrl, 'Schedules generating', false, null, null, logObj)
-                return response;
+                return scheduleGenerator.generateRoundRobinScheduleTwo(season).then(
+                    genRes=>{
+                        response.status = 200;
+                        response.message = utils.returnMessaging(req.originalUrl, 'Schedules generating', false, genRes, null, logObj)
+                        return response;
+                    },
+                    err=>{
+                        logObj.logLevel = 'ERROR';
+                        logObj.error = 'Error occured in schedule generator, got null schedule';
+                        response.status = 500;
+                        response.message = utils.returnMessaging(req.originalUrl, 'Error occured in schedule generator', err, null, null, logObj)
+                        return response;
+                    }
+                );
             } else {
                 logObj.logLevel = 'ERROR';
                 logObj.error = 'Error occured in schedule generator, got null schedule';
@@ -1470,7 +1482,6 @@ router.post('/generate/tournament', passport.authenticate('jwt', {
                 } else {
                     return scheduleGenerator.generateTournament(teams, season, division, cupNumber, tournamentName, description, type).then((process) => {
                         if (process) {
-                            console.log('process',process);
                             fs.writeFileSync('tourn.json', JSON.stringify(process));
                             response.status = 200;
                             response.message = utils.returnMessaging(req.originalUrl, 'Tournament generated', false, process, null, logObj);
@@ -1534,6 +1545,7 @@ router.get('/delete/tournament', passport.authenticate('jwt', {
                                 matches: deleted,
                                 tournament: foundTourn
                             };
+                            challongeAPI.deleteTournament(tourn);
                             response.status = 200;
                             response.message = utils.returnMessaging(req.originalUrl, 'Tournament Deleted', false, deleteLoad, null, null)
                             return response;
@@ -1653,8 +1665,6 @@ router.get('/get/tournament/past', async(req, res) => {
     commonResponseHandler(req, res, [], [], async(req, res) => {
         const response = {};
         let returnArray = [];
-
-        let pastSeason = false;
 
         let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
 
@@ -2088,6 +2098,7 @@ router.post('/fetch/tournament', (req, res) => {
 
 });
 
+//todo: write test cases.. dont feel like it now
 router.get('/matchfiles', async(req, res) => {
     try {
         const s3Zip = require('s3-zip')
