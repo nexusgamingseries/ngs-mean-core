@@ -1,0 +1,32 @@
+{
+    "Quick Match": {
+        "mmr": 2649,
+        "games_played": 779,
+        "games_played_last_90_days": 8,
+        "league_tier": "platinum"
+    },
+    "Unranked Draft": {
+        "mmr": 2475,
+        "games_played": 276,
+        "games_played_last_90_days": 0,
+        "league_tier": "silver"
+    },
+    "Hero League": {
+        "mmr": 2622,
+        "games_played": 328,
+        "games_played_last_90_days": 0,
+        "league_tier": "platinum"
+    },
+    "Team League": {
+        "mmr": 2596,
+        "games_played": 593,
+        "games_played_last_90_days": 0,
+        "league_tier": "gold"
+    },
+    "Storm League": {
+        "mmr": 2703,
+        "games_played": 4769,
+        "games_played_last_90_days": 306,
+        "league_tier": "gold"
+    }
+}

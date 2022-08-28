@@ -31,6 +31,83 @@ router.get('/replay/map/name', (req, res) => {
 
 });
 
+
+router.get('/leagueOverallStats', (req, res) => {
+
+    const path = '/utility/leagueOverallStats';
+
+    commonResponseHandler(req, res, [], [], async(req, res) => {
+        const response = {};
+        let query = {
+            $and: [{
+                    dataName: "leagueRunningFunStats"
+                },
+                {
+                    'data.span': "overall"
+                }
+            ]
+        }
+
+        return System.findOne(query).then(
+            found => {
+                response.status = 200;
+                response.message = utils.returnMessaging(req.originalUrl, 'Found stat', false, found);
+                return response;
+            },
+            err => {
+                response.status = 400;
+                response.message = utils.returnMessaging(req.originalUrl, 'Error getting stat.', err, null, null);
+                return response;
+            }
+        );
+
+    })
+
+
+});
+
+
+router.get('/frontPageStats', async(req, res) => {
+
+    const path = '/utility/frontPageStats';
+
+    const requiredParameters = [{
+        name: 'stat',
+        type: 'string'
+    }]
+
+    commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
+        const response = {};
+        let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
+        let query = {
+            '$and': [{
+                    'dataName': 'TopStatList'
+                },
+                {
+                    'data.span': currentSeasonInfo.value
+                },
+                {
+                    'data.stat': requiredParameters.stat.value
+                }
+            ]
+        }
+
+        return System.findOne(query).then(
+            found => {
+                response.status = 200
+                response.message = utils.returnMessaging(req.originalUrl, 'Found stat', false, found)
+                return response;
+            },
+            err => {
+                response.status = 400;
+                response.message = utils.returnMessaging(req.originalUrl, 'Error getting stat.', err, null, null);
+                return response;
+            }
+        );
+    })
+
+});
+
 //post
 // path: /image/upload
 // requires id, type, and base64 encoded image

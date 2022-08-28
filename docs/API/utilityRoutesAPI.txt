@@ -18,8 +18,20 @@ Auth: Authenticated,
 Params: multipartform; (needs id of type to associate to also needs type of object it will be assocating)
 Return: saved event with image info;
 
-Route: api/team/get/sys/dat
+Route: api/utility/get/sys/dat
 Method: post
 Auth: Authenticated
 Params: data (string) - data to request
 Return: system data that matches the requested datum
+
+Route: api/utility/frontPageStats
+Method: get
+Auth: Open
+Params: stat 
+Return: sys data object of the supplied stat query
+
+Route: api/utility/leagueOverallStats
+Method: get
+Auth: Open
+Params: none 
+Return: sys data object of the league fun stats

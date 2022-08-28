@@ -29,18 +29,6 @@ Auth: Authenticated
 Params: none
 Return: update user object
 
-Route: api/user/frontPageStats
-Method: get
-Auth: Open
-Params: stat 
-Return: sys data object of the supplied stat query
-
-Route: api/user/leagueOverallStats
-Method: get
-Auth: Open
-Params: none 
-Return: sys data object of the league fun stats
-
 Route: api/user/hero-profile/path
 Method: get
 Auth: Open

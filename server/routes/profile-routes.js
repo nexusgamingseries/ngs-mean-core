@@ -241,6 +241,7 @@ router.post('/save', passport.authenticate('jwt', {
                             found.availability = sentUser.availability;
                         }
 
+                        //todo: are you sure about this?
                         if (utils.returnBoolByPath(sentUser, 'averageMmr')) {
                             found.averageMmr = sentUser.averageMmr;
                             if (found.teamName) {
@@ -268,9 +269,11 @@ router.post('/save', passport.authenticate('jwt', {
                         if (utils.returnBoolByPath(sentUser, 'discordTag')) {
                             found.discordTag = sentUser.discordTag
                         }
+                        //todo: are you sure about this?
                         if (utils.returnBoolByPath(sentUser, 'discordId')) {
                             found.discordId = sentUser.discordId
                         }
+
                         if (utils.returnBoolByPath(sentUser, 'hlRankMetal')) {
                             found.hlRankMetal = sentUser.hlRankMetal
                         }
@@ -332,6 +335,7 @@ router.post('/save', passport.authenticate('jwt', {
     });
 
 
+//todo: test cases later
 router.get('/update/mmr', passport.authenticate('jwt', {
         session: false
     }), utils.appendResHeader,
@@ -398,82 +402,6 @@ router.get('/update/mmr', passport.authenticate('jwt', {
         }
     });
 
-//needs to be moved to own API
-router.get('/frontPageStats', async(req, res) => {
-
-    const path = '/user/frontPageStats';
-
-    const requiredParameters = [{
-        name: 'stat',
-        type: 'string'
-    }]
-
-    commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
-        const response = {};
-        let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
-        let query = {
-            '$and': [{
-                    'dataName': 'TopStatList'
-                },
-                {
-                    'data.span': currentSeasonInfo.value
-                },
-                {
-                    'data.stat': requiredParameters.stat.value
-                }
-            ]
-        }
-
-        return System.findOne(query).then(
-            found => {
-                response.status = 200
-                response.message = utils.returnMessaging(req.originalUrl, 'Found stat', false, found)
-                return response;
-            },
-            err => {
-                response.status = 400;
-                response.message = utils.returnMessaging(req.originalUrl, 'Error getting stat.', err, null, null);
-                return response;
-            }
-        );
-    })
-
-});
-
-//needs to be moved to own API
-router.get('/leagueOverallStats', (req, res) => {
-
-    const path = '/user/leagueOverallStats';
-
-    commonResponseHandler(req, res, [], [], async(req, res) => {
-        const response = {};
-        let query = {
-            $and: [{
-                    dataName: "leagueRunningFunStats"
-                },
-                {
-                    'data.span': "overall"
-                }
-            ]
-        }
-
-        return System.findOne(query).then(
-            found => {
-                response.status = 200;
-                response.message = utils.returnMessaging(req.originalUrl, 'Found stat', false, found);
-                return response;
-            },
-            err => {
-                response.status = 400;
-                response.message = utils.returnMessaging(req.originalUrl, 'Error getting stat.', err, null, null);
-                return response;
-            }
-        );
-
-    })
-
-
-});
 
 router.get('/get/casters', (req, res) => {
 

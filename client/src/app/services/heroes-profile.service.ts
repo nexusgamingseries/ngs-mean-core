@@ -14,7 +14,7 @@ export class HeroesProfileService {
   constructor(private util:UtilitiesService, private http: HttpService) { }
 
   getTopStats(stat){
-    let url = '/user/frontPageStats'
+    let url = '/utility/frontPageStats'
     let params = [
       {'stat':stat}
     ];
@@ -30,7 +30,7 @@ export class HeroesProfileService {
   }
 
   getOverallLeagueStats() {
-    let url = '/user/leagueOverallStats'
+    let url = '/utility/leagueOverallStats'
     let params = [];
     return this.http.httpGet(url, params, false);
   }
