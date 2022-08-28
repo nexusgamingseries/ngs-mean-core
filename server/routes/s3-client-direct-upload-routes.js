@@ -13,7 +13,7 @@ const uploadsBucket = "s3-client-uploads";
 
 
 
-
+//TODO: write tests when i have a better way to mock returns from s3 calls.
 router.post("/sign", passport.authenticate('jwt', {
     session: false
 }), function(req, res) {
