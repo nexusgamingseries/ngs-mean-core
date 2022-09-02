@@ -1,6 +1,3 @@
-const {
-    confirmCaptain
-} = require("../methods/confirmCaptain");
 const notesMethods = require('../methods/notes/notes');
 const utils = require('../utils');
 const router = require('express').Router();
@@ -66,7 +63,7 @@ router.post('/notes/create/user', passport.authenticate('jwt', {
 router.post('/notes/delete',
     passport.authenticate('jwt', {
         session: false
-    }), levelRestrict.teamLevel, (req, res) => {
+    }), levelRestrict.userLevel, (req, res) => {
 
         const path = 'admin/notes/delete';
 
