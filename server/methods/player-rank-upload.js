@@ -20,7 +20,7 @@ const utils = require('../utils');
 const PendingRankQueue = require('../models/admin-models').PendingRankQueue;
 const _ = require('lodash');
 const s3deleteFile = require('../methods/aws-s3/delete-s3-file').s3deleteFile;
-const { s3putObject } = require('../methods/aws-s3/put-s3-file');
+const s3putObject = require('../methods/aws-s3/put-s3-file');
 const { prepImage } = require('../methods/image-upload-common');
 const Message = require('../subroutines/message-subs');
 
@@ -106,7 +106,7 @@ async function uploadRankImage(dataURI, user_id, seasonInfo) {
 
         const successObject = {};
 
-        let s3await = await s3putObject(process.env.s3bucketGeneralImages, PLAYERRANKFOLDER, preppedImage.fileName, preppedImage.buffer).then(
+        let s3await = await s3putObject.s3putObject(process.env.s3bucketGeneralImages, PLAYERRANKFOLDER, preppedImage.fileName, preppedImage.buffer).then(
             s3pass => {
                 return {
                     "cont": true,

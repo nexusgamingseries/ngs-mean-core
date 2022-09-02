@@ -1,0 +1,185 @@
+{ "systems":[
+    {
+        "dataName": "requiredRankInfo",
+        "data": [
+            {
+                "year": 2020,
+                "season": 1,
+                "required": false
+            },
+            {
+                "year": 2020,
+                "season": 2,
+                "required": false
+            },
+            {
+                "year": 2020,
+                "season": 3,
+                "required": true
+            },
+            {
+                "year": 2020,
+                "season": 4,
+                "required": true
+            },
+            {
+                "year": 2020,
+                "season": 5,
+                "required": false
+            },
+            {
+                "year": 2021,
+                "season": 1,
+                "required": true
+            }
+        ]
+    }
+],
+        "teams": [
+            {
+                "assistantCaptain": [
+                    "TEST narcissus#7376"
+                ],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.622683637169E12,
+                        "action": "Added to division",
+                        "target": "Division D East",
+                        "season": 12
+                    }
+                ],
+                "teamName": "TEST sunshine mynah birds",
+                "teamName_lower": "test sunshine mynah birds",
+                "teamMembers": [
+                    {
+                        "_id": "5fe26e7fc311fadee4afb7f6",
+                        "displayName": "TEST azalea#9539"
+                    },
+                    {
+                        "_id": "5fe26e7fc311fadee4afb7f7",
+                        "displayName": "TEST narcissus#7376"
+                    },
+                    {
+                        "_id": "5fe26e7fc311fadee4afb7f8",
+                        "displayName": "TEST hyena#4375"
+                    },
+                    {
+                        "_id": "5fe26e7fc311fadee4afb7f9",
+                        "displayName": "TEST mountain goat#1399"
+                    },
+                    {
+                        "_id": "5fe26e7fc311fadee4afb7fa",
+                        "displayName": "TEST zombie#1270"
+                    }
+                ],
+                "pendingMembers": [],
+                "__v": 6,
+                "captain": "TEST azalea#9539",
+                "questionnaire": {
+                    "registered": true
+                },
+                "ticker": "qqqq",
+                "ticker_lower": "qqqq",
+                "divisionDisplayName": "Division D Beast",
+                "divisionConcat": "d-beast",
+                "questionnaire": {
+                    "compLevel": "Balance winning with fun",
+                    "lastSeason": "yes",
+                    "oldTeam": "Egg smackers",
+                    "oldDivision": "B East",
+                    "returningPlayers": "3",
+                    "returningPlayersDiv": "B East",
+                    "newPlayers": "Loba",
+                    "teamChanges": "Winning not losing",
+                    "divisionPlacement": "Low",
+                    "priorPlacement": "Hahaha",
+                    "otherLeagues": "Okay",
+                    "otherInfo": "aphish has a new fish bowl, not sure if that will make him better or worse tho",
+                    "eastWest": "east",
+                    "acknowledge": true,
+                    "registered": true
+                }
+            }
+        ],
+        "users": [
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1gmukip64lde",
+                "displayName": "TEST lily#3664",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixfg",
+                "displayName": "TEST azalea#9539",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "seasonsPlayed": 2,
+                "isCaptain": true
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixff",
+                "displayName": "TEST narcissus#7376",
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "seasonsPlayed": 2,
+                "isCaptain": true
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixfe",
+                "displayName": "TEST hyena#4375",
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "seasonsPlayed": 2
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixfd",
+                "displayName": "TEST mountain goat#1399",
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "seasonsPlayed": 2
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixfc",
+                "displayName": "TEST zombie#1270",
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "seasonsPlayed": 2
+            }
+        ]
+}

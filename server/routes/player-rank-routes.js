@@ -192,8 +192,6 @@ router.post('/usersReporting', passport.authenticate('jwt', {
     session: false
 }), (req, res) => {
 
-    //TODO: replace with client direct to s3 upload
-
     const path = 'playerrank/usersReporting';
 
     const requiredParameters = [{
@@ -253,7 +251,9 @@ function confirmCanUpload(req, res, next) {
                             }
                         })
 
-                        if (callingUser.displayName == found.displayName || ind > -1) {
+                        
+
+                        if (callingUser.displayName == found.displayName || (callingUser.isCaptain && ind > -1)) {
                             next();
                         } else {
                             levelRestrict.userLevel(req, res, next);
