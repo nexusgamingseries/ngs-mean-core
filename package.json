@@ -6,8 +6,10 @@
     "scripts": {
         "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 cluster.js",
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install",
-        "test": "mocha server/tests/routes/schedule-routes/schedule-routes.fetch-tournament.test.js"
+        "test": "mocha server/tests/routes/notes-routes/notes-routes.test.js"
     },
+    
+    
     "engines": {
         "node": "16.13.0",
         "npm": "8.1.0"
