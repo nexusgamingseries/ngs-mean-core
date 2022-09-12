@@ -155,15 +155,7 @@ async function handleCasterReportObj(obj) {
 }
 
 async function getUnCurratedReports() {
-    return CasterReport.CasterReport.find({
-        $or: [{
-            playlistCurrated: false
-        }, {
-            playlistCurrated: {
-                $exists: false
-            }
-        }]
-    }).then(
+    return CasterReport.CasterReport.find({ $or : [ { "playlistCurrated" : { $ne : true } } ] }).then(
         found => {
             return found;
         },

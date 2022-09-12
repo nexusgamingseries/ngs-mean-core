@@ -1,5 +1,6 @@
 //require express and socket io
 const express = require("express");
+const worker = require('./worker');
 
 //host name and port
 const hostname = process.env.hostname;
@@ -20,6 +21,8 @@ if(initCallback){
     console.log(`Server ${hostname} running at on ${port}`);
 });
 }
+
+worker.init();
 
 
 if (process.env.runNewRelic != 'false') {

@@ -11,7 +11,7 @@ const System = require('../models/system-models').system;
 
 const gsapi = google.youtube("v3");
 
-const UNCURRATED_AMOUNT = 50;
+const UNCURRATED_AMOUNT = 1;
 
 /**
  *   ready (sets up google authentication and gets needed data for currator) ->
@@ -109,6 +109,9 @@ function PlaylistCurator() {
                     console.log('might be done with playlist');
                     this.parseList();
                 }
+            },
+            err=>{
+                console.log("Error from get playlist info:", err);
             }
         )
     }
@@ -134,11 +137,10 @@ function PlaylistCurator() {
     curator.getPlaylistInfo = async function(nextPageToken) {
 
         const requestDetails = {
-            part: 'snippet, contentDetails',
+            part: ['snippet','contentDetails'],
             channelId: CHANNELID,
             maxResults: 50,
-            auth: this.oauth2Client,
-            mine:true
+            auth: this.oauth2Client
         };
         if (nextPageToken) {
             requestDetails['pageToken'] = nextPageToken;
@@ -170,11 +172,13 @@ function PlaylistCurator() {
 
             let playListName;
 
-            if (report.division && report.division.length > 0 && report.division != "undefined" && report.division != "null") {
+            let divisionBool = utils.returnBoolByPath(report,"division");
+            let oldBool = report.division && report.division.length > 0 && report.division != "undefined" && report.division != "null";
+            if (divisionBool) {
                 let reportDiv = report.division;
                 let divInf = _.find(this.divisionInfo, { divisionConcat: reportDiv });
                 playListName = `Season ${this.seasonValue} ${divInf.displayName.trim()} Division`;
-            } else if (report.division && report.division.length > 0) {
+            } else if (!divisionBool) {
                 playListName = `Season ${this.seasonValue} ${report.event.trim()}`;
             }else{
 
