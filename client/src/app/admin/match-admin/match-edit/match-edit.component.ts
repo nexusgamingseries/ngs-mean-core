@@ -291,12 +291,15 @@ export class MatchEditComponent implements OnInit {
     }
 
     if (this.homeTeamPlayer != undefined && this.homeTeamPlayer != null) {
+      match.other.homeTeamPlayer = this.homeTeamPlayer;
       match.other.team_one_player = this.homeTeamPlayer;
     }
 
     if (this.awayTeamPlayer != undefined && this.awayTeamPlayer != null) {
+      match.other.awayTeamPlayer = this.awayTeamPlayer;
       match.other.team_two_player = this.awayTeamPlayer;
     }
+
 
     if (this.match.scheduledTime.startTime && this.friendlyTime) {
       this.friendlyDate = moment(this.match.scheduledTime.startTime);
