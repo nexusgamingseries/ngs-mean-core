@@ -1,0 +1,129 @@
+{
+    "mvps":[
+        {
+            "match_id": "g3g51pqrk7xpbf74",
+            "__v": 0,
+            "likes": 0,
+            "player_id": "5e726ffe341a0a3861fa1670",
+            "potg_link": "clips.twitch.tv/embed?clip=PowerfulPoorArmadilloOpieOP&autoplay=false&autoplay=false&autoplay=false",
+            "season": 9,
+            "timeStamp": 1.588340696399E12
+        },
+        {
+            "match_id": "g3g51pqrk7xpbf77",
+            "__v": 0,
+            "likes": 0,
+            "player_id": "5e726ffe341a0a3861fa165d",
+            "potg_link": "clips.twitch.tv/embed?clip=PowerfulPoorArmadilloOpieOP&autoplay=false&autoplay=false&autoplay=false&autoplay=false&autoplay=false",
+            "season": 9,
+            "timeStamp": 1.588340740687E12
+        },
+        {
+            "match_id": "g3g51pqrk7xpbf7a",
+            "__v": 0,
+            "likes": 0,
+            "player_id": "5e726ffd341a0a3861fa1646",
+            "potg_link": "clips.twitch.tv/embed?clip=PowerfulPoorArmadilloOpieOP&autoplay=false&autoplay=false&autoplay=false&autoplay=false",
+            "season": 9,
+            "timeStamp": 1.588340761405E12
+        }
+    ],
+    "teams": [
+        {
+            "assistantCaptain": [
+                "TEST narcissus#7376"
+            ],
+            "invitedUsers": [],
+            "replays": [],
+            "history": [
+                {
+                    "timestamp": 1.622683637169E12,
+                    "action": "Added to division",
+                    "target": "Division D East",
+                    "season": 12
+                }
+            ],
+            "teamName": "TEST sunshine mynah birds",
+            "teamName_lower": "test sunshine mynah birds",
+            "teamMembers": [
+                {
+                    "_id": "5fe26e7fc311fadee4afb7f6",
+                    "displayName": "TEST azalea#9539"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7f7",
+                    "displayName": "TEST narcissus#7376"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7f8",
+                    "displayName": "TEST hyena#4375"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7f9",
+                    "displayName": "TEST mountain goat#1399"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7fa",
+                    "displayName": "TEST zombie#1270"
+                }
+            ],
+            "pendingMembers": [],
+            "__v": 6,
+            "captain": "TEST azalea#9539",
+            "questionnaire": {
+                "registered": true
+            },
+            "ticker": "qqqq",
+            "ticker_lower": "qqqq",
+            "divisionDisplayName": "Division D Beast",
+            "divisionConcat": "d-beast",
+            "questionnaire": {
+                "compLevel": "Balance winning with fun",
+                "lastSeason": "yes",
+                "oldTeam": "Egg smackers",
+                "oldDivision": "B East",
+                "returningPlayers": "3",
+                "returningPlayersDiv": "B East",
+                "newPlayers": "Loba",
+                "teamChanges": "Winning not losing",
+                "divisionPlacement": "Low",
+                "priorPlacement": "Hahaha",
+                "otherLeagues": "Okay",
+                "otherInfo": "aphish has a new fish bowl, not sure if that will make him better or worse tho",
+                "eastWest": "east",
+                "acknowledge": true,
+                "registered": true
+            }
+        }
+    ],
+    "users":[
+                {
+                    "messageCenter": [],
+                    "replays": [],
+                    "history": [],
+                    "bNetId": "1810kj0jixfg",
+                    "displayName": "TEST azalea#9539",
+                    "replayArchive": [],
+                    "verifiedRankHistory": [],
+                    "__v": 0,
+                    "teamId": "5fe26e7ec311fadee4afb7e6",
+                    "teamName": "TEST sunshine mynah birds",
+                    "seasonsPlayed": 2,
+                    "isCaptain": true
+                }
+    ],
+    "systems": [
+        {
+            "data": {
+                "value": 13,
+                "registrationOpen": true,
+                "seasonStartDate": 1.63998E12,
+                "seasonEndDate": 1.6436088E12,
+                "registrationEndDate": 1.6398936E12
+            },
+            "dataName": "seasonInfo",
+            "__v": 0
+        }
+    ]
+    
+}
