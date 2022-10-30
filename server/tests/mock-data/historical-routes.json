@@ -1,0 +1,440 @@
+{
+    "schedules":[
+{
+    "season": 10,
+    "division": {
+        "test-div": {
+            "participants": [
+                "5e726ffb341a0a3861fa161b",
+                "5e726ffa341a0a3861fa1606",
+                "5e726ffd341a0a3861fa1645",
+                "5e726ffe341a0a3861fa166f",
+                "5e7ccf896bb6950c006d646a"
+            ],
+            "matches": [
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjs",
+                    "round": 1,
+                    "home": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    },
+                    "away": {
+                        "id": "5e7ccf896bb6950c006d646a"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjt",
+                    "round": 1,
+                    "home": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgju",
+                    "round": 2,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e7ccf896bb6950c006d646a"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjv",
+                    "round": 2,
+                    "home": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjw",
+                    "round": 3,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjx",
+                    "round": 3,
+                    "home": {
+                        "id": "5e7ccf896bb6950c006d646a"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjy",
+                    "round": 4,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgjz",
+                    "round": 4,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    },
+                    "away": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgk0",
+                    "round": 5,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    }
+                },
+                {
+                    "season": 10,
+                    "divisionConcat": "test-div",
+                    "matchId": "tqwm01nbdkculwgk1",
+                    "round": 5,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    },
+                    "away": {
+                        "id": "5e7ccf896bb6950c006d646a"
+                    }
+                }
+            ],
+            "DRR": false
+        }
+    },
+    "__v": 0
+},
+{
+    "season": 9,
+    "division": {
+        "test-div": {
+            "participants": [
+                "5e726ffc341a0a3861fa1630",
+                "5e726ffb341a0a3861fa161b",
+                "5e726ffa341a0a3861fa1606",
+                "5e726ffd341a0a3861fa1645",
+                "5e726ffe341a0a3861fa165a",
+                "5e726ffe341a0a3861fa166f"
+            ],
+            "matches": [
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf74",
+                    "round": 1,
+                    "home": {
+                        "id": "5e726ffc341a0a3861fa1630"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf75",
+                    "round": 1,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa165a"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf76",
+                    "round": 1,
+                    "home": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf77",
+                    "round": 2,
+                    "home": {
+                        "id": "5e726ffc341a0a3861fa1630"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa165a"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf78",
+                    "round": 2,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf79",
+                    "round": 2,
+                    "home": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    },
+                    "away": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7a",
+                    "round": 3,
+                    "home": {
+                        "id": "5e726ffc341a0a3861fa1630"
+                    },
+                    "away": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7b",
+                    "round": 3,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa165a"
+                    },
+                    "away": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7c",
+                    "round": 3,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    },
+                    "away": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7d",
+                    "round": 4,
+                    "home": {
+                        "id": "5e726ffc341a0a3861fa1630"
+                    },
+                    "away": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7e",
+                    "round": 4,
+                    "home": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    },
+                    "away": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7f",
+                    "round": 4,
+                    "home": {
+                        "id": "5e726ffe341a0a3861fa165a"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7g",
+                    "round": 5,
+                    "home": {
+                        "id": "5e726ffc341a0a3861fa1630"
+                    },
+                    "away": {
+                        "id": "5e726ffb341a0a3861fa161b"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7h",
+                    "round": 5,
+                    "home": {
+                        "id": "5e726ffa341a0a3861fa1606"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa166f"
+                    }
+                },
+                {
+                    "season": 9,
+                    "divisionConcat": "test-div",
+                    "matchId": "g3g51pqrk7xpbf7i",
+                    "round": 5,
+                    "home": {
+                        "id": "5e726ffd341a0a3861fa1645"
+                    },
+                    "away": {
+                        "id": "5e726ffe341a0a3861fa165a"
+                    }
+                }
+            ],
+            "DRR": false
+        }
+    },
+    "__v": 0
+},
+{
+    "season": 12,
+    "type": "seasonal",
+    "division": {
+        "d-east": {
+            "participants": [
+                {
+                    "_id": "5fd7c61bfafe3c0023c97259",
+                    "teamName": "Mongoose's Team"
+                },
+                {
+                    "_id": "5fe26e7ec311fadee4afb7d1",
+                    "teamName": "TEST assigned daffodils"
+                },
+                {
+                    "_id": "5fe26e7ec311fadee4afb7e6",
+                    "teamName": "TEST sunshine mynah birds"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7fb",
+                    "teamName": "TEST inheriting weasels"
+                },
+                {
+                    "_id": "5fe26e80c311fadee4afb810",
+                    "teamName": "TEST woeful impalas"
+                }
+            ],
+            "matches": [
+                "y0ikpg95uh3",
+                "y0ikpg95uh4",
+                "y0ikpg95uh5",
+                "y0ikpg95uh6",
+                "y0ikpg95uh7",
+                "y0ikpg95uh8",
+                "y0ikpg95uh9",
+                "y0ikpg95uha",
+                "y0ikpg95uhb",
+                "y0ikpg95uhc"
+            ],
+            "DRR": false
+        }
+    },
+    "__v": 0
+},
+{
+    "season": 13,
+    "type": "seasonal",
+    "division": {
+        "d-beast": {
+            "participants": [
+                {
+                    "_id": "5fd7c61bfafe3c0023c97259",
+                    "teamName": "Mongoose's Team"
+                },
+                {
+                    "_id": "5fe26e7ec311fadee4afb7d1",
+                    "teamName": "TEST assigned daffodils"
+                },
+                {
+                    "_id": "5fe26e7ec311fadee4afb7e6",
+                    "teamName": "TEST sunshine mynah birds"
+                },
+                {
+                    "_id": "5fe26e7fc311fadee4afb7fb",
+                    "teamName": "TEST inheriting weasels"
+                },
+                {
+                    "_id": "5fe26e80c311fadee4afb810",
+                    "teamName": "TEST woeful impalas"
+                }
+            ],
+            "matches": [
+                "gd3ud66ail6ftd3vd",
+                "gd3ud66ail6ftd3ve",
+                "gd3ud66ail6ftd3vf",
+                "gd3ud66ail6ftd3vg",
+                "gd3ud66ail6ftd3vh",
+                "gd3ud66ail6ftd3vi",
+                "gd3ud66ail6ftd3vj",
+                "gd3ud66ail6ftd3vk",
+                "gd3ud66ail6ftd3vl",
+                "gd3ud66ail6ftd3vm",
+                "gd3ud66ail6ftd3vn",
+                "gd3ud66ail6ftd3vo",
+                "gd3ud66ail6ftd3vp",
+                "gd3ud66ail6ftd3vq",
+                "gd3ud66ail6ftd3vr",
+                "gd3ud66ail6ftd3vs",
+                "gd3ud66ail6ftd3vt",
+                "gd3ud66ail6ftd3vu",
+                "gd3ud66ail6ftd3vv",
+                "gd3ud66ail6ftd3vw"
+            ],
+            "DRR": true
+        }
+    },
+    "__v": 0
+}
+    ]
+  
+}
