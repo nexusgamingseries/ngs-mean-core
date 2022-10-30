@@ -36,9 +36,10 @@ router.get('/seasons', (req, res) => {
 
 });
 
-router.get('/season/divisions', (req, res) => {
 
-    const path = '/history/season/divisions';
+router.get('/season/all', (req, res) => {
+
+    const path = '/history/season/all';
 
     const requiredParameters = [{
         name: 'season',
@@ -50,8 +51,7 @@ router.get('/season/divisions', (req, res) => {
 
         let season = requiredParameters.season.value;
         let query = {
-            season: season,
-            type: 'division'
+            season: season
         };
         return Archive.find(query).then(
             found => {

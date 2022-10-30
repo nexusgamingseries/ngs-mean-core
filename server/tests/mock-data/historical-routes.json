@@ -435,6 +435,682 @@
     },
     "__v": 0
 }
+    ],
+    "archives":[
+        {
+            "type": "division",
+            "season": 10,
+            "object": {
+                "teams": [
+                    "TEST left-footed camels",
+                    "Super Smash Bros",
+                    "Super Smash Bros 2"
+                ],
+                "participants": [],
+                "tournaments": [],
+
+                "displayName": "Test Div",
+                "divisionName": "test div",
+                "divisionConcat": "test-div",
+                "sorting": 1,
+                "maxMMR": 5000,
+                "minMMR": 1000,
+                "moderator": "Butter Ball",
+                "public": true,
+                "__v": 10
+            },
+            "timeStamp": "1606781120755",
+            "__v": 0
+        },
+        {
+
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [
+                    "g3g51pqrk7xpepif"
+                ],
+                "history": [
+                    {
+                        "timestamp": 1.588025402422E12,
+                        "action": "Joined team",
+                        "target": "TEST monkey#1323",
+                        "season": 9
+                    },
+                    {
+                        "timestamp": 1.595210365447E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 10
+                    },
+                    {
+                        "timestamp": 1.595210373104E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 10
+                    },
+                    {
+                        "timestamp": 1.595257242277E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 10
+                    },
+                    {
+                        "timestamp": 1.595257859929E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 10
+                    },
+                    {
+                        "timestamp": 1.597712594259E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 11
+                    },
+                    {
+                        "timestamp": 1.597712741488E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 11
+                    },
+                    {
+                        "timestamp": 1.604773399338E12,
+                        "action": "Joined team",
+                        "target": "SirFeedsAlot#11793",
+                        "season": 11
+                    }
+                ],
+
+                "questionnaire": {
+                    "registered": true,
+                    "pickedMaps": [],
+                    "lastSeason": "no",
+                    "compLevel": "Balance winning with fun",
+                    "otherLeagues": "asdf",
+                    "skillGuess": "asdf",
+                    "otherInfo": "asdf",
+                    "eastWest": "west",
+                    "acknowledge": true
+                },
+                "teamName": "Super Smash Bros 2",
+                "teamName_lower": "super smash bros 2",
+                "teamMembers": [
+                    {
+                        "displayName": "wraithling#1178"
+                    },
+                    {
+   
+                        "displayName": "TEST monkey#1323"
+                    },
+                    {
+                        "displayName": "TEST monkey#1234"
+                    },
+                    {
+                        "displayName": "TEST monkey#5678"
+                    }
+                ],
+                "pendingMembers": [],
+                "__v": 74,
+                "captain": "wraithling#1178",
+                "logo": "Super_Smash_Bros_2_1907.png",
+                "hpMmrAvg": 2720,
+                "ngsMmrAvg": null,
+                "teamMMRAvg": null,
+                "availability": {
+                    "monday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "tuesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "wednesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "thursday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "friday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "saturday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "sunday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    }
+                },
+                "lookingForMore": false,
+                "rolesNeeded": {
+                    "tank": false,
+                    "meleeassassin": false,
+                    "rangedassassin": false,
+                    "support": false,
+                    "offlane": false,
+                    "flex": false
+                },
+                "twitter": "aaaaaa",
+                "divisionConcat": "test-div",
+                "divisionDisplayName": "Test Div",
+                "stormRankAvg": 16,
+                "teamId": "5e726ffc341a0a3861fa1630"
+            },
+            "timeStamp": "1606781120857",
+            "__v": 0
+        },
+        {
+
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.595255391632E12,
+                        "action": "Added to division",
+                        "target": "Test Div",
+                        "season": 10
+                    }
+                ],
+
+                "questionnaire": {
+                    "registered": true
+                },
+                "teamName": "TEST left-footed camels",
+                "teamName_lower": "test left-footed camels",
+                "teamMembers": [
+                    {
+      
+                        "displayName": "TEST rabbit#741"
+                    },
+                    {
+                       
+                        "displayName": "TEST hippopotamus#1374"
+                    },
+                    {
+            
+                        "displayName": "TEST gladiolus#7489"
+                    },
+                    {
+                       
+                        "displayName": "TEST succubus#4178"
+                    },
+                    {
+                       
+                        "displayName": "TEST ape#5741"
+                    }
+                ],
+                "pendingMembers": [],
+                "__v": 6,
+                "captain": "TEST rabbit#741",
+                "divisionConcat": "test-div",
+                "divisionDisplayName": "Test Div",
+                "teamId": "5e726ffe341a0a3861fa166f"
+            },
+            "timeStamp": "1606781120931",
+            "__v": 0
+        },
+        {
+   
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.585237897501E12,
+                        "season": 9,
+                        "action": "Team Created",
+                        "target": "Super Smash Bros"
+                    },
+                    {
+                        "timestamp": 1.595255391632E12,
+                        "action": "Added to division",
+                        "target": "Test Div",
+                        "season": 10
+                    }
+                ],
+                
+                "teamName_lower": "super smash bros",
+                "lookingForMore": false,
+                "availability": {
+                    "monday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "tuesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "wednesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "thursday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "friday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "saturday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "sunday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    }
+                },
+                "competitiveLevel": null,
+                "descriptionOfTeam": null,
+                "rolesNeeded": {
+                    "tank": false,
+                    "meleeassassin": false,
+                    "rangedassassin": false,
+                    "support": false,
+                    "offlane": false,
+                    "flex": false
+                },
+                "timeZone": "",
+                "teamMembers": [
+                    {
+                        
+                        "displayName": "SirFeedsAlot#11793"
+                    }
+                ],
+                "pendingMembers": null,
+                "captain": "SirFeedsAlot#11793",
+                "teamMMRAvg": null,
+                "divisionDisplayName": "Test Div",
+                "divisionConcat": "test-div",
+                "questionnaire": {
+                    "registered": true
+                },
+                "ticker": "ssb",
+                "hpMmrAvg": 2587,
+                "ngsMmrAvg": null,
+                "twitch": null,
+                "twitter": null,
+                "youtube": null,
+                "teamName": "Super Smash Bros",
+                "__v": 1,
+                "stormRankAvg": 0,
+                "teamId": "5e7ccf896bb6950c006d646a"
+            },
+            "timeStamp": "1606781120981",
+            "__v": 0
+        },
+        {
+      
+            "type": "division",
+            "season": 10,
+            "object": {
+                "teams": [
+                    "Storm Test Team",
+                    "TEST idiosyncratic ghasts",
+                    "TEST injured weasels",
+                    "TEST nitrous babys breaths"
+                ],
+                "participants": [],
+                "tournaments": [],
+                
+                "displayName": "Storm Division Qualifiers",
+                "divisionName": "Storm Division Qualifiers",
+                "divisionConcat": "storm-division-qualifiers",
+                "sorting": 10,
+                "maxMMR": 0,
+                "minMMR": 0,
+                "moderator": "Wedge#7006",
+                "public": true,
+                "cupDiv": true,
+                "__v": 2
+            },
+            "timeStamp": "1606781121030",
+            "__v": 0
+        },
+        {
+            
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.595255391631E12,
+                        "action": "Added to division",
+                        "target": "Test Div",
+                        "season": 10
+                    }
+                ],
+              
+                "questionnaire": {
+                    "registered": true
+                },
+                "teamName": "TEST nitrous babys breaths",
+                "teamName_lower": "test nitrous babys breaths",
+                "teamMembers": [
+                    {
+                        
+                        "displayName": "TEST turtle#145"
+                    },
+                    {
+                        
+                        "displayName": "TEST dahlia#4817"
+                    },
+                    {
+                       
+                        "displayName": "TEST narcissus#2774"
+                    },
+                    {
+                      
+                        "displayName": "TEST woodchuck#2949"
+                    }
+                ],
+                "pendingMembers": [],
+                "__v": 7,
+                "captain": "TEST turtle#145",
+                "hpMmrAvg": null,
+                "ngsMmrAvg": null,
+                "teamMMRAvg": null,
+                "divisionConcat": "storm-division-qualifiers",
+                "divisionDisplayName": "Storm Division Qualifiers",
+                "ticker": "butt",
+                "teamId": "5e726ffd341a0a3861fa1645"
+            },
+            "timeStamp": "1606781121127",
+            "__v": 0
+        },
+        {
+           
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.595255391631E12,
+                        "action": "Added to division",
+                        "target": "Test Div",
+                        "season": 10
+                    }
+                ],
+                
+                "teamName": "TEST idiosyncratic ghasts",
+                "teamName_lower": "test idiosyncratic ghasts",
+                "teamMembers": [
+                    {
+                        
+                        "displayName": "TEST poltergeist#5773"
+                    },
+                    {
+                      
+                        "displayName": "TEST siren#5098"
+                    },
+                    {
+                        
+                        "displayName": "TEST violet#7305"
+                    },
+                    {
+                        
+                        "displayName": "TEST sloth#7569"
+                    },
+                    {
+                        
+                        "displayName": "TEST snake#4337"
+                    }
+                ],
+                "pendingMembers": [],
+                "questionnaire": {
+                    "registered": true
+                },
+                "__v": 6,
+                "captain": "TEST poltergeist#5773",
+                "divisionConcat": "storm-division-qualifiers",
+                "divisionDisplayName": "Storm Division Qualifiers",
+                "teamId": "5e726ffa341a0a3861fa1606"
+            },
+            "timeStamp": "1606781121172",
+            "__v": 0
+        },
+        {
+         
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.585421311217E12,
+                        "action": "Joined team",
+                        "target": "Shadonis#11759",
+                        "season": 9
+                    },
+                    {
+                        "timestamp": 1.59525539163E12,
+                        "action": "Added to division",
+                        "target": "Test Div",
+                        "season": 10
+                    }
+                ],
+             
+                "questionnaire": {
+                    "registered": true
+                },
+                "teamName": "TEST injured weasels",
+                "teamName_lower": "test injured weasels",
+                "teamMembers": [
+                    {
+                        
+                        "displayName": "TEST petunia#3430"
+                    },
+                    {
+                        
+                        "displayName": "TEST ghost#8079"
+                    },
+                    {
+                        
+                        "displayName": "TEST parakeet#4747"
+                    },
+                    {
+                        
+                        "displayName": "TEST lilac#5710"
+                    },
+                    {
+                        
+                        "displayName": "TEST crow#6281"
+                    },
+                    {
+                        
+                        "displayName": "Shadonis#11759"
+                    }
+                ],
+                "pendingMembers": [],
+                "__v": 7,
+                "captain": "Shadonis#11759",
+                "divisionConcat": "storm-division-qualifiers",
+                "divisionDisplayName": "Storm Division Qualifiers",
+                "teamId": "5e726ffb341a0a3861fa161b"
+            },
+            "timeStamp": "1606781121218",
+            "__v": 0
+        },
+        {
+            
+            "type": "team",
+            "season": 10,
+            "object": {
+                "assistantCaptain": [],
+                "invitedUsers": [],
+                "replays": [],
+                "history": [
+                    {
+                        "timestamp": 1.59534779074E12,
+                        "season": 10,
+                        "action": "Team Created",
+                        "target": "Storm Test Team"
+                    }
+                ],
+                
+                "teamName_lower": "storm test team",
+                "lookingForMore": false,
+                "availability": {
+                    "monday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "tuesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "wednesday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "thursday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "friday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "saturday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    },
+                    "sunday": {
+                        "available": false,
+                        "startTime": null,
+                        "endTime": null
+                    }
+                },
+                "competitiveLevel": null,
+                "descriptionOfTeam": null,
+                "rolesNeeded": {
+                    "tank": false,
+                    "meleeassassin": false,
+                    "rangedassassin": false,
+                    "support": false,
+                    "offlane": false,
+                    "flex": false
+                },
+                "timeZone": "",
+                "teamMembers": [
+                    {
+                        "displayName": "CaptainWedge#1451"
+                    }
+                ],
+                "pendingMembers": null,
+                "captain": "CaptainWedge#1451",
+                "teamMMRAvg": null,
+                "divisionDisplayName": "Storm Division Qualifiers",
+                "divisionConcat": "storm-division-qualifiers",
+                "questionnaire": {
+                    "registered": true,
+                    "pickedMaps": []
+                },
+                "ticker": "stt",
+                "hpMmrAvg": null,
+                "ngsMmrAvg": null,
+                "twitch": null,
+                "twitter": null,
+                "youtube": null,
+                "teamName": "Storm Test Team",
+                "__v": 0,
+                "teamId": "5f17134e3225cf0017dba867"
+            },
+            "timeStamp": "1606781121298",
+            "__v": 0
+        },
+        {
+            
+            "type": "division",
+            "season": 10,
+            "object": {
+                "teams": [
+                    "Scalding Sweat Cult",
+                    "Artemis"
+                ],
+                "participants": [],
+                "tournaments": [],
+                
+                "displayName": "C East",
+                "divisionName": "C East",
+                "divisionConcat": "c-east",
+                "sorting": 5,
+                "maxMMR": 0,
+                "minMMR": 0,
+                "__v": 38,
+                "public": false,
+                "moderator": "Pina Colada#1327"
+            },
+            "timeStamp": "1606781121342",
+            "__v": 0
+        },
+        {
+            
+            "type": "division",
+            "season": 10,
+            "object": {
+                "teams": [
+                    "Luigi&Knuckles@OlympicGmes (withdrawn)"
+                ],
+                "participants": [],
+                "tournaments": [],
+                "displayName": "D West",
+                "divisionName": "D West",
+                "divisionConcat": "d-west",
+                "sorting": 8,
+                "maxMMR": 2600,
+                "minMMR": 0,
+                "__v": 38,
+                "public": false,
+                "moderator": "Ectar#2294",
+                "DRR": true
+            },
+            "timeStamp": "1606781121426",
+            "__v": 0
+        }
     ]
   
 }

@@ -14,7 +14,7 @@ export class HistoryService {
   }
 
   getSeasonDivisions(season){
-    let url = '/history/season/divisions';
+    let url = "/history/season/division";
     let param = [
       {'season':season}
     ]

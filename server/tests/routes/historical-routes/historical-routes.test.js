@@ -25,27 +25,28 @@ let generateNewToken;
 var uploadAvatarStub;
 
 
-before(() =>{
-    return loadConfig().then(
+before((done) =>{
+    loadConfig().then(
     res=>{
-       return mongoUnit.start().then(() => {
+       mongoUnit.start().then(() => {
         generateNewToken = require('../../../configs/passport-setup');
         console.log('fake mongo is started: ', mongoUnit.getUrl())
         process.env.mongoURI = mongoUnit.getUrl() // this var process.env.DATABASE_URL = will keep link to fake mongo
         app = require('../../../../server');
         // mocha.run() // this line start mocha tests
+        done();
         });
     });
 })
 
-describe("mvp-routes",()=>{
+describe("historical-routes",()=>{
     it('api/history/seasons returns past seasons data',async()=>{
         
         await mongoUnit.dropDb();
         await mongoUnit.load(mockData); 
        
        
-        let requestUrl = `api/history/seasons`;
+        let requestUrl = `/api/history/seasons`;
 
         let result = await request(app.app).get(requestUrl)
         .then((res)=>{
@@ -58,210 +59,196 @@ describe("mvp-routes",()=>{
 
         assert(result.status == 200);
         assert(result.body != null);
-        console.log(result.body);
+        assert(result.body.returnObject.length>0);
     });
-//    it('api/mvp/get returns mvp by player id',async()=>{
+        it('api/history/season/division requires season input',async()=>{
         
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/get?type=player_id&id=5e726ffe341a0a3861fa165d`;
+        let requestUrl = `/api/history/season/division`;
 
-//         let result = await request(app.app).get(requestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
+        let result = await request(app.app).get(requestUrl)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
 
-//         assert(result.status == 200);
-//         assert(result.body != null);
-//     });
-//     it('api/mvp/get returns mvp list by player id',async()=>{
+        assert(result.status == 500);
+        assert(result.body != null);
+        assert(result.body.message.length>0);
+    });
+            it('api/history/season/division returns historical data for season',async()=>{
         
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/get?type=player_id&list=5e726ffe341a0a3861fa165d,5e726ffd341a0a3861fa1646`;
+        let requestUrl = `/api/history/season/division?season=10`;
 
-//         let result = await request(app.app).get(requestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
+        let result = await request(app.app).get(requestUrl)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
+        let restypes = [];
+        result.body.returnObject.forEach(
+            (iter)=>{
+                if(restypes.indexOf(iter.type)==-1){
+                    restypes.push(iter.type);
+                }
+            }
+        );
+        assert(result.status == 200);
+        assert(result.body != null);
+        assert(result.body.returnObject.length>0);
+        assert(restypes.length == 1 && restypes[0]=='division');
+    });
 
-//         assert(result.status == 200);
-//         assert(result.body != null);
-//         assert(result.body.returnObject.length>0);
-//     });
-//      it('api/mvp/get returns mvp list by match id',async()=>{
+                it('api/history/season/all returns historical data for season',async()=>{
         
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/get?type=match_id&list=g3g51pqrk7xpbf74,g3g51pqrk7xpbf77`;
+        let requestUrl = `/api/history/season/all?season=10`;
 
-//         let result = await request(app.app).get(requestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
+        let result = await request(app.app).get(requestUrl)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
+        let restypes = [];
+        result.body.returnObject.forEach(
+            (iter)=>{
+                if(restypes.indexOf(iter.type)==-1){
+                    restypes.push(iter.type);
+                }
+            }
+        );
+        assert(result.status == 200);
+        assert(result.body != null);
+        assert(result.body.returnObject.length>0);
+        assert(restypes.length == 2);
+    });
 
-//         assert(result.status == 200);
-//         assert(result.body != null);
-//         assert(result.body.returnObject.length>0);
-//     });
-//     it('api/mvp/get returns mvp list by season',async()=>{
+                    it('api/history/season/teams requires season',async()=>{
         
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/get?season=9`;
+        let requestUrl = `/api/history/season/teams?season=10`;
+        const postBody = {
+            
+        }
 
-//         let result = await request(app.app).get(requestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
+        let result = await request(app.app).post(requestUrl)
+        .send(postBody)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
+        // let restypes = [];
+        // result.body.returnObject.forEach(
+        //     (iter)=>{
+        //         if(restypes.indexOf(iter.type)==-1){
+        //             restypes.push(iter.type);
+        //         }
+        //     }
+        // );
 
-//         assert(result.status == 200);
-//         assert(result.body != null);
-//         assert(result.body.returnObject.length>0);
-//     });
+                assert(result.status == 500);
+        assert(result.body != null);
+        assert(result.body.message.length>0);
 
-//         it('api/mvp/upsert creates new mvp entry',async()=>{
+        // assert(result.status == 200);
+        // assert(result.body != null);
+        // assert(result.body.returnObject.length>0);
+        // assert(restypes.length == 1 && restypes[0]=='teams');
+    });
+
+             it('api/history/season/teams returns team history for specified season',async()=>{
         
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
-
-//         const mvpObject =   {
-//             "match_id": "ttttt",
-//             "player_id": "player_ID",
-//             "potg_link": "clips.twitch.tv/embed?clip=PowerfulPoorArmadilloOpieOP&autoplay=false&autoplay=false&autoplay=false&autoplay=false&autoplay=false",
-//             "timeStamp": Date.now()
-//         };
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/upsert`;
+        let requestUrl = `/api/history/season/teams?season=10`;
+        const postBody = {
+            "season":10
+        };
 
-//         let admin = await User.find({"displayName": "TEST azalea#9539"});
-//         admin = admin[0];
-//         const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        let result = await request(app.app).post(requestUrl)
+        .send(postBody)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
+        let restypes = [];
+        result.body.returnObject.forEach(
+            (iter)=>{
+                if(restypes.indexOf(iter.type)==-1){
+                    restypes.push(iter.type);
+                }
+            }
+        );
+        assert(result.status == 200);
+        assert(result.body != null);
+        assert(result.body.returnObject.length>0);
+        assert(restypes.length == 1 && restypes[0]=='team');
+    });
 
-//         let result = await request(app.app).post(requestUrl)
-//         .set({"Authorization": `Bearer ${token}`})
-//         .send(mvpObject)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
-
-//         assert(result.status == 200);
-//         assert(result.body != null);
+    
+      it('api/history/season/teams returns team history for specified season and team',async()=>{
         
-//     });
-
-//      it('api/mvp/upsert updates existing mvp entry',async()=>{
-        
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
-
-//         let getRequestUrl = `/api/mvp/get?type=match_id&id=g3g51pqrk7xpbf77`;
-
-//         let getResult = await request(app.app).get(getRequestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
-
-//         let mvp = getResult.body.returnObject;
-
-//         mvp.potg_link = "CHANGED";
-       
-//         let requestUrl = `/api/mvp/upsert`;
-
-//         let admin = await User.find({"displayName": "TEST azalea#9539"});
-//         admin = admin[0];
-//         const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
-        
-
-//         let result = await request(app.app).post(requestUrl)
-//         .set({"Authorization": `Bearer ${token}`})
-//         .send(mvp)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
-
-//         assert(result.status == 200);
-//         assert(result.body != null);
-//         assert(result.body.returnObject.potg_link == "CHANGED")
-        
-//     });
-
-//          it('api/mvp/like increments like count of specific mvp object',async()=>{
-        
-//         await mongoUnit.dropDb();
-//         await mongoUnit.load(mockData); 
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
        
        
-//         let requestUrl = `/api/mvp/like`;
+        let requestUrl = `/api/history/season/teams?season=10`;
+        const postBody = {
+            "season":10,
+            "teams":["TEST left-footed camels"]
+        };
 
-//         let admin = await User.find({"displayName": "TEST azalea#9539"});
-//         admin = admin[0];
-//         const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        let result = await request(app.app).post(requestUrl)
+        .send(postBody)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            console.log("error XXX", err);
+            throw err;
+        });
+        let restypes = [];
+        result.body.returnObject.forEach(
+            (iter)=>{
+                if(restypes.indexOf(iter.type)==-1){
+                    restypes.push(iter.type);
+                }
+            }
+        );
+        assert(result.status == 200);
+        assert(result.body != null);
+        assert(result.body.returnObject.length==1);
+        assert(restypes.length == 1 && restypes[0]=='team');
+    });
 
-//         let getRequestUrl = `/api/mvp/get?type=match_id&id=g3g51pqrk7xpbf77`;
-
-//         let getResult = await request(app.app).get(getRequestUrl)
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
-
-//         let mvp = getResult.body.returnObject;
-
-//         let result = await request(app.app).post(requestUrl)
-//         .set({"Authorization": `Bearer ${token}`})
-//         .send({id:mvp._id})
-//         .then((res)=>{
-//             return res;
-//         },
-//         (err)=>{
-//             console.log("error XXX", err);
-//             throw err;
-//         });
-
-        
-//         assert(result.status == 200);
-//         assert(result.body != null);
-        
-//     });
 })

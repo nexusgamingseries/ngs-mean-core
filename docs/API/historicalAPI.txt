@@ -1,0 +1,22 @@
+Route: api/history/seasons
+Method: get
+Auth: Open
+Return: Returns all seasons info
+
+Route: api/history/season/all
+Method: get
+Auth: Open
+Params: season (number)
+Return: Returns division and teams info that matches provided season
+
+Route: api/history/season/division
+Method: get
+Auth: Open
+Params: season (number)
+Return: Returns division info that matches provided season
+
+Route: api/history/season/teams
+Method: post
+Auth: Open
+Params: season (number), teams (optional) list of teams (array of strings)
+Return: Returns division and teams info that matches provided season
