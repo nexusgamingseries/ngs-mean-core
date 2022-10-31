@@ -40,7 +40,7 @@ export class EventsService {
   }
 
   getEventById(id){
-    let url = '/events/get/id';
+    let url = '/events/fetch/id';
     let payload = {
       "id":id
     };
@@ -48,12 +48,12 @@ export class EventsService {
   };
 
   getEventByParams(param){
-    let url = '/events/get/params';
+    let url = '/events/fetch/params';
     let payload = param;
     return this.httpService.httpPost(url, payload);
   }
   getAll() {
-    let url = '/events/get/all';
+    let url = '/events/fetch/all';
     let payload = {};
     return this.httpService.httpPost(url, payload);
   }

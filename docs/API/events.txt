@@ -1,0 +1,18 @@
+Route: api/events/upsert
+Method: post
+Auth: EVENTS
+Params: event object to save/create
+Return: Returns event object
+
+
+Route: api/events/fetch/id
+Method: post
+Auth: Open
+Params: id (number) event id
+Return: Returns event object
+
+Route: api/events/fetch/all
+Method: post
+Auth: Open
+Params: none
+Return: Returns all event object

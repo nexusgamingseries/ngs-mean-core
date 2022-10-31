@@ -1,0 +1,50 @@
+{
+        "users": [
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1gmukip64lde",
+                "displayName": "TEST lily#3664",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0
+            },
+            {
+                "messageCenter": [],
+                "replays": [],
+                "history": [],
+                "bNetId": "1810kj0jixfg",
+                "displayName": "TEST azalea#9539",
+                "replayArchive": [],
+                "verifiedRankHistory": [],
+                "__v": 0,
+                "teamId": "5fe26e7ec311fadee4afb7e6",
+                "teamName": "TEST sunshine mynah birds",
+                "seasonsPlayed": 2,
+                "isCaptain": true
+            }
+        ],
+        "events":[
+            {
+                "__v": 0,
+                "eventBlurb": "Division B Grand Finals - You Are Not Alone vs Saltscale Mrgles 9pm EST",
+                "eventDate": 1.5831144E12,
+                "eventDescription": "Casted by: Ectar and 7thAce",
+                "eventImage": "",
+                "eventLink": "twitch.tv/NexusGamingSeries2",
+                "eventName": "Division B Grand Finals - 9pm EST",
+                "uuid": "d18ank6z83wqb"
+            },
+            {   
+                "eventBlurb": "NGS Season 9 Begins!",
+                "eventDate": 1.5879744E12,
+                "eventDescription": "Strap on that seat belt because season 9 is now underway! Schedule those matches, take no prisoners, and fight your way to HOTS glory!",
+                "eventImage": "5e8fc9d0491192508208a2fa.png",
+                "eventLink": "www.nexusgamingseries.org",
+                "eventName": "NGS Season 9 Begins!",
+                "uuid": "bt03vnk8ti6y0f",
+                "__v": 0
+            }
+        ]
+}

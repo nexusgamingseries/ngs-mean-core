@@ -65,9 +65,9 @@ router.post('/upsert', passport.authenticate('jwt', {
 
 // //Get event by id
 
-router.post('/get/id', (req, res) => {
+router.post('/fetch/id', (req, res) => {
 
-    const path = '/events/get/id';
+    const path = '/events/fetch/id';
 
 
 
@@ -97,11 +97,11 @@ router.post('/get/id', (req, res) => {
 
 });
 
-// //Get event by id
 
+//unused... eye this for removal ... 10-30-2022
 router.post('/get/params', (req, res) => {
 
-    const path = '/events/get/params';
+    const path = '/events/fetch/params';
 
     const optionalParams = [
         { name: 'name', type: 'string' },
@@ -166,9 +166,9 @@ router.post('/get/params', (req, res) => {
 
 
 //get all
-router.post('/get/all', (req, res) => {
+router.post('/fetch/all', (req, res) => {
 
-    const path = '/events/get/all';
+    const path = '/events/fetch/all';
 
     commonResponseHandler(req, res, [], [], async(req, res) => {
         const response = {};
