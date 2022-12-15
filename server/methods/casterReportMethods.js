@@ -155,7 +155,11 @@ async function handleCasterReportObj(obj) {
 }
 
 async function getUnCurratedReports() {
-    return CasterReport.CasterReport.find({ $or : [ { "playlistCurrated" : { $ne : true } } ] }).then(
+
+    // const query = { $or : [ { "playlistCurrated" : null }, { "playlistCurrated" : { $exists : false } } ] };
+    const query = { "playlistCurrated" : { $ne : true } };
+
+    return CasterReport.CasterReport.find(query).then(
         found => {
             return found;
         },

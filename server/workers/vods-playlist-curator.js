@@ -91,7 +91,7 @@ function PlaylistCurator() {
      * kick this mule sko'den
      */
     curator.run = function() {
-        this.recursePlaylist();
+        return this.recursePlaylist();
     }
 
     /**
@@ -99,7 +99,7 @@ function PlaylistCurator() {
      * @param {*} npt 
      */
     curator.recursePlaylist = function(npt) {
-        this.getPlaylistInfo(npt).then(
+        return this.getPlaylistInfo(npt).then(
             dat => {
                 // console.log('dat', dat);
                 this.playlistList = this.playlistList.concat(dat.items);
@@ -112,8 +112,9 @@ function PlaylistCurator() {
             },
             err=>{
                 console.log("Error from get playlist info:", err);
+                throw err;
             }
-        )
+        );
     }
 
     /**
@@ -142,6 +143,7 @@ function PlaylistCurator() {
             maxResults: 50,
             auth: this.oauth2Client
         };
+
         if (nextPageToken) {
             requestDetails['pageToken'] = nextPageToken;
         }
@@ -239,7 +241,7 @@ function PlaylistCurator() {
                             }
                         });
                 } else {
-                    console.log('playlist create error!');
+                    console.log('playlist create error!', request);
                 }
 
                 await promMock(2000, 'delay');
@@ -362,7 +364,9 @@ function PlaylistCurator() {
         );
 
         // need to save the results back to the caster reports...
-        CasterReportMethod.upsertCasterReport(this.reports.reportList);
+        CasterReportMethod.upsertCasterReport(this.reports.reportList).catch(e=>{
+            console.log(e);
+        });
 
     }
 
@@ -422,7 +426,11 @@ async function myFunction() {
     cur.ready().then(
         r => {
             console.log('curator ready');
-            cur.run();
+            cur.run().catch(
+                err=>{
+                    console.log('youtube currator error..');
+                }
+            );
         },
         e => {
             console.log('ready error', e);
