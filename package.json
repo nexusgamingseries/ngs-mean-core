@@ -6,11 +6,8 @@
     "scripts": {
         "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 cluster.js",
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install",
-        "test": "mocha server/tests/routes/division-routes/division-routes.test.js"
-        
+        "test": "mocha server/tests/routes/admin-user-routes/admin-user-routes.test.js"
     },
-    
-    
     "engines": {
         "node": "16.13.0",
         "npm": "8.1.0"
@@ -32,12 +29,12 @@
         "googleapis": "^104.0.0",
         "hots-parser": "^7.55.2",
         "jimp": "^0.16.0",
-        "jsonwebtoken": "^8.5.1",
+        "jsonwebtoken": "^9.0.0",
         "lodash": "^4.17.20",
         "luxon": "^1.25.0",
         "mocha": "^10.0.0",
         "moment": "^2.29.1",
-        "mongo-unit": "^3.2.0",
+        "mongo-unit": "^3.3.0",
         "mongoose": "^5.9.12",
         "newrelic": "^8.14.1",
         "nodemailer": "^6.7.5",

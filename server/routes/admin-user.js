@@ -14,10 +14,10 @@ const notesMethods = require('../methods/notes/notes');
 const prMethods = require('../methods/player-rank-upload');
 const { commonResponseHandler } = require('./../commonResponseHandler');
 
-router.post('/delete/user', passport.authenticate('jwt', {
+router.post('/user/delete', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
-    const path = '/admin/delete/user';
+    const path = '/admin/user/delete';
 
     const requiredParameters = [{
         name: 'displayName',
@@ -44,9 +44,9 @@ router.post('/delete/user', passport.authenticate('jwt', {
             return User.findOne({
                 displayName: user
             }).then((foundUser) => {
-                if (foundUser) {
+            if (foundUser) {
                     //if user is a captain to not delete:
-                    if (utils.returnByPath(foundUser, 'isCaptain')) {
+                    if (utils.returnBoolByPath(foundUser, 'isCaptain')) {
                         //if user is a capt, send error back
                         logObj.logLevel = 'ERROR';
                         logObj.error = 'Cannot delete user that is captain';
@@ -66,6 +66,10 @@ router.post('/delete/user', passport.authenticate('jwt', {
                             return response;
                         });
                     }
+                }else{ 
+                    response.status = 400;
+                    response.message = utils.returnMessaging(req.originalUrl, 'Error finding user', null, null, null, logObj)
+                    return response
                 }
             }, (err) => {
                 response.status = 500;
@@ -128,6 +132,10 @@ router.post('/user/save', passport.authenticate('jwt', {
                             return response;
                         }
                     )
+                }else{ 
+                    response.status = 400;
+                    response.message = utils.returnMessaging(req.originalUrl, 'Error finding user', null, null, null, logObj)
+                    return response
                 }
             },
             err => {
@@ -140,72 +148,65 @@ router.post('/user/save', passport.authenticate('jwt', {
 
 });
 
-// router.post('/user/teamUpdate', passport.authenticate('jwt', {
-//     session: false
-// }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
-//     const path = '/admin/user/teamUpdate';
-//     let user = req.body.displayName;
-//     let teamId = req.body.teamId;
-//     let teamName = req.body.teamName;
+/**
+ * @depricated
+ */
+// router.get('/user/update', (req, res) => {
+//     const path = '/admin/user/update';
 
-// })
+//     const requiredParameters = [{
+//         name: 'user',
+//         type: 'string'
+//     }]
 
-router.get('/user/update', (req, res) => {
-    const path = '/admin/user/update';
+//     commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
+//         const response = {};
+//         let query = {};
 
-    const requiredParameters = [{
-        name: 'user',
-        type: 'string'
-    }]
+//         query['displayName'] = btagConvert(requiredParameters.user.value);
 
-    commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
-        const response = {};
-        let query = {};
+//         User.find(query).then(
+//             found => {
+//                 let ammountUpdated = 0;
+//                 found.forEach(user => {
+//                     mmrMethods.comboMmr(user.displayName).then(
+//                         processed => {
+//                             //leaving this here incase it stops any errors
+//                             if (utils.returnBoolByPath(processed, 'hotsLogs')) {
+//                                 user.averageMmr = processed.hotsLogs.mmr;
+//                                 user.hotsLogsPlayerID = processed.hotsLogs.playerId;
+//                             }
+//                             if (utils.returnBoolByPath(processed, 'heroesProfile')) {
+//                                 if (processed.heroesProfile >= 0) {
+//                                     user.heroesProfileMmr = processed.heroesProfile;
+//                                     if (user.lowReplays) {
+//                                         user.lowReplays = false;
+//                                     }
+//                                 } else {
+//                                     user.heroesProfileMmr = -1 * processed.heroesProfile;
+//                                     user.lowReplays = true;
+//                                 }
+//                             }
+//                             if (utils.returnBoolByPath(processed, 'ngsMmr')) {
+//                                 user.ngsMmr = processed.ngsMmr;
+//                             }
 
-        query['displayName'] = btagConvert(requiredParameters.user.value);
-
-        User.find(query).then(
-            found => {
-                let ammountUpdated = 0;
-                found.forEach(user => {
-                    mmrMethods.comboMmr(user.displayName).then(
-                        processed => {
-                            //leaving this here incase it stops any errors
-                            if (utils.returnBoolByPath(processed, 'hotsLogs')) {
-                                user.averageMmr = processed.hotsLogs.mmr;
-                                user.hotsLogsPlayerID = processed.hotsLogs.playerId;
-                            }
-                            if (utils.returnBoolByPath(processed, 'heroesProfile')) {
-                                if (processed.heroesProfile >= 0) {
-                                    user.heroesProfileMmr = processed.heroesProfile;
-                                    if (user.lowReplays) {
-                                        user.lowReplays = false;
-                                    }
-                                } else {
-                                    user.heroesProfileMmr = -1 * processed.heroesProfile;
-                                    user.lowReplays = true;
-                                }
-                            }
-                            if (utils.returnBoolByPath(processed, 'ngsMmr')) {
-                                user.ngsMmr = processed.ngsMmr;
-                            }
-
-                            user.save().then(
-                                save => {
-                                    ammountUpdated += 1;
-                                    utils.errLogger(path, null, 'updated ' + ammountUpdated + ' users')
-                                }
-                            );
-                        }
-                    )
-                });
-            }
-        )
-        response.status = 200;
-        response.message = utils.returnMessaging(req.originalUrl, 'Update player mmr started successfully', null, null, {})
-        return response;
-    });
-});
+//                             user.save().then(
+//                                 save => {
+//                                     ammountUpdated += 1;
+//                                     utils.errLogger(path, null, 'updated ' + ammountUpdated + ' users')
+//                                 }
+//                             );
+//                         }
+//                     )
+//                 });
+//             }
+//         )
+//         response.status = 200;
+//         response.message = utils.returnMessaging(req.originalUrl, 'Update player mmr started successfully', null, null, {})
+//         return response;
+//     });
+// });
 
 //returns all users and acl lists
 router.get('/user/get/usersacl/all', passport.authenticate('jwt', {

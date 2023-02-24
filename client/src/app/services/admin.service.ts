@@ -279,7 +279,7 @@ export class AdminService {
 
   //deletes user from provided username
   deleteUser(user: string) {
-    let url = "admin/delete/user";
+    let url = "admin/user/delete";
     let payload = { displayName: user };
     return this.httpService.httpPost(url, payload, true);
   }
