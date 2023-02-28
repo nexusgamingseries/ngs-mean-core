@@ -790,7 +790,8 @@
         "dataName": "seasonInfo",
         "__v": 0
     }
-]  ,  "teams": [
+]  ,  
+"teams": [
     {
 
         "assistantCaptain": [],
@@ -1142,4 +1143,5 @@
         "ticker_lower": "rrrr"
     }
 ]
+
 }

@@ -324,44 +324,664 @@ describe("events-routes",async function(){
         
     // })
 
-            it('api/admin/user/save fails without permissions', async()=>{
-        await mongoUnit.dropDb();
-        await mongoUnit.load(mockData); 
+    // it('api/admin/user/save fails without permissions', async()=>{
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData); 
        
-       let requestUrl = `/api/admin/user/save`;
+    //    let requestUrl = `/api/admin/user/save`;
 
 
-        let admin = await User.find({"displayName": "TEST azalea#9539"});
-        admin = admin[0];
+    //     let admin = await User.find({"displayName": "TEST azalea#9539"});
+    //     admin = admin[0];
 
-        const obj = {};
+    //     const obj = {};
 
-        obj.adminId = admin._id;
-        obj.EVENT = true;
+    //     obj.adminId = admin._id;
+    //     obj.EVENT = true;
  
-        await new AdminLevel(obj).save();
+    //     await new AdminLevel(obj).save();
 
-        const body = {
-            user:{
-                _id:"asdfasdfasdf"
-            }
-        }
+    //     const body = {
+    //         user:{
+    //             _id:"asdfasdfasdf"
+    //         }
+    //     }
 
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+    //     const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
 
-        let result = await request(app.app).post(requestUrl)
-        .set({"Authorization": `Bearer ${token}`})
-        .send(body)
-        .then((res)=>{
-            return res;
-        },
-        (err)=>{
-            console.log("error XXX", err);
-            throw err;
-        });
+    //     let result = await request(app.app).post(requestUrl)
+    //     .set({"Authorization": `Bearer ${token}`})
+    //     .send(body)
+    //     .then((res)=>{
+    //         return res;
+    //     },
+    //     (err)=>{
+    //         console.log("error XXX", err);
+    //         throw err;
+    //     });
 
-        assert(result.status == 403);
+    //     assert(result.status == 403);
         
-    })
+    // })
+
+//         it('api/admin/user/get/usersacl/all gets all users acls list', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/get/usersacl/all`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+//         let testAdmin = admin[2];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         adminobjs[1].adminId = adminTwo._id;
+ 
+//         await new AdminLevel(adminobjs[1]).save();
+
+//         const obj = {
+
+//         }
+
+//         obj.adminId = testAdmin._id;
+//         obj.ACL = true;
+
+//         await new AdminLevel(obj).save();
+
+        
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(testAdmin), false);
+
+//         let result = await request(app.app).get(requestUrl)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 200);
+//         assert(Object.keys(result.body.returnObject).length>0);
+        
+//     });
+
+//       it('api/admin/user/get/usersacl/all fail with out permission', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/get/usersacl/all`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+//         let testAdmin = admin[2];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         adminobjs[1].adminId = adminTwo._id;
+ 
+//         await new AdminLevel(adminobjs[1]).save();
+
+//         const obj = {
+
+//         }
+
+//         obj.adminId = testAdmin._id;
+//         obj.USER = true;
+
+//         await new AdminLevel(obj).save();
+
+        
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(testAdmin), false);
+
+//         let result = await request(app.app).get(requestUrl)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 403);
+        
+        
+//     })
+
+//  it('api/admin/user/get/usersacl fail with out permission', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/get/usersacl`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+//         let testAdmin = admin[2];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         adminobjs[1].adminId = adminTwo._id;
+ 
+//         await new AdminLevel(adminobjs[1]).save();
+
+//         const obj = {
+
+//         }
+
+//         obj.adminId = testAdmin._id;
+//         obj.USER = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = {
+//             id:adminOne._id
+//         };
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(testAdmin), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 403);
+        
+        
+//     })
+
+//     it('api/admin/user/get/usersacl does not find non-existant rights', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/get/usersacl`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+//         let testAdmin = admin[2];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         adminobjs[1].adminId = adminTwo._id;
+ 
+//         await new AdminLevel(adminobjs[1]).save();
+
+//         const obj = {
+
+//         }
+
+//         obj.adminId = testAdmin._id;
+//         obj.ACL = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = {
+//             id:adminOne._id
+//         };
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(testAdmin), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 200);
+//         assert(result.body.returnObject.adminRights.adminId == adminOne._id);
+        
+        
+//     })
+
+//         it('api/admin/user/get/usersacl bet specified user ACL', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/get/usersacl`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+//         let testAdmin = admin[2];
+//         let user = admin[3];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         adminobjs[1].adminId = adminTwo._id;
+ 
+//         await new AdminLevel(adminobjs[1]).save();
+
+//         const obj = {
+
+//         }
+
+//         obj.adminId = testAdmin._id;
+//         obj.ACL = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = {
+//             id:user._id
+//         };
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(testAdmin), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 401);
+//         // assert(result.body.returnObject.adminRights.adminId == adminOne._id);
+        
+//     })
+
+
+//         it('api/admin/user/upsertRoles set specified new user ACL', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/upsertRoles`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         // await new AdminLevel(adminobjs[0]).save();
+
+//         const obj = {
+//         }
+
+//         obj.adminId = adminTwo._id;
+//         obj.ACL = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = adminobjs[0];
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(adminTwo), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 200);
+//         let returned = result.body.returnObject;
+//         assert(returned["ACL"] == adminobjs[0]["ACL"]);
+//         assert(returned["USER"] == adminobjs[0]["USER"]);
+//         assert(returned["SCHEDULEGEN"] == adminobjs[0]["SCHEDULEGEN"]);
+        
+//     })
+
+//         it('api/admin/user/upsertRoles set specified new user ACL', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/upsertRoles`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         const obj = {
+//         }
+
+//         obj.adminId = adminTwo._id;
+//         obj.ACL = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = {
+//             adminId: adminobjs[0].adminId,
+//             "LOGS":false,
+//             "EVENTS":true,
+//             "USER":false
+//         }
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(adminTwo), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 200);
+//         let returned = result.body.returnObject;
+//         assert(returned["LOGS"] == body["LOGS"]);
+//         assert(returned["EVENTS"] == body["EVENTS"]);
+//         assert(returned["USER"] == body["USER"]);
+        
+//     })
+
+//   it('api/admin/user/upsertRoles fails without permission', async()=>{
+//         await mongoUnit.dropDb();
+//         await mongoUnit.load(mockData); 
+
+//         const adminobjs = [{
+    
+//     "TEAM": true,
+//     "USER": true,
+//     "DIVISION": true,
+//     "STANDINGS": true,
+//     "CASTER": true,
+//     "MATCH": true,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// },{
+//     "TEAM": false,
+//     "USER": false,
+//     "DIVISION": false,
+//     "STANDINGS": true,
+//     "CASTER": false,
+//     "MATCH": false,
+//     "SCHEDULEGEN": true,
+//     "ACL": true,
+//     "EVENTS": true,
+//     "LOGS": true,
+//     "__v": 0
+// }]
+       
+//        let requestUrl = `/api/admin/user/upsertRoles`;
+
+
+//         let admin = await User.find();
+//         let adminOne = admin[0];
+//         let adminTwo = admin[1];
+
+
+//         adminobjs[0].adminId = adminOne._id;
+ 
+//         await new AdminLevel(adminobjs[0]).save();
+
+//         const obj = {
+//         }
+
+//         obj.adminId = adminTwo._id;
+//         obj.USER = true;
+
+//         await new AdminLevel(obj).save();
+
+//         const body = {
+//             adminId: adminobjs[0].adminId,
+//             "LOGS":false,
+//             "EVENTS":true,
+//             "USER":false
+//         }
+
+//         const token = generateNewToken.generateNewToken(utils.objectify(adminTwo), false);
+
+//         let result = await request(app.app).post(requestUrl)
+//         .send(body)
+//         .set({"Authorization": `Bearer ${token}`})
+//         .then((res)=>{
+//             return res;
+//         },
+//         (err)=>{
+//             console.log("error XXX", err);
+//             throw err;
+//         });
+
+//         assert(result.status == 403);
+        
+//     })
 
 })

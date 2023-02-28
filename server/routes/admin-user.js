@@ -148,66 +148,6 @@ router.post('/user/save', passport.authenticate('jwt', {
 
 });
 
-/**
- * @depricated
- */
-// router.get('/user/update', (req, res) => {
-//     const path = '/admin/user/update';
-
-//     const requiredParameters = [{
-//         name: 'user',
-//         type: 'string'
-//     }]
-
-//     commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
-//         const response = {};
-//         let query = {};
-
-//         query['displayName'] = btagConvert(requiredParameters.user.value);
-
-//         User.find(query).then(
-//             found => {
-//                 let ammountUpdated = 0;
-//                 found.forEach(user => {
-//                     mmrMethods.comboMmr(user.displayName).then(
-//                         processed => {
-//                             //leaving this here incase it stops any errors
-//                             if (utils.returnBoolByPath(processed, 'hotsLogs')) {
-//                                 user.averageMmr = processed.hotsLogs.mmr;
-//                                 user.hotsLogsPlayerID = processed.hotsLogs.playerId;
-//                             }
-//                             if (utils.returnBoolByPath(processed, 'heroesProfile')) {
-//                                 if (processed.heroesProfile >= 0) {
-//                                     user.heroesProfileMmr = processed.heroesProfile;
-//                                     if (user.lowReplays) {
-//                                         user.lowReplays = false;
-//                                     }
-//                                 } else {
-//                                     user.heroesProfileMmr = -1 * processed.heroesProfile;
-//                                     user.lowReplays = true;
-//                                 }
-//                             }
-//                             if (utils.returnBoolByPath(processed, 'ngsMmr')) {
-//                                 user.ngsMmr = processed.ngsMmr;
-//                             }
-
-//                             user.save().then(
-//                                 save => {
-//                                     ammountUpdated += 1;
-//                                     utils.errLogger(path, null, 'updated ' + ammountUpdated + ' users')
-//                                 }
-//                             );
-//                         }
-//                     )
-//                 });
-//             }
-//         )
-//         response.status = 200;
-//         response.message = utils.returnMessaging(req.originalUrl, 'Update player mmr started successfully', null, null, {})
-//         return response;
-//     });
-// });
-
 //returns all users and acl lists
 router.get('/user/get/usersacl/all', passport.authenticate('jwt', {
     session: false
@@ -269,7 +209,6 @@ router.get('/user/get/usersacl/all', passport.authenticate('jwt', {
 router.post('/user/get/usersacl', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userACL, utils.appendResHeader, (req, res) => {
-    let id = req.body.id;
     const path = 'admin/user/get/usersacl';
 
     const requiredParameters = [{
@@ -292,7 +231,7 @@ router.post('/user/get/usersacl', passport.authenticate('jwt', {
                                 response.message = utils.returnMessaging(req.originalUrl, 'Found users ACL', false, users)
                                 return response;
                             } else {
-                                response.status = 200;
+                                response.status = 401;
                                 response.message = utils.returnMessaging(req.originalUrl, 'No admin rights existed', false, users)
                                 return response;
                             }
@@ -339,7 +278,7 @@ router.post('/user/upsertRoles', passport.authenticate('jwt', {
 
 
         return Admin.AdminLevel.findOne({
-            adminId: req.body.adminId
+            adminId: requiredParameters.adminId.value
         }).then((foundAdmin) => {
             if (foundAdmin) {
                 _.forEach(req.body, (value, key) => {
@@ -376,6 +315,7 @@ router.post('/user/upsertRoles', passport.authenticate('jwt', {
 //admin/approveAvatar
 //approves a pending team member queue, removes the item from the queue and adds the member to the team
 //updates the members profile to now be part of the team
+//need test cases
 router.post('/approveAvatar', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -478,7 +418,7 @@ router.post('/approveAvatar', passport.authenticate('jwt', {
 
 });
 
-
+//need test cases
 router.post('/approveRank', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
