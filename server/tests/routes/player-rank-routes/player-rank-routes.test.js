@@ -25,7 +25,6 @@ const loadConfig = require('/Users/leegrisham/Documents/workspace_personal/ngs_m
 const message = require('../../../subroutines/message-subs');
 let app;
 let generateNewToken;
-var uploadAvatarStub;
 var stub;
 
 before(() =>{

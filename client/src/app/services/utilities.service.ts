@@ -145,6 +145,7 @@ export class UtilitiesService {
   // for more information. timeZone can be used to be specific, or leave null
   // to use the browser local timezone.
   getFormattedDate(time, format: string, timeZone: string = null): string {
+    console.log(time, format, timeZone);
     if (!(time instanceof Date)) {
       time = new Date(parseInt(time));
     }
@@ -164,7 +165,7 @@ export class UtilitiesService {
     let suffix = "AM";
     let time = new Date(parseInt(msDate));
     let hours = time.getHours();
-    if (hours > 12) {
+    if (hours >= 12) {
       hours = hours - 12;
       suffix = "PM";
     }
@@ -355,23 +356,37 @@ export class UtilitiesService {
   }
 
   returnMSFromFriendlyDateTime(val, time, suffix) {
+    console.log(val, time, suffix);
     //date in moment or date format...
     let m = moment(val);
     let year = m.year();
     let month = m.month();
     let date = m.date();
     let setDate = moment();
+    console.log('m',m)
+    console.log("year", year);
+    console.log("month", month);
+    console.log("date", date);
+
     setDate.year(year);
     setDate.month(month);
     setDate.date(date);
+
     setDate.hour(0).minute(0).second(0).millisecond(0);
 
+    console.log(setDate);
+
     let colonSplit = time.split(":");
+    colonSplit[0] = parseInt(colonSplit[0]);
     colonSplit[1] = parseInt(colonSplit[1]);
-    if (suffix == "PM") {
+    if (suffix == "PM" && colonSplit[0] > 12){
       colonSplit[0] = parseInt(colonSplit[0]);
-      colonSplit[0] += 12;
-    }
+    }else if (suffix == "PM" && colonSplit[0] > 12) {
+        colonSplit[0] = parseInt(colonSplit[0]);
+        colonSplit[0] += 12;
+      }
+
+    console.log(colonSplit);
 
     setDate
       .hour(colonSplit[0])
@@ -379,6 +394,7 @@ export class UtilitiesService {
       .seconds(0)
       .milliseconds(0);
 
+    console.log(setDate.unix() * 1000);
     let msDate = setDate.unix() * 1000;
     return msDate;
   }

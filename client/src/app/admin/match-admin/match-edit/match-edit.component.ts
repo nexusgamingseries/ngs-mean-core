@@ -20,24 +20,8 @@ export class MatchEditComponent implements OnInit {
   //component properties
   matchId;
   times: any[] = [];
-  // match: any = {
-  //   home: {
-  //     teamName: '',
-  //     score: null
-  //   },
-  //   away: {
-  //     teamName: '',
-  //     score: null
-  //   },
-  //   scheduledTime:{
-  //     startTime:null
-  //   },
-  //   casterName: null,
-  //   casterUrl: null,
-  //   notes:'',
-  //   forfeit:false
-  // }; //match prototype
   match = new Match();
+  date=undefined;
   homeScore: number;
   awayScore: number;
   suffix;
@@ -107,6 +91,7 @@ export class MatchEditComponent implements OnInit {
             endTime: null,
           };
         } else {
+          this.date = this.match.scheduledTime.startTime
           // this.friendlyDate = this.util.getDatePickerFormatFromMS(this.match.scheduledTime.startTime);
           this.friendlyTime = this.util.getTimeFromMS(
             this.match.scheduledTime.startTime
@@ -115,6 +100,7 @@ export class MatchEditComponent implements OnInit {
             this.match.scheduledTime.startTime
           );
         }
+        console.log("this.match", this.match);
         this.initTeams();
       },
       (err) => {
@@ -300,10 +286,14 @@ export class MatchEditComponent implements OnInit {
       match.other.team_two_player = this.awayTeamPlayer;
     }
 
+    console.log('this.date',this.date, 'this.friendlyTime',this.friendlyTime);
 
-    if (this.match.scheduledTime.startTime && this.friendlyTime) {
-      this.friendlyDate = moment(this.match.scheduledTime.startTime);
+    if (this.date && this.friendlyTime) {
+      this.friendlyDate = moment(this.date);
 
+      console.log("this.friendlyDate",this.friendlyDate);
+      console.log("this.friendlyTime", this.friendlyTime);
+      console.log("this.suffix", this.suffix);
       let msDate = this.util.returnMSFromFriendlyDateTime(
         this.friendlyDate,
         this.friendlyTime,
