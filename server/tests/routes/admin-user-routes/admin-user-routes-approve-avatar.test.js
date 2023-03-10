@@ -86,7 +86,7 @@ describe("admin-user-routes-2",async function(){
 
     })
 
-        it('deny pending user avatar', async function(){
+    it('deny pending user avatar', async function(){
 
         await mongoUnit.dropDb();
         await mongoUnit.load(mockData); 
@@ -199,6 +199,64 @@ describe("admin-user-routes-2",async function(){
         userSaved = userSaved[0];
 
         assert(result.status === 403);
+
+    })
+
+    it('fail when user is not found ', async function(){
+
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData); 
+
+        let requestUrl = '/api/admin/approveAvatar';
+
+        let admin = await User.find({"displayName": "TEST azalea#9539"});
+        admin = admin[0];
+
+        let users = await User.find();
+        let user = users[0];
+
+        const avatarInfo = {
+            userId:user._id,
+            displayName:user.displayName,
+            fileName:"aTestFile.png",
+            timestamp:Date.now()
+        }
+
+        const body = {
+            approved:false,
+            fileName:avatarInfo.fileName,
+            userId:user._id
+        }
+
+        await new Admin.PendingAvatarQueue(avatarInfo).save();
+
+        await User.deleteOne({_id:user._id});
+
+        const obj = {};
+
+        obj.adminId = admin._id;
+        obj.USER = true;
+ 
+        await new AdminLevel(obj).save();
+        
+        // deleteAvatarStub = sinon.stub(Avatar, "deleteAvatar").resolves(true);
+        deleteAvatarStub.reset();
+        deleteAvatarStub.resolves(true);
+        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+
+        let result = await request(app.app).post(requestUrl)
+        .set({"Authorization": `Bearer ${token}`})
+        .send(body)
+        .then((res)=>{
+            return res;
+        },
+        (err)=>{
+            throw err;
+        });
+
+        let pendingQueue = await Admin.PendingAvatarQueue.find({displayName:user.displayName});
+        assert(pendingQueue.length == 0);
+        assert(result.status === 500);
 
     })
 

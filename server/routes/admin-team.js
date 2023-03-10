@@ -85,9 +85,6 @@ router.post('/pmq/addnote', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {
     const path = '/admin/pmq/addnote';
-    // const query = Admin.PendingQueue.find();
-    let queue = req.body.queue;
-    let newNoteText = req.body.note;
 
     const requiredInputs = [
         { name: 'queue', type: 'object' },
@@ -103,7 +100,7 @@ router.post('/pmq/addnote', passport.authenticate('jwt', {
         logObj.logLevel = 'ADMIN';
         const response = {};
 
-        await Admin.PendingQueue.findById(requiredInputs.queue.value._id).then(
+        return Admin.PendingQueue.findById(requiredInputs.queue.value._id).then(
             found => {
                 const newNote = {
                     id: req.user._id.toString(),
@@ -116,24 +113,25 @@ router.post('/pmq/addnote', passport.authenticate('jwt', {
                     found.notes = [newNote];
                 }
                 found.markModified('notes');
-                found.save().then(
+                return found.save().then(
                     saved => {
                         response.status = 200;
                         response.message = utils.returnMessaging(req.originalUrl, 'Note updated', null, saved, null, logObj);
+                        return response;
                     },
                     err => {
                         response.status = 500;
                         response.message = utils.returnMessaging(req.originalUrl, 'Failed to save note to queue', err, null, null, logObj)
+                        return response;
                     }
                 )
             },
             err => {
                 response.status = 500;
                 response.message = utils.returnMessaging(req.originalUrl, 'Failed to add note', err, null, null, logObj)
+                return response;
             }
         );
-
-        return response;
     });
 
 

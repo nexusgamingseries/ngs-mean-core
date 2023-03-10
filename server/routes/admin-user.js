@@ -403,6 +403,7 @@ router.post('/approveAvatar', passport.authenticate('jwt', {
                 )
 
             } else {
+                QueueSubs.removePendingAvatarQueue(userId, fileName);
                 logObj.logLevel = 'ERROR';
                 logObj.error = 'User was not found';
                 response.status = 500;
