@@ -157,6 +157,7 @@ router.get('/pendingAvatarQueue', passport.authenticate('jwt', {
     });
 });
 
+
 router.get('/pendingRankQueues', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -1102,7 +1103,7 @@ router.post('/team/memberAdd',
 
 //admin get team info
 router.get('/team/get', (req, res) => {
-    const path = '/admin/team/uploadLogo';
+    const path = '/admin/team/get';
     TeamMethods.getTeamBy(req, res);
 
 });  
