@@ -728,10 +728,153 @@ describe("admin-team-routes",async function(){
 
     // });
 
-        it('api/admin/team/removeInvitedMember remove member from ream',async function(){
+    //     it('api/admin/team/removeInvitedMember remove invited member from ream',async function(){
 
-                let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
-        let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+    //     let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+    //     let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+        
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData); 
+       
+    //     let requestUrl = `/api/admin/team/removeInvitedMember`;
+
+    //     let admin = await User.find({"displayName": "TEST azalea#9539"});
+    //     admin = admin[0];
+
+    //     let foundTeam = await Team.find({"teamName": "Mongoose's Team"});
+    //     foundTeam = foundTeam[0];
+
+    //     let userToAdd = await User.find({"displayName":"TEST lily#3664"});
+    //     userToAdd = userToAdd[0];
+
+    //     foundTeam.invitedUsers = [userToAdd.displayName];
+
+    //     let savedTeam = await foundTeam.save();
+
+    //     const obj = {
+    //     };
+
+    //     const removePostObj = {
+    //         teamName:foundTeam.teamName,
+    //         removeUser:userToAdd.displayName
+    //     }
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+ 
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+
+    //     let result = await request(app.app).post(requestUrl)
+    //     .set({"Authorization": `Bearer ${token}`})
+    //     .send(removePostObj)
+    //     .then((res)=>{
+    //         return res;
+    //     },
+    //     (err)=>{
+    //         throw err;
+    //     });
+
+    //     assert(result.status === 200);
+
+
+    //     let teamAfterSave = new Promise( resolve=>{
+    //         setTimeout(async()=>{
+    //             let teamAfter = await Team.find({"teamName": "Mongoose's Team"});
+    //             teamAfter = teamAfter[0];
+    //                 let found = false;
+    //             _.forEach(teamAfter.invitedUsers, itr=>{
+    //                 if(itr == userToAdd.displayName){
+    //                     found = true;
+    //                 }
+    //                 });
+    //                 resolve(found);
+    //         },1000);
+    //     });
+
+    //     let teamOk = await teamAfterSave.then(r=>{return r;});
+        
+    //     assert(teamOk==false);
+
+    // });
+
+    //  it('api/admin/team/removeInvitedMember remove invited member from team but isnt really on there',async function(){
+
+    //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+    //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+        
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData); 
+       
+    //     let requestUrl = `/api/admin/team/removeInvitedMember`;
+
+    //     let admin = await User.find({"displayName": "TEST azalea#9539"});
+    //     admin = admin[0];
+
+    //     let foundTeam = await Team.find({"teamName": "Mongoose's Team"});
+    //     foundTeam = foundTeam[0];
+
+    //     let userToAdd = await User.find({"displayName":"TEST lily#3664"});
+    //     userToAdd = userToAdd[0];
+
+    //     foundTeam.invitedUsers = [userToAdd.displayName];
+
+    //     let savedTeam = await foundTeam.save();
+
+    //     const obj = {
+    //     };
+
+    //     const removePostObj = {
+    //         teamName:foundTeam.teamName,
+    //         removeUser:"Bozo#1234"
+    //     }
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+ 
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+
+    //     let result = await request(app.app).post(requestUrl)
+    //     .set({"Authorization": `Bearer ${token}`})
+    //     .send(removePostObj)
+    //     .then((res)=>{
+    //         return res;
+    //     },
+    //     (err)=>{
+    //         throw err;
+    //     });
+
+    //     assert(result.status === 400);
+    //     assert(result.body.message.indexOf("not found")>-1);
+
+
+    //     let teamAfterSave = new Promise( resolve=>{
+    //         setTimeout(async()=>{
+    //             let teamAfter = await Team.find({"teamName": "Mongoose's Team"});
+    //             teamAfter = teamAfter[0];
+    //                 let found = false;
+    //             _.forEach(teamAfter.invitedUsers, itr=>{
+    //                 if(itr == "Bozo#1234"){
+    //                     found = true;
+    //                 }
+    //                 });
+    //                 resolve(found);
+    //         },1000);
+    //     });
+
+    //     let teamOk = await teamAfterSave.then(r=>{return r;});
+        
+    //     assert(teamOk==false);
+
+    // });
+
+    it('api/admin/team/removeInvitedMember remove invited member from team but isnt really on there',async function(){
+
+        // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+        // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
         
         await mongoUnit.dropDb();
         await mongoUnit.load(mockData); 
@@ -756,7 +899,7 @@ describe("admin-team-routes",async function(){
 
         const removePostObj = {
             teamName:foundTeam.teamName,
-            removeUser:userToAdd.displayName
+            removeUser:"Bozo#1234"
         }
 
         obj.adminId = admin._id;
@@ -776,7 +919,8 @@ describe("admin-team-routes",async function(){
             throw err;
         });
 
-        assert(result.status === 200);
+        assert(result.status === 400);
+        assert(result.body.message.indexOf("not found")>-1);
 
 
         let teamAfterSave = new Promise( resolve=>{
@@ -785,7 +929,7 @@ describe("admin-team-routes",async function(){
                 teamAfter = teamAfter[0];
                     let found = false;
                 _.forEach(teamAfter.invitedUsers, itr=>{
-                    if(itr == userToAdd.displayName){
+                    if(itr == "Bozo#1234"){
                         found = true;
                     }
                     });
