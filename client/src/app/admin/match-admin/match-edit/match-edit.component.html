@@ -54,6 +54,7 @@
                         <div class="row">
                             <div class="col">
                                 <mat-form-field class="mat-FullWidth">
+                                  <mat-label>{{match?.home?.teamName}} Score:</mat-label>
                                     <mat-select placeholder="{{match?.home?.teamName}} Score:" [(ngModel)]="homeScore" disableOptionCentering>
                                         <mat-option [value]="0">0</mat-option>
                                         <mat-option [value]="1">1</mat-option>
@@ -70,6 +71,7 @@
                         <div class="row">
                             <div class="col">
                                 <mat-form-field class="mat-FullWidth">
+                                  <mat-label>{{match?.away?.teamName}} Score:</mat-label>
                                     <mat-select placeholder="{{match?.away?.teamName}} Score:" [(ngModel)]="awayScore" disableOptionCentering>
                                         <mat-option [value]="0">0</mat-option>
                                         <mat-option [value]="1">1</mat-option>
@@ -85,6 +87,7 @@
                     <div class="col">
                         <h3>Best Of:</h3>
                         <mat-form-field class="mat-FullWidth">
+                          <mat-label>Best Of:</mat-label>
                             <input matInput type="number" placeholder="Best Of:" [(ngModel)]="match.boX">
                         </mat-form-field>
                     </div>
@@ -106,6 +109,7 @@
                     </div>
                     <div class="col">
                         <mat-form-field class="mat-FullWidth">
+                          <mat-labels>Start Time:</mat-labels>
                             <mat-select placeholder="Start Time:" [(ngModel)]="friendlyTime">
                                 <mat-option *ngFor="let time of times" [value]="time">
                                     {{time}}
@@ -114,6 +118,7 @@
                         </mat-form-field>
 
                         <mat-form-field class="mat-FullWidth">
+                          <mat-label>AM/PM:</mat-label>
                             <mat-select placeholder="AM/PM:" [(ngModel)]="suffix">
                                 <mat-option *ngFor="let suffix of amPm" [value]="suffix">
                                     {{suffix}}
@@ -140,6 +145,7 @@
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="mat-FullWidth">
+                          <mat-label>Caster Name:</mat-label>
                             <input matInput placeholder="Caster Name" [(ngModel)]="match.casterName">
                         </mat-form-field>
                     </div>
@@ -147,6 +153,7 @@
                 <div class="row">
                     <div class="col">
                         <mat-form-field class="mat-FullWidth">
+                          <mat-label>Caster URL:</mat-label>
                             <input matInput placeholder="Caster URL" [(ngModel)]="match.casterUrl">
                         </mat-form-field>
                     </div>
@@ -240,6 +247,7 @@
                         <div class="col" *ngIf="filePendingUpload && !matchRound">
 
                             <mat-form-field class="mat-FullWidth">
+                              <mat-label>Round:</mat-label>
                                 <mat-select placeholder="Round:" [(ngModel)]="matchRound" disableOptionCentering>
                                     <mat-option [value]="1">1</mat-option>
                                     <mat-option [value]="2">2</mat-option>
@@ -300,6 +308,7 @@
                     <div class="col ">
                         <strong>PotG Link:  </strong>
                         <mat-form-field class="mat-60-width ">
+                          <mat-label>POTG Clip URL</mat-label>
                             <!-- [formControl]="casterUrlControl " -->
                             <input matInput placeholder="PotG Clip URL " [(ngModel)]="this.mvpObj.potg_link ">
                             <!-- <mat-error *ngIf="casterUrlControl.hasError( 'required') ">

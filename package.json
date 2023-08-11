@@ -8,13 +8,10 @@
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install",
         "test": "mocha server/tests/routes/admin-team-routes/admin-team-routes.test.js"
     },
-    "engines": {
-        "node": "16.13.0",
-        "npm": "8.1.0"
-    },
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "adm-zip": "^0.5.10",
         "aws-sdk": "^2.671.0",
         "axios": "^0.27.2",
         "body-parser": "^1.19.0",
@@ -28,11 +25,13 @@
         "get-routes": "^2.1.4",
         "googleapis": "^104.0.0",
         "hots-parser": "^7.55.2",
-        "jimp": "^0.16.0",
+        "jimp": "^0.22.8",
         "jsonwebtoken": "^9.0.0",
+        "linvodb3": "^3.26.0",
         "lodash": "^4.17.20",
         "luxon": "^1.25.0",
-        "mocha": "^10.0.0",
+        "medea": "^1.0.3",
+        "medeadown": "^1.1.9",
         "moment": "^2.29.1",
         "mongo-unit": "^3.3.0",
         "mongoose": "^5.9.12",
