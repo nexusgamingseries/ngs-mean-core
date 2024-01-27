@@ -13,13 +13,6 @@ import { Observable } from 'rxjs';
 export class UtilitiesService {
   constructor(private HttpService: HttpService) {}
 
-  //returns sys data
-  getSysData(name: string) {
-    let url = "utility/get/sys/dat";
-    let payload = { data: name };
-    return this.HttpService.httpPost(url, payload);
-  }
-
   getYtO(): Observable<any> {
     let url = "api/utility/ytoa";
     return this.HttpService.httpGet(url, []);
@@ -145,7 +138,6 @@ export class UtilitiesService {
   // for more information. timeZone can be used to be specific, or leave null
   // to use the browser local timezone.
   getFormattedDate(time, format: string, timeZone: string = null): string {
-    console.log(time, format, timeZone);
     if (!(time instanceof Date)) {
       time = new Date(parseInt(time));
     }
@@ -165,7 +157,7 @@ export class UtilitiesService {
     let suffix = "AM";
     let time = new Date(parseInt(msDate));
     let hours = time.getHours();
-    if (hours >= 12) {
+    if (hours > 12) {
       hours = hours - 12;
       suffix = "PM";
     }
@@ -356,37 +348,23 @@ export class UtilitiesService {
   }
 
   returnMSFromFriendlyDateTime(val, time, suffix) {
-    console.log(val, time, suffix);
     //date in moment or date format...
     let m = moment(val);
     let year = m.year();
     let month = m.month();
     let date = m.date();
     let setDate = moment();
-    console.log('m',m)
-    console.log("year", year);
-    console.log("month", month);
-    console.log("date", date);
-
     setDate.year(year);
     setDate.month(month);
     setDate.date(date);
-
     setDate.hour(0).minute(0).second(0).millisecond(0);
 
-    console.log(setDate);
-
     let colonSplit = time.split(":");
-    colonSplit[0] = parseInt(colonSplit[0]);
     colonSplit[1] = parseInt(colonSplit[1]);
-    if (suffix == "PM" && colonSplit[0] > 12){
+    if (suffix == "PM") {
       colonSplit[0] = parseInt(colonSplit[0]);
-    }else if (suffix == "PM" && colonSplit[0] > 12) {
-        colonSplit[0] = parseInt(colonSplit[0]);
-        colonSplit[0] += 12;
-      }
-
-    console.log(colonSplit);
+      colonSplit[0] += 12;
+    }
 
     setDate
       .hour(colonSplit[0])
@@ -394,7 +372,6 @@ export class UtilitiesService {
       .seconds(0)
       .milliseconds(0);
 
-    console.log(setDate.unix() * 1000);
     let msDate = setDate.unix() * 1000;
     return msDate;
   }
@@ -419,76 +396,7 @@ export class UtilitiesService {
     return new Promise((resolve) => canvas.toBlob(resolve, "image/png", 0.3));
   }
 
-  validateClipUrl(url) {
-    const blacklist = [];
-    let valid = true;
-    let returnClip = "";
-    if (
-      url.includes("twitch.tv") ||
-      url.includes("youtube.com/watch") ||
-      url.includes("youtu.be")
-    ) {
-      forEach(blacklist, (val) => {
-        if (url.includes(val)) {
-          valid = false;
-        }
-      });
-      let clipVal = "";
-      if (url.includes("twitch.tv")) {
-        returnClip = "clips.twitch.tv/embed?clip=";
-        let clipStr = "clip=";
-        if (url.includes(clipStr)) {
-          let index = url.indexOf(clipStr);
-          clipVal = url.substring(index + clipStr.length, url.length);
-        } else {
-          let twitchTLD = "clips.twitch.tv/";
-          let index = url.indexOf(twitchTLD);
-          clipVal = url.substring(index + twitchTLD.length, url.length);
-        }
-        if (
-          clipVal.length > 0 &&
-          clipVal.toLowerCase().includes("autoplay=false") == false
-        ) {
-          returnClip += clipVal + `&autoplay=false`;
-        } else {
-          returnClip += clipVal;
-        }
-      } else if (url.includes("youtu.be")) {
-        returnClip = "https://www.youtube.com/embed/";
-        let youtubeTLD = "https://youtu.be/";
-        clipVal = url.substring(youtubeTLD.length, url.length);
-        if (clipVal.length > 0) {
-          returnClip += clipVal;
-        }
-      } else if (url.includes("youtube.com/watch")) {
-        returnClip = "https://www.youtube.com/embed/";
-        let clipStr = "watch?v=";
-        let index = url.indexOf(clipStr);
-        clipVal = url.substring(index + clipStr.length, url.length);
-        if (clipVal.length > 0) {
-          returnClip += clipVal;
-        }
-      } else if (url.includes("https://www.youtube.com/embed/")) {
-        returnClip = url;
-      }
-    } else {
-      valid = false;
-    }
-    if (!valid) {
-      alert(
-        "This URL is not accepted, only accepts URLs from youtube or twitch!"
-      );
-    }
-
-    if (returnClip.length == 0) {
-      alert(
-        "Unable to extract the clip info in the format provided, please try again."
-      );
-    }
-    return { valid, returnClip };
-  }
-
-  validateClipUrl2(url) {
+  validateVodClip(url) {
     const blacklist = [];
     let valid = false;
     let returnClip = "";
@@ -512,6 +420,57 @@ export class UtilitiesService {
       valid = true;
       returnClip = this.returnByPath(obj, "v");
     } else if (this.returnBoolByPath(obj, "vi")) {
+      valid = true;
+      returnClip = this.returnByPath(obj, "vi");
+    }
+
+    if (!valid) {
+      alert("Unable to parse this url for valid link, please try again.");
+    }
+
+    return { valid, returnClip };
+  }
+
+  validatePotgClip(url) {
+    const blacklist = [];
+    let valid = false;
+    let returnClip = "";
+    if (
+      url.includes("twitch.tv") ||
+      url.includes("youtube.com") ||
+      url.includes("youtu.be")
+    ) {
+      blacklist.forEach((val) => {
+        if (url.includes(val)) {
+          valid = false;
+        }
+      });
+    } else {
+      valid = false;
+    }
+
+    let obj;
+    console.log(url);
+    if (url.includes("youtube") || url.includes("youtu.be")) {
+      if (url.includes("iframe") || url.includes("IFRAME")) {
+        //got to slice out some information
+        let targetStr = "embed/";
+        let embedIndex = url.indexOf(targetStr);
+        let embedEndIndex = embedIndex + targetStr.length;
+        let sub2 = url.substring(embedEndIndex, url.length - 1);
+        let endQouteIndex = sub2.indexOf('"');
+        let youtubeTarget = sub2.substring(0, endQouteIndex);
+        returnClip = youtubeTarget;
+        valid = true;
+      }
+    }else{
+      obj = getAllUrlParams(url, false);
+    }
+
+    if (this.returnBoolByPath(obj, "v")) {
+      valid = true;
+      returnClip = this.returnByPath(obj, "v");
+    } else if (this.returnBoolByPath(obj, "vi")) {
       returnClip = this.returnByPath(obj, "vi");
     }
 
@@ -523,12 +482,29 @@ export class UtilitiesService {
   }
 
   twitchEmbeddify(clip) {
-    let obj = this.validateClipUrl2(clip);
+    let obj = this.validatePotgClip(clip);
     if (obj.valid) {
       let embeddClip =
         "clips.twitch.tv/embed?clip=" + obj.returnClip + "&autoplay=false";
       obj.returnClip = embeddClip;
     }
+    return obj;
+  }
+
+  youtubeEmbeddify(clip) {
+    let obj = this.validatePotgClip(clip);
+    if (obj.valid) {
+      //TODO: fix for youtube embedding...
+      let embeddClip = "youtube.com/embed/" + obj.returnClip;
+      if (embeddClip.indexOf("?") > -1) {
+        embeddClip += "&";
+      } else {
+        embeddClip += "?";
+      }
+      embeddClip += `autoplay=0`;
+      obj.returnClip = embeddClip;
+    }
+    console.log("obj", obj);
     return obj;
   }
 }
