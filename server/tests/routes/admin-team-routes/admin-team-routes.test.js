@@ -871,77 +871,240 @@ describe("admin-team-routes",async function(){
 
     // });
 
-    it('api/admin/team/removeInvitedMember remove invited member from team but isnt really on there',async function(){
+    // it('api/admin/team/reassignCaptain assign captain to another player on team', async function () {
+    //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+    //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
 
-        // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
-        // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
-        
-        await mongoUnit.dropDb();
-        await mongoUnit.load(mockData); 
-       
-        let requestUrl = `/api/admin/team/removeInvitedMember`;
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
 
-        let admin = await User.find({"displayName": "TEST azalea#9539"});
-        admin = admin[0];
+    //     let requestUrl = `/api/admin/reassignCaptain`;
 
-        let foundTeam = await Team.find({"teamName": "Mongoose's Team"});
-        foundTeam = foundTeam[0];
+    //     let admin = await User.find({ displayName: 'TEST azalea#9539' });
+    //     admin = admin[0];
 
-        let userToAdd = await User.find({"displayName":"TEST lily#3664"});
-        userToAdd = userToAdd[0];
+    //     let foundTeam = await Team.find({ teamName: "Mongoose's Team" });
+    //     foundTeam = foundTeam[0];
 
-        foundTeam.invitedUsers = [userToAdd.displayName];
+    //     const obj = {};
+    //     const testUser = 'TEST camellias#2749';
 
-        let savedTeam = await foundTeam.save();
+    //     const reassignCaptain = {
+    //         teamName: foundTeam.teamName,
+    //         userName: testUser,
+    //     };
 
-        const obj = {
-        };
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
 
-        const removePostObj = {
-            teamName:foundTeam.teamName,
-            removeUser:"Bozo#1234"
-        }
+    //     await new AdminLevel(obj).save();
 
-        obj.adminId = admin._id;
-        obj.TEAM = true;
- 
-        await new AdminLevel(obj).save();
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
 
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({ Authorization: `Bearer ${token}` })
+    //         .send(reassignCaptain)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
 
-        let result = await request(app.app).post(requestUrl)
-        .set({"Authorization": `Bearer ${token}`})
-        .send(removePostObj)
-        .then((res)=>{
-            return res;
-        },
-        (err)=>{
-            throw err;
-        });
+    //         assert(result.status == 200);
 
-        assert(result.status === 400);
-        assert(result.body.message.indexOf("not found")>-1);
+    //         assert(result.body.returnObject.captain == testUser);
+    // });
 
+    // it('api/admin/team/reassignCaptain fail to find team', async function () {
+    //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+    //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
 
-        let teamAfterSave = new Promise( resolve=>{
-            setTimeout(async()=>{
-                let teamAfter = await Team.find({"teamName": "Mongoose's Team"});
-                teamAfter = teamAfter[0];
-                    let found = false;
-                _.forEach(teamAfter.invitedUsers, itr=>{
-                    if(itr == "Bozo#1234"){
-                        found = true;
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
+
+    //     let requestUrl = `/api/admin/reassignCaptain`;
+
+    //     let admin = await User.find({ displayName: 'TEST azalea#9539' });
+    //     admin = admin[0];
+
+    //     let foundTeam = await Team.find({ teamName: "Mongoose's Team" });
+    //     foundTeam = foundTeam[0];
+
+    //     const obj = {};
+    //     const testUser = 'TEST camellias#2749';
+
+    //     const reassignCaptain = {
+    //         teamName: foundTeam.teamName+'111',
+    //         userName: testUser,
+    //     };
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
+
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({ Authorization: `Bearer ${token}` })
+    //         .send(reassignCaptain)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
+            
+    //     assert(result.status == 500);
+    //     assert(result.body.err != null);
+    // });
+
+    // it('api/admin/team/reassignCaptain fail to find user', async function () {
+    //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+    //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
+
+    //     let requestUrl = `/api/admin/reassignCaptain`;
+
+    //     let admin = await User.find({ displayName: 'TEST azalea#9539' });
+    //     admin = admin[0];
+
+    //     let foundTeam = await Team.find({ teamName: "Mongoose's Team" });
+    //     foundTeam = foundTeam[0];
+
+    //     const obj = {};
+    //     const testUser = '111TEST camellias#2749';
+
+    //     const reassignCaptain = {
+    //         teamName: foundTeam.teamName,
+    //         userName: testUser,
+    //     };
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
+
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({ Authorization: `Bearer ${token}` })
+    //         .send(reassignCaptain)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
+
+    //     assert(result.status == 500);
+    //     assert(result.body.err != null);
+    // });
+
+        it('api/admin/team/reassignCaptain validate reset users status and remove assistant capt', async function () {
+            // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+            // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+
+            await mongoUnit.dropDb();
+            await mongoUnit.load(mockData);
+
+            let requestUrl = `/api/admin/reassignCaptain`;
+
+            let admin = await User.find({ displayName: 'TEST azalea#9539' });
+            admin = admin[0];
+
+            let foundTeam = await Team.find({ teamName: "Mongoose's Team" });
+            foundTeam = foundTeam[0];
+
+            let currentCaptain = foundTeam.captain;
+
+            const testUser = 'TEST camellias#2749';
+
+            foundTeam.assistantCaptain.push(testUser);
+
+            await foundTeam.save();
+
+            const obj = {};
+
+            const reassignCaptain = {
+                teamName: foundTeam.teamName,
+                userName: testUser,
+            };
+
+            obj.adminId = admin._id;
+            obj.TEAM = true;
+
+            await new AdminLevel(obj).save();
+
+            const token = generateNewToken.generateNewToken(
+                utils.objectify(admin),
+                false
+            );
+
+            let result = await request(app.app)
+                .post(requestUrl)
+                .set({ Authorization: `Bearer ${token}` })
+                .send(reassignCaptain)
+                .then(
+                    res => {
+                        return res;
+                    },
+                    err => {
+                        throw err;
                     }
-                    });
-                    resolve(found);
-            },1000);
-        });
+                );
 
-        let teamOk = await teamAfterSave.then(r=>{return r;});
+            assert(result.status == 200);
+            assert(result.body.returnObject.captain == testUser);
+
+                let newCaptainAfterSave = new Promise( resolve=>{
+                    setTimeout(async()=>{
+                        let newCaptain = await User.find({displayName: testUser});
+                            resolve(newCaptain);
+                    },1000);
+                });
+
+                let oldCaptainAfterSave = new Promise(
+                    resolve => {
+                        setTimeout(async () => {
+                            let oldCaptain = await User.find({ displayName: currentCaptain });
+                            resolve(oldCaptain);
+                        }, 1000);
+                    }
+                );
+
+                let newCaptain = await newCaptainAfterSave.then(r => {
+                    return r;
+                });
+
+                let oldCaptain = await oldCaptainAfterSave.then(r => {
+                    return r;
+                });
+
+                assert(newCaptain[0].isCaptain);
+                assert(oldCaptain[0].isCaptain==false);
         
-        assert(teamOk==false);
-
-    });
-
+        });
 
 })

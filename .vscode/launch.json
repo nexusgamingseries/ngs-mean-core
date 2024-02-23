@@ -17,7 +17,7 @@
       "program": "cluster.js",
       "envFile": "${workspaceFolder}/.env"
     },
-        {
+    {
       "type": "node",
       "request": "launch",
       "name": "Launch generateToken.js in debugger",
@@ -49,5 +49,13 @@
       ],
       "type": "node"
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debugger Test",
+      "runtimeExecutable": "npm",
+      "runtimeArgs":["run", "test"],
+      "envFile": "${workspaceFolder}/.env"
+    }
   ]
 }

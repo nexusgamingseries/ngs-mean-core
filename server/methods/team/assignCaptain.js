@@ -21,7 +21,12 @@ async function assignNewCaptain(teamName, newCaptName, requestor) {
         teamName_lower: teamName.toLowerCase()
     }).then(
         (foundTeam) => {
-            if (foundTeam) {
+            if(util.isNullOrEmpty(foundTeam)){
+                            returnObject.logLevel = 'ERROR';
+                            returnObject.error = 'Team Not Found';
+                            returnObject.message = 'Error finding team';
+                            throw returnObject;
+            }else {
                 let foundTeamObj = util.objectify(foundTeam);
                 //make sure if the requestor is aC then they can not steal the team
                 if (requestor) {
