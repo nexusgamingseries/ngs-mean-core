@@ -50,62 +50,109 @@ loadConfig().finally(function () {
     }
 
     //Operational code goes here now...
-    processReplayInfoFromS3();
+    fixAllReplayLink();
+
 });
 
 
-async function processReplayInfoFromS3(){
-    const s3 = new AWS.S3({
-        accessKeyId: process.env.S3accessKeyId,
-        secretAccessKey: process.env.S3secretAccessKey,
-        region: 'us-east-1',
-        params: {
-            Bucket: 'ngs-stats-of-the-storm',
-        },
-    });
+async function fixAllReplayLink(){
+    let matches = await Match.find();
 
-    let matches = await Match.find({$and:[{season:16},{reported:true}]});
+    let grief = [];
 
-    console.log(matches.length);
-
-    for(var i = 0; i<matches.length; i++){
-        
+    for(i=2; i<matches.length; i++){
         let match = matches[i];
-        console.log('processing: ',' ', match.matchId, ' ', i + 1);
-        if(Object.keys(match.replays).length>1){
-
-            let replays = [];
-
-            replays.push(match.replays["1"]);
-            replays.push(match.replays['2']);
-            replays.push(match.replays['3'])
-
-            for(let j=0; j<replays.length; j++){
-            let replayOne = replays[j];
-            if (replayOne && replayOne.data) {
-                console.log(`handling data id: ${replayOne.data}`);
-                let key = `16/parsedReplays/${replayOne.data}.json`;
-                let parsedReplay = await s3
-                    .getObject({
-                        Key: key,
-                    })
-                    .promise();
-                parsedReplay = JSON.parse(parsedReplay.Body.toString('utf-8'));
-                let sysreplay = await ParsedReplay.findOne({
-                    systemId: replayOne.data,
-                });
-                sysreplay.match.map = parsedReplay.match.map;
-                sysreplay.markModified("match");
-                sysreplay.save();
+        console.log('working: ' + i + 1 + ' of ' + matches.length);
+        
+        if (match.postedToHP) {
+            const replays = match.toObject().replays;
+            for (key in replays) {
+                let v = replays[key];
+                if (_.has(v, 'parsedUrl')) {
+                    const copyOfObj = util.JSONCopy(v);
+                    console.log('v.get', v.parsedUrl);
+                    try {
+                        let orig = copyOfObj.parsedUrl;
+                        v.originalUrl = orig;
+                        let a = orig.split('?');
+                        let b = a[1].split('=')[1];
+                        v.parsedUrl = `https://www.heroesprofile.com/Esports/NGS/Match/Single/${b}`;
+                    } catch (e) {
+                        console.log('ERROR ON MATCH:', match.matchId);
+                        if(grief.indexOf(match.matchId)==-1){
+                            grief.push(match.matchId);
+                        }
+                    }
+                }
             }
 
-            }
+            match.replays = replays;
 
+            match.markModified('replays');
+            await match.save();
+            
         }
     }
 
-
+    fs.writeFile('grief.json', JSON.stringify(grief), err => {
+        console.log(err);
+    });
+    console.log('done');
+    return 1;
 }
+
+// async function processReplayInfoFromS3(){
+//     const s3 = new AWS.S3({
+//         accessKeyId: process.env.S3accessKeyId,
+//         secretAccessKey: process.env.S3secretAccessKey,
+//         region: 'us-east-1',
+//         params: {
+//             Bucket: 'ngs-stats-of-the-storm',
+//         },
+//     });
+
+//     let matches = await Match.find({$and:[{season:16},{reported:true}]});
+
+//     console.log(matches.length);
+
+//     for(var i = 0; i<matches.length; i++){
+        
+//         let match = matches[i];
+//         console.log('processing: ',' ', match.matchId, ' ', i + 1);
+//         if(Object.keys(match.replays).length>1){
+
+//             let replays = [];
+
+//             replays.push(match.replays["1"]);
+//             replays.push(match.replays['2']);
+//             replays.push(match.replays['3'])
+
+//             for(let j=0; j<replays.length; j++){
+//             let replayOne = replays[j];
+//             if (replayOne && replayOne.data) {
+//                 console.log(`handling data id: ${replayOne.data}`);
+//                 let key = `16/parsedReplays/${replayOne.data}.json`;
+//                 let parsedReplay = await s3
+//                     .getObject({
+//                         Key: key,
+//                     })
+//                     .promise();
+//                 parsedReplay = JSON.parse(parsedReplay.Body.toString('utf-8'));
+//                 let sysreplay = await ParsedReplay.findOne({
+//                     systemId: replayOne.data,
+//                 });
+//                 sysreplay.match.map = parsedReplay.match.map;
+//                 sysreplay.markModified("match");
+//                 sysreplay.save();
+//             }
+
+//             }
+
+//         }
+//     }
+
+
+// }
 
 
 // async function reparseReplays() {
