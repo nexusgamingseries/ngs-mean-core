@@ -397,6 +397,7 @@ router.post('/approveMemberAdd', passport.authenticate('jwt', {
         { name: 'approved', type: 'boolean' }
     ]
 
+    
     commonResponseHandler(req, res, requiredParameters, [], async(req, res, requiredParameters) => {
 
         let currentSeasonInfo = await SeasonInfoCommon.getSeasonInfo();
@@ -436,8 +437,16 @@ router.post('/approveMemberAdd', passport.authenticate('jwt', {
 
             },
             fail => {
+                //TODO: determine whether this should be returning a 200 on errors
                 response.status = 200;
-                response.message = utils.returnMessaging(req.originalUrl, fail.message, fail, null, null, logObj);
+                response.message = utils.returnMessaging(
+                    req.originalUrl,
+                    fail.message,
+                    fail,
+                    null,
+                    null,
+                    logObj
+                );
             }
         );
         return response;
@@ -448,6 +457,7 @@ router.post('/approveMemberAdd', passport.authenticate('jwt', {
 
 //deletes the supplied team,
 //removes all team information from users profiles
+//TODO: test cases
 router.post('/delete/team', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {
@@ -1328,7 +1338,7 @@ async function handleMemberQueue(teamId, member, logObj, approved, seasonNum) {
                 }
                 teamMong.markModified('pendingMembers');
                 //save the team and the user
-                let teamSavedMong = teamMong.save().then((savedTeam) => {
+                let teamSavedMong = await teamMong.save().then((savedTeam) => {
                     teamSub.updateTeamMmrAsynch(savedTeam);
                     return savedTeam;
                 }, (teamSaveErr) => {
@@ -1365,17 +1375,18 @@ async function handleMemberQueue(teamId, member, logObj, approved, seasonNum) {
     else if (teamMong && !userMong) {
         //this is an usuall situation investigate and delete?
         throw {
-            error: `Team ${teamId} not found.`,
-            message: "Team was found but user was not, investigate and delete?"
-        }
+            error: `User ${member} not found.`,
+            message: 'User was found but team was not, investigate and delete?',
+        };
     }
     //found user but not team
     else if (!teamMong && userMong) {
+
         //this is an usuall situation investigate and delete?
         throw {
-            error: `User ${member} not found.`,
-            message: "User was found but team was not, investigate and delete?"
-        }
+            error: `Team ${teamId} not found.`,
+            message: 'Team was found but user was not, investigate and delete?',
+        };
     }
     //we found nothing
     else {

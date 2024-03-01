@@ -21,7 +21,8 @@
             "replayArchive": [],
             "verifiedRankHistory": [],
             "__v": 0
-        },{
+        },
+        {
             "messageCenter": [],
             "replays": [],
             "history": [],
@@ -100,21 +101,21 @@
             "__v": 0,
             "seasonsPlayed": 2
         },
-{
-    "messageCenter": [],
-    "replays": [],
-    "history": [],
-    "bNetId": "1810kj0jixfg",
-    "displayName": "TEST azalea#9539",
-    "replayArchive": [],
-    "verifiedRankHistory": [],
-    "__v": 0,
-    "teamId": "5fe26e7ec311fadee4afb7e6",
-    "teamName": "TEST sunshine mynah birds",
-    "seasonsPlayed": 2,
-    "isCaptain": true
-}
-],
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1810kj0jixfg226743",
+            "displayName": "TEST wraith#9539",
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0,
+            "teamId": null,
+            "teamName": null,
+            "seasonsPlayed": 2,
+            "isCaptain": true
+        }
+    ],
     "matches":[
     {
         
