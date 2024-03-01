@@ -88,6 +88,7 @@ getHPProfileLink(toonHandle, displayName) {
           let splitName = displayName.split("#");
           let battletag = splitName[0];
           returnUrl = `${environment.heroesProfile}/${battletag}/${blizz_id}/${region}`;
+          this.getHPProfileLinkStream.next(returnUrl);
         } else {
           this.getHPProfileLinkStream.next(null);
         }
