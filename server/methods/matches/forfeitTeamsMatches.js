@@ -54,6 +54,8 @@ async function forfietTeam(teamName) {
                     )
                     returnObject.matches.push(savedMatch);
                 }
+            }else{
+                throw new Error('No Matches Found For Team')
             }
         } else {
             returnObject.logLevel = 'ERROR';
@@ -62,9 +64,8 @@ async function forfietTeam(teamName) {
             throw returnObject;
         }
     } catch (e) {
-        console.log('forfiet teams catch', e);
         returnObject.logLevel = 'ERROR';
-        returnObject.error = e;
+        returnObject.error = JSON.stringify(e);
         returnObject.message = 'Error in forfeit method';
         throw returnObject;
     }

@@ -52,7 +52,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debugger Test",
+      "name": "Test Case Debugging",
       "runtimeExecutable": "npm",
       "runtimeArgs":["run", "test"],
       "envFile": "${workspaceFolder}/.env"

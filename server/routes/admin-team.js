@@ -581,6 +581,7 @@ router.post('/teamSave', passport.authenticate('jwt', {
                         logObj.error = 'team name was taken';
                         response.status = 400;
                         response.message = utils.returnMessaging(req.originalUrl, 'This team name was all ready taken, can not complete request!', false, null, null, logObj)
+                        return response;
                     } else {
                         //this might be a candidate for refactoring all the team saves into one single sub component - but not until I have a warm fuzzy about including teamName changes into the base sub, which I dont.
                         //team name was not modified; edit the properties we received.
@@ -696,8 +697,7 @@ router.post('/teamSave', passport.authenticate('jwt', {
                     return response;
 
                 })
-                //delete old team???
-                //save a new instance of the renamed team
+
         } else {
             //team name was not modified; edit the properties we received.
             return Team.findOne({
@@ -798,6 +798,7 @@ router.post('/teamSave', passport.authenticate('jwt', {
 });
 
 
+//todo: write a test case for this when I have time to make a team of legit battle tags
 //calculates the resultant MMR from a pending member add for suplied memebers MMR and supplied team
 router.post('/resultantmmr', passport.authenticate('jwt', {
     session: false
@@ -879,7 +880,7 @@ router.post('/resultantmmr', passport.authenticate('jwt', {
 
 });
 
-
+//todo: write a test case for this when I have time to make a team of legit battle tags
 //refreshes the MMR of a supplied team, in case the team mmr may need to be updated
 router.post('/team/refreshMmr', passport.authenticate('jwt', {
     session: false
@@ -968,29 +969,6 @@ router.get('/get/teams/all', passport.authenticate('jwt', {
                 response.status = 500;
                 response.message = utils.returnMessaging(req.originalUrl, 'Error finding teams', err);
                 return response;
-            });
-        return response;
-    });
-
-});
-
-//returns a list of all teams!
-router.get('/test', (req, res) => {
-    const path = 'admin/get/teams/all';
-
-    commonResponseHandler(req, res, [], [], async(req, res) => {
-        let response = {};
-        await Team.find().then(
-            (foundTeams) => {
-                response.status = 200;
-                if (!foundTeams) {
-                    foundTeams = [];
-                }
-                response.message = utils.returnMessaging(req.originalUrl, 'Found teams', false, foundTeams);
-            },
-            (err) => {
-                response.status = 500;
-                response.message = utils.returnMessaging(req.originalUrl, 'Error finding teams', err);
             });
         return response;
     });
@@ -1088,7 +1066,7 @@ router.post('/team/memberAdd',
                         } else {
                             logObj.logLevel = 'ERROR';
                             logObj.error = 'User Existed On Team All Ready';
-                            response.status = 200;
+                            response.status = 500;
                             response.message = utils.returnMessaging(req.originalUrl, 'User Existed On Team All Ready', false, found, null, logObj)
                             return response;
                         }
@@ -1096,7 +1074,7 @@ router.post('/team/memberAdd',
                     } else {
                         logObj.logLevel = 'ERROR';
                         logObj.error = 'team not found'
-                        response.status = 200;
+                        response.status = 500;
                         response.message = utils.returnMessaging(req.originalUrl, 'Team not found', false, false, null, logObj)
                         return response;
                     }
@@ -1118,7 +1096,7 @@ router.get('/team/get', (req, res) => {
 
 });  
 
-//returns a list of all teams!
+//upload a logo for a team
 router.post('/team/uploadLogo', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {

@@ -16,6 +16,8 @@
             "history": [],
             "bNetId": "1gmukip64ld44",
             "displayName": "Mongoose#11247",
+            "discordTag": "eeeeeee",
+            "discordId":1234,
             "isCaptain": true,
             "teamName": "Mongoose's Team",
             "replayArchive": [],
@@ -29,6 +31,22 @@
             "bNetId": "1gmukip64ld44",
             "displayName": "TEST camellias#2749",
             "teamName": "Mongoose's Team",
+            "discordTag":"gggg",
+            "discordId":5678,
+            "isCaptain": false,
+            "replayArchive": [],
+            "verifiedRankHistory": [],
+            "__v": 0
+        },
+        {
+            "messageCenter": [],
+            "replays": [],
+            "history": [],
+            "bNetId": "1gmukip64ld44",
+            "displayName": "TEST ogre#8807",
+            "teamName": "Mongoose's Team",
+            "discordTag": "aaaa",
+            "discordId": 4455,
             "isCaptain": false,
             "replayArchive": [],
             "verifiedRankHistory": [],
@@ -941,7 +959,8 @@
         "__v": 20,
         "divisionDisplayName": "Division D Beast",
         "divisionConcat": "d-beast",
-        "ticker_lower": "goose"
+        "ticker_lower": "goose",
+        "logo": "1234.jpg"
     },
     {
         

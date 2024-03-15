@@ -160,14 +160,19 @@ returnMessaging = function(route, message, err, obj, additional, logInfo) {
         ret.route = `/api/${route}`
     }
 
+    try{
     if (!isNullorUndefined(err) && err) {
         if (err.hasOwnProperty('toString')) {
             ret.err = err.toString();
         } else {
             ret.err = JSON.stringify(err);
         }
-
     }
+    }catch(e){
+        console.log(e)
+    }
+
+
     if (!isNullorUndefined(obj) && obj) {
         ret.returnObject = obj;
     }

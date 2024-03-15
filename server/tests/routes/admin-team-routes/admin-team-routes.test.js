@@ -13,6 +13,8 @@ const Admin = require('../../../models/admin-models');
 const sinon = require('sinon');
 const playerRanksMethods = require('../../../methods/player-ranks/playerRankMethods');
 const TeamSubs = require('../../../subroutines/team-subs');
+const s3putObject = require('../../../methods/aws-s3/put-s3-file');
+const Matches = require('../../../models/match-model');
 
 const { AdminLevel, PendingQueue } = require('../../../models/admin-models');
 
@@ -1331,71 +1333,1044 @@ describe("admin-team-routes",async function(){
                 //     assert(result.body.err);
                 // });
         
-                it('api/admin/approveMemberAdd error if target user is not in pending members..', async function () {
-                    // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
-                    // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+                // it('api/admin/forfeit/team forfiet team matches..', async function () {
+                //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+                //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
 
-                    await mongoUnit.dropDb();
-                    await mongoUnit.load(mockData);
+                //     await mongoUnit.dropDb();
+                //     await mongoUnit.load(mockData);
 
-                    let requestUrl = `/api/admin/approveMemberAdd`;
+                //     let requestUrl = `/api/admin/forfeit/team`;
 
-                    let admin = await User.find({
-                        displayName: 'TEST azalea#9539',
-                    });
-                    admin = admin[0];
+                //     let admin = await User.find({
+                //         displayName: 'TEST azalea#9539',
+                //     });
+                //     admin = admin[0];
 
-                    let foundTeam = await Team.find({
-                        teamName: "Mongoose's Team",
-                    });
-                    foundTeam = foundTeam[0];
+                //     const testTeamName = "Mongoose's Team";
 
-                    foundTeam.pendingMembers.push({ displayName: 'bozo1234' });
+                //     let foundTeam = await Team.find({
+                //         teamName: testTeamName
+                //     });
+                //     foundTeam = foundTeam[0];
 
-                    await foundTeam.save();
+                //     let matches = await Matches.find({
+                //         $or: [
+                //             { 'away.teamName': testTeamName },
+                //             { 'home.teamName': testTeamName },
+                //         ],
+                //     });
 
-                    let userToAdd = await User.find({
-                        displayName: 'TEST wraith#9539',
-                    });
-                    userToAdd = userToAdd[0];
+                //     for(var i = 0; i<matches.length; i++){
+                //         let match = matches[i];
+                //         if(match.home.teamName == testTeamName){
+                //             match.home.id = foundTeam._id;
+                //         }
+                //         if(match.away.teamName == testTeamName){
+                //             match.away.id = foundTeam._id;
+                //         }
+                //         await match.save();
+                //     }
 
-                    const approveAdd = {
-                        teamId: foundTeam._id,
-                        memberId: userToAdd._id,
-                        approved: true,
-                    };
+                //     const obj = {};
 
-                    const obj = {};
+                //     obj.adminId = admin._id;
+                //     obj.TEAM = true;
 
-                    obj.adminId = admin._id;
-                    obj.TEAM = true;
+                //     await new AdminLevel(obj).save();
 
-                    await new AdminLevel(obj).save();
+                //     const token = generateNewToken.generateNewToken(
+                //         utils.objectify(admin),
+                //         false
+                //     );
 
-                    const token = generateNewToken.generateNewToken(
-                        utils.objectify(admin),
-                        false
-                    );
+                //     const postForfeit = {"teamName":testTeamName};
 
-                    let result = await request(app.app)
-                        .post(requestUrl)
-                        .set({ Authorization: `Bearer ${token}` })
-                        .send(approveAdd)
-                        .then(
-                            res => {
-                                return res;
-                            },
-                            err => {
-                                throw err;
-                            }
-                        );
+                //     let result = await request(app.app)
+                //         .post(requestUrl)
+                //         .set({ Authorization: `Bearer ${token}` })
+                //         .send(postForfeit)
+                //         .then(
+                //             res => {
+                //                 return res;
+                //             },
+                //             err => {
+                //                 throw err;
+                //             }
+                //         );
 
-                    assert(result.status == 200);
-                    assert(
-                        result.body.message.indexOf('User was not found in') >
-                            -1
-                    );
-                    assert(result.body.err);
-                });
+                //     console.log(result.status, result.body);
+
+                //     assert(result.status == 200);
+                //     assert(result.body.returnObject);
+
+                    
+                //     let matchesAfter = await Matches.find({
+                //         $or: [
+                //             {
+                //                 'away.teamName':testTeamName
+                //             },
+                //             {
+                //                 'home.teamName':testTeamName
+                //             },
+                //         ],
+                //     });
+
+                //     let forfeit = true;
+
+                //     for(var i = 0; i<matchesAfter.length; i++){
+                //         let match = matchesAfter[i];
+                //         if(match.home.teamName==testTeamName){
+                //             forfeit = forfeit && match.home.score == 0
+                //         }
+                //         if(match.away.teamName==testTeamName){
+                //             forfeit = forfeit && match.away.score == 0
+                //         }
+                //         forfeit = forfeit && match.forfeit;
+                //     }
+
+                //     assert(forfeit);
+                // });
+
+                // it('api/admin/forfeit/team fail wrong name forfiet team matches..', async function () {
+                //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+                //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+
+                //     await mongoUnit.dropDb();
+                //     await mongoUnit.load(mockData);
+
+                //     let requestUrl = `/api/admin/forfeit/team`;
+
+                //     let admin = await User.find({
+                //         displayName: 'TEST azalea#9539',
+                //     });
+                //     admin = admin[0];
+
+                //     const testTeamName = "Mongoose's Teamy";
+
+                //     let foundTeam = await Team.find({
+                //         teamName: testTeamName,
+                //     });
+                //     foundTeam = foundTeam[0];
+
+                //     const obj = {};
+
+                //     obj.adminId = admin._id;
+                //     obj.TEAM = true;
+
+                //     await new AdminLevel(obj).save();
+
+                //     const token =
+                //         generateNewToken.generateNewToken(
+                //             utils.objectify(admin),
+                //             false
+                //         );
+
+                //     const postForfeit = {
+                //         teamName: testTeamName,
+                //     };
+
+                //     let result = await request(app.app)
+                //         .post(requestUrl)
+                //         .set({
+                //             Authorization: `Bearer ${token}`,
+                //         })
+                //         .send(postForfeit)
+                //         .then(
+                //             res => {
+                //                 return res;
+                //             },
+                //             err => {
+                //                 throw err;
+                //             }
+                //         );
+
+                //     assert(result.status == 500);
+                //     assert(result.body.err);
+
+                // });
+
+                // it('api/admin/forfeit/team team - no matches..', async function () {
+                //     // let mockUp = sinon.stub(playerRanksMethods, "getNgsAvgRank").resolves(11);
+                //     // let mockUp2 = sinon.stub(TeamSubs, "updateTeamMmrAsynch").resolves(true);
+
+                //     await mongoUnit.dropDb();
+                //     await mongoUnit.load(mockData);
+
+                //     let requestUrl = `/api/admin/forfeit/team`;
+
+                //     let admin = await User.find({
+                //         displayName: 'TEST azalea#9539',
+                //     });
+                //     admin = admin[0];
+
+                //     const testTeamName = "Mongoose's Team";
+
+                //     let foundTeam = await Team.find({
+                //         teamName: testTeamName,
+                //     });
+                //     foundTeam = foundTeam[0];
+
+                //     const obj = {};
+
+                //     obj.adminId = admin._id;
+                //     obj.TEAM = true;
+
+                //     await new AdminLevel(obj).save();
+
+                //     const token = generateNewToken.generateNewToken(
+                //         utils.objectify(admin),
+                //         false
+                //     );
+
+                //     const postForfeit = {
+                //         teamName: testTeamName,
+                //     };
+
+                //     let result = await request(app.app)
+                //         .post(requestUrl)
+                //         .set({
+                //             Authorization: `Bearer ${token}`,
+                //         })
+                //         .send(postForfeit)
+                //         .then(
+                //             res => {
+                //                 return res;
+                //             },
+                //             err => {
+                //                 throw err;
+                //             }
+                //         );
+
+                //     assert(result.status == 500);
+                //     assert(result.body.message == 'Error forfeiting matches');
+                // });
+
+                                // it('api/admin/teamSave team - name taken..', async function () {
+        
+                                //     await mongoUnit.dropDb();
+                                //     await mongoUnit.load(mockData);
+
+                                //     let requestUrl = `/api/admin/teamSave`;
+
+                                //     let admin = await User.find({
+                                //         displayName: 'TEST azalea#9539',
+                                //     });
+                                //     admin = admin[0];
+
+                                //     const testTeamName = "Mongoose's Team";
+
+                                //     let foundTeam = await Team.find({ teamName: testTeamName });
+                                //     foundTeam = foundTeam[0];
+
+                                //     const obj = {};
+
+                                //     obj.adminId = admin._id;
+                                //     obj.TEAM = true;
+
+                                //     await new AdminLevel(obj).save();
+
+                                //     const token =
+                                //         generateNewToken.generateNewToken(
+                                //             utils.objectify(admin),
+                                //             false
+                                //         );
+
+                                //         let oldTeamName = foundTeam.teamName;
+
+                                //     foundTeam.teamName =
+                                //         'TEST assigned daffodils';
+
+                                //         foundTeam.teamName_lower = foundTeam.teamName.toLowerCase();
+
+                                //         const teamEdit = {
+                                //             teamName: oldTeamName,
+                                //             teamObj: foundTeam,
+                                //         };
+
+
+                                //     let result = await request(app.app)
+                                //         .post(requestUrl)
+                                //         .set({
+                                //             Authorization: `Bearer ${token}`,
+                                //         })
+                                //         .send(teamEdit)
+                                //         .then(
+                                //             res => {
+                                //                 return res;
+                                //             },
+                                //             err => {
+                                //                 throw err;
+                                //             }
+                                //         );
+
+                                //     assert(result.status == 400);
+                                //     assert(result.body.message.indexOf("This team name was all ready taken">-1));
+
+                                // });
+
+    //   it('api/admin/teamSave team - name change ok..', async function () {
+    //       await mongoUnit.dropDb();
+    //       await mongoUnit.load(mockData);
+
+    //       let requestUrl = `/api/admin/teamSave`;
+
+    //       let admin = await User.find({
+    //           displayName: 'TEST azalea#9539',
+    //       });
+    //       admin = admin[0];
+
+    //       const testTeamName = "Mongoose's Team";
+
+    //       let foundTeam = await Team.find({ teamName: testTeamName });
+    //       foundTeam = foundTeam[0];
+
+    //       const obj = {};
+
+    //       obj.adminId = admin._id;
+    //       obj.TEAM = true;
+
+    //       await new AdminLevel(obj).save();
+
+    //       const token = generateNewToken.generateNewToken(
+    //           utils.objectify(admin),
+    //           false
+    //       );
+
+    //       let oldTeamName = foundTeam.teamName;
+
+    //       let testName = 'TEST TEST TEST'
+    //       foundTeam.teamName = testName;
+
+    //       foundTeam.teamName_lower = foundTeam.teamName.toLowerCase();
+
+    //       const teamEdit = {
+    //           teamName: oldTeamName,
+    //           teamObj: foundTeam,
+    //       };
+
+    //       let result = await request(app.app)
+    //           .post(requestUrl)
+    //           .set({
+    //               Authorization: `Bearer ${token}`,
+    //           })
+    //           .send(teamEdit)
+    //           .then(
+    //               res => {
+    //                   return res;
+    //               },
+    //               err => {
+    //                   throw err;
+    //               }
+    //           );
+
+    //           console.log(result.status, )
+
+    //       assert(result.status == 200);
+    //       assert(result.body.returnObject.teamName = testName);
+    //   });
+
+    //  it('api/admin/teamSave team - name change with more..', async function () {
+    //      await mongoUnit.dropDb();
+    //      await mongoUnit.load(mockData);
+
+    //      let requestUrl = `/api/admin/teamSave`;
+
+    //      let admin = await User.find({
+    //          displayName: 'TEST azalea#9539',
+    //      });
+    //      admin = admin[0];
+
+    //      const testTeamName = "Mongoose's Team";
+
+    //      let foundTeam = await Team.find({ teamName: testTeamName });
+    //      foundTeam = foundTeam[0];
+
+    //      const obj = {};
+
+    //      obj.adminId = admin._id;
+    //      obj.TEAM = true;
+
+    //      await new AdminLevel(obj).save();
+
+    //      const token = generateNewToken.generateNewToken(
+    //          utils.objectify(admin),
+    //          false
+    //      );
+
+    //      let oldTeamName = foundTeam.teamName;
+
+    //      let testName = 'TEST TEST TEST';
+    //      let lfm = false;
+    //      let avail = { monday : 'no'}
+    //      let descriptionOfTeam = '123456'
+    //      let competitiveLevel = 5;
+    //      let rolesNeeded = { tank:false, dps:true }
+    //      let timezone = '5';
+    //      let twitch = 'twitch';
+    //      let twitter = 'twitter';
+    //      let youtube = 'youtube';
+    //      let ticker = 'ticker';
+
+    //      foundTeam.teamName = testName;
+    //      foundTeam.lookingForMore = lfm;
+    //      foundTeam.availability = avail;
+    //      foundTeam.competitiveLevel = competitiveLevel;
+    //      foundTeam.descriptionOfTeam = descriptionOfTeam;
+    //      foundTeam.rolesNeeded = rolesNeeded;
+    //      foundTeam.timeZone = timezone;
+    //      foundTeam.twitch = twitch;
+    //      foundTeam.twitter = twitter;
+    //      foundTeam.youtube = youtube;
+    //      foundTeam.ticker = ticker;
+
+    //      foundTeam.teamName_lower = foundTeam.teamName.toLowerCase();
+
+    //      const teamEdit = {
+    //          teamName: oldTeamName,
+    //          teamObj: foundTeam,
+    //      };
+
+    //      let result = await request(app.app)
+    //          .post(requestUrl)
+    //          .set({
+    //              Authorization: `Bearer ${token}`,
+    //          })
+    //          .send(teamEdit)
+    //          .then(
+    //              res => {
+    //                  return res;
+    //              },
+    //              err => {
+    //                  throw err;
+    //              }
+    //          );
+
+    //      assert(result.status == 200);
+
+    //      let savedTeam = await Team.find({ teamName: testName });
+    //      savedTeam = savedTeam[0];
+
+    //      assert(lfm == savedTeam.lookingForMore);
+    //      assert(_.isEqual(avail,savedTeam.availability));
+    //      assert(descriptionOfTeam == savedTeam.descriptionOfTeam);
+    //      assert(competitiveLevel == savedTeam.competitiveLevel);
+    //      assert(_.isEqual(rolesNeeded, savedTeam.rolesNeeded));
+    //      assert(timezone == savedTeam.timeZone);
+    //      assert(twitch == savedTeam.twitch);
+    //      assert(twitter == savedTeam.twitter);
+    //      assert(youtube == savedTeam.youtube);
+    //      assert(ticker  == savedTeam.ticker);
+    //  });
+
+    // it('api/admin/teamSave team - change details..', async function () {
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
+
+    //     let requestUrl = `/api/admin/teamSave`;
+
+    //     let admin = await User.find({
+    //         displayName: 'TEST azalea#9539',
+    //     });
+    //     admin = admin[0];
+
+    //     const testTeamName = "Mongoose's Team";
+
+    //     let foundTeam = await Team.find({ teamName: testTeamName });
+    //     foundTeam = foundTeam[0];
+
+    //     const obj = {};
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
+
+    //     let oldTeamName = foundTeam.teamName;
+
+    //     let lfm = false;
+    //     let avail = { monday: 'no' };
+    //     let descriptionOfTeam = '123456';
+    //     let competitiveLevel = 5;
+    //     let rolesNeeded = { tank: false, dps: true };
+    //     let timezone = '5';
+    //     let twitch = 'twitch';
+    //     let twitter = 'twitter';
+    //     let youtube = 'youtube';
+    //     let ticker = 'ticker';
+
+    //     foundTeam.lookingForMore = lfm;
+    //     foundTeam.availability = avail;
+    //     foundTeam.competitiveLevel = competitiveLevel;
+    //     foundTeam.descriptionOfTeam = descriptionOfTeam;
+    //     foundTeam.rolesNeeded = rolesNeeded;
+    //     foundTeam.timeZone = timezone;
+    //     foundTeam.twitch = twitch;
+    //     foundTeam.twitter = twitter;
+    //     foundTeam.youtube = youtube;
+    //     foundTeam.ticker = ticker;
+
+    //     const teamEdit = {
+    //         teamName: oldTeamName,
+    //         teamObj: foundTeam,
+    //     };
+
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({
+    //             Authorization: `Bearer ${token}`,
+    //         })
+    //         .send(teamEdit)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
+
+    //     assert(result.status == 200);
+
+    //     let savedTeam = await Team.find({ teamName: testTeamName });
+    //     savedTeam = savedTeam[0];
+
+    //     assert(lfm == savedTeam.lookingForMore);
+    //     assert(_.isEqual(avail, savedTeam.availability));
+    //     assert(descriptionOfTeam == savedTeam.descriptionOfTeam);
+    //     assert(competitiveLevel == savedTeam.competitiveLevel);
+    //     assert(_.isEqual(rolesNeeded, savedTeam.rolesNeeded));
+    //     assert(timezone == savedTeam.timeZone);
+    //     assert(twitch == savedTeam.twitch);
+    //     assert(twitter == savedTeam.twitter);
+    //     assert(youtube == savedTeam.youtube);
+    //     assert(ticker == savedTeam.ticker);
+    // });
+
+    //  it('api/admin/get/teams/all get all teams..', async function () {
+    //      await mongoUnit.dropDb();
+    //      await mongoUnit.load(mockData);
+
+    //      let requestUrl = `/api/admin/get/teams/all`;
+
+    //      let admin = await User.find({
+    //          displayName: 'TEST azalea#9539',
+    //      });
+    //      admin = admin[0];
+
+    //      const obj = {};
+
+    //      obj.adminId = admin._id;
+    //      obj.TEAM = true;
+
+    //      await new AdminLevel(obj).save();
+
+    //      const token = generateNewToken.generateNewToken(
+    //          utils.objectify(admin),
+    //          false
+    //      );
+
+    //      let result = await request(app.app)
+    //          .get(requestUrl)
+    //          .set({
+    //              Authorization: `Bearer ${token}`,
+    //          })
+    //          .then(
+    //              res => {
+    //                  return res;
+    //              },
+    //              err => {
+    //                  throw err;
+    //              }
+    //          );
+
+    //      assert(result.status == 200);
+    //      assert(result.body.returnObject.length>0)
+    //  });
+
+    // it('api/admin/team/memberAdd add team member method ..', async function () {
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
+
+    //     let requestUrl = `/api/admin/team/memberAdd`;
+
+    //     let admin = await User.find({
+    //         displayName: 'TEST azalea#9539',
+    //     });
+    //     admin = admin[0];
+
+    //     const obj = {};
+
+    //     const userToAdd = "TEST wraith#9539"
+    //     const testTeamName = "Mongoose's Team";
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
+
+    //     const post = {
+    //         user:userToAdd,
+    //         teamName:testTeamName
+    //     };
+
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({
+    //             Authorization: `Bearer ${token}`,
+    //         })
+    //         .send(post)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
+
+    //     assert(result.status == 200);
+    //     assert(result.body.returnObject);
+
+    //     setTimeout(
+    //         async ()=>{
+    //             let user = await User.find({displayName: userToAdd});
+    //             user=user[0];
+
+    //             let team = await Team.find({teamName:testTeamName});
+    //             team = team[0];
+
+    //             let foundUser = false;
+    //             team.teamMembers.forEach(
+    //                 i=>{
+    //                     if(i.displayName==user.displayName){
+    //                         foundUser = true;
+    //                     }
+    //                 }
+    //             )
+    //             assert(foundUser);
+    //             assert(user.teamName == team.teamName);
+    //         },1000
+    //     )
+
+
+
+    // });
+
+    // it('api/admin/team/memberAdd add team member method, team not found ..', async function () {
+    //     await mongoUnit.dropDb();
+    //     await mongoUnit.load(mockData);
+
+    //     let requestUrl = `/api/admin/team/memberAdd`;
+
+    //     let admin = await User.find({
+    //         displayName: 'TEST azalea#9539',
+    //     });
+    //     admin = admin[0];
+
+    //     const obj = {};
+
+    //     const userToAdd = 'TEST wraith#9539';
+    //     const testTeamName = "Mongoose's Team11";
+
+    //     obj.adminId = admin._id;
+    //     obj.TEAM = true;
+
+    //     await new AdminLevel(obj).save();
+
+    //     const token = generateNewToken.generateNewToken(
+    //         utils.objectify(admin),
+    //         false
+    //     );
+
+    //     const post = {
+    //         user: userToAdd,
+    //         teamName: testTeamName,
+    //     };
+
+    //     let result = await request(app.app)
+    //         .post(requestUrl)
+    //         .set({
+    //             Authorization: `Bearer ${token}`,
+    //         })
+    //         .send(post)
+    //         .then(
+    //             res => {
+    //                 return res;
+    //             },
+    //             err => {
+    //                 throw err;
+    //             }
+    //         );
+
+
+    //     assert(result.body.message == 'Team not found');
+    //     assert(result.status == 500);
+
+    // });
+
+        // it('api/admin/team/get find team admin teamname..', async function () {
+        //     await mongoUnit.dropDb();
+        //     await mongoUnit.load(mockData);
+
+        //     let requestUrl = `/api/admin/team/get`;
+
+        //     let admin = await User.find({
+        //         displayName: 'TEST azalea#9539',
+        //     });
+        //     admin = admin[0];
+
+        //     const obj = {};
+
+        //     const testTeamName = "Mongoose's Team";
+
+        //     obj.adminId = admin._id;
+        //     obj.TEAM = true;
+
+        //     await new AdminLevel(obj).save();
+
+        //     const token = generateNewToken.generateNewToken(
+        //         utils.objectify(admin),
+        //         false
+        //     );
+
+        //     let result = await request(app.app)
+        //         .get(`${requestUrl}?team=${testTeamName}`)
+        //         .set({
+        //             Authorization: `Bearer ${token}`,
+        //         })
+        //         .then(
+        //             res => {
+        //                 return res;
+        //             },
+        //             err => {
+        //                 throw err;
+        //             }
+        //         );
+
+        //     assert(result.body.returnObject);
+        //     assert(result.status == 200);
+        // });
+
+                // it('api/admin/team/get find team admin ticker..', async function () {
+                //     await mongoUnit.dropDb();
+                //     await mongoUnit.load(mockData);
+
+                //     let requestUrl = `/api/admin/team/get`;
+
+                //     let admin = await User.find({
+                //         displayName: 'TEST azalea#9539',
+                //     });
+                //     admin = admin[0];
+
+                //     const obj = {};
+
+                //     obj.adminId = admin._id;
+                //     obj.TEAM = true;
+
+                //     await new AdminLevel(obj).save();
+
+                //     const token = generateNewToken.generateNewToken(
+                //         utils.objectify(admin),
+                //         false
+                //     );
+
+                //     let result = await request(app.app)
+                //         .get(`${requestUrl}?ticker=goose`)
+                //         .set({
+                //             Authorization: `Bearer ${token}`,
+                //         })
+                //         .then(
+                //             res => {
+                //                 return res;
+                //             },
+                //             err => {
+                //                 throw err;
+                //             }
+                //         );
+
+                //     assert(result.body.returnObject);
+                //     assert(result.status == 200);
+                // });
+
+        // it('api/admin/team/get find team admin ticker..', async function () {
+        //     await mongoUnit.dropDb();
+        //     await mongoUnit.load(mockData);
+
+        //     let requestUrl = `/api/admin/team/get`;
+
+        //     let admin = await User.find({
+        //         displayName: 'TEST azalea#9539',
+        //     });
+        //     admin = admin[0];
+
+        //     let team = await Team.find({ teamName: "Mongoose's Team" });
+        //     team = team[0];
+
+        //     const obj = {};
+
+        //     obj.adminId = admin._id;
+        //     obj.TEAM = true;
+
+        //     await new AdminLevel(obj).save();
+
+        //     const token = generateNewToken.generateNewToken(
+        //         utils.objectify(admin),
+        //         false
+        //     );
+
+        //     let result = await request(app.app)
+        //         .get(`${requestUrl}?teamId=${team._id}`)
+        //         .set({
+        //             Authorization: `Bearer ${token}`,
+        //         })
+        //         .then(
+        //             res => {
+        //                 return res;
+        //             },
+        //             err => {
+        //                 throw err;
+        //             }
+        //         );
+
+        //     assert(result.body.returnObject);
+        //     assert(result.status == 200);
+        // });
+
+                // it('api/admin/team/get find team admin ticker..', async function () {
+                //     await mongoUnit.dropDb();
+                //     await mongoUnit.load(mockData);
+
+                //     let requestUrl = `/api/admin/team/get`;
+
+                //     let admin = await User.find({
+                //         displayName: 'TEST azalea#9539',
+                //     });
+                //     admin = admin[0];
+
+                //     let team = await Team.find({ teamName: "Mongoose's Team" });
+                //     team = team[0];
+
+                //     const obj = {};
+
+                //     obj.adminId = admin._id;
+                //     obj.TEAM = true;
+
+                //     await new AdminLevel(obj).save();
+
+                //     const token = generateNewToken.generateNewToken(
+                //         utils.objectify(admin),
+                //         false
+                //     );
+
+                //     let result = await request(app.app)
+                //         .get(`${requestUrl}?teamId=${team._id}&discordTag=true`)
+                //         .set({
+                //             Authorization: `Bearer ${token}`,
+                //         })
+                //         .then(
+                //             res => {
+                //                 return res;
+                //             },
+                //             err => {
+                //                 throw err;
+                //             }
+                //         );
+
+                //     assert(result.body.returnObject);
+                //     assert(result.status == 200);
+                // });
+
+                                // it('api/admin/team/uploadLogo upload logo..', async function () {
+                                //     await mongoUnit.dropDb();
+                                //     await mongoUnit.load(mockData);
+
+                                //     var imageUploadStub = sinon.stub(s3putObject,'s3putObject').resolves({link:"resolvelink"});
+
+                                //     let requestUrl = `/api/admin/team/uploadLogo`;
+
+                                //     let admin = await User.find({
+                                //         displayName: 'TEST azalea#9539',
+                                //     });
+                                //     admin = admin[0];
+
+                                //     let team = await Team.find({
+                                //         teamName: "Mongoose's Team",
+                                //     });
+                                //     team = team[0];
+
+                                //     const originalImage = team.logo;
+
+                                //     const obj = {};
+
+                                //     obj.adminId = admin._id;
+                                //     obj.TEAM = true;
+
+                                //     await new AdminLevel(obj).save();
+
+                                //     const token =
+                                //         generateNewToken.generateNewToken(
+                                //             utils.objectify(admin),
+                                //             false
+                                //         );
+
+                                //         const postObj = {
+                                //             teamName:"Mongoose's Team",
+                                //             logo: "logostring"
+                                //         }
+
+                                //     let result = await request(app.app)
+                                //         .post(requestUrl)
+                                //         .set({
+                                //             Authorization: `Bearer ${token}`,
+                                //         })
+                                //         .send(postObj)
+                                //         .then(
+                                //             res => {
+                                //                 return res;
+                                //             },
+                                //             err => {
+                                //                 throw err;
+                                //             }
+                                //         );
+
+                                //     assert(result.body.returnObject.additional.logo != originalImage);
+                                //     assert(result.status == 200);
+
+                                // });
+
+                                // it('api/admin/team/removeLogo remove logo..', async function () {
+                                //     await mongoUnit.dropDb();
+                                //     await mongoUnit.load(mockData);
+
+                                //     var imageUploadStub = sinon
+                                //         .stub(s3putObject, 's3putObject')
+                                //         .resolves({ link: 'resolvelink' });
+
+                                //     let requestUrl = `/api/admin/team/removeLogo`;
+
+                                //     let admin = await User.find({
+                                //         displayName: 'TEST azalea#9539',
+                                //     });
+                                //     admin = admin[0];
+
+                                //     let team = await Team.find({
+                                //         teamName: "Mongoose's Team",
+                                //     });
+                                //     team = team[0];
+
+                                //     const originalImage = team.logo;
+
+                                //     const obj = {};
+
+                                //     obj.adminId = admin._id;
+                                //     obj.TEAM = true;
+
+                                //     await new AdminLevel(obj).save();
+
+                                //     const token =
+                                //         generateNewToken.generateNewToken(
+                                //             utils.objectify(admin),
+                                //             false
+                                //         );
+
+                                //     const postObj = {
+                                //         teamName: "Mongoose's Team",
+                                //     };
+
+                                //     let result = await request(app.app)
+                                //         .post(requestUrl)
+                                //         .set({
+                                //             Authorization: `Bearer ${token}`,
+                                //         })
+                                //         .send(postObj)
+                                //         .then(
+                                //             res => {
+                                //                 return res;
+                                //             },
+                                //             err => {
+                                //                 throw err;
+                                //             }
+                                //         );
+
+                                //     assert(
+                                //         result.body.returnObject.additional
+                                //             .logo != originalImage
+                                //     );
+
+                                //     assert(
+                                //         result.body.returnObject.additional.logo == null
+                                //     );
+
+                                //     assert(result.status == 200);
+
+                                // });
+
+                                 it('api/admin/team/removeLogo remove logo, logo not found..', async function () {
+                                     await mongoUnit.dropDb();
+                                     await mongoUnit.load(mockData);
+
+                                     var imageUploadStub = sinon
+                                         .stub(s3putObject, 's3putObject')
+                                         .resolves({ link: 'resolvelink' });
+
+                                     let requestUrl = `/api/admin/team/removeLogo`;
+
+                                     let admin = await User.find({
+                                         displayName: 'TEST azalea#9539',
+                                     });
+                                     admin = admin[0];
+
+                                     let team = await Team.find({
+                                         teamName: 'TEST assigned daffodils',
+                                     });
+                                     team = team[0];
+
+                                     const originalImage = team.logo;
+
+                                     const obj = {};
+
+                                     obj.adminId = admin._id;
+                                     obj.TEAM = true;
+
+                                     await new AdminLevel(obj).save();
+
+                                     const token =
+                                         generateNewToken.generateNewToken(
+                                             utils.objectify(admin),
+                                             false
+                                         );
+
+                                     const postObj = {
+                                         teamName: 'TEST assigned daffodils',
+                                     };
+
+                                     let result = await request(app.app)
+                                         .post(requestUrl)
+                                         .set({
+                                             Authorization: `Bearer ${token}`,
+                                         })
+                                         .send(postObj)
+                                         .then(
+                                             res => {
+                                                 return res;
+                                             },
+                                             err => {
+                                                 throw err;
+                                             }
+                                         );
+
+                                     assert(result.status == 500);
+                                 });
 
 })
