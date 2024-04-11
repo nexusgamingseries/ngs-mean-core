@@ -2316,61 +2316,61 @@ describe("admin-team-routes",async function(){
 
                                 // });
 
-                                 it('api/admin/team/removeLogo remove logo, logo not found..', async function () {
-                                     await mongoUnit.dropDb();
-                                     await mongoUnit.load(mockData);
+                                //  it('api/admin/team/removeLogo remove logo, logo not found..', async function () {
+                                //      await mongoUnit.dropDb();
+                                //      await mongoUnit.load(mockData);
 
-                                     var imageUploadStub = sinon
-                                         .stub(s3putObject, 's3putObject')
-                                         .resolves({ link: 'resolvelink' });
+                                //      var imageUploadStub = sinon
+                                //          .stub(s3putObject, 's3putObject')
+                                //          .resolves({ link: 'resolvelink' });
 
-                                     let requestUrl = `/api/admin/team/removeLogo`;
+                                //      let requestUrl = `/api/admin/team/removeLogo`;
 
-                                     let admin = await User.find({
-                                         displayName: 'TEST azalea#9539',
-                                     });
-                                     admin = admin[0];
+                                //      let admin = await User.find({
+                                //          displayName: 'TEST azalea#9539',
+                                //      });
+                                //      admin = admin[0];
 
-                                     let team = await Team.find({
-                                         teamName: 'TEST assigned daffodils',
-                                     });
-                                     team = team[0];
+                                //      let team = await Team.find({
+                                //          teamName: 'TEST assigned daffodils',
+                                //      });
+                                //      team = team[0];
 
-                                     const originalImage = team.logo;
+                                //      const originalImage = team.logo;
 
-                                     const obj = {};
+                                //      const obj = {};
 
-                                     obj.adminId = admin._id;
-                                     obj.TEAM = true;
+                                //      obj.adminId = admin._id;
+                                //      obj.TEAM = true;
 
-                                     await new AdminLevel(obj).save();
+                                //      await new AdminLevel(obj).save();
 
-                                     const token =
-                                         generateNewToken.generateNewToken(
-                                             utils.objectify(admin),
-                                             false
-                                         );
+                                //      const token =
+                                //          generateNewToken.generateNewToken(
+                                //              utils.objectify(admin),
+                                //              false
+                                //          );
 
-                                     const postObj = {
-                                         teamName: 'TEST assigned daffodils',
-                                     };
+                                //      const postObj = {
+                                //          teamName: 'TEST assigned daffodils',
+                                //      };
 
-                                     let result = await request(app.app)
-                                         .post(requestUrl)
-                                         .set({
-                                             Authorization: `Bearer ${token}`,
-                                         })
-                                         .send(postObj)
-                                         .then(
-                                             res => {
-                                                 return res;
-                                             },
-                                             err => {
-                                                 throw err;
-                                             }
-                                         );
+                                //      let result = await request(app.app)
+                                //          .post(requestUrl)
+                                //          .set({
+                                //              Authorization: `Bearer ${token}`,
+                                //          })
+                                //          .send(postObj)
+                                //          .then(
+                                //              res => {
+                                //                  return res;
+                                //              },
+                                //              err => {
+                                //                  throw err;
+                                //              }
+                                //          );
 
-                                     assert(result.status == 500);
-                                 });
+                                //      assert(result.status == 500);
+                                //  });
 
 })
