@@ -614,30 +614,39 @@ the options is an object of query options.
 router.post('/fetch/matches/scheduled', async(req, res) => {
     const path = 'schedule/fetch/matches/scheduled';
 
-    const optionalParameters = [{
+    const requiredParameters = [
+        {
             name: 'query',
-            type: 'array'
+            type: 'array',
         },
+    ];
+
+    const optionalParameters = [
         {
             name: 'options',
             type: 'object'
         }
     ];
 
-    commonResponseHandler(req, res, [], optionalParameters, async(req, res, required, options) => {
+    commonResponseHandler(
+        req,
+        res,
+        requiredParameters,
+        optionalParameters,
+        async (req, res, required, options) => {
+            let adQuery = {};
 
-        let adQuery = {};
+            if (options.options.valid) {
+                adQuery.options = options.options.value;
+            }
 
-        if (options.options.valid) {
-            adQuery.options = options.options.value;
+            if (options.query.valid) {
+                adQuery.query = options.query.value;
+            }
+
+            return getScheduledMatches(req, adQuery);
         }
-
-        if (options.query.valid) {
-            adQuery.query = options.query.value;
-        }
-
-        return getScheduledMatches(req, adQuery);
-    })
+    );
 
 })
 
