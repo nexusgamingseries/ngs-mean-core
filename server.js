@@ -95,16 +95,48 @@ function startApp() {
 
     app.use(forceSsl);
 
+    const blacklist = [];
+
+    if(process.env.ipBlacklist && process.env.ipBlacklist.length>0){
+        blacklist = process.env.ipBlacklist.split(',');
+    }
+
     app.use(function(req, res, next) {
-
-        if (process.env.enableApiDeepLogger && process.env.enableApiDeepLogger != 'false') {
-            serverLogger.addToLog(req);
+        
+        // Normalize req.ip to match the format of the blacklist
+        let requestIp = req.ip;
+        // Remove the IPv6 prefix if present
+        if (requestIp.startsWith('::ffff:')) {
+            requestIp = requestIp.substring(7);
         }
-        res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
-        res.header("Access-Control-Allow-Headers", "Authorization, Origin, X-Requested-With, Content-Type, Accept");
-        next();
 
+        let sentToBlacklist = false;
+
+        if (blacklist.includes(requestIp)) {
+            return res
+                .status(403)
+                .send(
+                    'You have been denied access to NGS for suspected malicous behavior, if you feel this is in error please contact support.'
+                );
+                sentToBlacklist = true;
+        }
+
+        if (
+            process.env.enableApiDeepLogger &&
+            process.env.enableApiDeepLogger != 'false'
+        ) {
+            serverLogger.addToLog(req, sentToBlacklist);
+        }
+        res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
+        res.header(
+            'Access-Control-Allow-Methods',
+            'GET,PUT,POST,DELETE,PATCH,OPTIONS'
+        );
+        res.header(
+            'Access-Control-Allow-Headers',
+            'Authorization, Origin, X-Requested-With, Content-Type, Accept'
+        );
+        next();
     });
 
 

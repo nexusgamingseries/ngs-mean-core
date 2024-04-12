@@ -22,10 +22,10 @@ const APILogging = function(app, saveInterval) {
 
     APILogging.log = JSON.parse(JSON.stringify(defaultLog));
 
-    APILogging.addToLog = function(req) {
+    APILogging.addToLog = function(req, sentToBlacklist) {
         if (req && this.checkLoggable(req.path, req.method.toLowerCase())) {
             this.tallyCalls(req);
-            this.pushOnList(req);
+            this.pushOnList(req, sentToBlacklist);
             this.sumCaller(req);
         }
     }
@@ -61,7 +61,7 @@ const APILogging = function(app, saveInterval) {
         }
     }
 
-    APILogging.pushOnList = function(req) {
+    APILogging.pushOnList = function(req, sentToBlacklist) {
 
         const logobj = {
             timestamp: Date.now(),
@@ -71,7 +71,8 @@ const APILogging = function(app, saveInterval) {
             params: JSON.stringify(req.params),
             query: JSON.stringify(req.query),
             body: JSON.stringify(req.body),
-            ip: req.ip
+            ip: req.ip,
+            sentToBlacklist: sentToBlacklist
         };
         if (req.headers.origin) {
             logobj['origin'] = `${req.headers.origin}`;
