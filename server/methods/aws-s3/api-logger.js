@@ -72,7 +72,7 @@ const APILogging = function(app, saveInterval) {
             query: JSON.stringify(req.query),
             body: JSON.stringify(req.body),
             ip: req.ip,
-            sentToBlacklist: sentToBlacklist
+            headers: JSON.stringify(req.headers)
         };
         if (req.headers.origin) {
             logobj['origin'] = `${req.headers.origin}`;

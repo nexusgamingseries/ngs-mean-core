@@ -119,7 +119,7 @@ function startApp() {
             return res
                 .status(403)
                 .send(
-                    'You have been denied access to NGS for suspected malicous behavior, if you feel this is in error please contact support.'
+                    'You have been denied access to NGS for suspected malicious behavior, if you feel this is in error please contact support.'
                 );
         }
 
