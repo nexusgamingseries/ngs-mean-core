@@ -113,12 +113,12 @@ function startApp() {
         let sentToBlacklist = false;
 
         if (blacklist.includes(requestIp)) {
+            sentToBlacklist = true;
             return res
                 .status(403)
                 .send(
                     'You have been denied access to NGS for suspected malicous behavior, if you feel this is in error please contact support.'
                 );
-                sentToBlacklist = true;
         }
 
         if (
