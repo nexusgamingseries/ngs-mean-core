@@ -112,7 +112,9 @@ function startApp() {
 
         let sentToBlacklist = false;
 
-        if (blacklist.includes(requestIp)) {
+        console.log(requestIp, blacklist.indexOf(requestIp));
+
+        if (blacklist.indexOf(requestIp)>-1) {
             sentToBlacklist = true;
             return res
                 .status(403)
