@@ -67,16 +67,14 @@ const APILogging = function(app, saveInterval) {
             timestamp: Date.now(),
             path: req.path,
             method: req.method,
-            authHeader: JSON.stringify(req.header.authorization),
+            // Correctly access the Authorization header directly from req.headers
+            authHeader: req.headers['authorization'],
             params: JSON.stringify(req.params),
             query: JSON.stringify(req.query),
             body: JSON.stringify(req.body),
-            ip: req.ip,
-            headers: JSON.stringify(req.headers)
+            // Add the X-Forwarded-For header from req.headers
+            xForwardedFor: req.headers['x-forwarded-for'],
         };
-        if (req.headers.origin) {
-            logobj['origin'] = `${req.headers.origin}`;
-        }
 
         this.log.logList.push(logobj);
     }

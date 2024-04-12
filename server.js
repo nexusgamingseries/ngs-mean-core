@@ -102,20 +102,18 @@ function startApp() {
     }
 
     app.use(function(req, res, next) {
-        
-        // Normalize req.ip to match the format of the blacklist
-        let requestIp = req.ip;
+        let xForwardedFor = req.headers['x-forwarded-for'];
+        let clientIp = xForwardedFor ? xForwardedFor.split(',')[0].trim() : '';
+
         // Remove the IPv6 prefix if present
-        if (requestIp.startsWith('::ffff:')) {
-            requestIp = requestIp.substring(7);
+        if (clientIp.startsWith('::ffff:')) {
+            clientIp = clientIp.substring(7);
         }
 
-        let sentToBlacklist = false;
+        // Check if the client IP is in the blacklist
+        let sentToBlacklist = blacklist.includes(clientIp);
 
-        console.log(requestIp, blacklist.indexOf(requestIp));
-
-        if (blacklist.indexOf(requestIp)>-1) {
-            sentToBlacklist = true;
+        if (sentToBlacklist) {
             return res
                 .status(403)
                 .send(
@@ -129,6 +127,7 @@ function startApp() {
         ) {
             serverLogger.addToLog(req, sentToBlacklist);
         }
+        
         res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
         res.header(
             'Access-Control-Allow-Methods',
