@@ -95,7 +95,7 @@ function startApp() {
 
     app.use(forceSsl);
 
-    const blacklist = [];
+    let blacklist = [];
 
     if(process.env.ipBlacklist && process.env.ipBlacklist.length>0){
         blacklist = process.env.ipBlacklist.split(',');
