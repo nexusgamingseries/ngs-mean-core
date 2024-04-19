@@ -640,8 +640,8 @@ router.post('/fetch/matches/scheduled', async(req, res) => {
                 adQuery.options = options.options.value;
             }
 
-            if (options.query.valid) {
-                adQuery.query = options.query.value;
+            if (required.query.valid) {
+                adQuery.query = required.query.value;
             }
 
             return getScheduledMatches(req, adQuery);
