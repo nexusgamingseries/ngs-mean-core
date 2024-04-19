@@ -95,6 +95,15 @@ function startApp() {
 
     app.use(forceSsl);
 
+                    var susStrings = [];
+
+                    if (
+                        process.env.suspectStrings &&
+                        process.env.suspectStrings.length > 0
+                    ) {
+                        susStrings = process.env.suspectStrings.split(',');
+                    }
+
     let blacklist = [];
 
     if(process.env.ipBlacklist && process.env.ipBlacklist.length>0){
@@ -102,22 +111,50 @@ function startApp() {
     }
 
     app.use(function(req, res, next) {
-        let xForwardedFor = req.headers['x-forwarded-for'];
-        let clientIp = xForwardedFor ? xForwardedFor.split(',')[0].trim() : '';
 
-        // Remove the IPv6 prefix if present
-        if (clientIp.startsWith('::ffff:')) {
-            clientIp = clientIp.substring(7);
+
+        //going to start rejecting losers for their request content when I have determined that it is not something I want to deal with..
+        const paramStr = JSON.stringify(req.params);
+        const queryStr = JSON.stringify(req.query);
+        const bodyStr = JSON.stringify(req.body);
+
+        console.log(paramStr, queryStr, bodyStr);
+
+        console.log('sus', susStrings);
+
+        const requestContents = [paramStr, queryStr, bodyStr];
+        const isSuspicious = requestContents.some(content =>
+            susStrings.some(suspicious =>
+                content.includes(suspicious)
+            )
+        );
+
+        if (isSuspicious) {
+            return res
+                .status(403)
+                .send(
+                    'Request blocked due to suspicious activity.'
+                );
         }
 
-        // Check if the client IP is in the blacklist
-        let sentToBlacklist = blacklist.includes(clientIp);
+        const xForwardedFor = req.headers['x-forwarded-for'];
+        let clientIps = xForwardedFor
+            ? xForwardedFor.split(',').map(ip => ip.trim())
+            : [];
+
+        // Remove the IPv6 prefix from each IP if present and check against the blacklist
+        let sentToBlacklist = clientIps.some(ip => {
+            if (ip.startsWith('::ffff:')) {
+                ip = ip.substring(7);
+            }
+            return blacklist.includes(ip);
+        });
 
         if (sentToBlacklist) {
             return res
                 .status(403)
                 .send(
-                    'You have been denied access to NGS for suspected malicious behavior, if you feel this is in error please contact support.'
+                    'You have been denied access to NGS for suspected malicious behavior. If you feel this is in error, please contact support.'
                 );
         }
 
