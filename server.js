@@ -118,10 +118,6 @@ function startApp() {
         const queryStr = JSON.stringify(req.query);
         const bodyStr = JSON.stringify(req.body);
 
-        console.log(paramStr, queryStr, bodyStr);
-
-        console.log('sus', susStrings);
-
         const requestContents = [paramStr, queryStr, bodyStr];
         const isSuspicious = requestContents.some(content =>
             susStrings.some(suspicious =>
