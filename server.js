@@ -126,6 +126,7 @@ function startApp() {
         );
 
         if (isSuspicious) {
+            console.log(isSuspicious);
             return res
                 .status(403)
                 .send(
