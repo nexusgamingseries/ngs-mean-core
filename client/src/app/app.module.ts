@@ -396,13 +396,6 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     CreateThreadComponent,
     GenerateNonSeasonalSchedulesComponent
   ],
-  entryComponents:[
-    DeleteConfrimModalComponent,
-    ChangeCaptainModalComponent,
-    ConfirmRemoveMemberComponent,
-    EventModalComponent,
-    AssistantCaptainMgmtComponent
-  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -442,3 +435,16 @@ export class AppModule {}
     NgsAccordianTitleComponent,
     NgsAccordianContentComponent
  */
+
+
+    /*
+    4-25-2024
+
+      entryComponents:[
+    DeleteConfrimModalComponent,
+    ChangeCaptainModalComponent,
+    ConfirmRemoveMemberComponent,
+    EventModalComponent,
+    AssistantCaptainMgmtComponent
+  ],
+    */
