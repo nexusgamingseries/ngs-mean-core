@@ -8,8 +8,8 @@ describe('GenerateNonSeasonalSchedulesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GenerateNonSeasonalSchedulesComponent ]
-    })
+    declarations: [GenerateNonSeasonalSchedulesComponent]
+})
     .compileComponents();
   });
 

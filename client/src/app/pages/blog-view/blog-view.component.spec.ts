@@ -8,8 +8,8 @@ describe('BlogViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogViewComponent ]
-    })
+    declarations: [BlogViewComponent]
+})
     .compileComponents();
   }));
 

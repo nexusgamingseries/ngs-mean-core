@@ -7,11 +7,14 @@ import { TeamService } from 'src/app/services/team.service';
 import { RequestService } from 'src/app/services/request.service';
 import { DivisionService } from 'src/app/services/division.service';
 import { UserService } from 'src/app/services/user.service';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-user-marketplace",
   templateUrl: "./user-marketplace.component.html",
   styleUrls: ["./user-marketplace.component.css"],
+  standalone:true,
+  imports:[BannerImageComponent]
 })
 export class UserMarketplaceComponent implements OnInit {
   constructor(

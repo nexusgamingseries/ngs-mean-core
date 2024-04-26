@@ -11,7 +11,8 @@ import { WordpressService } from '../../services/wordpress.service';
 @Component({
   selector: 'app-large-carousel',
   templateUrl: './large-carousel.component.html',
-  styleUrls: ['./large-carousel.component.css']
+  styleUrls: ['./large-carousel.component.css'],
+  standalone:true,
 })
 export class LargeCarouselComponent implements OnInit {
 

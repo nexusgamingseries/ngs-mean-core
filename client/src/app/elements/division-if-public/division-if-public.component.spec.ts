@@ -8,8 +8,8 @@ describe('DivisionIfPublicComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionIfPublicComponent ]
-    })
+    declarations: [DivisionIfPublicComponent]
+})
     .compileComponents();
   }));
 

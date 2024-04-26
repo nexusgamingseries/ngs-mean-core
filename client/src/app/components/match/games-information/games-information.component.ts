@@ -12,6 +12,7 @@ import { Replay } from 'src/app/classes/match.class';
   selector: "app-games-information",
   templateUrl: "./games-information.component.html",
   styleUrls: ["./games-information.component.css"],
+  standalone:true
 })
 export class GamesInformationComponent implements OnInit, OnChanges {
   constructor(

@@ -4,6 +4,7 @@ import { TeamService } from 'src/app/services/team.service';
 @Component({
   selector: 'app-team-link',
   templateUrl: './team-link.component.html',
+  standalone:true,
   styleUrls: ['./team-link.component.css']
 })
 export class TeamLinkComponent implements OnInit {

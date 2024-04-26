@@ -1,16 +1,19 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormsModule, Validators } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AdminService } from 'src/app/services/admin.service';
 import { StandingsService } from 'src/app/services/standings.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { MatFormField } from '@angular/material/form-field';
 
 @Component({
   selector: "app-generate-non-seasonal-schedules",
   templateUrl: "./generate-non-seasonal-schedules.component.html",
   styleUrls: ["./generate-non-seasonal-schedules.component.css"],
+  standalone:true,
+  imports:[MatFormField, FormsModule]
 })
 export class GenerateNonSeasonalSchedulesComponent implements OnInit {
   constructor(

@@ -8,8 +8,8 @@ describe('ReplayCastsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReplayCastsComponent ]
-    })
+    declarations: [ReplayCastsComponent]
+})
     .compileComponents();
   }));
 

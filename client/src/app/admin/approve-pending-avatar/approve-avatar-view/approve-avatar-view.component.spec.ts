@@ -8,8 +8,8 @@ describe('ApproveAvatarViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApproveAvatarViewComponent ]
-    })
+    declarations: [ApproveAvatarViewComponent]
+})
     .compileComponents();
   }));
 

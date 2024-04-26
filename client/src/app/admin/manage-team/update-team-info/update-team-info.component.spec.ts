@@ -8,8 +8,8 @@ describe('UpdateTeamInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateTeamInfoComponent ]
-    })
+    declarations: [UpdateTeamInfoComponent]
+})
     .compileComponents();
   }));
 

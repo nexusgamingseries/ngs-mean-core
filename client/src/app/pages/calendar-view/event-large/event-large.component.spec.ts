@@ -8,8 +8,8 @@ describe('EventLargeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventLargeComponent ]
-    })
+    declarations: [EventLargeComponent]
+})
     .compileComponents();
   }));
 

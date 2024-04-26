@@ -8,8 +8,8 @@ describe('MatchViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchViewComponent ]
-    })
+    declarations: [MatchViewComponent]
+})
     .compileComponents();
   }));
 

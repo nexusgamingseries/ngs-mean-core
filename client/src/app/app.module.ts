@@ -3,7 +3,7 @@ import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
-import { InputFormMaterial } from "./classes/aM-input-Import.class";
+
 import { AppRoutingModule } from './app.Routes';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -205,6 +205,7 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
 import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-youtube-curator.component';
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -397,22 +398,22 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     GenerateNonSeasonalSchedulesComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    InputFormMaterial,
     FormsModule,
     ReactiveFormsModule,
     ngfModule,
     CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
+        provide: DateAdapter,
+        useFactory: adapterFactory
     }),
     DragDropModule,
     DragScrollModule,
     NgxMatColorPickerModule
-  ],
+],
   providers: [
     SafeHtmlPipe,
     {

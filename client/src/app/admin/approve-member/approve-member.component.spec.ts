@@ -8,8 +8,8 @@ describe('ApproveMemberComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ApproveMemberComponent ]
-    })
+    declarations: [ApproveMemberComponent]
+})
     .compileComponents();
   }));
 

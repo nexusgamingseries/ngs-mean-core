@@ -8,8 +8,8 @@ describe('PlayerSmallCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerSmallCardComponent ]
-    })
+    declarations: [PlayerSmallCardComponent]
+})
     .compileComponents();
   }));
 

@@ -5,6 +5,7 @@ import { TeamService } from 'src/app/services/team.service';
 
 @Component({
   selector: 'app-matchup-history',
+  standalone:true,
   templateUrl: './matchup-history.component.html',
   styleUrls: ['./matchup-history.component.css']
 })

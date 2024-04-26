@@ -3,10 +3,17 @@ import { MvpService } from "src/app/services/mvp.service";
 import { forEach } from "lodash";
 import { url } from "inspector";
 import { UtilitiesService } from "src/app/services/utilities.service";
+import { CommonModule } from "@angular/common";
+import { MatFormField, MatLabel } from "@angular/material/form-field";
+import { MatSelect } from "@angular/material/select";
+import { MatInput } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: "app-mvp-report",
   templateUrl: "./mvp-report.component.html",
+  standalone:true,
+  imports:[CommonModule, MatLabel, MatFormField, MatSelect, MatInput, FormsModule],
   styleUrls: ["./mvp-report.component.css"],
 })
 export class MvpReportComponent implements OnInit {

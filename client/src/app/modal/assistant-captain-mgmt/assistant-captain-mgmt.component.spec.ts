@@ -8,8 +8,8 @@ describe('AssistantCaptainMgmtComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AssistantCaptainMgmtComponent ]
-    })
+    declarations: [AssistantCaptainMgmtComponent]
+})
     .compileComponents();
   }));
 

@@ -7,11 +7,15 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Profile } from 'src/app/classes/profile.class';
 import { DivisionService } from 'src/app/services/division.service';
 import { find } from 'lodash';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-caster-page',
   templateUrl: './caster-page.component.html',
-  styleUrls: ['./caster-page.component.css']
+  styleUrls: ['./caster-page.component.css'],
+  standalone:true,
+  imports:[MatTab, MatTabGroup, BannerImageComponent]
 })
 export class CasterPageComponent implements OnInit {
 

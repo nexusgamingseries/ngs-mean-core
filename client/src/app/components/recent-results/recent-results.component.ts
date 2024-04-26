@@ -6,7 +6,8 @@ import { TeamService } from '../../services/team.service';
 @Component({
   selector: 'app-recent-results',
   templateUrl: './recent-results.component.html',
-  styleUrls: ['./recent-results.component.css']
+  styleUrls: ['./recent-results.component.css'],
+  standalone:true,
 })
 export class RecentResultsComponent implements OnInit {
 

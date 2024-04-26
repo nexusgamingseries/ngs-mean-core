@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
   selector: 'app-round-column',
   templateUrl: './round-column.component.html',
-  styleUrls: ['./round-column.component.css']
+  styleUrls: ['./round-column.component.css'],
+  standalone:true,
+  imports:[CommonModule]
 })
 export class RoundColumnComponent implements OnInit {
 

@@ -1,11 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
 import { UtilitiesService } from '../../services/utilities.service';
 import { findIndex, forEach as _forEach } from 'lodash';
+import { DropDownTimeComponent } from './drop-down-time/drop-down-time.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-times-available',
   templateUrl: './times-available.component.html',
-  styleUrls: ['./times-available.component.css']
+  styleUrls: ['./times-available.component.css'],
+  standalone:true,
+  imports:[DropDownTimeComponent, MatCheckboxModule, FormsModule, CommonModule]
 })
 export class TimesAvailableComponent implements OnInit, DoCheck {
 

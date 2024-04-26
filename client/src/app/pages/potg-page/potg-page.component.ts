@@ -3,10 +3,17 @@ import { MvpService } from '../../services/mvp.service';
 import { TimeService } from '../../services/time.service';
 import { PageEvent, MatPaginator } from "@angular/material/paginator";
 import { UtilitiesService } from '../../services/utilities.service';
+import { MatFormField, MatLabel, MatSelect } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: "app-potg-page",
   templateUrl: "./potg-page.component.html",
+  standalone:true,
+  imports:[MatPaginator, MatSelect, CommonModule, MatLabel, MatFormField, BannerImageComponent, TeamLinkComponent, FormsModule],
   styleUrls: ["./potg-page.component.css"],
 })
 export class PotgPageComponent implements OnInit {

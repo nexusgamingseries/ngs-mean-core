@@ -5,6 +5,7 @@ import { LeagueStatService } from './league-stat.service';
 @Component({
   selector: 'app-league-stats',
   templateUrl: './league-stats.component.html',
+  standalone:true,
   styleUrls: ['./league-stats.component.css']
 })
 export class LeagueStatsComponent implements OnInit {

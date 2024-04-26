@@ -11,6 +11,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: "app-countdown",
   templateUrl: "./countdown.component.html",
+  standalone:true,
   styleUrls: ["./countdown.component.css"],
 })
 export class CountdownComponent implements OnInit {

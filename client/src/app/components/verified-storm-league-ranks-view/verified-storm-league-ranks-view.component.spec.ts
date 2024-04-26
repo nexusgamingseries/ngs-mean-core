@@ -8,8 +8,8 @@ describe('VerifiedStormLeagueRanksViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VerifiedStormLeagueRanksViewComponent ]
-    })
+    declarations: [VerifiedStormLeagueRanksViewComponent]
+})
     .compileComponents();
   });
 

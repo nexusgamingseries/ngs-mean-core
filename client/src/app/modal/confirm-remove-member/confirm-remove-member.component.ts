@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-confirm-remove-member',
   templateUrl: './confirm-remove-member.component.html',
-  styleUrls: ['./confirm-remove-member.component.css']
+  styleUrls: ['./confirm-remove-member.component.css'],
+  standalone:true,
+  imports:[MatDialogModule]
 })
 export class ConfirmRemoveMemberComponent implements OnInit {
   selected: string

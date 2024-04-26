@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RouterModule } from '@angular/router';
 import { TeamService } from '../services/team.service';
 import { UserService } from '../services/user.service';
 import { DivisionService } from '../services/division.service';
@@ -8,13 +8,17 @@ import { MessagesService } from '../services/messages.service';
 import { NotificationService } from '../services/notification.service';
 import { TimeService } from 'src/app/services/time.service';
 import { environment } from '../../environments/environment'
+import { PlayerLinkComponent } from '../LinkComponents/player-link/player-link.component';
+import { TeamLinkComponent } from '../LinkComponents/team-link/team-link.component';
 
 declare var Mmenu: any;
 
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
+  standalone:true,
+  imports:[RouterModule, PlayerLinkComponent, TeamLinkComponent]
 })
 export class NavComponent implements OnInit {
   divisions

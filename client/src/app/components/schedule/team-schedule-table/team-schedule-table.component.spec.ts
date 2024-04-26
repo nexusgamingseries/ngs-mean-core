@@ -8,8 +8,8 @@ describe('TeamScheduleTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamScheduleTableComponent ]
-    })
+    declarations: [TeamScheduleTableComponent]
+})
     .compileComponents();
   }));
 

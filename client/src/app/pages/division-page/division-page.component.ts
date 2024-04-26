@@ -8,13 +8,16 @@ import { TeamService } from '../../services/team.service';
 import { TimeService } from '../../services/time.service';
 import { TabTrackerService } from '../../services/tab-tracker.service';
 import { environment } from "../../../environments/environment";
+import { CommonModule } from '@angular/common';
 
 
 
 @Component({
   selector: 'app-division',
   templateUrl: './division-page.component.html',
-  styleUrls: ['./division-page.component.css']
+  styleUrls: ['./division-page.component.css'],
+  standalone:true,
+  imports:[CommonModule],
 })
 
 export class DivisionComponent implements OnInit, OnChanges, OnDestroy {

@@ -10,6 +10,7 @@ import { Match } from 'src/app/classes/match.class';
   selector: "app-match-results-header",
   templateUrl: "./match-results-header.component.html",
   styleUrls: ["./match-results-header.component.css"],
+  standalone:true,
 })
 export class MatchResultsHeaderComponent implements OnInit {
   seasonVal;

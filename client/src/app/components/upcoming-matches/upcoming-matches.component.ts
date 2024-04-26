@@ -6,6 +6,7 @@ import { TeamService } from '../../services/team.service';
 @Component({
   selector: 'app-upcoming-matches',
   templateUrl: './upcoming-matches.component.html',
+  standalone:true,
   styleUrls: ['./upcoming-matches.component.css']
 })
 export class UpcomingMatchesComponent implements OnInit {

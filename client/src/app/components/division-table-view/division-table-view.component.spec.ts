@@ -8,8 +8,8 @@ describe('DivisionTableViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionTableViewComponent ]
-    })
+    declarations: [DivisionTableViewComponent]
+})
     .compileComponents();
   }));
 

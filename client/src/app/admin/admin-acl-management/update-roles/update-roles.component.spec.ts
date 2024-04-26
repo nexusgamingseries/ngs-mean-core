@@ -8,8 +8,8 @@ describe('UpdateRolesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UpdateRolesComponent ]
-    })
+    declarations: [UpdateRolesComponent]
+})
     .compileComponents();
   }));
 

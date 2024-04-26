@@ -8,8 +8,8 @@ describe('ConfirmRemoveMemberComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfirmRemoveMemberComponent ]
-    })
+    declarations: [ConfirmRemoveMemberComponent]
+})
     .compileComponents();
   }));
 

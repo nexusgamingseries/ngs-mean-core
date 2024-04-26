@@ -7,7 +7,8 @@ import { TimeService } from '../../services/time.service';
 @Component({
   selector: 'app-challonge-tourn',
   templateUrl: './challonge-tourn.component.html',
-  styleUrls: ['./challonge-tourn.component.css']
+  styleUrls: ['./challonge-tourn.component.css'],
+  standalone:true
 })
 export class ChallongeTournComponent implements OnInit {
 

@@ -8,12 +8,15 @@ import { RequestService } from 'src/app/services/request.service';
 import { Team } from 'src/app/classes/team.class';
 import { DivisionService } from 'src/app/services/division.service';
 import { forEach as _forEach } from 'lodash';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 
 @Component({
   selector: 'app-team-market',
   templateUrl: './team-market.component.html',
-  styleUrls: ['./team-market.component.css']
+  styleUrls: ['./team-market.component.css'],
+  standalone:true,
+  imports:[BannerImageComponent]
 })
 export class TeamMarketComponent implements OnInit {
 

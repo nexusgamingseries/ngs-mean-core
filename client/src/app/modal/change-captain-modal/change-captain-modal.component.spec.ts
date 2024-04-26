@@ -8,8 +8,8 @@ describe('ChangeCaptainModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChangeCaptainModalComponent ]
-    })
+    declarations: [ChangeCaptainModalComponent]
+})
     .compileComponents();
   }));
 

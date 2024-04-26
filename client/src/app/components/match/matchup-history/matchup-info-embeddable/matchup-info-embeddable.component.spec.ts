@@ -8,8 +8,8 @@ describe('MatchupInfoEmbeddableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchupInfoEmbeddableComponent ]
-    })
+    declarations: [MatchupInfoEmbeddableComponent]
+})
     .compileComponents();
   }));
 

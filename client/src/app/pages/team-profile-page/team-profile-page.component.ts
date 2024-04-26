@@ -19,10 +19,13 @@ import { HistoryService } from 'src/app/services/history.service';
 import { TabTrackerService } from 'src/app/services/tab-tracker.service';
 import { TimeService } from 'src/app/services/time.service';
 import { MatDialog } from "@angular/material/dialog";
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-team-profile',
+  imports:[CommonModule],
+  standalone:true,
   templateUrl: './team-profile-page.component.html',
   styleUrls: ['./team-profile-page.component.css']
 })

@@ -8,8 +8,8 @@ describe('SingleTeamDisplayComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SingleTeamDisplayComponent ]
-    })
+    declarations: [SingleTeamDisplayComponent]
+})
     .compileComponents();
   });
 

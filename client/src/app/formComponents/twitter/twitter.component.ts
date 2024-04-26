@@ -1,9 +1,13 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 @Component({
   selector: 'app-twitter',
   templateUrl: './twitter.component.html',
-  styleUrls: ['./twitter.component.css']
+  styleUrls: ['./twitter.component.css'],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatFormField, MatLabel]
 })
 export class TwitterComponent implements OnInit {
 

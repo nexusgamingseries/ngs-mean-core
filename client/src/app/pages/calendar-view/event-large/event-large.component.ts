@@ -7,11 +7,14 @@ import { StandingsService } from 'src/app/services/standings.service';
 import { EventsService } from 'src/app/services/events.service';
 import { environment } from '../../../../environments/environment';
 import { DivisionService } from 'src/app/services/division.service';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-event-large',
   templateUrl: './event-large.component.html',
-  styleUrls: ['./event-large.component.css']
+  styleUrls: ['./event-large.component.css'],
+  standalone:true,
+  imports:[BannerImageComponent]
 })
 export class EventLargeComponent implements OnInit {
 

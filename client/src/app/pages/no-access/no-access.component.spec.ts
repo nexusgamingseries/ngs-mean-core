@@ -8,8 +8,8 @@ describe('NoAccessComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoAccessComponent ]
-    })
+    declarations: [NoAccessComponent]
+})
     .compileComponents();
   }));
 

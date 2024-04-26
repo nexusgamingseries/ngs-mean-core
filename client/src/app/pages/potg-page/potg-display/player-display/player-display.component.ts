@@ -3,9 +3,16 @@ import { UserService } from 'src/app/services/user.service';
 import { Profile } from 'src/app/classes/profile.class';
 import { MvpService } from 'src/app/services/mvp.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { UserSearchComponent } from 'src/app/components/user-search/user-search.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { CommonModule } from '@angular/common';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 @Component({
   selector: "app-player-display",
+  standalone:true,
+  imports:[CommonPipePipe, UserSearchComponent, BannerImageComponent, CommonModule, TeamLinkComponent],
   templateUrl: "./player-display.component.html",
   styleUrls: ["./player-display.component.css"]
 })

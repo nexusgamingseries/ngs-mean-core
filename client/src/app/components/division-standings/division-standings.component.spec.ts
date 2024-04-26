@@ -8,8 +8,8 @@ describe('DivisionStandingsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionStandingsComponent ]
-    })
+    declarations: [DivisionStandingsComponent]
+})
     .compileComponents();
   }));
 

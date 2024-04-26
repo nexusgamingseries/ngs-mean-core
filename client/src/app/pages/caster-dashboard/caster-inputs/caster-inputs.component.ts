@@ -1,14 +1,18 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { FormControl, Validators, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-caster-inputs",
   templateUrl: "./caster-inputs.component.html",
   styleUrls: ["./caster-inputs.component.css"],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatLabel, MatFormField, ReactiveFormsModule, CommonModule]
 })
 export class CasterInputsComponent implements OnInit {
   constructor(private scheduleService: ScheduleService, private admin:AdminService, private user:UserService, private auth:AuthService) {}

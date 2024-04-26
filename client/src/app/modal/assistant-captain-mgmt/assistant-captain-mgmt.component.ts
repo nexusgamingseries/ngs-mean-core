@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-assistant-captain-mgmt',
   templateUrl: './assistant-captain-mgmt.component.html',
-  styleUrls: ['./assistant-captain-mgmt.component.css']
+  styleUrls: ['./assistant-captain-mgmt.component.css'],
+  standalone:true,
+  imports:[MatDialogModule]
 })
 export class AssistantCaptainMgmtComponent implements OnInit {
 

@@ -7,6 +7,7 @@ import { TimeService } from "../../services/time.service";
 @Component({
   selector: "app-mvp-display",
   templateUrl: "./mvp-display.component.html",
+  standalone:true,
   styleUrls: ["./mvp-display.component.css"],
 })
 export class MvpDisplayComponent implements OnInit {

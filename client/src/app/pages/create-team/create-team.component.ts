@@ -3,15 +3,39 @@ import { Team } from '../../classes/team.class';
 import { TeamService } from '../../services/team.service';
 import { TimezoneService } from '../../services/timezone.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { FormControl, Validators, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilitiesService } from '../../services/utilities.service';
 import { UserService } from '../../services/user.service';
+import { TimezoneComponent } from 'src/app/formComponents/timezone/timezone.component';
+import { TimesAvailableComponent } from 'src/app/formComponents/times-available/times-available.component';
+import { RolesComponent } from 'src/app/formComponents/roles/roles.component';
+import { PlayHistoryComponent } from 'src/app/formComponents/play-history/play-history.component';
+import { CompetitiveLevelComponent } from 'src/app/formComponents/competitiveLevel/competitive-level.component';
+import { MatSlideToggle } from "@angular/material/slide-toggle";
+import { TeamTickerComponent } from 'src/app/formComponents/team-ticker/team-ticker.component';
+import { CommonModule } from '@angular/common';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-create-team",
   templateUrl: "./create-team.component.html",
-  styleUrls: ["./create-team.component.css"]
+  styleUrls: ["./create-team.component.css"],
+  standalone: true,
+  imports: [
+    BannerImageComponent,
+    TimezoneComponent,
+    TimesAvailableComponent,
+    RolesComponent,
+    PlayHistoryComponent,
+    CompetitiveLevelComponent,
+    FormsModule,
+    MatSlideToggle,
+    TeamTickerComponent,
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule
+  ],
 })
 export class CreateTeamComponent implements OnInit {
   returnedProfile: Team;
@@ -28,12 +52,12 @@ export class CreateTeamComponent implements OnInit {
     private user: UserService
   ) {}
 
-  nameControl = new FormControl('',[Validators.required]);
+  nameControl = new FormControl("", [Validators.required]);
 
   tickerControl = new FormControl("", [
     Validators.required,
     Validators.maxLength(5),
-    Validators.minLength(2)
+    Validators.minLength(2),
   ]);
 
   timeZoneControl = new FormControl();
@@ -41,7 +65,7 @@ export class CreateTeamComponent implements OnInit {
   createTeamControlGroup = new FormGroup({
     nameControl: this.nameControl,
     tickerControl: this.tickerControl,
-    timeZone: this.timeZoneControl
+    timeZone: this.timeZoneControl,
   });
 
   timezoneError;
@@ -51,7 +75,7 @@ export class CreateTeamComponent implements OnInit {
   ngOnInit() {
     this.markFormGroupTouched(this.createTeamControlGroup);
     this.user.getUser(this.auth.getUser()).subscribe(
-      res => {
+      (res) => {
         if (res.discordTag) {
           this.captainDiscordTag = true;
         } else {
@@ -59,7 +83,7 @@ export class CreateTeamComponent implements OnInit {
         }
         this.initialized = true;
       },
-      err => {
+      (err) => {
         this.captainDiscordTag = false;
         console.warn("Error getting user data ", err);
       }
@@ -112,27 +136,27 @@ export class CreateTeamComponent implements OnInit {
 
   save() {
     let checkName = this.returnedProfile.teamName.toLowerCase();
-        if (this.validate()) {
-          this.util.updateAvailabilityToNum(this.returnedProfile);
-          this.returnedProfile.teamName_lower = checkName;
-          this.team.createTeam(this.returnedProfile).subscribe(
-            res => {
-              this.auth.setCaptain("true");
-              this.auth.setTeam(res.teamName_lower);
-              // go to the team profile page.
-              this.route.navigate([
-                "/teamProfile",
-                this.team.routeFriendlyTeamName(res.teamName)
-              ]);
-            },
-            err => {
-              console.warn(err);
-            }
-          );
-        } else {
-          alert("required infomation not included");
+    if (this.validate()) {
+      this.util.updateAvailabilityToNum(this.returnedProfile);
+      this.returnedProfile.teamName_lower = checkName;
+      this.team.createTeam(this.returnedProfile).subscribe(
+        (res) => {
+          this.auth.setCaptain("true");
+          this.auth.setTeam(res.teamName_lower);
+          // go to the team profile page.
+          this.route.navigate([
+            "/teamProfile",
+            this.team.routeFriendlyTeamName(res.teamName),
+          ]);
+        },
+        (err) => {
+          console.warn(err);
         }
-      }
+      );
+    } else {
+      alert("required infomation not included");
+    }
+  }
 
   markFormGroupTouched(formGroup: FormGroup) {
     if (formGroup.controls) {
@@ -163,7 +187,7 @@ export class CreateTeamComponent implements OnInit {
         );
       }
 
-      if(this.nameControl.errors){
+      if (this.nameControl.errors) {
         let key = Object.keys(this.nameControl.errors)[0];
 
         valid = false;
@@ -171,10 +195,10 @@ export class CreateTeamComponent implements OnInit {
         if (key == "invalidCharacters") {
           this.errors.push("Team Name contains invalid characters!");
         }
-        if(key == "required"){
+        if (key == "required") {
           this.errors.push("Team Name is required!");
         }
-        if(key == "taken"){
+        if (key == "taken") {
           this.errors.push("Team Name is taken!");
         }
       }
@@ -212,7 +236,7 @@ export class CreateTeamComponent implements OnInit {
         this.timeZoneControl.setErrors({ required: true });
         valid = false;
         this.timezoneError = {
-          error: true
+          error: true,
         };
         this.errors.push(
           "If time availability is input; time zone is required!"

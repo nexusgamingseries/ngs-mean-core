@@ -4,9 +4,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-competitive-level',
   templateUrl: './competitive-level.component.html',
-  styleUrls: ['./competitive-level.component.css']
+  styleUrls: ['./competitive-level.component.css'],
+  standalone:true,
+  imports:[]
 })
-export class TextInputComponent implements OnInit {
+export class CompetitiveLevelComponent implements OnInit {
 
   edit:boolean=false;
 

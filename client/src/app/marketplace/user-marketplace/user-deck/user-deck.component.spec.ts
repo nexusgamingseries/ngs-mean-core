@@ -8,8 +8,8 @@ describe('UserDeckComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserDeckComponent ]
-    })
+    declarations: [UserDeckComponent]
+})
     .compileComponents();
   }));
 

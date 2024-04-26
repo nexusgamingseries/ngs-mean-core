@@ -8,8 +8,8 @@ describe('RecentNewsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RecentNewsComponent ]
-    })
+    declarations: [RecentNewsComponent]
+})
     .compileComponents();
   }));
 

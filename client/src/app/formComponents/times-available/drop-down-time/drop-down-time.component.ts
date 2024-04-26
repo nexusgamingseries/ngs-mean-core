@@ -1,10 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
 
 
 @Component({
   selector: 'app-drop-down-time',
   templateUrl: './drop-down-time.component.html',
-  styleUrls: ['./drop-down-time.component.css']
+  styleUrls: ['./drop-down-time.component.css'],
+  standalone:true,
+  imports:[FormsModule, MatLabel, MatFormField, MatSelect]
 })
 export class DropDownTimeComponent implements OnInit {
 

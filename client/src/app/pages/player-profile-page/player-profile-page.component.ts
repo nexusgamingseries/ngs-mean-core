@@ -15,9 +15,15 @@ import { TeamService } from '../../services/team.service';
 import { AdminService } from '../../services/admin.service';
 import { MvpService } from 'src/app/services/mvp.service';
 import { TabTrackerService } from 'src/app/services/tab-tracker.service';
+import { CommonModule } from '@angular/common';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-player-profile-page",
+  standalone:true,
+  imports:[CommonModule, TeamLinkComponent, CommonPipePipe, BannerImageComponent, TeamLinkComponent],
   templateUrl: "./player-profile-page.component.html",
   styleUrls: ["./player-profile-page.component.css"],
 })

@@ -8,8 +8,8 @@ describe('ImageGetterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImageGetterComponent ]
-    })
+    declarations: [ImageGetterComponent]
+})
     .compileComponents();
   }));
 

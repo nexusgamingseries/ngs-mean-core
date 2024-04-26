@@ -4,7 +4,8 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
-  styleUrls: ['./loading.component.css']
+  styleUrls: ['./loading.component.css'],
+  standalone:true,
 })
 export class LoadingComponent implements OnInit {
 

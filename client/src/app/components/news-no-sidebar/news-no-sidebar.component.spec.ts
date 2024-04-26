@@ -8,8 +8,8 @@ describe('NewsNoSidebarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsNoSidebarComponent ]
-    })
+    declarations: [NewsNoSidebarComponent]
+})
     .compileComponents();
   }));
 

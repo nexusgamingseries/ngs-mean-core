@@ -3,9 +3,14 @@ import { HistoryService } from '../../services/history.service';
 import { TimeService } from '../../services/time.service';
 import { FilterService } from '../../services/filter.service';
 import { orderBy } from 'lodash'
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel, MatSelect } from '@angular/material/select';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-past-seasons',
+  standalone:true,
+  imports:[FormsModule, MatSelect, MatLabel, MatFormField, BannerImageComponent],
   templateUrl: './past-seasons.component.html',
   styleUrls: ['./past-seasons.component.css']
 })

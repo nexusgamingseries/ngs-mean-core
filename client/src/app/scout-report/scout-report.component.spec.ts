@@ -8,8 +8,8 @@ describe('ScoutReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ScoutReportComponent ]
-    })
+    declarations: [ScoutReportComponent]
+})
     .compileComponents();
   }));
 

@@ -6,10 +6,13 @@ import { UserService } from 'src/app/services/user.service';
 import { RequestService } from 'src/app/services/request.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 // import { Socket } from 'ngx-socket-io';
 
 @Component({
   selector: 'app-user-message-center',
+  standalone:true,
+  imports:[BannerImageComponent],
   templateUrl: './user-message-center.component.html',
   styleUrls: ['./user-message-center.component.css']
 })

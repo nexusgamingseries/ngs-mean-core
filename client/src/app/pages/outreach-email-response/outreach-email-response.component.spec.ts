@@ -8,8 +8,8 @@ describe('OutreachEmailResponseComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OutreachEmailResponseComponent ]
-    })
+    declarations: [OutreachEmailResponseComponent]
+})
     .compileComponents();
   }));
 

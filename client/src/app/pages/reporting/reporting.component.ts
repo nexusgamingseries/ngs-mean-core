@@ -3,13 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { ScheduleService } from '../../services/schedule.service';
 import { AuthService } from '../../services/auth.service';
 import { TeamService } from '../../services/team.service';
-import { environment } from '../../../environments/environment';
 import { TimeService } from '../../services/time.service';
 import { DivisionService } from '../../services/division.service';
 import { UtilitiesService } from '../../services/utilities.service';
+import { CommonModule } from '@angular/common';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-reporting',
+  standalone:true,
+  imports:[CommonModule, BannerImageComponent],
   templateUrl: './reporting.component.html',
   styleUrls: ['./reporting.component.css']
 })

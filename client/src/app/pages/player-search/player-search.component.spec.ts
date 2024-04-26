@@ -8,8 +8,8 @@ describe('PlayerSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PlayerSearchComponent ]
-    })
+    declarations: [PlayerSearchComponent]
+})
     .compileComponents();
   });
 

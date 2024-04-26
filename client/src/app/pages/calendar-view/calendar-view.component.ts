@@ -1,11 +1,11 @@
 import { Component,ChangeDetectionStrategy,ViewChild,TemplateRef, OnInit} from '@angular/core';
 import { startOfDay, endOfDay, subDays,addDays,endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject } from 'rxjs';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView, collapseAnimation } from 'angular-calendar';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarModule, CalendarView, collapseAnimation } from 'angular-calendar';
 import { ScheduleService } from '../../services/schedule.service';
 import { EventModalComponent } from './event-modal/event-modal.component';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { EventsService } from '../../services/events.service';
 import { UtilitiesService } from '../../services/utilities.service';
 import { TeamService } from '../../services/team.service';
@@ -13,6 +13,10 @@ import { AuthService } from '../../services/auth.service';
 import { find } from 'lodash';
 import { CalendarCacheService } from './calendar-cache.service';
 import { DivisionService } from '../../services/division.service';
+import { CommonModule } from '@angular/common';
+import { LoadingComponent } from 'src/app/elements/loading/loading.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+
 
 
 
@@ -20,7 +24,9 @@ import { DivisionService } from '../../services/division.service';
   selector: 'app-calendar-view',
   templateUrl: './calendar-view.component.html',
   styleUrls: ['./calendar-view.component.css'],
-  animations: [collapseAnimation]
+  animations: [collapseAnimation],
+  standalone:true,
+  imports:[CommonModule, LoadingComponent, CalendarModule, BannerImageComponent, RouterModule]
 })
 
 export class CalendarViewComponent implements OnInit {

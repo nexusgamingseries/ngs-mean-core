@@ -2,11 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { DivisionService } from 'src/app/services/division.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { LoadingComponent } from 'src/app/elements/loading/loading.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-all-teams',
   templateUrl: './all-teams.component.html',
-  styleUrls: ['./all-teams.component.css']
+  styleUrls: ['./all-teams.component.css'],
+  standalone:true,
+  imports:[LoadingComponent,BannerImageComponent, CommonModule]
 })
 export class AllTeamsComponent implements OnInit {
 

@@ -8,8 +8,8 @@ describe('CasterInputsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CasterInputsComponent ]
-    })
+    declarations: [CasterInputsComponent]
+})
     .compileComponents();
   }));
 

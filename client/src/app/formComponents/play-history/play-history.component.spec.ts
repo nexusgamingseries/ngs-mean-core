@@ -8,8 +8,8 @@ describe('PlayHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayHistoryComponent ]
-    })
+    declarations: [PlayHistoryComponent]
+})
     .compileComponents();
   }));
 

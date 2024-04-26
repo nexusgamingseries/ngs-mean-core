@@ -8,8 +8,8 @@ describe('DisplayNameForIdComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DisplayNameForIdComponent ]
-    })
+    declarations: [DisplayNameForIdComponent]
+})
     .compileComponents();
   }));
 

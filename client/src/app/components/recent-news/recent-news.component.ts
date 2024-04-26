@@ -5,6 +5,7 @@ import { map, mergeMap } from 'rxjs/operators'
 @Component({
   selector: 'app-recent-news',
   templateUrl: './recent-news.component.html',
+  standalone:true,
   styleUrls: ['./recent-news.component.css']
 })
 export class RecentNewsComponent implements OnInit {

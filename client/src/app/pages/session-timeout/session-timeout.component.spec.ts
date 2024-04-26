@@ -8,8 +8,8 @@ describe('SessionTimeoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SessionTimeoutComponent ]
-    })
+    declarations: [SessionTimeoutComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('CreateThreadComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateThreadComponent ]
-    })
+    declarations: [CreateThreadComponent]
+})
     .compileComponents();
   });
 

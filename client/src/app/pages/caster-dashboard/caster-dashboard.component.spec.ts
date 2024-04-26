@@ -8,8 +8,8 @@ describe('CasterDashboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CasterDashboardComponent ]
-    })
+    declarations: [CasterDashboardComponent]
+})
     .compileComponents();
   }));
 

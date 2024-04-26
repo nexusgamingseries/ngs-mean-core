@@ -1,14 +1,17 @@
 import { Component, OnInit, Input, Optional, Self } from '@angular/core';
-import { FormControl, NgControl, Validators, AbstractControl, AsyncValidatorFn, ValidatorFn, ControlValueAccessor } from '@angular/forms';
+import { FormControl, NgControl, Validators, AbstractControl, AsyncValidatorFn, ValidatorFn, ControlValueAccessor, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamService } from 'src/app/services/team.service';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 @Component({
   selector: "app-team-name",
   templateUrl: "./team-name.component.html",
-  styleUrls: ["./team-name.component.css"]
+  styleUrls: ["./team-name.component.css"],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatFormField, MatLabel, ReactiveFormsModule]
 })
 export class TeamNameComponent implements OnInit, ControlValueAccessor {
 

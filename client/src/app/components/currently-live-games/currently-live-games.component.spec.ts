@@ -8,8 +8,8 @@ describe('CurrentlyLiveGamesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrentlyLiveGamesComponent ]
-    })
+    declarations: [CurrentlyLiveGamesComponent]
+})
     .compileComponents();
   }));
 

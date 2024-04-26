@@ -8,8 +8,8 @@ describe('AdminYoutubeCurator', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdminYoutubeCurator ]
-    })
+    declarations: [AdminYoutubeCurator]
+})
     .compileComponents();
   });
 

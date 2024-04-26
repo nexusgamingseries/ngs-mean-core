@@ -8,8 +8,8 @@ describe('DivisionLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionLinkComponent ]
-    })
+    declarations: [DivisionLinkComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('PlayerLinkComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PlayerLinkComponent ]
-    })
+    declarations: [PlayerLinkComponent]
+})
     .compileComponents();
   }));
 

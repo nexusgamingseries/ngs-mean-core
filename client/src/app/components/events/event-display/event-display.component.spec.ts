@@ -8,8 +8,8 @@ describe('EventDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventDisplayComponent ]
-    })
+    declarations: [EventDisplayComponent]
+})
     .compileComponents();
   }));
 

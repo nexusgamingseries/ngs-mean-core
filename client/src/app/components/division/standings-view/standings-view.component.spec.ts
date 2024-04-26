@@ -8,8 +8,8 @@ describe('StandingsViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StandingsViewComponent ]
-    })
+    declarations: [StandingsViewComponent]
+})
     .compileComponents();
   }));
 

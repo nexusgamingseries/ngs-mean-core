@@ -8,8 +8,8 @@ describe('DivisionTournamentResultsTilesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionTournamentResultsTilesComponent ]
-    })
+    declarations: [DivisionTournamentResultsTilesComponent]
+})
     .compileComponents();
   }));
 

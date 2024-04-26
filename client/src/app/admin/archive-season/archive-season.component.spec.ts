@@ -8,8 +8,8 @@ describe('ArchiveSeasonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveSeasonComponent ]
-    })
+    declarations: [ArchiveSeasonComponent]
+})
     .compileComponents();
   }));
 

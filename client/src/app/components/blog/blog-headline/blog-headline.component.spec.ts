@@ -8,8 +8,8 @@ describe('BlogHeadlineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BlogHeadlineComponent ]
-    })
+    declarations: [BlogHeadlineComponent]
+})
     .compileComponents();
   }));
 

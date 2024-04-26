@@ -8,8 +8,8 @@ describe('AdminAclManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminAclManagementComponent ]
-    })
+    declarations: [AdminAclManagementComponent]
+})
     .compileComponents();
   }));
 

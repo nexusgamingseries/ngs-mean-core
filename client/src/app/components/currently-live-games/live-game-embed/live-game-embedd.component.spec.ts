@@ -8,8 +8,8 @@ describe('LiveGameEmbeddComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LiveGameEmbeddComponent ]
-    })
+    declarations: [LiveGameEmbeddComponent]
+})
     .compileComponents();
   }));
 

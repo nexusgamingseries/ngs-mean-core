@@ -8,8 +8,8 @@ describe('RoundColumnComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoundColumnComponent ]
-    })
+    declarations: [RoundColumnComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('StormLeagueComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StormLeagueComponent ]
-    })
+    declarations: [StormLeagueComponent]
+})
     .compileComponents();
   }));
 

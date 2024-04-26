@@ -7,11 +7,15 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TeamService } from 'src/app/services/team.service';
 import { RequestService } from 'src/app/services/request.service';
 import { HeroesProfileService } from 'src/app/services/heroes-profile.service';
+import { PlayerLinkComponent } from 'src/app/LinkComponents/player-link/player-link.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-user-deck',
   templateUrl: './user-deck.component.html',
-  styleUrls: ['./user-deck.component.css']
+  styleUrls: ['./user-deck.component.css'],
+  standalone:true,
+  imports:[PlayerLinkComponent, BannerImageComponent]
 })
 export class UserDeckComponent implements OnInit {
 

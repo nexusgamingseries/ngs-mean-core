@@ -8,8 +8,8 @@ describe('BannerImageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BannerImageComponent ]
-    })
+    declarations: [BannerImageComponent]
+})
     .compileComponents();
   }));
 

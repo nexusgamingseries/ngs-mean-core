@@ -7,6 +7,7 @@ import { TimeService } from '../../services/time.service';
 @Component({
   selector: 'app-top-stats-widget',
   templateUrl: './top-stats-widget.component.html',
+  standalone:true,
   styleUrls: ['./top-stats-widget.component.css']
 })
 export class TopStatsWidgetComponent implements OnInit {

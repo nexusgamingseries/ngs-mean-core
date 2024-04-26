@@ -8,8 +8,8 @@ describe('DropDownTimeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DropDownTimeComponent ]
-    })
+    declarations: [DropDownTimeComponent]
+})
     .compileComponents();
   }));
 

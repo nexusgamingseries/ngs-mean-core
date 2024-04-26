@@ -8,8 +8,8 @@ describe('ApproveRankViewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApproveRankViewComponent ]
-    })
+    declarations: [ApproveRankViewComponent]
+})
     .compileComponents();
   });
 

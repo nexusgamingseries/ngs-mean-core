@@ -8,8 +8,8 @@ describe('DivisionManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionManagementComponent ]
-    })
+    declarations: [DivisionManagementComponent]
+})
     .compileComponents();
   }));
 

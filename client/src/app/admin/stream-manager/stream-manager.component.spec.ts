@@ -8,8 +8,8 @@ describe('StreamManagerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StreamManagerComponent ]
-    })
+    declarations: [StreamManagerComponent]
+})
     .compileComponents();
   }));
 

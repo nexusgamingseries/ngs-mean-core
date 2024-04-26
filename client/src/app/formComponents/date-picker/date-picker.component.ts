@@ -1,12 +1,17 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import * as moment from 'moment-timezone';
+import {  MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-date-picker',
   templateUrl: './date-picker.component.html',
-  styleUrls: ['./date-picker.component.css']
+  styleUrls: ['./date-picker.component.css'],
+  standalone:true,
+  imports:[MatDatepickerModule, MatInput, FormsModule, MatLabel, MatFormField]
 })
 export class DatePickerComponent implements OnInit {
 

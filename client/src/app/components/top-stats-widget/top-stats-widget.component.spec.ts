@@ -8,8 +8,8 @@ describe('TopStatsWidgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TopStatsWidgetComponent ]
-    })
+    declarations: [TopStatsWidgetComponent]
+})
     .compileComponents();
   }));
 

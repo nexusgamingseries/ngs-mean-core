@@ -8,8 +8,8 @@ describe('TournamentViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TournamentViewerComponent ]
-    })
+    declarations: [TournamentViewerComponent]
+})
     .compileComponents();
   }));
 

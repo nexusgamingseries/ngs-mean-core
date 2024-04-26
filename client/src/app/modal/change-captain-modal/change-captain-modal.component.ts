@@ -1,10 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-change-captain-modal',
   templateUrl: './change-captain-modal.component.html',
-  styleUrls: ['./change-captain-modal.component.css']
+  styleUrls: ['./change-captain-modal.component.css'],
+  standalone:true,
+  imports:[MatDialogModule]
 })
 
 export class ChangeCaptainModalComponent implements OnInit {

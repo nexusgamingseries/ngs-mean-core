@@ -8,7 +8,8 @@ import { TimeService } from '../../services/time.service';
 @Component({
   selector: 'app-division-standings',
   templateUrl: './division-standings.component.html',
-  styleUrls: ['./division-standings.component.css']
+  styleUrls: ['./division-standings.component.css'],
+  standalone:true,
 })
 export class DivisionStandingsComponent implements OnInit {
 

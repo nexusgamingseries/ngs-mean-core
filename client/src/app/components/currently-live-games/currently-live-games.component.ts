@@ -5,7 +5,8 @@ import { timer } from 'rxjs';
 @Component({
   selector: "app-currently-live-games",
   templateUrl: "./currently-live-games.component.html",
-  styleUrls: ["./currently-live-games.component.css"]
+  styleUrls: ["./currently-live-games.component.css"],
+  standalone:true
 })
 export class CurrentlyLiveGamesComponent implements OnInit {
   constructor(private scheduleServ: ScheduleService) {}

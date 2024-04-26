@@ -1,11 +1,15 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamService } from '../../../services/team.service';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-team-search',
   templateUrl: './team-search.component.html',
-  styleUrls: ['./team-search.component.css']
+  styleUrls: ['./team-search.component.css'],
+  standalone:true,
+  imports:[MatAutocompleteModule, MatFormField, MatLabel, ReactiveFormsModule, FormsModule]
 })
 export class TeamSearchComponent implements OnInit {
   priorSelect: any

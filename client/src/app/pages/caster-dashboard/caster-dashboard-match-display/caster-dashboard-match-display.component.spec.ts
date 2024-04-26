@@ -8,8 +8,8 @@ describe('CasterDashboardMatchDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CasterDashboardMatchDisplayComponent ]
-    })
+    declarations: [CasterDashboardMatchDisplayComponent]
+})
     .compileComponents();
   }));
 

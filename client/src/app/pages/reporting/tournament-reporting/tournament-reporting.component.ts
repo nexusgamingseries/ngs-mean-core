@@ -3,10 +3,16 @@ import { AuthService } from 'src/app/services/auth.service';
 import { TeamService } from 'src/app/services/team.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { ChallongeTournComponent } from 'src/app/components/challonge-tourn/challonge-tourn.component';
+import { CommonModule } from '@angular/common';
+import { MatFormField, MatLabel, MatSelect } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tournament-reporting',
   templateUrl: './tournament-reporting.component.html',
+  imports:[ChallongeTournComponent, CommonModule, MatSelect, MatLabel, MatFormField, MatSelect, FormsModule],
+  standalone:true,
   styleUrls: ['./tournament-reporting.component.css']
 })
 export class TournamentReportingComponent implements OnInit {

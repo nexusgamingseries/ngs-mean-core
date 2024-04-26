@@ -8,8 +8,8 @@ describe('GrandFinalGeneratorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GrandFinalGeneratorComponent ]
-    })
+    declarations: [GrandFinalGeneratorComponent]
+})
     .compileComponents();
   }));
 

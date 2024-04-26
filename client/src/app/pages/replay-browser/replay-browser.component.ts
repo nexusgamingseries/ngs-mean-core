@@ -1,12 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from '../../services/schedule.service';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { environment } from 'src/environments/environment';
 import { UtilitiesService } from '../../services/utilities.service';
+import { CommonModule } from '@angular/common';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-replay-browser',
   templateUrl: './replay-browser.component.html',
+  standalone:true,
+  imports:[MatPaginator, MatLabel, MatFormField, CommonModule, DivisionSelectorComponent, BannerImageComponent, FormsModule],
   styleUrls: ['./replay-browser.component.css']
 })
 export class ReplayBrowserComponent implements OnInit {

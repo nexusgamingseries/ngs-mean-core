@@ -8,8 +8,8 @@ describe('TeamMarketComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamMarketComponent ]
-    })
+    declarations: [TeamMarketComponent]
+})
     .compileComponents();
   }));
 

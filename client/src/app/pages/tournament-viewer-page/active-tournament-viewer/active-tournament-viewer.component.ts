@@ -3,6 +3,7 @@ import { ScheduleService } from '../../../services/schedule.service';
 
 @Component({
   selector: "app-active-tournament-viewer",
+  standalone:true,
   templateUrl: "./active-tournament-viewer.component.html",
   styleUrls: ["./active-tournament-viewer.component.css"],
 })

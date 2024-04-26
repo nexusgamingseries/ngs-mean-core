@@ -8,8 +8,8 @@ describe('StaticHtmlLoaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StaticHtmlLoaderComponent ]
-    })
+    declarations: [StaticHtmlLoaderComponent]
+})
     .compileComponents();
   }));
 

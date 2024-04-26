@@ -3,11 +3,14 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { Match } from 'src/app/classes/match.class';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-caster-dashboard-match-display",
   templateUrl: "./caster-dashboard-match-display.component.html",
   styleUrls: ["./caster-dashboard-match-display.component.css"],
+  standalone:true,
+  imports:[CommonModule]
 })
 export class CasterDashboardMatchDisplayComponent implements OnInit {
   constructor(

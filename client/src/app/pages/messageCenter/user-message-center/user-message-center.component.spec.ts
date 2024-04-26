@@ -8,8 +8,8 @@ describe('UserMessageCenterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserMessageCenterComponent ]
-    })
+    declarations: [UserMessageCenterComponent]
+})
     .compileComponents();
   }));
 

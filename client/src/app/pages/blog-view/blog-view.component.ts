@@ -1,17 +1,20 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MarkdownParserService } from '../../services/markdown-parser.service';
 import { merge } from 'lodash';
 import { BlogCommonService } from 'src/app/services/blog-common.service';
 import { WordpressService, Author } from 'src/app/services/wordpress.service';
 import { Post } from 'src/app/services/wordpress.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-blog-view",
   templateUrl: "./blog-view.component.html",
   styleUrls: ["./blog-view.component.css"],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  standalone:true,
+  imports:[RouterModule, BannerImageComponent]
 })
 export class BlogViewComponent implements OnInit {
   //component properties

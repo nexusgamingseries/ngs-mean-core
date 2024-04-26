@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-banner-image',
+  standalone:true,
   templateUrl: './banner-image.component.html',
   styleUrls: ['./banner-image.component.css']
 })
@@ -13,7 +14,13 @@ export class BannerImageComponent implements OnInit {
 
   imgSrc;
   title = 'Default Title';
-  @Input() set bannerTitle(val){
+
+
+  @Input()
+  get bannerTitle():string{
+    return this.title;
+  }
+  set bannerTitle(val:string){
     if(val){
       this.title = val;
     }

@@ -8,8 +8,8 @@ describe('PotgDisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PotgDisplayComponent ]
-    })
+    declarations: [PotgDisplayComponent]
+})
     .compileComponents();
   }));
 

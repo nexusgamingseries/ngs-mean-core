@@ -1,14 +1,17 @@
 import { Component, OnInit, Input, Self, Optional } from '@angular/core';
-import { ControlValueAccessor, FormControl, Validators, ValidatorFn, NgControl, AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import { ControlValueAccessor, FormControl, Validators, ValidatorFn, NgControl, AbstractControl, AsyncValidatorFn, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamService } from 'src/app/services/team.service';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 
 @Component({
   selector: 'app-team-ticker',
   templateUrl: './team-ticker.component.html',
-  styleUrls: ['./team-ticker.component.css']
+  styleUrls: ['./team-ticker.component.css'],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatLabel, MatFormField, ReactiveFormsModule],
 })
 
 

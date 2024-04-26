@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { MvpService } from '../../services/mvp.service';
 import { TimeService } from '../../services/time.service';
-import { PageEvent } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-mvp-page",
   templateUrl: "./mvp-page.component.html",
+  standalone:true,
+  imports:[MatPaginator, FormsModule, MatLabel, MatFormField, BannerImageComponent],
   styleUrls: ["./mvp-page.component.css"]
 })
 export class MvpPageComponent implements OnInit {

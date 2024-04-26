@@ -8,8 +8,8 @@ describe('GrandChampionsViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GrandChampionsViewerComponent ]
-    })
+    declarations: [GrandChampionsViewerComponent]
+})
     .compileComponents();
   }));
 

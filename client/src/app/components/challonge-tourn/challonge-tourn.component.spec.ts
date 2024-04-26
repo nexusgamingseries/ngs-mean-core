@@ -8,8 +8,8 @@ describe('ChallongeTournComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChallongeTournComponent ]
-    })
+    declarations: [ChallongeTournComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('ChampExpanderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChampExpanderComponent ]
-    })
+    declarations: [ChampExpanderComponent]
+})
     .compileComponents();
   }));
 

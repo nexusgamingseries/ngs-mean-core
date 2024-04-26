@@ -2,10 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from '../../services/schedule.service';
 import { TimeService } from '../../services/time.service';
 import { forEach } from 'lodash';
+import { LoadingComponent } from 'src/app/elements/loading/loading.component';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { GamesInformationComponent } from 'src/app/components/match/games-information/games-information.component';
 
 @Component({
   selector: "app-grand-champions-viewer",
   templateUrl: "./grand-champions-viewer.component.html",
+  standalone:true,
+  imports:[LoadingComponent, BannerImageComponent, GamesInformationComponent],
   styleUrls: ["./grand-champions-viewer.component.css"],
 })
 export class GrandChampionsViewerComponent implements OnInit {

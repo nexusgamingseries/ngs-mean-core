@@ -8,8 +8,8 @@ describe('CasterReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CasterReportComponent ]
-    })
+    declarations: [CasterReportComponent]
+})
     .compileComponents();
   }));
 

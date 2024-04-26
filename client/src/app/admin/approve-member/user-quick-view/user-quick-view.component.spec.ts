@@ -8,8 +8,8 @@ describe('UserQuickViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserQuickViewComponent ]
-    })
+    declarations: [UserQuickViewComponent]
+})
     .compileComponents();
   }));
 

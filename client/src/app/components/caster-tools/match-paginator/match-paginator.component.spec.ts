@@ -8,8 +8,8 @@ describe('MatchPaginatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchPaginatorComponent ]
-    })
+    declarations: [MatchPaginatorComponent]
+})
     .compileComponents();
   }));
 

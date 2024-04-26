@@ -10,11 +10,15 @@ import { environment } from '../../../environments/environment';
 import { AuthService } from 'src/app/services/auth.service';
 import * as moment from 'moment-timezone';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { CommonModule } from '@angular/common';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 
 
 @Component({
   selector: 'app-match-scheduler',
+  standalone:true,
+  imports:[CommonModule, BannerImageComponent],
   templateUrl: './match-scheduler.component.html',
   styleUrls: ['./match-scheduler.component.css']
 })

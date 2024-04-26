@@ -8,8 +8,8 @@ describe('PastSeasonsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PastSeasonsComponent ]
-    })
+    declarations: [PastSeasonsComponent]
+})
     .compileComponents();
   }));
 

@@ -5,7 +5,9 @@ import { TimezoneService } from 'src/app/services/timezone.service';
 @Component({
   selector: 'app-timezone',
   templateUrl: './timezone.component.html',
-  styleUrls: ['./timezone.component.css']
+  styleUrls: ['./timezone.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class TimezoneComponent implements OnInit {
 

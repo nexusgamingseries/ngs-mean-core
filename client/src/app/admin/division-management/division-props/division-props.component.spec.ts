@@ -8,8 +8,8 @@ describe('DivisionPropsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DivisionPropsComponent ]
-    })
+    declarations: [DivisionPropsComponent]
+})
     .compileComponents();
   }));
 

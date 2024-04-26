@@ -8,8 +8,8 @@ describe('UserMarketplaceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserMarketplaceComponent ]
-    })
+    declarations: [UserMarketplaceComponent]
+})
     .compileComponents();
   }));
 

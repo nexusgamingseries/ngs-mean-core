@@ -8,8 +8,8 @@ describe('PotgPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PotgPageComponent ]
-    })
+    declarations: [PotgPageComponent]
+})
     .compileComponents();
   }));
 

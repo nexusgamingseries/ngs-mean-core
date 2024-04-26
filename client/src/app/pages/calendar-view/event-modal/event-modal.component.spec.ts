@@ -8,8 +8,8 @@ describe('EventModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EventModalComponent ]
-    })
+    declarations: [EventModalComponent]
+})
     .compileComponents();
   }));
 

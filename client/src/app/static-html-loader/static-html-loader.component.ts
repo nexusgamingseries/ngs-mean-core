@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { SafeHtmlPipe } from './safeHtml.pipe';
+import { BannerImageComponent } from '../components/banner-image/banner-image.component';
 
 @Component({
   selector: 'app-static-html-loader',
+  standalone:true,
   templateUrl: './static-html-loader.component.html',
+  imports:[SafeHtmlPipe, BannerImageComponent],
   styleUrls: ['./static-html-loader.component.css']
 })
 export class StaticHtmlLoaderComponent implements OnInit {

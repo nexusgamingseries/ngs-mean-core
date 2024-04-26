@@ -8,8 +8,8 @@ describe('TeamHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TeamHistoryComponent ]
-    })
+    declarations: [TeamHistoryComponent]
+})
     .compileComponents();
   }));
 

@@ -8,8 +8,8 @@ describe('LargeCarouselComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LargeCarouselComponent ]
-    })
+    declarations: [LargeCarouselComponent]
+})
     .compileComponents();
   }));
 

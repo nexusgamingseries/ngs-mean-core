@@ -8,8 +8,8 @@ describe('ManageTeamViewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ManageTeamViewComponent ]
-    })
+    declarations: [ManageTeamViewComponent]
+})
     .compileComponents();
   }));
 

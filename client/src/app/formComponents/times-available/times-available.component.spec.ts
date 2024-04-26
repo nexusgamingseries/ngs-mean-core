@@ -8,8 +8,8 @@ describe('TimesAvailableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TimesAvailableComponent ]
-    })
+    declarations: [TimesAvailableComponent]
+})
     .compileComponents();
   }));
 

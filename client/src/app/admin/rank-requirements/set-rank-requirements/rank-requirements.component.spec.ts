@@ -8,8 +8,8 @@ describe('RankRequirementsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RankRequirementsComponent ]
-    })
+    declarations: [RankRequirementsComponent]
+})
     .compileComponents();
   });
 

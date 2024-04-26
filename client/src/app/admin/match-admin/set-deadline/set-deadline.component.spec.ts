@@ -8,8 +8,8 @@ describe('SetDeadlineComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SetDeadlineComponent ]
-    })
+    declarations: [SetDeadlineComponent]
+})
     .compileComponents();
   }));
 

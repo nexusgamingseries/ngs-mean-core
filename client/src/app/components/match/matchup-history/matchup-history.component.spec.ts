@@ -8,8 +8,8 @@ describe('MatchupHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchupHistoryComponent ]
-    })
+    declarations: [MatchupHistoryComponent]
+})
     .compileComponents();
   }));
 

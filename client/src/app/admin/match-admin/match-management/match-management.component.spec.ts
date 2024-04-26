@@ -8,8 +8,8 @@ describe('MatchManagementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MatchManagementComponent ]
-    })
+    declarations: [MatchManagementComponent]
+})
     .compileComponents();
   }));
 

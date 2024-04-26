@@ -8,8 +8,8 @@ describe('DiscordTagComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DiscordTagComponent ]
-    })
+    declarations: [DiscordTagComponent]
+})
     .compileComponents();
   }));
 
