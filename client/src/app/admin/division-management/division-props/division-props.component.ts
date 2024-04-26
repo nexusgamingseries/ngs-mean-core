@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { DeleteConfrimModalComponent } from '../../../modal/delete-confrim-modal/delete-confrim-modal.component';
-import { Color } from '@angular-material-components/color-picker';
+// import { Color } from '@angular-material-components/color-picker';
 
 @Component({
   selector: 'app-division-props',

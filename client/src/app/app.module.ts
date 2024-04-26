@@ -201,7 +201,7 @@ import { MembersReportingComponent } from './components/storm-rank-tools/members
 import { VerifiedStormRanksDisplayNameComponent } from './components/storm-rank-tools/verified-storm-ranks-display-name/verified-storm-ranks-display-name.component';
 import { PlayerSearchComponent } from './pages/player-search/player-search.component';
 import { SingleTeamDisplayComponent } from './components/team/team-display/single-team-display/single-team-display.component';
-import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+// import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-youtube-curator.component';
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
@@ -411,15 +411,16 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     }),
     DragDropModule,
     DragScrollModule,
-    NgxMatColorPickerModule
+    // NgxMatColorPickerModule
   ],
   providers: [
+    SafeHtmlPipe,
     {
     provide:HTTP_INTERCEPTORS,
     useClass:ResponseInterceptor,
     multi:true
     },
-    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+    // { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
   ],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
