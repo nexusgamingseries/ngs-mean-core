@@ -2,11 +2,19 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfrimModalComponent } from '../../modal/delete-confrim-modal/delete-confrim-modal.component';
 import { AdminService } from 'src/app/services/admin.service';
+import { UserSearchComponent } from 'src/app/components/user-search/user-search.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-manage-member',
   templateUrl: './manage-member.component.html',
-  styleUrls: ['./manage-member.component.css']
+  styleUrls: ['./manage-member.component.css'],
+  standalone:true,
+  imports:[
+    UserSearchComponent,
+    RouterModule,
+
+  ]
 })
 export class ManageMemberComponent implements OnInit {
 

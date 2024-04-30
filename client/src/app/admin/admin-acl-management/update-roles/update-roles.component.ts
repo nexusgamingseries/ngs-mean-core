@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AclService } from '../acl.service';
 import { cloneDeep } from 'lodash';
 import { forEach as _forEach } from 'lodash'
@@ -8,7 +8,11 @@ import { forEach as _forEach } from 'lodash'
 @Component({
   selector: 'app-update-roles',
   templateUrl: './update-roles.component.html',
-  styleUrls: ['./update-roles.component.css']
+  styleUrls: ['./update-roles.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule
+  ]
 })
 export class UpdateRolesComponent implements OnInit {
 

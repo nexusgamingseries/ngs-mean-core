@@ -1,10 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 import { EventsService } from 'src/app/services/events.service';
 
 @Component({
   selector: 'app-event-list',
   templateUrl: './event-list.component.html',
-  styleUrls: ['./event-list.component.css']
+  styleUrls: ['./event-list.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule,
+    FormsModule,
+    MatInput,
+    MatLabel,
+    MatFormField
+  ]
 })
 export class EventListComponent implements OnInit {
 

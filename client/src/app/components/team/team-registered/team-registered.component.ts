@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { TimeService } from 'src/app/services/time.service';
@@ -6,7 +7,9 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 @Component({
   selector: 'app-team-registered',
   templateUrl: './team-registered.component.html',
-  styleUrls: ['./team-registered.component.css']
+  styleUrls: ['./team-registered.component.css'],
+  standalone:true,
+  imports:[CommonModule]
 })
 export class TeamRegisteredComponent implements OnInit {
 

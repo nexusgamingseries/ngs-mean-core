@@ -7,12 +7,14 @@ import { timer, Subscription, Subject, Observable, BehaviorSubject, interval } f
 import { switchMap, mergeMap } from 'rxjs/operators';
 import { animate, AnimationBuilder, AnimationFactory, AnimationPlayer, style, trigger, state, transition } from '@angular/animations';
 import { WordpressService } from '../../services/wordpress.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-large-carousel',
   templateUrl: './large-carousel.component.html',
   styleUrls: ['./large-carousel.component.css'],
   standalone:true,
+  imports:[CommonModule]
 })
 export class LargeCarouselComponent implements OnInit {
 

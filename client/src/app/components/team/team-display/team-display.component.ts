@@ -3,11 +3,15 @@ import { Team } from '../../../classes/team.class';
 import { TeamService } from '../../../services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { HistoryService } from 'src/app/services/history.service';
+import { CommonModule } from '@angular/common';
+import { SingleTeamDisplayComponent } from './single-team-display/single-team-display.component';
 
 @Component({
   selector: 'app-team-display',
   templateUrl: './team-display.component.html',
-  styleUrls: ['./team-display.component.css']
+  styleUrls: ['./team-display.component.css'],
+  standalone:true,
+  imports:[CommonModule, SingleTeamDisplayComponent]
 })
 export class TeamDisplayComponent implements OnInit, OnChanges {
   _teams: Team[] = [];

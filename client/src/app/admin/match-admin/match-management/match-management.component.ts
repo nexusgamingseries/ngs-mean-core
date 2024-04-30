@@ -1,16 +1,23 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { AdminService } from 'src/app/services/admin.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TimeService } from 'src/app/services/time.service';
 import { FilterService } from 'src/app/services/filter.service';
 import { find } from 'lodash';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-match-management',
   templateUrl: './match-management.component.html',
-  styleUrls: ['./match-management.component.css']
+  styleUrls: ['./match-management.component.css'],
+  standalone:true,
+imports:[MatchManagementComponent, MatPaginatorModule, RouterModule, FormsModule, MatLabel, MatFormField, MatSelectModule, MatInput]
 })
 export class MatchManagementComponent implements OnInit, AfterViewInit {
 

@@ -3,11 +3,17 @@ import * as moment from 'moment-timezone';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-stream-manager",
   templateUrl: "./stream-manager.component.html",
-  styleUrls: ["./stream-manager.component.css"]
+  styleUrls: ["./stream-manager.component.css"],
+  standalone:true,
+  imports:[FormsModule, MatLabel, MatFormField, DatePickerComponent, RouterModule]
 })
 export class StreamManagerComponent implements OnInit {
   constructor(

@@ -10,6 +10,8 @@ import { PlayerRankService } from "../../services/player-rank.service";
   selector: "app-questionnaire",
   templateUrl: "./questionnaire.component.html",
   styleUrls: ["./questionnaire.component.css"],
+  standalone:true,
+  imports:[]
 })
 export class QuestionnaireComponent implements OnInit {
   passedTeam: any = {};

@@ -1,37 +1,37 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { BannerImagesService } from '../../services/banner-images.service';
 import { environment } from '../../../environments/environment';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-banner-image',
-  standalone:true,
-  templateUrl: './banner-image.component.html',
-  styleUrls: ['./banner-image.component.css']
+  selector: "app-banner-image",
+  templateUrl: "./banner-image.component.html",
+  styleUrls: ["./banner-image.component.css"],
+  standalone: true,
+  imports:[CommonModule]
 })
 export class BannerImageComponent implements OnInit {
-
-  constructor(private BannerImage: BannerImagesService) { }
+  constructor(private BannerImage: BannerImagesService) {}
 
   imgSrc;
-  title = 'Default Title';
-
+  title = "Default Title";
 
   @Input()
-  get bannerTitle():string{
+  get bannerTitle(): string {
     return this.title;
   }
-  set bannerTitle(val:string){
-    if(val){
+  set bannerTitle(val: string) {
+    if (val) {
       this.title = val;
     }
   }
 
   _specialCase;
-  @Input() set special(val){
-      if(val){
-        this._specialCase = val;
-        this.bannerImage();
-      }
+  @Input() set special(val) {
+    if (val) {
+      this._specialCase = val;
+      this.bannerImage();
+    }
   }
 
   breadCrumb = false;
@@ -43,9 +43,9 @@ export class BannerImageComponent implements OnInit {
     }
   }
 
-  additionalClasses
-  @Input() set bannerAdditionalClasses(val){
-    if(val){
+  additionalClasses;
+  @Input() set bannerAdditionalClasses(val) {
+    if (val) {
       this.additionalClasses = val;
     }
   }
@@ -62,27 +62,23 @@ export class BannerImageComponent implements OnInit {
     if (val) {
       this.providedLink = val;
     }
-
   }
 
   ngOnInit() {
-    if(this.providedBranch && this.providedLink && this.providedRoot){
+    if (this.providedBranch && this.providedLink && this.providedRoot) {
       this.breadCrumb = true;
     }
     this.bannerImage();
   }
 
-
   private bannerImage() {
     if (this._specialCase) {
-      if (this._specialCase.toLowerCase().includes('mongoose')) {
+      if (this._specialCase.toLowerCase().includes("mongoose")) {
         this.imgSrc = this.BannerImage.returnSpecialImage(this._specialCase);
-      }
-      else {
+      } else {
         this.imgSrc = this.BannerImage.returnImage();
       }
-    }
-    else {
+    } else {
       this.imgSrc = this.BannerImage.returnImage();
     }
   }

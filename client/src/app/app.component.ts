@@ -2,12 +2,17 @@ import { Component } from '@angular/core';
 import * as $ from 'jquery';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NotificationService } from './services/notification.service';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, RouterModule } from '@angular/router';
+import { AppFooterComponent } from './components/app-footer/app-footer.component';
+import { NavComponent } from './nav/nav.component';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  standalone:true,
+  imports:[AppFooterComponent, RouterModule, NavComponent]
 })
 
 export class AppComponent {

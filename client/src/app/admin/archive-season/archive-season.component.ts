@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { TimeService } from 'src/app/services/time.service';
 import { AdminService } from 'src/app/services/admin.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-archive-season',
   templateUrl: './archive-season.component.html',
-  styleUrls: ['./archive-season.component.css']
+  styleUrls: ['./archive-season.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule
+  ]
 })
 export class ArchiveSeasonComponent implements OnInit {
 

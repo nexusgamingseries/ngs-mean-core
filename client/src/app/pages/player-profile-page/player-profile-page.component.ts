@@ -19,13 +19,26 @@ import { CommonModule } from '@angular/common';
 import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { MatInputModule } from '@angular/material/input';
+import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
+import { HistoryComponent } from 'src/app/components/player/history/history.component';
+
 
 @Component({
   selector: "app-player-profile-page",
-  standalone:true,
-  imports:[CommonModule, TeamLinkComponent, CommonPipePipe, BannerImageComponent, TeamLinkComponent],
   templateUrl: "./player-profile-page.component.html",
   styleUrls: ["./player-profile-page.component.css"],
+  standalone: true,
+  imports: [
+    CommonModule,
+    TeamLinkComponent,
+    CommonPipePipe,
+    BannerImageComponent,
+    TeamLinkComponent,
+    MatInputModule,
+    ImageUploadComponent,
+    HistoryComponent
+  ],
 })
 export class PlayerProfile implements OnInit {
   navigationSubscription;
@@ -69,7 +82,7 @@ export class PlayerProfile implements OnInit {
   //this variable is used in case someone re-routes to profile from a profile
   displayName: string;
   //variable to hold profile returned from server
-  returnedProfile:Profile = this.user.returnNullUser();
+  returnedProfile: Profile = this.user.returnNullUser();
 
   //temp profile; stores old information in case a user hits cancel we have a copy to replace errant changes.
   tempProfile: Profile;
@@ -190,7 +203,10 @@ export class PlayerProfile implements OnInit {
 
   //disabled editing for profile, replace any changes with original copy
   cancel() {
-    this.returnedProfile = Object.assign(this.user.returnNullUser(), this.tempProfile);
+    this.returnedProfile = Object.assign(
+      this.user.returnNullUser(),
+      this.tempProfile
+    );
     this.disabled = true;
   }
 
@@ -219,13 +235,12 @@ export class PlayerProfile implements OnInit {
   //init method ; checks to see if the name we're getting comes from the router URL, or the displayName property
   ngOnInit() {}
 
-  private init(){
-
+  private init() {
     this.returnedProfile = this.user.returnNullUser();
     this.returnedProfile.verifiedRankHistory = null;
     // this.returnedProfile.verifiedRankHistory = [];
 
-    this.hpProfileLink = '';
+    this.hpProfileLink = "";
     this.discordTagFormControl.markAsTouched();
     this.user.getUser(this.displayName).subscribe((res) => {
       //i am so smart that I have to put this fix in place to validate that I have real roles.
@@ -239,7 +254,6 @@ export class PlayerProfile implements OnInit {
       this.returnedProfile = res;
       this.index = this.tabTracker.returnTabIndexIfSameRoute("profile");
       this.hotsProfile.getHPProfileLinkStream.subscribe((subj) => {
-
         this.hpProfileLink = subj;
       });
       this.hotsProfile.getHPProfileLink(
@@ -257,7 +271,6 @@ export class PlayerProfile implements OnInit {
         }
       );
     });
-
   }
 
   //method for receiving times-availability object back from the avail-component; checks to make sure it retuns times meeting criteria

@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @Component({
@@ -6,7 +9,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './competitive-level.component.html',
   styleUrls: ['./competitive-level.component.css'],
   standalone:true,
-  imports:[]
+  imports:[
+    CommonModule,
+    FormsModule,
+    MatFormFieldModule
+  ]
 })
 export class CompetitiveLevelComponent implements OnInit {
 

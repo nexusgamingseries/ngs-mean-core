@@ -7,7 +7,9 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-tournament-view',
   templateUrl: './tournament-view.component.html',
-  styleUrls: ['./tournament-view.component.css']
+  styleUrls: ['./tournament-view.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class TournamentViewComponent implements OnInit {
   // _iScroll:iScroll;

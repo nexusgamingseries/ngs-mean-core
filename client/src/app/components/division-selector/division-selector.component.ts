@@ -2,55 +2,64 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
 import { AdminService } from '../../services/admin.service';
 import { UtilitiesService } from '../../services/utilities.service';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-division-selector',
-  templateUrl: './division-selector.component.html',
-  standalone:true,
-  styleUrls: ['./division-selector.component.css']
+  selector: "app-division-selector",
+  templateUrl: "./division-selector.component.html",
+  styleUrls: ["./division-selector.component.css"],
+  standalone: true,
+  imports:[MatSelectModule, FormsModule]
 })
 export class DivisionSelectorComponent implements OnInit {
+  constructor(
+    private DivisionService: DivisionService,
+    private Admin: AdminService,
+    private util: UtilitiesService
+  ) {}
 
-  constructor(private DivisionService:DivisionService, private Admin:AdminService, private util:UtilitiesService) { }
-
-  divisions=[];
+  divisions = [];
   selectedDivision = null;
 
-
   ngOnInit() {
-    if(this.adminLoad){
-      this.Admin.getDivisionList().subscribe((res) => {
-        this.divisions = res;
-      }, (err) => {
-        console.warn(err);
-      })
-    }else{
-      this.DivisionService.getDivisionInfo().subscribe((res) => {
-        this.divisions = res;
-      }, (err) => {
-        console.warn(err);
-      })
+    if (this.adminLoad) {
+      this.Admin.getDivisionList().subscribe(
+        (res) => {
+          this.divisions = res;
+        },
+        (err) => {
+          console.warn(err);
+        }
+      );
+    } else {
+      this.DivisionService.getDivisionInfo().subscribe(
+        (res) => {
+          this.divisions = res;
+        },
+        (err) => {
+          console.warn(err);
+        }
+      );
     }
-
   }
 
+  adminLoad = false;
 
-  adminLoad=false;
-
-  @Input() set admin(_admin){
-    if(_admin!=null||_admin!=undefined){
+  @Input() set admin(_admin) {
+    if (_admin != null || _admin != undefined) {
       this.adminLoad = !!_admin;
     }
   }
 
-  @Input() set refresh(val){
+  @Input() set refresh(val) {
     this.ngOnInit();
   }
 
-  @Input() set inputDiv(div){
-    if(div){
-      this.selectedDivision=div._id;
-    }else{
+  @Input() set inputDiv(div) {
+    if (div) {
+      this.selectedDivision = div._id;
+    } else {
       this.selectedDivision = null;
     }
   }
@@ -61,18 +70,17 @@ export class DivisionSelectorComponent implements OnInit {
     this.selectedDiv.emit(div);
   }
 
-  returnMatchDivision(prop, value){
+  returnMatchDivision(prop, value) {
     let div = null;
-    this.divisions.forEach(division=>{
-      if(division[prop]==value){
+    this.divisions.forEach((division) => {
+      if (division[prop] == value) {
         div = division;
       }
-    })
+    });
     return div;
   }
 
-divSelected(div){
-  this.divEmmiter(this.returnMatchDivision('_id', div));
-}
-
+  divSelected(div) {
+    this.divEmmiter(this.returnMatchDivision("_id", div));
+  }
 }

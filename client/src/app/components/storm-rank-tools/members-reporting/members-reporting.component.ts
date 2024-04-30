@@ -4,7 +4,9 @@ import { PlayerRankService } from 'src/app/services/player-rank.service';
 @Component({
   selector: 'app-members-reporting',
   templateUrl: './members-reporting.component.html',
-  styleUrls: ['./members-reporting.component.css']
+  styleUrls: ['./members-reporting.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class MembersReportingComponent implements OnInit {
 

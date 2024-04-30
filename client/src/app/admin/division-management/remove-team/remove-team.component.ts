@@ -1,12 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { indexOf } from 'lodash';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
 import { AdminService } from 'src/app/services/admin.service';
 
 
 @Component({
   selector: 'app-remove-team',
   templateUrl: './remove-team.component.html',
-  styleUrls: ['./remove-team.component.css']
+  styleUrls: ['./remove-team.component.css'],
+  standalone:true,
+  imports:[
+    DivisionSelectorComponent,
+
+  ]
 })
 export class RemoveTeamComponent implements OnInit {
 

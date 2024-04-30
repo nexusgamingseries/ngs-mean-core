@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './app-footer.component.html',
-  styleUrls: ['./app-footer.component.css']
+  styleUrls: ['./app-footer.component.css'],
+  standalone:true,
+  imports:[AppFooterComponent, RouterModule]
 })
 export class AppFooterComponent implements OnInit {
 

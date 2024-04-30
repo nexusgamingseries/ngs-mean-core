@@ -1,19 +1,22 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormsModule, Validators } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { AdminService } from 'src/app/services/admin.service';
 import { StandingsService } from 'src/app/services/standings.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
-import { MatFormField } from '@angular/material/form-field';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-generate-non-seasonal-schedules",
   templateUrl: "./generate-non-seasonal-schedules.component.html",
   styleUrls: ["./generate-non-seasonal-schedules.component.css"],
   standalone:true,
-  imports:[MatFormField, FormsModule]
+  imports:[MatFormField, FormsModule, MatLabel, MatInput, ReactiveFormsModule, MatRadioGroup, MatRadioButton, CdkDropList, RouterModule]
 })
 export class GenerateNonSeasonalSchedulesComponent implements OnInit {
   constructor(

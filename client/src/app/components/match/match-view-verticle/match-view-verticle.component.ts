@@ -2,11 +2,16 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UtilitiesService } from '../../../services/utilities.service';
 import { TeamService } from '../../../services/team.service';
 import { Match } from 'src/app/classes/match.class';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-match-view-verticle',
   templateUrl: './match-view-verticle.component.html',
-  styleUrls: ['./match-view-verticle.component.css']
+  styleUrls: ['./match-view-verticle.component.css'],
+  standalone:true,
+  imports:[TeamLinkComponent, CommonPipePipe, CommonModule]
 })
 export class MatchViewVerticleComponent implements OnInit {
 

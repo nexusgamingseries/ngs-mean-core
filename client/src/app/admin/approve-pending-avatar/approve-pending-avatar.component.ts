@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { QueuesService } from '../../services/queues.service';
 import { findIndex } from 'lodash';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-approve-pending-avatar',
   templateUrl: './approve-pending-avatar.component.html',
-  styleUrls: ['./approve-pending-avatar.component.css']
+  styleUrls: ['./approve-pending-avatar.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule,
+  ]
 })
 export class ApprovePendingAvatarComponent implements OnInit {
 

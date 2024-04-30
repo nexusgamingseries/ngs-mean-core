@@ -4,13 +4,16 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { TimeService } from 'src/app/services/time.service';
 import { find } from 'lodash';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { RouterModule } from '@angular/router';
 
 declare var gapi: any;
 
 @Component({
   selector: 'app-admin-youtube-curator',
   templateUrl: './admin-youtube-curator.component.html',
-  styleUrls: ['./admin-youtube-curator.component.css']
+  styleUrls: ['./admin-youtube-curator.component.css'],
+  standalone:true,
+  imports:[ RouterModule, ]
 })
 export class AdminYoutubeCurator implements OnInit {
 

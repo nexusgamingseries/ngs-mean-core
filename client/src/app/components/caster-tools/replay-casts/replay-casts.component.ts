@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { TimeService } from 'src/app/services/time.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { MatchPaginatorComponent } from '../match-paginator/match-paginator.component';
 
 @Component({
   selector: 'app-replay-casts',
   templateUrl: './replay-casts.component.html',
-  styleUrls: ['./replay-casts.component.css']
+  styleUrls: ['./replay-casts.component.css'],
+  standalone:true,
+  imports:[MatchPaginatorComponent]
 })
 export class ReplayCastsComponent implements OnInit {
 

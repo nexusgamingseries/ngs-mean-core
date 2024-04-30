@@ -4,11 +4,25 @@ import { TeamService } from 'src/app/services/team.service';
 import { StandingsService } from 'src/app/services/standings.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TimeService } from 'src/app/services/time.service';
+import { ScheduleTableComponent } from 'src/app/elements/schedule-table/schedule-table.component';
+import { FormsModule } from '@angular/forms';
+
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-schedule-view',
   templateUrl: './schedule-view.component.html',
-  styleUrls: ['./schedule-view.component.css']
+  styleUrls: ['./schedule-view.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    ScheduleTableComponent,
+    FormsModule,
+    MatSelectModule,
+    MatFormFieldModule
+  ]
 })
 export class ScheduleViewComponent implements OnInit, OnChanges {
 

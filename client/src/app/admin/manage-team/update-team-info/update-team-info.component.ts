@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/classes/team.class';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from 'src/app/services/admin.service';
 import { UserService } from 'src/app/services/user.service';
 import { ConfirmRemoveMemberComponent } from '../../../modal/confirm-remove-member/confirm-remove-member.component';
@@ -10,11 +10,40 @@ import { DeleteConfrimModalComponent } from '../../../modal/delete-confrim-modal
 import { AuthService } from 'src/app/services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { QuestionnaireComponent } from 'src/app/components/questionnaire/questionnaire.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { NotesComponent } from '../../approve-member/approve-member-view/notes/notes.component';
+import { NotesCreateComponent } from 'src/app/components/notes/notes-create/notes-create.component';
+import { NotesViewComponent } from 'src/app/components/notes/notes-view/notes-view.component';
+import { YoutubeComponent } from 'src/app/formComponents/youtube/youtube.component';
+import { TwitterComponent } from 'src/app/formComponents/twitter/twitter.component';
+import { TwitchComponent } from 'src/app/formComponents/twitch/twitch.component';
+import { MembersComponent } from 'src/app/components/team/members/members.component';
+import { MembersReportingComponent } from 'src/app/components/storm-rank-tools/members-reporting/members-reporting.component';
+import { TeamNameComponent } from 'src/app/formComponents/team-name/team-name.component';
+import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
 
 @Component({
   selector: "app-update-team-info",
   templateUrl: "./update-team-info.component.html",
-  styleUrls: ["./update-team-info.component.css"]
+  styleUrls: ["./update-team-info.component.css"],
+  standalone:true,
+  imports:[
+    QuestionnaireComponent,
+    FormsModule,
+    MatCheckboxModule,
+    NotesComponent,
+    NotesCreateComponent,
+    NotesViewComponent,
+    YoutubeComponent,
+    TwitterComponent,
+    TwitchComponent,
+    MembersComponent,
+    MembersReportingComponent,
+    TeamNameComponent,
+    ReactiveFormsModule,
+    ImageUploadComponent
+  ]
 })
 export class UpdateTeamInfoComponent implements OnInit {
   constructor(

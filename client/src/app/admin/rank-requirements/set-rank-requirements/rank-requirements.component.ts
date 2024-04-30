@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { PlayerRankService } from 'src/app/services/player-rank.service';
 import { findIndex } from 'lodash';
+import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-rank-requirements",
   templateUrl: "./rank-requirements.component.html",
   styleUrls: ["./rank-requirements.component.css"],
+  standalone:true,
+  imports:[MatSelectModule, FormsModule, RouterModule]
 })
 export class RankRequirementsComponent implements OnInit {
   constructor(private playerRank: PlayerRankService) {}

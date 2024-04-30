@@ -1,16 +1,23 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { TeamService } from 'src/app/services/team.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { FilterService } from 'src/app/services/filter.service';
 import { TimeService } from 'src/app/services/time.service';
 import * as moment from 'moment-timezone';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
+import { MatSelectModule } from '@angular/material/select';
+import { DivisionSelectorComponent } from '../../division-selector/division-selector.component';
 
 @Component({
   selector: "app-match-paginator",
   templateUrl: "./match-paginator.component.html",
   styleUrls: ["./match-paginator.component.css"],
+  standalone:true,
+  imports:[MatPaginatorModule, FormsModule, MatLabel, MatFormField, DatePickerComponent, MatSelectModule, DivisionSelectorComponent]
 })
 export class MatchPaginatorComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;

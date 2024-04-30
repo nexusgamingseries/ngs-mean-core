@@ -1,15 +1,29 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeamService } from 'src/app/services/team.service';
 import { Match } from '../../classes/match.class';
 import { isThisTypeNode } from 'typescript';
 import { AdminService } from 'src/app/services/admin.service';
 import { MatPaginator } from '@angular/material/paginator'
+import { DateTimePickerComponent } from 'src/app/formComponents/date-time-picker/date-time-picker.component';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-grand-final-generator",
   templateUrl: "./grand-final-generator.component.html",
   styleUrls: ["./grand-final-generator.component.css"],
+  standalone:true,
+  imports:[
+    DateTimePickerComponent,
+    FormsModule,
+    MatLabel,
+    MatFormField,
+    ReactiveFormsModule,
+    DivisionSelectorComponent,
+    RouterModule
+  ]
 })
 export class GrandFinalGeneratorComponent implements OnInit {
   constructor(private team: TeamService, private admin: AdminService) {}

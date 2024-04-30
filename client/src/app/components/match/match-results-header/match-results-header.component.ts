@@ -5,12 +5,15 @@ import { ActivatedRoute } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
 import { TimeService } from 'src/app/services/time.service';
 import { Match } from 'src/app/classes/match.class';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { BannerImageComponent } from '../../banner-image/banner-image.component';
 
 @Component({
   selector: "app-match-results-header",
   templateUrl: "./match-results-header.component.html",
   styleUrls: ["./match-results-header.component.css"],
   standalone:true,
+  imports:[TeamLinkComponent, BannerImageComponent]
 })
 export class MatchResultsHeaderComponent implements OnInit {
   seasonVal;

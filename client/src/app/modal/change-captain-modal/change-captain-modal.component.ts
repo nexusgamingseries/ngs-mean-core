@@ -1,12 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-change-captain-modal',
   templateUrl: './change-captain-modal.component.html',
   styleUrls: ['./change-captain-modal.component.css'],
   standalone:true,
-  imports:[MatDialogModule]
+  imports:[
+    CommonModule,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose
+  ]
 })
 
 export class ChangeCaptainModalComponent implements OnInit {
@@ -14,15 +20,10 @@ export class ChangeCaptainModalComponent implements OnInit {
   newCaptain:string
   memberSelected:string
   constructor(
-    public dialogRef: MatDialogRef<ChangeCaptainModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: dataModel) {
-
-     }
-
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+    public dialogRef: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: dataModel
+  )
+    {}
 
   ngOnInit() {
   }

@@ -4,7 +4,9 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-display-name-for-id',
   templateUrl: './display-name-for-id.component.html',
-  styleUrls: ['./display-name-for-id.component.css']
+  styleUrls: ['./display-name-for-id.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class DisplayNameForIdComponent implements OnInit {
 

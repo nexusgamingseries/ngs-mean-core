@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { RouterModule } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 
 @Component({
   selector: 'app-generate-season',
   templateUrl: './generate-season.component.html',
-  styleUrls: ['./generate-season.component.css']
+  styleUrls: ['./generate-season.component.css'],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatFormField, MatLabel, RouterModule]
 })
 export class GenerateSeasonComponent implements OnInit {
 

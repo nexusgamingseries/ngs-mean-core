@@ -144,7 +144,7 @@
                           <div class="row">
                             <div class="col">
                               <div class="dropdown">
-                                <button type="button" class="mt-1 btn btn-danger dropdown-toggle"
+                                <button type="button" class="mt-1 btn btn-info dropdown-toggle"
                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
                                   aria-expanded="false">
                                   <span class="icon-align">
@@ -165,7 +165,7 @@
                             </div>
 
                             <div class="col">
-                              <button type="button" (click)="cancel()" class="mt-1 btn btn-danger">Cancel</button>
+                              <button type="button" (click)="cancel()" class="mt-1 btn btn-warning">Cancel</button>
                             </div>
                           </div>
                           <div class="row mt-1" *ngIf="errors.length>0">
@@ -281,10 +281,6 @@
                         </div>
                       </div>
                       <!-- competitive level and description of play -->
-                      <div class="row">
-                        <div class="col">
-                        </div>
-                      </div>
                       <div class="row mt-5">
                         <div class="col-6">
                           <app-competitive-level [disabled]="disabled"

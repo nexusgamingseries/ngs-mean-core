@@ -2,11 +2,27 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { Profile } from 'src/app/classes/profile.class';
 import { UserService } from 'src/app/services/user.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { VerifiedStormRanksDisplayNameComponent } from 'src/app/components/storm-rank-tools/verified-storm-ranks-display-name/verified-storm-ranks-display-name.component';
+import { UserSearchComponent } from 'src/app/components/user-search/user-search.component';
+import { NotesCreateComponent } from 'src/app/components/notes/notes-create/notes-create.component';
+import { NotesViewComponent } from 'src/app/components/notes/notes-view/notes-view.component';
 
 @Component({
   selector: "app-update-member-info",
   templateUrl: "./update-member-info.component.html",
   styleUrls: ["./update-member-info.component.css"],
+  standalone:true,
+  imports:[
+    FormsModule,
+    MatLabel,
+    MatFormField,
+    VerifiedStormRanksDisplayNameComponent,
+    UserSearchComponent,
+    NotesCreateComponent,
+    NotesViewComponent,
+  ]
 })
 export class UpdateMemberInfoComponent implements OnInit {
   constructor(private admin: AdminService, private user: UserService) {}

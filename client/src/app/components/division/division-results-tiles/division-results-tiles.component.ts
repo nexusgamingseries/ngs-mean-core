@@ -4,11 +4,27 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TimeService } from 'src/app/services/time.service';
+import { ResultsTilesComponent } from '../../results-tiles/results-tiles.component';
+import { FormsModule } from '@angular/forms';
+import {  MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
+import { ChallongeTournComponent } from '../../challonge-tourn/challonge-tourn.component';
+import { TournamentViewComponent } from '../../tournament-view/tournament-view.component';
 
 @Component({
   selector: "app-division-results-tiles",
   templateUrl: "./division-results-tiles.component.html",
   styleUrls: ["./division-results-tiles.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    ResultsTilesComponent,
+    FormsModule,
+    MatFormFieldModule,
+    ResultsTilesComponent,
+    MatSelectModule,
+  ]
 })
 export class DivisionResultsTilesComponent implements OnInit {
   constructor(

@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { QueuesService } from '../../services/queues.service';
 import { findIndex } from 'lodash';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-approve-member',
   templateUrl: './approve-member.component.html',
-  styleUrls: ['./approve-member.component.css']
+  styleUrls: ['./approve-member.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule
+  ]
 })
 
 
@@ -13,11 +18,11 @@ import { findIndex } from 'lodash';
 export class ApproveMemberComponent implements OnInit {
 
   //component properties
-  queue 
+  queue
 
   constructor(private queueService:QueuesService) {
    }
-  
+
   ngOnInit() {
     this.queueService.getQueues('pendingMemberQueue').subscribe( res=>{
       this.queue = res;

@@ -11,7 +11,9 @@ const SCHEDULEDTIME = 'scheduledTime';
 @Component({
   selector: 'app-schedule-table',
   templateUrl: './schedule-table.component.html',
-  styleUrls: ['./schedule-table.component.css']
+  styleUrls: ['./schedule-table.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class ScheduleTableComponent implements OnInit {
 

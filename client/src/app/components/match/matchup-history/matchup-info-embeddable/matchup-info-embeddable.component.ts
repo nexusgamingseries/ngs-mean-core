@@ -3,11 +3,14 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { TeamService } from 'src/app/services/team.service';
 import { Team } from 'src/app/classes/team.class';
 import { FilterService } from 'src/app/services/filter.service';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 @Component({
   selector: 'app-matchup-info-embeddable',
   templateUrl: './matchup-info-embeddable.component.html',
-  styleUrls: ['./matchup-info-embeddable.component.css']
+  styleUrls: ['./matchup-info-embeddable.component.css'],
+  standalone:true,
+  imports:[TeamLinkComponent]
 })
 export class MatchupInfoEmbeddableComponent implements OnInit {
 

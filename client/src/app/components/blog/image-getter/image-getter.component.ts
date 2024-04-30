@@ -1,10 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { WordpressService } from 'src/app/services/wordpress.service';
 
 @Component({
   selector: 'app-image-getter',
   templateUrl: './image-getter.component.html',
-  styleUrls: ['./image-getter.component.css']
+  styleUrls: ['./image-getter.component.css'],
+  standalone:true,
+  imports:[CommonModule]
 })
 export class ImageGetterComponent implements OnInit {
 

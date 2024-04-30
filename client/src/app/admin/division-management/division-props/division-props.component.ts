@@ -3,12 +3,18 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { DeleteConfrimModalComponent } from '../../../modal/delete-confrim-modal/delete-confrim-modal.component';
-// import { Color } from '@angular-material-components/color-picker';
+import { Color } from '@angular-material-components/color-picker';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-division-props',
   templateUrl: './division-props.component.html',
-  styleUrls: ['./division-props.component.css']
+  styleUrls: ['./division-props.component.css'],
+  standalone:true,
+  imports:[
+    DivisionSelectorComponent
+  ]
 })
 export class DivisionPropsComponent implements OnInit {
 

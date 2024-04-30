@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { QueuesService } from 'src/app/services/queues.service';
 import { findIndex } from 'lodash';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: "app-validate-rank",
   templateUrl: "./validate-rank.component.html",
   styleUrls: ["./validate-rank.component.css"],
+  standalone:true,
+  imports:[RouterModule, FormsModule, MatSelectModule]
 })
 export class ValidateRankComponent implements OnInit {
   constructor(private queueService: QueuesService) {}

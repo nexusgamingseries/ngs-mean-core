@@ -2,11 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import * as moment from 'moment-timezone';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { MatFormField, MatLabel, MatSelect } from '@angular/material/select';
+import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
+import { FormsModule } from '@angular/forms';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-set-deadline',
   templateUrl: './set-deadline.component.html',
-  styleUrls: ['./set-deadline.component.css']
+  styleUrls: ['./set-deadline.component.css'],
+  standalone:true,
+  imports:[MatSelect, DatePickerComponent, FormsModule, MatLabel, MatFormField, DivisionSelectorComponent, RouterModule]
 })
 export class SetDeadlineComponent implements OnInit {
   divisions

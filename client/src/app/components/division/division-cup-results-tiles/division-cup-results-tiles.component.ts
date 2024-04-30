@@ -3,11 +3,19 @@ import { StandingsService } from 'src/app/services/standings.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { ResultsTilesComponent } from '../../results-tiles/results-tiles.component';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-division-cup-results-tiles',
   templateUrl: './division-cup-results-tiles.component.html',
-  styleUrls: ['./division-cup-results-tiles.component.css']
+  styleUrls: ['./division-cup-results-tiles.component.css'],
+  standalone:true,
+  imports:[ResultsTilesComponent, FormsModule, MatLabel, MatFormField]
 })
 export class DivisionCupResultsTilesComponent implements OnInit {
 

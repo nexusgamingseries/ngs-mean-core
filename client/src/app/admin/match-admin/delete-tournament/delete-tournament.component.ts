@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import {has} from 'lodash';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-delete-tournament',
   templateUrl: './delete-tournament.component.html',
-  styleUrls: ['./delete-tournament.component.css']
+  styleUrls: ['./delete-tournament.component.css'],
+  standalone:true,
+  imports:[RouterModule]
 })
 export class DeleteTournamentComponent implements OnInit {
 

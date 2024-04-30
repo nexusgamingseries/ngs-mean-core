@@ -4,11 +4,14 @@ import { MarkdownParserService } from 'src/app/services/markdown-parser.service'
 import { BlogCommonService } from 'src/app/services/blog-common.service';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import * as moment from 'moment-timezone';
+import { ImageGetterComponent } from '../image-getter/image-getter.component';
 
 @Component({
   selector: 'app-blog-headline',
   templateUrl: './blog-headline.component.html',
-  styleUrls: ['./blog-headline.component.css']
+  styleUrls: ['./blog-headline.component.css'],
+  standalone:true,
+  imports:[ImageGetterComponent]
 })
 export class BlogHeadlineComponent implements OnInit {
 

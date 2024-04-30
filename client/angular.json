@@ -16,15 +16,15 @@
                         "outputPath": "dist/client",
                         "index": "src/index.html",
                         "main": "src/main.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                          "zone.js"
+                        ],
                         "tsConfig": "src/tsconfig.app.json",
                         "assets": [
                             "src/favicon.ico",
                             "src/assets"
                         ],
-                        "styles": [{
-                                "input": "src/ang-mat-dark-theme.scss"
-                            },
+                        "styles": [
                             "node_modules/croppie/croppie.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "src/styles.css"
@@ -132,12 +132,12 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "main": "src/test.ts",
-                        "polyfills": "src/polyfills.ts",
+                        "polyfills": [
+                          "zone.js"
+                        ],
                         "tsConfig": "src/tsconfig.spec.json",
                         "karmaConfig": "src/karma.conf.js",
-                        "styles": [{
-                                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-                            },
+                        "styles": [
                             "src/styles.css"
                         ],
                         "scripts": [],

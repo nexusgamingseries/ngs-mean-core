@@ -1,10 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatSelect } from '@angular/material/select';
+import { RouterModule } from '@angular/router';
 import { TimeService } from 'src/app/services/time.service';
 
 @Component({
   selector: 'app-season-info-manager',
   templateUrl: './season-info-manager.component.html',
-  styleUrls: ['./season-info-manager.component.css']
+  styleUrls: ['./season-info-manager.component.css'],
+  standalone:true,
+  imports:[FormsModule, MatSelect, RouterModule]
 })
 export class SeasonInfoManagerComponent implements OnInit {
 

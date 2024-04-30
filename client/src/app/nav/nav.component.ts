@@ -10,6 +10,8 @@ import { TimeService } from 'src/app/services/time.service';
 import { environment } from '../../environments/environment'
 import { PlayerLinkComponent } from '../LinkComponents/player-link/player-link.component';
 import { TeamLinkComponent } from '../LinkComponents/team-link/team-link.component';
+import { DivisionLinkComponent } from '../LinkComponents/division-link/division-link.component';
+import { CommonModule } from '@angular/common';
 
 declare var Mmenu: any;
 
@@ -18,7 +20,7 @@ declare var Mmenu: any;
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
   standalone:true,
-  imports:[RouterModule, PlayerLinkComponent, TeamLinkComponent]
+  imports:[RouterModule, PlayerLinkComponent, TeamLinkComponent, DivisionLinkComponent, CommonModule]
 })
 export class NavComponent implements OnInit {
   divisions

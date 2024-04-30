@@ -1,16 +1,21 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { StandingsService } from 'src/app/services/standings.service';
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { DivisionSelectorComponent } from 'src/app/components/division-selector/division-selector.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: "app-tournament-generator",
   templateUrl: "./tournament-generator.component.html",
   styleUrls: ["./tournament-generator.component.css"],
+  standalone:true,
+  imports:[FormsModule, RouterModule, MatLabel, MatFormField, ReactiveFormsModule, FormsModule, CdkDropList, DivisionSelectorComponent]
 })
 export class TournamentGeneratorComponent implements OnInit {
   selectFromList: any;

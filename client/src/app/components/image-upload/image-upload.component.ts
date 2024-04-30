@@ -1,15 +1,18 @@
-import { Component, OnInit, Input, SimpleChange, Output, EventEmitter, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange, Output, EventEmitter, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { UtilitiesService } from '../../services/utilities.service';
 import { AdminService } from '../../services/admin.service';
 import { UserService } from '../../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-image-upload",
   templateUrl: "./image-upload.component.html",
-  styleUrls: ["./image-upload.component.css"]
+  styleUrls: ["./image-upload.component.css"],
+  standalone:true,
+  imports:[CommonModule]
 })
-export class ImageUploadComponent implements OnInit {
+export class ImageUploadComponent implements OnInit, AfterViewInit {
   randomName;
   _teamName: string;
 
@@ -129,7 +132,6 @@ export class ImageUploadComponent implements OnInit {
   croppieHidden = true;
 
   constructor(
-    private renderer:Renderer2,
     private user: UserService,
     private teamService: TeamService,
     private util: UtilitiesService,
@@ -164,6 +166,7 @@ export class ImageUploadComponent implements OnInit {
   imageHeader;
   actionText;
   ngOnInit() {
+
     if(!this.widthPx){
       this.widthPx = "350";
     }
@@ -191,6 +194,8 @@ export class ImageUploadComponent implements OnInit {
 
   croppieObject;
   ngAfterViewInit() {
+
+
 
     //buckle up for some black magic...
     //in order to keep the croppie from overflowing the parent element and trashing the page we have
@@ -228,6 +233,7 @@ export class ImageUploadComponent implements OnInit {
       viewportWidth = this.widthPx;
     }
 
+
     this.croppieObject = $(ele).croppie({
       viewport: {
         width: viewportWidth,
@@ -243,7 +249,7 @@ export class ImageUploadComponent implements OnInit {
   }
 
   saveImageFromCroppie() {
-    // console.log(this.heightPx, this.widthPx);
+
     this.croppieObject
       .croppie("result", {
         type: "base64",

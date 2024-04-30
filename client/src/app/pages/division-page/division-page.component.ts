@@ -9,6 +9,12 @@ import { TimeService } from '../../services/time.service';
 import { TabTrackerService } from '../../services/tab-tracker.service';
 import { environment } from "../../../environments/environment";
 import { CommonModule } from '@angular/common';
+import { StandingsViewComponent } from 'src/app/components/division/standings-view/standings-view.component';
+import { TeamDisplayComponent } from 'src/app/components/team/team-display/team-display.component';
+import { ScheduleViewComponent } from 'src/app/components/schedule/schedule-view/schedule-view.component';
+import { DivisionResultsTilesComponent } from 'src/app/components/division/division-results-tiles/division-results-tiles.component';
+import { ChallongeTournComponent } from 'src/app/components/challonge-tourn/challonge-tourn.component';
+import { TournamentViewComponent } from 'src/app/components/tournament-view/tournament-view.component';
 
 
 
@@ -17,7 +23,15 @@ import { CommonModule } from '@angular/common';
   templateUrl: './division-page.component.html',
   styleUrls: ['./division-page.component.css'],
   standalone:true,
-  imports:[CommonModule],
+  imports:[
+    CommonModule,
+    StandingsViewComponent,
+    TeamDisplayComponent,
+    ScheduleViewComponent,
+    DivisionResultsTilesComponent,
+    ChallongeTournComponent,
+    TournamentViewComponent
+  ],
 })
 
 export class DivisionComponent implements OnInit, OnChanges, OnDestroy {

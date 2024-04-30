@@ -3,12 +3,15 @@ import { UtilitiesService } from '../../services/utilities.service';
 import { environment } from '../../../environments/environment';
 import { ScheduleService } from '../../services/schedule.service';
 import { TimeService } from '../../services/time.service';
+import { CommonModule } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-challonge-tourn',
   templateUrl: './challonge-tourn.component.html',
   styleUrls: ['./challonge-tourn.component.css'],
-  standalone:true
+  standalone:true,
+  imports:[CommonModule, MatSelectModule]
 })
 export class ChallongeTournComponent implements OnInit {
 

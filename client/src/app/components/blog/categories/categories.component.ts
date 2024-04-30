@@ -4,9 +4,11 @@ import { WordpressService } from 'src/app/services/wordpress.service';
 @Component({
   selector: 'app-blog-categories',
   templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.css']
+  styleUrls: ['./categories.component.css'],
+  standalone:true,
+  imports:[]
 })
-export class CategoriesComponent implements OnInit {
+export class BlogCategoriesComponent implements OnInit {
 
   constructor( private WP:WordpressService) { }
   categories: any[]

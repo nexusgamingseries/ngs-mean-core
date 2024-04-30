@@ -7,6 +7,8 @@ import { initial } from 'lodash';
   selector: "app-notes-view",
   templateUrl: "./notes-view.component.html",
   styleUrls: ["./notes-view.component.css"],
+  standalone:true,
+  imports:[]
 })
 export class NotesViewComponent implements OnInit {
   constructor(private notesServ: NotesService, public util:UtilitiesService) {}

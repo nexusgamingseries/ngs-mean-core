@@ -8,11 +8,14 @@ import { HeroesProfileService } from 'src/app/services/heroes-profile.service';
 import { environment } from 'src/environments/environment';
 import { forEach as _forEach } from 'lodash';
 import { TimeService } from 'src/app/services/time.service';
+import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 
 @Component({
   selector: "app-match-results-view",
   templateUrl: "./match-results-view.component.html",
   styleUrls: ["./match-results-view.component.css"],
+  standalone:true,
+  imports:[BannerImageComponent]
 })
 export class MatchResultsViewComponent implements OnInit {
   recId;

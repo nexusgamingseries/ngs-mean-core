@@ -4,7 +4,9 @@ import { WordpressService } from 'src/app/services/wordpress.service';
 @Component({
   selector: 'app-author-list',
   templateUrl: './author-list.component.html',
-  styleUrls: ['./author-list.component.css']
+  styleUrls: ['./author-list.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class AuthorListComponent implements OnInit {
 

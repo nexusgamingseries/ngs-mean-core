@@ -4,7 +4,9 @@ import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-verified-storm-ranks-display-name',
   templateUrl: './verified-storm-ranks-display-name.component.html',
-  styleUrls: ['./verified-storm-ranks-display-name.component.css']
+  styleUrls: ['./verified-storm-ranks-display-name.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class VerifiedStormRanksDisplayNameComponent implements OnInit {
 

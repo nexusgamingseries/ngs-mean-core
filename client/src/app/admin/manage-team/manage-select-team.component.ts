@@ -1,13 +1,17 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { TeamService } from '../../services/team.service';
 import { AdminService } from 'src/app/services/admin.service';
-import { Router } from '@angular/router';
-import { PageEvent, MatPaginator } from '@angular/material/paginator';
+import { Router, RouterModule } from '@angular/router';
+import { PageEvent, MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
 
 @Component({
   selector: 'app-manage-select-team',
   templateUrl: './manage-select-team.component.html',
-  styleUrls: ['./manage-select-team.component.css']
+  styleUrls: ['./manage-select-team.component.css'],
+  standalone:true,
+  imports:[MatPaginatorModule, FormsModule, MatLabel, MatFormField, RouterModule]
 })
 export class ManageSelectTeamComponent implements OnInit, AfterViewInit {
 

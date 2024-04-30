@@ -2,11 +2,15 @@ import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/cor
 import { StandingsService } from '../../../services/standings.service';
 import { TeamService } from '../../../services/team.service';
 import { UtilitiesService } from '../../../services/utilities.service';
+import { CommonModule } from '@angular/common';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 @Component({
   selector: 'app-standings-view',
   templateUrl: './standings-view.component.html',
-  styleUrls: ['./standings-view.component.css']
+  styleUrls: ['./standings-view.component.css'],
+  standalone:true,
+  imports:[CommonModule, TeamLinkComponent]
 })
 export class StandingsViewComponent implements OnInit, OnChanges {
 

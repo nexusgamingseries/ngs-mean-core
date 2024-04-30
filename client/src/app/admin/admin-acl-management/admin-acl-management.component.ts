@@ -1,13 +1,23 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { AdminService } from 'src/app/services/admin.service';
 import { AclService } from './acl.service';
-import { PageEvent, MatPaginator } from '@angular/material/paginator'
+import { PageEvent, MatPaginator, MatPaginatorModule } from '@angular/material/paginator'
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-admin-acl-management',
   templateUrl: './admin-acl-management.component.html',
-  styleUrls: ['./admin-acl-management.component.css']
+  styleUrls: ['./admin-acl-management.component.css'],
+  standalone:true,
+  imports:[
+    MatPaginatorModule,
+    FormsModule,
+    MatLabel, MatFormField,
+    RouterModule
+  ]
 })
 export class AdminAclManagementComponent implements OnInit, AfterViewInit {
 

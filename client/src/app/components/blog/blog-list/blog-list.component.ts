@@ -3,14 +3,19 @@ import { Router } from '@angular/router';
 import { MarkdownParserService } from '../../../services/markdown-parser.service';
 import { UtilitiesService } from '../../../services/utilities.service';
 import { WordpressService } from 'src/app/services/wordpress.service';
-import { PageEvent, MatPaginator } from "@angular/material/paginator";
+import { PageEvent, MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 
 import { NotificationService } from 'src/app/services/notification.service';
+import { AuthorListComponent } from '../author-list/author-list.component';
+import { BlogCategoriesComponent } from '../categories/categories.component';
+import { BannerImageComponent } from '../../banner-image/banner-image.component';
 
 @Component({
   selector: 'app-blog-list',
   templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.css']
+  styleUrls: ['./blog-list.component.css'],
+  standalone:true,
+  imports:[MatPaginatorModule, AuthorListComponent, BlogCategoriesComponent, BannerImageComponent]
 })
 
 export class BlogListComponent implements OnInit, AfterViewInit {

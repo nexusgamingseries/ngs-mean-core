@@ -5,13 +5,22 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import { LoadingComponent } from 'src/app/elements/loading/loading.component';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 import { CommonModule } from '@angular/common';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { DivisionIfPublicComponent } from 'src/app/elements/division-if-public/division-if-public.component';
 
 @Component({
   selector: 'app-all-teams',
   templateUrl: './all-teams.component.html',
   styleUrls: ['./all-teams.component.css'],
   standalone:true,
-  imports:[LoadingComponent,BannerImageComponent, CommonModule]
+  imports:[
+    CommonModule,
+    LoadingComponent,
+    BannerImageComponent,
+    CommonModule,
+    TeamLinkComponent,
+    DivisionIfPublicComponent,
+  ]
 })
 export class AllTeamsComponent implements OnInit {
 

@@ -1,53 +1,50 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { TeamService } from 'src/app/services/team.service';
 
 @Component({
-  selector: 'app-team-link',
-  templateUrl: './team-link.component.html',
-  standalone:true,
-  styleUrls: ['./team-link.component.css']
+  selector: "app-team-link",
+  templateUrl: "./team-link.component.html",
+  styleUrls: ["./team-link.component.css"],
+  standalone: true,
+  imports:[RouterModule]
 })
 export class TeamLinkComponent implements OnInit {
-
-  constructor(private teamService: TeamService) {
-
-   }
+  constructor(private teamService: TeamService) {}
 
   routeFriendlyName;
 
   ngOnInit() {
-    this.routerLinkVal = []
-    this.routerLinkVal.push('/teamProfile/');
+    this.routerLinkVal = [];
+    this.routerLinkVal.push("/teamProfile/");
     this.routerLinkVal.push(this.routeFriendlyName);
-    if(this.seasonVal){
+    if (this.seasonVal) {
       this.routerLinkVal.push(this.seasonVal);
     }
   }
 
-
   //'/teamProfile/', routeFriendlyName, seasonVal
-  routerLinkVal = []
+  routerLinkVal = [];
 
   targetVal;
-  @Input() set target(val){
-    this.targetVal = val ? val : '_self';
+  @Input() set target(val) {
+    this.targetVal = val ? val : "_self";
   }
 
-  teamVal:string
-  @Input() set team(val){
-    if(val){
+  teamVal: string;
+  @Input() set team(val) {
+    if (val) {
       // this.teamVal = val;
       this.routeFriendlyName = this.teamService.routeFriendlyTeamName(val);
       this.ngOnInit();
     }
   }
 
-  seasonVal: string
+  seasonVal: string;
   @Input() set season(val) {
     if (val) {
       this.seasonVal = val;
       this.ngOnInit();
     }
   }
-
 }

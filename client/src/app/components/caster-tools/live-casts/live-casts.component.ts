@@ -5,11 +5,15 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import { FilterService } from 'src/app/services/filter.service';
 import { TimeService } from 'src/app/services/time.service';
 import * as moment from 'moment-timezone';
+import { MatchPaginatorComponent } from '../match-paginator/match-paginator.component';
+import { LoadingComponent } from 'src/app/elements/loading/loading.component';
 
 @Component({
   selector: "app-live-casts",
   templateUrl: "./live-casts.component.html",
   styleUrls: ["./live-casts.component.css"],
+  standalone:true,
+  imports:[MatchPaginatorComponent, LoadingComponent]
 })
 export class LiveCastsComponent implements OnInit {
 

@@ -6,11 +6,14 @@ import { MarkdownParserService } from 'src/app/services/markdown-parser.service'
 import { merge } from 'lodash';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import { Author } from 'src/app/services/wordpress.service';
+import { BannerImageComponent } from '../../banner-image/banner-image.component';
 
 @Component({
   selector: 'app-author-page',
   templateUrl: './author-page.component.html',
-  styleUrls: ['./author-page.component.css']
+  styleUrls: ['./author-page.component.css'],
+  standalone:true,
+  imports:[BannerImageComponent]
 })
 export class AuthorPageComponent implements OnInit {
 

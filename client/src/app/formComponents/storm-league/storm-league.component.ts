@@ -5,7 +5,9 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 @Component({
   selector: 'app-storm-league',
   templateUrl: './storm-league.component.html',
-  styleUrls: ['./storm-league.component.css']
+  styleUrls: ['./storm-league.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class StormLeagueComponent implements OnInit {
 

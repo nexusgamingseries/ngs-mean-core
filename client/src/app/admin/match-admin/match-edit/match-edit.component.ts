@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
@@ -10,11 +10,17 @@ import { forEach } from 'lodash';
 import { S3uploadService } from 'src/app/services/s3upload.service';
 import { timeout } from 'rxjs/operators';
 import { TeamService } from 'src/app/services/team.service';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: "app-match-edit",
   templateUrl: "./match-edit.component.html",
   styleUrls: ["./match-edit.component.css"],
+  standalone:true,
+  imports:[FormsModule, MatInput, MatLabel, MatFormField, MatLabel, DatePickerComponent, MatSelectModule, RouterModule]
 })
 export class MatchEditComponent implements OnInit {
   //component properties

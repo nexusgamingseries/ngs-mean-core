@@ -1,12 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
-import { type } from 'os';
 import { UtilitiesService } from '../../services/utilities.service';
 
 @Component({
   selector: 'app-division-if-public',
   templateUrl: './division-if-public.component.html',
-  styleUrls: ['./division-if-public.component.css']
+  styleUrls: ['./division-if-public.component.css'],
+  standalone:true,
+  imports:[]
 })
 export class DivisionIfPublicComponent implements OnInit {
 

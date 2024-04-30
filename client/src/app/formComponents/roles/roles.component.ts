@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -5,7 +6,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.css'],
   standalone:true,
-  imports:[]
+  imports:[CommonModule]
 })
 export class RolesComponent implements OnInit {
 

@@ -1,11 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 import { EventsService } from 'src/app/services/events.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
   selector: 'app-event-display',
   templateUrl: './event-display.component.html',
-  styleUrls: ['./event-display.component.css']
+  styleUrls: ['./event-display.component.css'],
+  standalone:true,
+  imports:[CommonPipePipe]
 })
 export class EventDisplayComponent implements OnInit {
 

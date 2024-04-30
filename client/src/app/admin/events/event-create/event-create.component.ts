@@ -1,15 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { EventsService } from 'src/app/services/events.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { cloneDeep } from 'lodash';
 import { forEach as _forEach } from 'lodash';
 import * as moment from 'moment-timezone';
+import { FormsModule } from '@angular/forms';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
 
 @Component({
   selector: 'app-event-create',
   templateUrl: './event-create.component.html',
-  styleUrls: ['./event-create.component.css']
+  styleUrls: ['./event-create.component.css'],
+  standalone:true,
+  imports:[
+    FormsModule,
+    MatInput,
+    MatLabel,
+    MatFormField,
+    DatePickerComponent,
+    RouterModule,
+  ]
 })
 export class EventCreateComponent implements OnInit {
 
