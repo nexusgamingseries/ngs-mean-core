@@ -3,12 +3,19 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TimeService } from 'src/app/services/time.service';
+import {ResultsTilesComponent} from "../../results-tiles/results-tiles.component";
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-team-tournament-results-tiles',
   templateUrl: './team-tournament-results-tiles.component.html',
-  styleUrls: ['./team-tournament-results-tiles.component.css']
+  styleUrls: ['./team-tournament-results-tiles.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    ResultsTilesComponent
+  ]
 })
 export class TeamTournamentResultsTilesComponent implements OnInit {
 

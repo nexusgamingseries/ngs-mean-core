@@ -9,13 +9,21 @@ import { environment } from 'src/environments/environment';
 import { forEach as _forEach } from 'lodash';
 import { TimeService } from 'src/app/services/time.service';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import {MatchResultsHeaderComponent} from "../../match-results-header/match-results-header.component";
+import {GamesInformationComponent} from "../games-information.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-match-results-view",
   templateUrl: "./match-results-view.component.html",
   styleUrls: ["./match-results-view.component.css"],
   standalone:true,
-  imports:[BannerImageComponent]
+  imports:[
+    CommonModule,
+    BannerImageComponent,
+    MatchResultsHeaderComponent,
+    GamesInformationComponent
+  ]
 })
 export class MatchResultsViewComponent implements OnInit {
   recId;

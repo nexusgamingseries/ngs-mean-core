@@ -3,11 +3,18 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TimeService } from 'src/app/services/time.service';
+import { CommonModule } from '@angular/common';
+import {ResultsTilesComponent} from "../../results-tiles/results-tiles.component";
 
 @Component({
   selector: "app-team-results-tiles",
   templateUrl: "./team-results-tiles.component.html",
   styleUrls: ["./team-results-tiles.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    ResultsTilesComponent,
+  ]
 })
 export class TeamResultsTilesComponent implements OnInit, OnChanges {
   currentSeason;

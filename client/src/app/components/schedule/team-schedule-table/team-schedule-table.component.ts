@@ -7,11 +7,18 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { TimeService } from 'src/app/services/time.service';
+import {ScheduleTableComponent} from "../../../elements/schedule-table/schedule-table.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-team-schedule-table',
   templateUrl: './team-schedule-table.component.html',
-  styleUrls: ['./team-schedule-table.component.css']
+  styleUrls: ['./team-schedule-table.component.css'],
+  standalone:true,
+  imports:[
+    ScheduleTableComponent,
+    CommonModule,
+  ]
 })
 export class TeamScheduleTableComponent implements OnInit, OnChanges {
 

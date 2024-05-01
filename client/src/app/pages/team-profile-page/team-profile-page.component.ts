@@ -31,6 +31,20 @@ import { PlayHistoryComponent } from 'src/app/formComponents/play-history/play-h
 import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { TimesAvailableComponent } from 'src/app/formComponents/times-available/times-available.component';
 import { TimezoneComponent } from 'src/app/formComponents/timezone/timezone.component';
+import { TwitchComponent } from 'src/app/formComponents/twitch/twitch.component';
+import { TwitterComponent } from 'src/app/formComponents/twitter/twitter.component';
+import { YoutubeComponent } from 'src/app/formComponents/youtube/youtube.component';
+import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
+import { MembersComponent } from 'src/app/components/team/members/members.component';
+import { TeamHistoryComponent } from 'src/app/components/team/team-history/team-history.component';
+import { PlayerSmallCardComponent } from 'src/app/components/player/player-small-card/player-small-card.component';
+import {TeamScheduleTableComponent} from "../../components/schedule/team-schedule-table/team-schedule-table.component";
+import {TeamResultsTilesComponent} from "../../components/team/team-results-tiles/team-results-tiles.component";
+import {
+  TeamTournamentResultsTilesComponent
+} from "../../components/team/team-tournament-results-tiles/team-tournament-results-tiles.component";
+import {TeamTournamentsComponent} from "../../components/schedule/team-tournaments/team-tournaments.component";
+import {TeamUpcomingMatchComponent} from "../../components/team/team-upcoming-match/team-upcoming-match.component";
 
 
 @Component({
@@ -51,7 +65,20 @@ import { TimezoneComponent } from 'src/app/formComponents/timezone/timezone.comp
     MatSlideToggle,
     TimesAvailableComponent,
     TimezoneComponent,
-    ChangeCaptainModalComponent
+    ChangeCaptainModalComponent,
+    TwitchComponent,
+    TwitterComponent,
+    YoutubeComponent,
+    ImageUploadComponent,
+    MembersComponent,
+    TeamHistoryComponent,
+    PlayerSmallCardComponent,
+    TeamScheduleTableComponent,
+    TeamResultsTilesComponent,
+    TeamTournamentResultsTilesComponent,
+    TeamTournamentsComponent,
+    TeamUpcomingMatchComponent
+
   ],
 })
 export class TeamProfileComponent implements OnInit, OnDestroy {

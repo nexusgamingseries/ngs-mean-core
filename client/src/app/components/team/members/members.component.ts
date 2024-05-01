@@ -1,12 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { PlayerSmallCardComponent } from '../../player/player-small-card/player-small-card.component';
 
 @Component({
   selector: 'app-members',
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.css'],
   standalone:true,
-  imports:[]
+  imports:[
+    CommonModule,
+    PlayerSmallCardComponent,
+
+  ]
 })
 export class MembersComponent implements OnInit {
 

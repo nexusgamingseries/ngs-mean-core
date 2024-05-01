@@ -92,63 +92,6 @@ export class TeamOverViewPaneComponent {
     this.disabled = true;
   }
 
-  //this method checks that the inputs are valid and if so, saves the team object
-  save() {
-    if (this.validate()) {
-      this.disabled = true;
-
-      this.util.updateAvailabilityToNum(this.returnedProfile);
-      // let keys = Object.keys(this.returnedProfile.availability);
-      // keys.forEach(element => {
-      //   let obj = this.returnedProfile.availability[element];
-      //   if (obj.available) {
-      //     obj['startTimeNumber'] = this.util.convertToMil(obj.startTime);
-      //     obj['endTimeNumber'] = this.util.convertToMil(obj.endTime);
-      //   }
-      // });
-
-      if (!this.checkRosterSize()) {
-        this.returnedProfile.lookingForMore = false;
-      }
-
-      let cptRemoved = Object.assign({}, this.returnedProfile);
-      delete cptRemoved.captain;
-
-      this.team.saveTeam(cptRemoved).subscribe(
-        (res) => {
-          this.disabled = true;
-        },
-        (err) => {
-          console.warn(err);
-          alert(err.message);
-        }
-      );
-    } else {
-      //activate validator errors
-      alert("the data was invalid");
-      console.warn("the data was invalid");
-    }
-  }
-
-  //this method controls the opening of the change captain modal
-  openAssCaptainChangeDialog(): void {
-    const mgmtAssCpt = this.dialog.open(AssistantCaptainMgmtComponent, {
-      width: "450px",
-      data: {
-        members: this.returnedProfile.teamMembers,
-        captain: this.returnedProfile.captain,
-        assistantCaptain: this.returnedProfile.assistantCaptain,
-      },
-    });
-
-    mgmtAssCpt.afterClosed().subscribe((result) => {
-      if (result != undefined && result != null) {
-        this.returnedProfile.assistantCaptain = result;
-        this.save();
-      }
-    });
-  }
-
   openConfirmRemove(player): void {
     const openConfirmRemove = this.dialog.open(ConfirmRemoveMemberComponent, {
       width: "450px",
@@ -288,26 +231,7 @@ export class TeamOverViewPaneComponent {
     return returnValue;
   }
 
-  //method to validate the inputs we require.
-  validate() {
-    this.errors = [];
-    let valid = true;
 
-    //ensure time zone
-    if (
-      this.validAvailDays > 0 &&
-      this.util.isNullOrEmpty(this.returnedProfile.timeZone)
-    ) {
-      valid = false;
-      this.timezoneError = {
-        error: true,
-      };
-      this.errors.push("Timezone required with time's available.");
-    } else {
-      this.timezoneError = { error: false };
-    }
-    return valid;
-  }
 
   //method takes in the factors at hand to show the captain edit options or the admin edit options
   showEditDialog() {
