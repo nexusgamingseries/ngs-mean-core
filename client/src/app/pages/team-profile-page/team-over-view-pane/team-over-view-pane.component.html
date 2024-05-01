@@ -1,0 +1,192 @@
+<div>
+  <!-- captain buttons for editing -->
+
+  <div class="row" *ngIf="showEditDialog()">
+    <div class="col">
+      <div class="row">
+        <div class="col text-center text-success">
+          <app-team-registered [team]="returnedProfile"></app-team-registered>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <p>Welcome to your team profile!</p>
+          <p>The more info you complete in your profile the more information players will have to find you!</p>
+        </div>
+        <div class="col-6">
+          <div *ngIf="disabled == true">
+            <button type="button" (click)="openEdit()" class="btn btn-primary float-right">Edit</button>
+          </div>
+          <div *ngIf="!disabled">
+            <div class="row">
+              <div class="col">
+                <div class="dropdown">
+                  <button type="button" class="mt-1 btn btn-info dropdown-toggle" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="icon-align">
+                      <i class="material-icons md-18">settings</i>Manage
+                    </span>
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item finger" (click)="openCaptainChangeDialog()">
+                      <span class="icon-align">
+                        <i class="material-icons">cached</i>Change captain</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <button type="button" [disabled]="!validate()" (click)="save()"
+                  class="mt-1 btn btn-success ">Save</button>
+              </div>
+
+              <div class="col">
+                <button type="button" (click)="cancel()" class="mt-1 btn btn-warning">Cancel</button>
+              </div>
+            </div>
+            <div class="row mt-1" *ngIf="errors.length>0">
+              <div class="col text-center">
+                <div class="alert alert-danger" *ngFor="let error of errors">{{error}}</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <button type="button" (click)="adminRefreshMMR()" class="mt-1 btn btn-primary">Update Team MMR</button>
+              </div>
+              <div class="col">
+                <button class="btn btn-dark assCapt" (click)="openAssCaptainChangeDialog()">Add Assistant
+                  Captain(s) <i class="fas fa-baby-carriage"></i></button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- non template conforming captain functions -->
+  <div class="row mt-3 mb-3" *ngIf="!disabled">
+    <div class="col">
+      <div *ngIf="checkRosterSize() else sizeLimit">
+        <h3>Invite users to your team!</h3>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Existing User:
+              </mat-panel-title>
+              <mat-panel-description>
+                Invite a player that already has a profile on the NGS Website using their battle tag.
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <app-user-search [filterUser]="filterUsers" [type]="'unteamed'" [buttonText]="'Invite User'"
+              (userSelected)="invite($event)">
+            </app-user-search>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                New User:
+              </mat-panel-title>
+              <mat-panel-description>
+                Invite a user to join the NGS Website!
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-7">
+                <mat-form-field class="mat-FullWidth">
+                  <mat-label>Enter users email to send them an invite to the NGS Website!</mat-label>
+                  <input matInput [formControl]="emailControl" [(ngModel)]="emailAddress"
+                    placeholder="Enter users email to send them an invite to the NGS Website!">
+                </mat-form-field>
+              </div>
+              <div class="col">
+                <button type="button" [disabled]="emailControl.invalid" (click)="inviteEmail()">Invite!</button>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+    <ng-template #sizeLimit>
+      <div class="text-center">
+        <div> You have reached the team size limit! 9 Members </div>
+        <div> {{returnedProfile.teamMembers.length}} members on roster </div>
+        <div> {{returnedProfile.pendingMembers.length}} members pending roster add </div>
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="panel-box" *ngIf="!disabled">
+    <div class="titles">
+      <h4>Team Logo and Socials</h4>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div>
+          <app-image-upload [showEdit]="true" [teamName]="returnedProfile.teamName" [width]="500" [height]="350"
+            [existingImage]="returnedProfile.logo" [imageType]="'teamlogo'">
+          </app-image-upload>
+        </div>
+        <div class="mt-3">
+          <app-twitch [(twitch)]="returnedProfile.twitch"></app-twitch>
+        </div>
+        <div class="mt-3">
+          <app-twitter [(twitter)]="returnedProfile.twitter"></app-twitter>
+        </div>
+        <div class="mt-3">
+          <app-youtube [(youtube)]="returnedProfile.youtube"></app-youtube>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel-box padding-b">
+    <div class="titles">
+      <h4>Team Info</h4>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <app-roles [disabled]="disabled" [customDisplayText]="'Roles Needed:'" [(roles)]="returnedProfile.rolesNeeded"></app-roles>
+          </div>
+        </div>
+        competitive level and description of play
+        <div class="row mt-5">
+          <div class="col-6">
+            <app-competitive-level [disabled]="disabled" [(competitiveLevel)]="returnedProfile.competitiveLevel"></app-competitive-level>
+          </div>
+          <div class="col-6">
+            <app-play-history [disabled]="disabled" [(description)]="returnedProfile.descriptionOfTeam"></app-play-history>
+          </div>
+        </div>
+        <!-- looking for group -->
+        <div class="row mt-5">
+          <div class="col">
+            <mat-slide-toggle [disabled]="disabled" [(ngModel)]="returnedProfile.lookingForMore">
+              Looking for More.
+            </mat-slide-toggle>
+          </div>
+        </div>
+        <!-- times -->
+        <div class="row mt-5">
+          <div class="col">
+            <h6>Team Availability and Time Zone:</h6>
+            <!-- !disabled && !returnedProfile.availability.monday.available || disabled &&  -->
+            <app-times-available [customText]="''" [availObj]="returnedProfile.availability" (availValid)="receiveValidTimes($event)" [disabled]="disabled"></app-times-available>
+          </div>
+        </div>
+        <!-- timezone -->
+        <div class="row mt-3">
+          <div class="col">
+            <app-timezone [(timezone)]="returnedProfile.timeZone" [disabled]="disabled" [(error)]="timezoneError"></app-timezone>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

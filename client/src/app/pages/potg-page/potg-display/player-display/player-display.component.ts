@@ -11,15 +11,25 @@ import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.co
 
 @Component({
   selector: "app-player-display",
-  standalone:true,
-  imports:[CommonPipePipe, UserSearchComponent, BannerImageComponent, CommonModule, TeamLinkComponent],
   templateUrl: "./player-display.component.html",
-  styleUrls: ["./player-display.component.css"]
+  styleUrls: ["./player-display.component.css"],
+  standalone: true,
+  imports: [
+    CommonModule,
+    CommonPipePipe,
+    UserSearchComponent,
+    BannerImageComponent,
+    TeamLinkComponent,
+  ],
 })
 export class PlayerDisplayComponent implements OnInit {
   @Input() playerId;
 
-  constructor(public user: UserService, private mvpServ:MvpService, public util:UtilitiesService) {}
+  constructor(
+    public user: UserService,
+    private mvpServ: MvpService,
+    public util: UtilitiesService
+  ) {}
 
   returnedProfile = new Profile(
     null,
@@ -41,21 +51,21 @@ export class PlayerDisplayComponent implements OnInit {
     null,
     null
   );
-  mvpCounts=0;
+  mvpCounts = 0;
   ngOnInit(): void {
-    this.user.getUserById(this.playerId).subscribe(res => {
+    this.user.getUserById(this.playerId).subscribe((res) => {
       this.returnedProfile = res;
     });
-          this.mvpServ.getMvpById("player_id", this.playerId).subscribe(
-            res => {
-              if (res) {
-                this.mvpCounts = res.length;
-              }
-            },
-            err => {
-              console.warn(err);
-            }
-          );
+    this.mvpServ.getMvpById("player_id", this.playerId).subscribe(
+      (res) => {
+        if (res) {
+          this.mvpCounts = res.length;
+        }
+      },
+      (err) => {
+        console.warn(err);
+      }
+    );
   }
 
   estimateGamesPlayed() {
@@ -70,7 +80,7 @@ export class PlayerDisplayComponent implements OnInit {
       this.returnedProfile.replayArchive &&
       this.returnedProfile.replayArchive.length > 0
     ) {
-      this.returnedProfile.replayArchive.forEach(season => {
+      this.returnedProfile.replayArchive.forEach((season) => {
         count += season.replays.length;
       });
     }

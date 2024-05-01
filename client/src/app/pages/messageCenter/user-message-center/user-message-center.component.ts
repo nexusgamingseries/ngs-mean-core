@@ -7,118 +7,155 @@ import { RequestService } from 'src/app/services/request.service';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { PlayerLinkComponent } from 'src/app/LinkComponents/player-link/player-link.component';
 // import { Socket } from 'ngx-socket-io';
 
 @Component({
-  selector: 'app-user-message-center',
-  standalone:true,
-  imports:[BannerImageComponent],
-  templateUrl: './user-message-center.component.html',
-  styleUrls: ['./user-message-center.component.css']
+  selector: "app-user-message-center",
+  templateUrl: "./user-message-center.component.html",
+  styleUrls: ["./user-message-center.component.css"],
+  standalone: true,
+  imports: [
+    CommonModule,
+    CommonPipePipe,
+    BannerImageComponent,
+    TeamLinkComponent,
+    PlayerLinkComponent
+  ],
 })
 export class UserMessageCenterComponent implements OnInit {
+  constructor(
+    public util: UtilitiesService,
+    public user: UserService,
+    public team: TeamService,
+    private request: RequestService,
+    private auth: AuthService,
+    private messageCenter: MessagesService,
+    private notificationService: NotificationService
+  ) {}
 
-  constructor(public util:UtilitiesService, public user:UserService, public team:TeamService, private request:RequestService, private auth:AuthService, private messageCenter:MessagesService,
-    private notificationService:NotificationService) {
-
-   }
-
-  messages:any = [];
+  messages: any = [];
   selectedMessage;
 
-  isSelected(message){
-    if(this.selectedMessage && message){
-      return this.selectedMessage._id == message._id
-    }else{
+  isSelected(message) {
+    if (this.selectedMessage && message) {
+      return this.selectedMessage._id == message._id;
+    } else {
       return false;
     }
-
   }
 
-  selectMessage(message){
+  selectMessage(message) {
     this.selectedMessage = message;
     this.messageCenter.markRead(message._id).subscribe(
-      res=>{
-        this.notificationService.updateMessages.next('Msg center updated');
-      },err=>{
+      (res) => {
+        this.notificationService.updateMessages.next("Msg center updated");
+      },
+      (err) => {
         console.warn(err);
       }
-    )
+    );
   }
 
-  deleteMessage(message){
-    if (this.util.returnBoolByPath(message,'request')){
+  deleteMessage(message) {
+    if (this.util.returnBoolByPath(message, "request")) {
       this.actionRequest(false, message);
-    }else{
-      this.messageCenter.deleteMessage(message._id).subscribe(res => {
-        let ind = -1;
-        this.messages.forEach((element, index) => {
-          if (element._id == message._id) {
-            ind = index;
+    } else {
+      this.messageCenter.deleteMessage(message._id).subscribe(
+        (res) => {
+          let ind = -1;
+          this.messages.forEach((element, index) => {
+            if (element._id == message._id) {
+              ind = index;
+            }
+          });
+          if (ind > -1) {
+            this.messages.splice(ind, 1);
+            if (this.selectedMessage._id == message._id) {
+              this.selectedMessage = null;
+            }
           }
-        });
-        if (ind > -1) {
-          this.messages.splice(ind, 1);
-          if (this.selectedMessage._id == message._id) {
-            this.selectedMessage = null;
-          }
+        },
+        (err) => {
+          console.warn(err);
         }
-      }, err => {
-        console.warn(err);
-      })
+      );
     }
-
   }
 
-  actionRequest(act, msg){
-    if (msg.request.instance == 'team'){
-      this.request.approveTeamRequest(msg.request.target, msg.request.requester, act, msg._id).subscribe((res) => {
-        this.ngOnInit();
-      }, (err) => {
-        this.ngOnInit();
-      })
-    } else if (msg.request.instance == 'user'){
-      this.request.acceptTeamInvite(msg.request.requester, msg.request.target, act, msg._id).subscribe((res) => {
-        this.ngOnInit();
-      }, (err) => {
-        this.ngOnInit();
-      });
-    } else if (msg.request.hasOwnProperty('players') || msg.request.hasOwnProperty('teams')){
-
-      this.messageCenter.deleteMessage(msg._id).subscribe(res => {
-        let ind = -1;
-        this.messages.forEach((element, index) => {
-          if (element._id == msg._id) {
-            ind = index;
+  actionRequest(act, msg) {
+    if (msg.request.instance == "team") {
+      this.request
+        .approveTeamRequest(
+          msg.request.target,
+          msg.request.requester,
+          act,
+          msg._id
+        )
+        .subscribe(
+          (res) => {
+            this.ngOnInit();
+          },
+          (err) => {
+            this.ngOnInit();
           }
-        });
-
-        if (ind > -1) {
-          this.messages.splice(ind, 1);
-          if (this.selectedMessage && this.selectedMessage._id == msg._id) {
-            this.selectedMessage = null;
+        );
+    } else if (msg.request.instance == "user") {
+      this.request
+        .acceptTeamInvite(
+          msg.request.requester,
+          msg.request.target,
+          act,
+          msg._id
+        )
+        .subscribe(
+          (res) => {
+            this.ngOnInit();
+          },
+          (err) => {
+            this.ngOnInit();
           }
+        );
+    } else if (
+      msg.request.hasOwnProperty("players") ||
+      msg.request.hasOwnProperty("teams")
+    ) {
+      this.messageCenter.deleteMessage(msg._id).subscribe(
+        (res) => {
+          let ind = -1;
+          this.messages.forEach((element, index) => {
+            if (element._id == msg._id) {
+              ind = index;
+            }
+          });
+
+          if (ind > -1) {
+            this.messages.splice(ind, 1);
+            if (this.selectedMessage && this.selectedMessage._id == msg._id) {
+              this.selectedMessage = null;
+            }
+          }
+        },
+        (err) => {
+          console.warn(err);
         }
-      }, err => {
-        console.warn(err);
-      })
-
-
+      );
     }
-
   }
 
   ngOnInit() {
     this.messages = [];
     this.selectedMessage = null;
     this.messageCenter.getMessages(this.auth.getUserId()).subscribe(
-      res=>{
+      (res) => {
         this.messages = res;
       },
-      err=>{
+      (err) => {
         console.warn(err);
       }
-    )
+    );
   }
-
 }

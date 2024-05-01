@@ -11,7 +11,11 @@ import { CommonModule } from '@angular/common';
   templateUrl: './match-view-verticle.component.html',
   styleUrls: ['./match-view-verticle.component.css'],
   standalone:true,
-  imports:[TeamLinkComponent, CommonPipePipe, CommonModule]
+  imports:[
+    TeamLinkComponent,
+    CommonPipePipe,
+    CommonModule
+  ]
 })
 export class MatchViewVerticleComponent implements OnInit {
 

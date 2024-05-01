@@ -4,16 +4,23 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { FormsModule } from '@angular/forms';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
+import { MatFormField, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { DatePickerComponent } from 'src/app/formComponents/date-picker/date-picker.component';
 import { RouterModule } from '@angular/router';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 @Component({
   selector: "app-stream-manager",
   templateUrl: "./stream-manager.component.html",
   styleUrls: ["./stream-manager.component.css"],
   standalone:true,
-  imports:[FormsModule, MatLabel, MatFormField, DatePickerComponent, RouterModule]
+  imports:[
+    FormsModule,
+    MatFormFieldModule,
+    DatePickerComponent,
+    RouterModule,
+    CommonPipePipe
+  ]
 })
 export class StreamManagerComponent implements OnInit {
   constructor(

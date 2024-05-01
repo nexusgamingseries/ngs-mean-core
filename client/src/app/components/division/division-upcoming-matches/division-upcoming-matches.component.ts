@@ -2,11 +2,20 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TeamService } from 'src/app/services/team.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 @Component({
   selector: 'app-division-upcoming-matches',
   templateUrl: './division-upcoming-matches.component.html',
-  styleUrls: ['./division-upcoming-matches.component.css']
+  styleUrls: ['./division-upcoming-matches.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    TeamLinkComponent
+  ]
 })
 export class DivisionUpcomingMatchesComponent implements OnInit {
 

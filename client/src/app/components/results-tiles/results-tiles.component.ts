@@ -1,4 +1,8 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
@@ -7,7 +11,12 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
   templateUrl: "./results-tiles.component.html",
   styleUrls: ["./results-tiles.component.css"],
   standalone: true,
-  imports: [],
+  imports: [
+    CommonModule,
+    CommonPipePipe,
+    TeamLinkComponent,
+    RouterModule
+  ],
 })
 export class ResultsTilesComponent implements OnInit {
   constructor(public team: TeamService, public util: UtilitiesService) {}

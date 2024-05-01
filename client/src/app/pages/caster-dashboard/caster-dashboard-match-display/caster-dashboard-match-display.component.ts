@@ -4,13 +4,23 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { Match } from 'src/app/classes/match.class';
 import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
+import { DateTimePickerComponent } from 'src/app/formComponents/date-time-picker/date-time-picker.component';
+import { CasterInputsComponent } from '../caster-inputs/caster-inputs.component';
 
 @Component({
   selector: "app-caster-dashboard-match-display",
   templateUrl: "./caster-dashboard-match-display.component.html",
   styleUrls: ["./caster-dashboard-match-display.component.css"],
   standalone:true,
-  imports:[CommonModule]
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    TeamLinkComponent,
+    DateTimePickerComponent,
+    CasterInputsComponent
+  ]
 })
 export class CasterDashboardMatchDisplayComponent implements OnInit {
   constructor(

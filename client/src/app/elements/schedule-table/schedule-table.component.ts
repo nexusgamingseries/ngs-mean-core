@@ -1,9 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ScheduleService } from 'src/app/services/schedule.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { RoundColumnComponent } from './round-column/round-column.component';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 const ROUND = 'round';
 const SCHEDULEDTIME = 'scheduledTime';
@@ -13,7 +17,13 @@ const SCHEDULEDTIME = 'scheduledTime';
   templateUrl: './schedule-table.component.html',
   styleUrls: ['./schedule-table.component.css'],
   standalone:true,
-  imports:[]
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    RouterModule,
+    RoundColumnComponent,
+    TeamLinkComponent
+  ]
 })
 export class ScheduleTableComponent implements OnInit {
 

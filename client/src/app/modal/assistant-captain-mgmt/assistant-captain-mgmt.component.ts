@@ -1,4 +1,7 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 
 @Component({
@@ -6,7 +9,12 @@ import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/materia
   templateUrl: './assistant-captain-mgmt.component.html',
   styleUrls: ['./assistant-captain-mgmt.component.css'],
   standalone:true,
-  imports:[MatDialogModule]
+  imports:[
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatCheckboxModule
+  ]
 })
 export class AssistantCaptainMgmtComponent implements OnInit {
 

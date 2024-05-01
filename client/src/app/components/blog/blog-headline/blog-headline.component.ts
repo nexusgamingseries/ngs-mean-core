@@ -5,13 +5,19 @@ import { BlogCommonService } from 'src/app/services/blog-common.service';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import * as moment from 'moment-timezone';
 import { ImageGetterComponent } from '../image-getter/image-getter.component';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 @Component({
   selector: 'app-blog-headline',
   templateUrl: './blog-headline.component.html',
   styleUrls: ['./blog-headline.component.css'],
   standalone:true,
-  imports:[ImageGetterComponent]
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    ImageGetterComponent
+  ]
 })
 export class BlogHeadlineComponent implements OnInit {
 

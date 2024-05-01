@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 @Component({
   selector: 'app-logs-viewer',
@@ -9,8 +11,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./logs-viewer.component.css'],
   standalone:true,
   imports:[
+    CommonModule,
     RouterModule,
-
+    CommonPipePipe
   ]
 })
 export class LogsViewerComponent implements OnInit {

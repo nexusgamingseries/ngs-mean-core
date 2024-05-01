@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-change-captain-modal',
@@ -9,9 +12,13 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialog, MatDialogContent, MatDialo
   standalone:true,
   imports:[
     CommonModule,
+    MatDialogModule,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose
+    MatDialogClose,
+    MatInputModule,
+    MatButtonModule,
+    MatCheckboxModule
   ]
 })
 
@@ -26,6 +33,7 @@ export class ChangeCaptainModalComponent implements OnInit {
     {}
 
   ngOnInit() {
+
   }
 
 }

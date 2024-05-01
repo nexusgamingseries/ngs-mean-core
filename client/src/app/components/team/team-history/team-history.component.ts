@@ -1,11 +1,18 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 import { Team } from 'src/app/classes/team.class';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 
 @Component({
   selector: 'app-team-history',
   templateUrl: './team-history.component.html',
-  styleUrls: ['./team-history.component.css']
+  styleUrls: ['./team-history.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe
+  ]
 })
 export class TeamHistoryComponent implements OnInit {
 

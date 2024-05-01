@@ -6,13 +6,19 @@ import { CountdownService } from '../../services/countdown.service';
 import { Iinterval } from '../../services/iinterval';
 import { TimeService } from '../../services/time.service';
 import { AuthService } from '../../services/auth.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 
 @Component({
   selector: "app-countdown",
   templateUrl: "./countdown.component.html",
-  standalone:true,
   styleUrls: ["./countdown.component.css"],
+  standalone: true,
+  imports:[
+    CommonModule,
+    CommonPipePipe
+  ]
 })
 export class CountdownComponent implements OnInit {
   constructor(
@@ -21,7 +27,7 @@ export class CountdownComponent implements OnInit {
     public team: TeamService,
     private countdownService: CountdownService,
     private timeService: TimeService,
-    private auth:AuthService
+    private auth: AuthService
   ) {
     this.timeService.getSesasonInfo().subscribe((res) => {
       this.seasonStartDate = res.seasonStartDate;
@@ -30,7 +36,6 @@ export class CountdownComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
 
   seasonStartDate;
   registrationOpen;
@@ -86,16 +91,16 @@ export class CountdownComponent implements OnInit {
       .subscribe((tick) => {
         this.timeRemaining = tick;
       });
-      if(this.registrationEndDate){
-            this.countdownService
-              .getCountDown(this.registrationEndDate)
-              .subscribe((tick) => {
-                this.registrationTimeRemaining = tick;
-              });
-      }
+    if (this.registrationEndDate) {
+      this.countdownService
+        .getCountDown(this.registrationEndDate)
+        .subscribe((tick) => {
+          this.registrationTimeRemaining = tick;
+        });
+    }
   }
 
-  showRegBut
+  showRegBut;
   ngOnInit() {
     this.teamName = this.team.routeFriendlyTeamName(this.auth.getTeam());
     this.showRegBut = this.auth.getCaptain();
@@ -103,7 +108,7 @@ export class CountdownComponent implements OnInit {
       this.preSeason = false;
 
       this.scheduleService.getNearestMatch().subscribe(
-        res=>{
+        (res) => {
           let nearestMatch = res[0];
           if (nearestMatch) {
             nearestMatch.scheduledTime.startTime = parseInt(
@@ -116,18 +121,18 @@ export class CountdownComponent implements OnInit {
             this.validMatch = true;
             this.initCountdown();
           }
-        },(err)=>{
+        },
+        (err) => {
           console.warn(err);
         }
-      )
-
+      );
     } else {
       this.startDate = this.seasonStartDate;
       this.targetMatch.scheduledTime.startTime = this.seasonStartDate;
       this.validMatch = false;
       this.preSeason = true;
       let now = Date.now();
-      if(now>this.registrationEndDate){
+      if (now > this.registrationEndDate) {
         this.registrationEndDate = null;
       }
       this.initCountdown();

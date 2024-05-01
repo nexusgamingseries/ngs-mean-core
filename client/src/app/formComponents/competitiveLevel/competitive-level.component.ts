@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({
@@ -12,7 +13,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   imports:[
     CommonModule,
     FormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class CompetitiveLevelComponent implements OnInit {

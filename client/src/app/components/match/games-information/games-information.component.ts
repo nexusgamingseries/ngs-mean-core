@@ -6,13 +6,20 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { forEach as _forEach } from 'lodash';
 import { HeroesProfileService } from 'src/app/services/heroes-profile.service';
 import { Replay } from 'src/app/classes/match.class';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 
 @Component({
   selector: "app-games-information",
   templateUrl: "./games-information.component.html",
   styleUrls: ["./games-information.component.css"],
-  standalone:true
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+
+  ]
 })
 export class GamesInformationComponent implements OnInit, OnChanges {
   constructor(

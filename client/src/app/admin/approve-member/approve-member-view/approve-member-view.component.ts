@@ -5,11 +5,18 @@ import { Profile } from "../../../classes/profile.class";
 import { Team } from "../../../classes/team.class";
 import { AdminService } from "../../../services/admin.service";
 import { UtilitiesService } from "src/app/services/utilities.service";
+import { CommonModule } from "@angular/common";
+import { CommonPipePipe } from "src/app/common/common-pipe.pipe";
 
 @Component({
   selector: "app-approve-member-view",
   templateUrl: "./approve-member-view.component.html",
   styleUrls: ["./approve-member-view.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe
+  ]
 })
 export class ApproveMemberViewComponent implements OnInit {
   //component properties

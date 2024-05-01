@@ -3,11 +3,19 @@ import { TeamService } from 'src/app/services/team.service';
 import { UtilitiesService } from '../../../services/utilities.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DivisionService } from 'src/app/services/division.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
 
 @Component({
   selector: 'app-match-view',
   templateUrl: './match-view.component.html',
-  styleUrls: ['./match-view.component.css']
+  styleUrls: ['./match-view.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+
+  ]
 })
 export class MatchViewComponent implements OnInit {
 

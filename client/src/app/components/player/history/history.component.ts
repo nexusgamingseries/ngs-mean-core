@@ -10,7 +10,10 @@ import { UtilitiesService } from 'src/app/services/utilities.service';
   templateUrl: './history.component.html',
   styleUrls: ['./history.component.css'],
   standalone:true,
-  imports:[CommonModule, CommonPipePipe]
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+  ]
 })
 
 export class HistoryComponent implements OnInit {

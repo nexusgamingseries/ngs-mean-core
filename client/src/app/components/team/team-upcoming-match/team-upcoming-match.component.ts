@@ -3,11 +3,20 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { TeamService } from 'src/app/services/team.service';
 import { TimeService } from 'src/app/services/time.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 
 @Component({
   selector: 'app-team-upcoming-match',
   templateUrl: './team-upcoming-match.component.html',
-  styleUrls: ['./team-upcoming-match.component.css']
+  styleUrls: ['./team-upcoming-match.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    TeamLinkComponent,
+  ]
 })
 export class TeamUpcomingMatchComponent implements OnInit {
 

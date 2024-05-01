@@ -10,11 +10,20 @@ import { PlayerRankService } from 'src/app/services/player-rank.service';
 import { TimeService } from 'src/app/services/time.service';
 import { find } from 'lodash';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { CommonModule } from '@angular/common';
+import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { PlayerLinkComponent } from 'src/app/LinkComponents/player-link/player-link.component';
 
 @Component({
   selector: "app-player-small-card",
   templateUrl: "./player-small-card.component.html",
   styleUrls: ["./player-small-card.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    CommonPipePipe,
+    PlayerLinkComponent,
+  ]
 })
 export class PlayerSmallCardComponent implements OnInit {
   constructor(

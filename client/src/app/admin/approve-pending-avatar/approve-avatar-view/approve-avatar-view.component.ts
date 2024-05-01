@@ -2,13 +2,17 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { AdminService } from 'src/app/services/admin.service';
 import { CommonPipePipe } from 'src/app/common/common-pipe.pipe';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-approve-avatar-view',
   templateUrl: './approve-avatar-view.component.html',
   styleUrls: ['./approve-avatar-view.component.css'],
   standalone:true,
-  imports:[CommonPipePipe]
+  imports:[
+    CommonModule,
+    CommonPipePipe
+  ]
 })
 export class ApproveAvatarViewComponent implements OnInit {
 
