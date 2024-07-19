@@ -22,6 +22,17 @@ import { BannerImageComponent } from 'src/app/components/banner-image/banner-ima
 import { MatInputModule } from '@angular/material/input';
 import { ImageUploadComponent } from 'src/app/components/image-upload/image-upload.component';
 import { HistoryComponent } from 'src/app/components/player/history/history.component';
+import { TimesAvailableComponent } from 'src/app/formComponents/times-available/times-available.component';
+import { PlayerSmallCardComponent } from 'src/app/components/player/player-small-card/player-small-card.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { VerifiedStormLeagueRanksViewComponent } from 'src/app/components/verified-storm-league-ranks-view/verified-storm-league-ranks-view.component';
+import { PlayHistoryComponent } from 'src/app/formComponents/play-history/play-history.component';
+import { CompetitiveLevelComponent } from 'src/app/formComponents/competitiveLevel/competitive-level.component';
+import { RolesComponent } from 'src/app/formComponents/roles/roles.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TwitchComponent } from 'src/app/formComponents/twitch/twitch.component';
+import { TwitterComponent } from 'src/app/formComponents/twitter/twitter.component';
+import { YoutubeComponent } from 'src/app/formComponents/youtube/youtube.component';
 
 
 @Component({
@@ -34,10 +45,21 @@ import { HistoryComponent } from 'src/app/components/player/history/history.comp
     TeamLinkComponent,
     CommonPipePipe,
     BannerImageComponent,
+    PlayerSmallCardComponent,
     TeamLinkComponent,
     MatInputModule,
+    MatFormFieldModule,
     ImageUploadComponent,
-    HistoryComponent
+    HistoryComponent,
+    TimesAvailableComponent,
+    MatSlideToggleModule,
+    VerifiedStormLeagueRanksViewComponent,
+    PlayHistoryComponent,
+    CompetitiveLevelComponent,
+    RolesComponent,
+    TwitchComponent,
+    TwitterComponent,
+    YoutubeComponent,
   ],
 })
 export class PlayerProfile implements OnInit {

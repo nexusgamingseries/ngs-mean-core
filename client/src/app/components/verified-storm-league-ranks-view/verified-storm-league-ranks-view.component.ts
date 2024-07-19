@@ -4,12 +4,23 @@ import { PlayerRankService } from '../../services/player-rank.service';
 import { UserService } from '../../services/user.service';
 import { findIndex } from 'lodash';
 import { AdminService } from '../../services/admin.service';
+import { CommonModule } from '@angular/common';
+import { StormLeagueComponent } from 'src/app/formComponents/storm-league/storm-league.component';
+import { ImageUploadComponent } from '../image-upload/image-upload.component';
+import { LoadingComponent } from 'src/app/elements/loading/loading.component';
 // import { }
 
 @Component({
   selector: "app-verified-storm-league-ranks-view",
   templateUrl: "./verified-storm-league-ranks-view.component.html",
   styleUrls: ["./verified-storm-league-ranks-view.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    StormLeagueComponent,
+    ImageUploadComponent,
+    LoadingComponent
+  ]
 })
 export class VerifiedStormLeagueRanksViewComponent implements OnInit {
   constructor(

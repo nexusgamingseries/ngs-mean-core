@@ -21,9 +21,18 @@ import { BannerImageComponent } from 'src/app/components/banner-image/banner-ima
   templateUrl: "./caster-report.component.html",
   styleUrls: ["./caster-report.component.css"],
   standalone: true,
-  imports: [ MatTab, MatTabGroup, FormsModule, MatLabel, MatFormField,
-    MatOption, MatAutocomplete, MatAutocompleteModule, ReactiveFormsModule,
-    BannerImageComponent],
+  imports: [
+    MatTab,
+    MatTabGroup,
+    FormsModule,
+    MatLabel,
+    MatFormField,
+    MatOption,
+    MatAutocomplete,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    BannerImageComponent
+  ],
 })
 export class CasterReportComponent implements OnInit {
   constructor(

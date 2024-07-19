@@ -2,7 +2,8 @@ import { Directive, Renderer2, ElementRef } from '@angular/core';
 import { LeagueStatService } from './league-stat.service';
 
 @Directive({
-  selector: '[appLStat]'
+  selector: '[appLStat]',
+  standalone:true,
 })
 export class LStatDirective {
 

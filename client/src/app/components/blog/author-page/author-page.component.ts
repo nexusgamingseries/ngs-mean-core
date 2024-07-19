@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogCommonService } from 'src/app/services/blog-common.service';
-
 import { ActivatedRoute } from '@angular/router';
 import { MarkdownParserService } from 'src/app/services/markdown-parser.service';
-import { merge } from 'lodash';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import { Author } from 'src/app/services/wordpress.service';
 import { BannerImageComponent } from '../../banner-image/banner-image.component';
+import { BlogHeadlineComponent } from '../blog-headline/blog-headline.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-author-page',
   templateUrl: './author-page.component.html',
   styleUrls: ['./author-page.component.css'],
   standalone:true,
-  imports:[BannerImageComponent]
+  imports:[
+    CommonModule,
+    BannerImageComponent,
+    BlogHeadlineComponent,
+
+  ]
 })
 export class AuthorPageComponent implements OnInit {
 
@@ -48,6 +53,8 @@ export class AuthorPageComponent implements OnInit {
         )
       }
     )
+
+    console.log("this.authorInf", this.authorInf);
 
     }
   }

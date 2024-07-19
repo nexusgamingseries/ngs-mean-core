@@ -4,12 +4,15 @@ import { TeamService } from '../../services/team.service';
 import { AuthService } from '../../services/auth.service';
 import { DivisionService } from '../../services/division.service';
 import { TimeService } from '../../services/time.service';
+import { DivisionSelectorComponent } from '../division-selector/division-selector.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-division-standings',
   templateUrl: './division-standings.component.html',
   styleUrls: ['./division-standings.component.css'],
   standalone:true,
+  imports:[DivisionSelectorComponent, CommonModule ]
 })
 export class DivisionStandingsComponent implements OnInit {
 

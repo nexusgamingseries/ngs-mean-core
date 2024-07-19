@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { AuthService } from 'src/app/services/auth.service';
 import { TimezoneService } from 'src/app/services/timezone.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
@@ -8,13 +8,28 @@ import { RequestService } from 'src/app/services/request.service';
 import { DivisionService } from 'src/app/services/division.service';
 import { UserService } from 'src/app/services/user.service';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { MatFormField, MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { UserDeckComponent } from './user-deck/user-deck.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-user-marketplace",
   templateUrl: "./user-marketplace.component.html",
   styleUrls: ["./user-marketplace.component.css"],
   standalone:true,
-  imports:[BannerImageComponent]
+  imports:[
+    BannerImageComponent,
+    CommonModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatPaginatorModule,
+    UserDeckComponent,
+  ]
 })
 export class UserMarketplaceComponent implements OnInit {
   constructor(

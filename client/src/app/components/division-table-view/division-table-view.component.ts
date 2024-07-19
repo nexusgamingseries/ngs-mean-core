@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
+import { CommonModule } from '@angular/common';
+import { DivisionLinkComponent } from 'src/app/LinkComponents/division-link/division-link.component';
+import { MiniTeamViewComponent } from './mini-team-view/mini-team-view.component';
 
 @Component({
   selector: 'app-division-table-view',
   templateUrl: './division-table-view.component.html',
-  styleUrls: ['./division-table-view.component.css']
+  styleUrls: ['./division-table-view.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+    DivisionLinkComponent,
+    MiniTeamViewComponent
+  ]
 })
 export class DivisionTableViewComponent implements OnInit {
 

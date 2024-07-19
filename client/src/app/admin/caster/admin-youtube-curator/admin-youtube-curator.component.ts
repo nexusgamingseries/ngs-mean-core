@@ -5,6 +5,7 @@ import { TimeService } from 'src/app/services/time.service';
 import { find } from 'lodash';
 import { UtilitiesService } from 'src/app/services/utilities.service';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 declare var gapi: any;
 
@@ -13,7 +14,10 @@ declare var gapi: any;
   templateUrl: './admin-youtube-curator.component.html',
   styleUrls: ['./admin-youtube-curator.component.css'],
   standalone:true,
-  imports:[ RouterModule, ]
+  imports:[
+    CommonModule,
+    RouterModule,
+   ]
 })
 export class AdminYoutubeCurator implements OnInit {
 

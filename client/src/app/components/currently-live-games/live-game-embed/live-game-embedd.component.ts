@@ -1,9 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { SafePipe } from 'src/app/safe.pipe';
 
 @Component({
   selector: "app-live-game-embedd",
   templateUrl: "./live-game-embedd.component.html",
-  styleUrls: ["./live-game-embedd.component.css"]
+  styleUrls: ["./live-game-embedd.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    SafePipe
+  ]
 })
 export class LiveGameEmbeddComponent implements OnInit {
   constructor() { }

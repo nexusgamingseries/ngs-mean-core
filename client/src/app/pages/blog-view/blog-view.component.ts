@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { MarkdownParserService } from '../../services/markdown-parser.service';
-import { merge } from 'lodash';
 import { BlogCommonService } from 'src/app/services/blog-common.service';
 import { WordpressService, Author } from 'src/app/services/wordpress.service';
 import { Post } from 'src/app/services/wordpress.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
+import { ImageGetterComponent } from 'src/app/components/blog/image-getter/image-getter.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-blog-view",
@@ -14,7 +15,12 @@ import { BannerImageComponent } from 'src/app/components/banner-image/banner-ima
   styleUrls: ["./blog-view.component.css"],
   encapsulation: ViewEncapsulation.None,
   standalone:true,
-  imports:[RouterModule, BannerImageComponent]
+  imports:[
+    RouterModule,
+    CommonModule,
+    BannerImageComponent,
+    ImageGetterComponent,
+  ]
 })
 export class BlogViewComponent implements OnInit {
   //component properties
@@ -65,6 +71,7 @@ export class BlogViewComponent implements OnInit {
         this.WP.getCacheAuthor(this.displayBlog.author).subscribe(
           (auth: Author) => {
             this.displayAuthor = auth;
+            console.log('this.displayAuthor',this.displayAuthor)
           }
         );
       });

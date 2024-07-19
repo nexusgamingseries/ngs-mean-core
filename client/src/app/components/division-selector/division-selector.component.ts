@@ -4,13 +4,15 @@ import { AdminService } from '../../services/admin.service';
 import { UtilitiesService } from '../../services/utilities.service';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: "app-division-selector",
   templateUrl: "./division-selector.component.html",
   styleUrls: ["./division-selector.component.css"],
   standalone: true,
-  imports:[MatSelectModule, FormsModule]
+  imports:[MatSelectModule, FormsModule, MatFormFieldModule, CommonModule ]
 })
 export class DivisionSelectorComponent implements OnInit {
   constructor(

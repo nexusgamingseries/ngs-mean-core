@@ -2,11 +2,18 @@ import { Component, OnInit, Input } from '@angular/core';
 import { WordpressService } from 'src/app/services/wordpress.service';
 import { Author } from 'src/app/services/wordpress.service';
 import { UtilitiesService } from 'src/app/services/utilities.service';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-author-name',
   templateUrl: './author-name.component.html',
-  styleUrls: ['./author-name.component.css']
+  styleUrls: ['./author-name.component.css'],
+  standalone:true,
+  imports:[
+    RouterModule,
+    CommonModule
+  ]
 })
 export class AuthorNameComponent implements OnInit {
 

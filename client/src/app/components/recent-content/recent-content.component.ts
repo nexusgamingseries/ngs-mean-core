@@ -1,11 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-recent-content',
   templateUrl: './recent-content.component.html',
-  styleUrls: ['./recent-content.component.css']
+  styleUrls: ['./recent-content.component.css'],
+  standalone:true,
+  imports:[
+    CommonModule,
+
+  ]
 })
 export class RecentContentComponent implements OnInit {
 

@@ -14,7 +14,8 @@ import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.co
   imports:[
     CommonModule,
     CommonPipePipe,
-    TeamLinkComponent
+    TeamLinkComponent,
+
   ]
 })
 export class UpcomingMatchesComponent implements OnInit {
@@ -29,6 +30,7 @@ export class UpcomingMatchesComponent implements OnInit {
   ngOnInit() {
     this.scheduleService.getNearestMatches(4).subscribe(
       (res) => {
+        console.log('res', res);
         res.forEach((match, ind) => {
           if (ind < 4) {
             if (this.util.returnBoolByPath(match, "home.logo")) {
@@ -37,7 +39,9 @@ export class UpcomingMatchesComponent implements OnInit {
             if (this.util.returnBoolByPath(match, "away.logo")) {
               match.away.logo = this.team.imageFQDN(match.away.logo);
             }
+            this.next4matches.push(match);
           }
+
         });
       },
       (err) => {

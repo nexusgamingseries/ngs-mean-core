@@ -1,13 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
 import { RouterModule } from '@angular/router';
+import { DivisionLinkComponent } from 'src/app/LinkComponents/division-link/division-link.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './app-footer.component.html',
   styleUrls: ['./app-footer.component.css'],
   standalone:true,
-  imports:[AppFooterComponent, RouterModule]
+  imports:[
+    CommonModule,
+    AppFooterComponent,
+    RouterModule,
+    DivisionLinkComponent
+  ]
 })
 export class AppFooterComponent implements OnInit {
 

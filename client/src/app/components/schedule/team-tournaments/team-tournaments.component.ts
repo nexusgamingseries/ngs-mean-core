@@ -18,7 +18,7 @@ import { ScheduleTableComponent } from 'src/app/elements/schedule-table/schedule
     MatFormFieldModule,
     MatSelectModule,
     ChallongeTournComponent,
-    ScheduleTableComponent
+    ScheduleTableComponenty
   ]
 })
 export class TeamTournamentsComponent implements OnInit {

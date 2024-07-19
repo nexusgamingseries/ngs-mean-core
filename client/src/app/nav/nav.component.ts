@@ -12,6 +12,7 @@ import { PlayerLinkComponent } from '../LinkComponents/player-link/player-link.c
 import { TeamLinkComponent } from '../LinkComponents/team-link/team-link.component';
 import { DivisionLinkComponent } from '../LinkComponents/division-link/division-link.component';
 import { CommonModule } from '@angular/common';
+import { LStatDirective } from '../components/league-stats/l-stat.directive';
 
 declare var Mmenu: any;
 
@@ -20,7 +21,14 @@ declare var Mmenu: any;
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css'],
   standalone:true,
-  imports:[RouterModule, PlayerLinkComponent, TeamLinkComponent, DivisionLinkComponent, CommonModule]
+  imports:[
+    RouterModule,
+    PlayerLinkComponent,
+    TeamLinkComponent,
+    DivisionLinkComponent,
+    CommonModule,
+    LStatDirective
+  ]
 })
 export class NavComponent implements OnInit {
   divisions

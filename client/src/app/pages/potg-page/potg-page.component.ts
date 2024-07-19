@@ -1,35 +1,47 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MvpService } from '../../services/mvp.service';
 import { TimeService } from '../../services/time.service';
-import { PageEvent, MatPaginator } from "@angular/material/paginator";
+import { PageEvent, MatPaginator, MatPaginatorModule } from "@angular/material/paginator";
 import { UtilitiesService } from '../../services/utilities.service';
-import { MatFormField, MatLabel, MatSelect } from '@angular/material/select';
+import { MatFormField, MatLabel, MatSelect, MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { BannerImageComponent } from 'src/app/components/banner-image/banner-image.component';
 import { TeamLinkComponent } from 'src/app/LinkComponents/team-link/team-link.component';
 import { FormsModule } from '@angular/forms';
+import { PotgDisplayComponent } from './potg-display/potg-display.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
   selector: "app-potg-page",
   templateUrl: "./potg-page.component.html",
   standalone:true,
-  imports:[MatPaginator, MatSelect, CommonModule, MatLabel, MatFormField, BannerImageComponent, TeamLinkComponent, FormsModule],
+  imports:[
+    MatPaginatorModule,
+    MatSelectModule,
+    CommonModule,
+    MatFormFieldModule,
+    BannerImageComponent,
+    TeamLinkComponent,
+    FormsModule,
+    PotgDisplayComponent
+  ],
   styleUrls: ["./potg-page.component.css"],
 })
 export class PotgPageComponent implements OnInit {
+
   constructor(
     private mvpServ: MvpService,
     private timeService: TimeService,
     private util:UtilitiesService
   ) {
-                this.timeService.getSesasonInfo().subscribe((res) => {
-                  this.currentSeason = res.value;
-                  this.selectedSeason = res.value;
-                  for (let i = 9; i <= this.currentSeason; i++) {
-                    this.seasonDropdown.push(i);
-                  }
-                  this.initPotgs();
-                });
+    this.timeService.getSesasonInfo().subscribe((res) => {
+      this.currentSeason = res.value;
+      this.selectedSeason = res.value;
+      for (let i = 9; i <= this.currentSeason; i++) {
+        this.seasonDropdown.push(i);
+      }
+      this.initPotgs();
+    });
   }
 
   currentSeason;

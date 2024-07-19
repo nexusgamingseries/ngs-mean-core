@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WordpressService } from 'src/app/services/wordpress.service';
 
@@ -6,7 +7,9 @@ import { WordpressService } from 'src/app/services/wordpress.service';
   templateUrl: './author-list.component.html',
   styleUrls: ['./author-list.component.css'],
   standalone:true,
-  imports:[]
+  imports:[
+    CommonModule,
+  ]
 })
 export class AuthorListComponent implements OnInit {
 

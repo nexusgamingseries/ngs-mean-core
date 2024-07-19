@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { WordpressService } from 'src/app/services/wordpress.service';
 
@@ -6,7 +7,10 @@ import { WordpressService } from 'src/app/services/wordpress.service';
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css'],
   standalone:true,
-  imports:[]
+  imports:[
+    CommonModule,
+
+  ]
 })
 export class BlogCategoriesComponent implements OnInit {
 

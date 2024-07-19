@@ -3,11 +3,22 @@ import { ScheduleService } from 'src/app/services/schedule.service';
 import { Match } from '../../../classes/match.class';
 import { MvpService } from 'src/app/services/mvp.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { CommonModule } from '@angular/common';
+import { PlayerDisplayComponent } from './player-display/player-display.component';
+import { RouterModule } from '@angular/router';
+import { SafePipe } from 'src/app/safe.pipe';
 
 @Component({
   selector: "app-potg-display",
   templateUrl: "./potg-display.component.html",
-  styleUrls: ["./potg-display.component.css"]
+  styleUrls: ["./potg-display.component.css"],
+  standalone:true,
+  imports:[
+    CommonModule,
+    RouterModule,
+    PlayerDisplayComponent,
+    SafePipe
+  ]
 })
 export class PotgDisplayComponent implements OnInit {
   constructor(

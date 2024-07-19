@@ -7,7 +7,9 @@ import { WordpressService } from 'src/app/services/wordpress.service';
   templateUrl: './image-getter.component.html',
   styleUrls: ['./image-getter.component.css'],
   standalone:true,
-  imports:[CommonModule]
+  imports:[
+    CommonModule
+  ]
 })
 export class ImageGetterComponent implements OnInit {
 
