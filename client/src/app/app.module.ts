@@ -1,5 +1,10 @@
+/**
+ * In v15, setDisabledState is always called when a ControlValueAccessor is attached.
+ * To opt-out of this behavior, use FormsModule.withConfig or ReactiveFormsModule.withConfig. Read further
+ */
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injector, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -99,7 +104,7 @@ import { RecentNewsComponent } from './components/recent-news/recent-news.compon
 import { UpcomingMatchesComponent } from './components/upcoming-matches/upcoming-matches.component';
 import { RecentContentComponent } from './components/recent-content/recent-content.component';
 import { SafePipe } from './safe.pipe';
-import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
+
 import { StaticHtmlLoaderComponent } from './static-html-loader/static-html-loader.component';
 import { HideMenuDirective } from './nav/hide-menu.directive';
 import { CategoriesComponent } from './components/blog/categories/categories.component';
@@ -205,6 +210,9 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
 import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-youtube-curator.component';
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
+import { CommonModule } from '@angular/common';
+import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
+
 
 
 @NgModule({
@@ -311,7 +319,6 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     TeamUpcomingMatchComponent,
     DivisionResultsTilesComponent,
     DivisionUpcomingMatchesComponent,
-    SafeHtmlPipe,
     BannerImageComponent,
     ResultsTilesComponent,
     ApprovePendingAvatarComponent,
@@ -394,16 +401,18 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     SingleTeamDisplayComponent,
     AdminYoutubeCurator,
     CreateThreadComponent,
-    GenerateNonSeasonalSchedulesComponent
+    GenerateNonSeasonalSchedulesComponent,
+    SafeHtmlPipe,
   ],
-  entryComponents:[
-    DeleteConfrimModalComponent,
-    ChangeCaptainModalComponent,
-    ConfirmRemoveMemberComponent,
-    EventModalComponent,
-    AssistantCaptainMgmtComponent
-  ],
+  // entryComponents:[
+  //   DeleteConfrimModalComponent,
+  //   ChangeCaptainModalComponent,
+  //   ConfirmRemoveMemberComponent,
+  //   EventModalComponent,
+  //   AssistantCaptainMgmtComponent
+  // ],
   imports: [
+    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -414,7 +423,7 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
     ngfModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
-      useFactory: adapterFactory
+      useFactory: adapterFactory,
     }),
     DragDropModule,
     DragScrollModule,
@@ -422,19 +431,15 @@ import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/gener
   ],
   providers: [
     {
-    provide:HTTP_INTERCEPTORS,
-    useClass:ResponseInterceptor,
-    multi:true
+      provide: HTTP_INTERCEPTORS,
+      useClass: ResponseInterceptor,
+      multi: true,
     },
-    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS },
   ],
-  schemas:[
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  bootstrap: [AppComponent]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  bootstrap: [AppComponent],
 })
-
-
 export class AppModule {}
 
 /*

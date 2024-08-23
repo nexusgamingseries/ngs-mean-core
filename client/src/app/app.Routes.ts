@@ -24,7 +24,7 @@ import { MatchEditComponent } from "./admin/match-admin/match-edit/match-edit.co
 import { AdminAclManagementComponent } from './admin/admin-acl-management/admin-acl-management.component';
 import { UpdateRolesComponent } from "./admin/admin-acl-management/update-roles/update-roles.component";
 import { ManageTeamViewComponent } from './admin/manage-team/manage-team-view/manage-team-view.component';
-import { AuthGuardService } from "./services/auth-guard.service";
+import { ngsSecCanActivate } from "./services/auth-guard.service";
 import { NoAccessComponent } from "./pages/no-access/no-access.component";
 import { SessionTimeoutComponent } from "./pages/session-timeout/session-timeout.component";
 import { CalendarViewComponent } from "./pages/calendar-view/calendar-view.component";
@@ -69,7 +69,7 @@ const APP_ROUTES: Routes = [
   {
     path: "_admin/thread/create",
     component: CreateThreadComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "schedulegen" },
   },
   { path: "challonge", component: ChallongeTournComponent },
@@ -78,7 +78,7 @@ const APP_ROUTES: Routes = [
   {
     path: "playersearch",
     component: PlayerSearchComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "tokenonly" },
   },
   {
@@ -123,7 +123,7 @@ const APP_ROUTES: Routes = [
   {
     path: "teamCreate",
     component: CreateTeamComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "tokenonly" },
   },
   {
@@ -140,174 +140,174 @@ const APP_ROUTES: Routes = [
   {
     path: "_admin/logs",
     component: LogsViewerComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "logs" },
   },
   {
     path: "_casterReport",
     component: CasterReportComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "caster" },
   },
   {
     path: "_casterDashboard",
     component: CasterDashboardComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "caster" },
   },
   {
     path: "_admin/youtube/playlist",
     component: AdminYoutubeCurator,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "caster" },
   },
   {
     path: "_casterPage",
     component: CasterPageComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "caster" },
   },
   {
     path: "_admin/approveTeamQueue",
     component: ApproveMemberComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "team" },
   },
   {
     path: "_admin/approveAvatarQueue",
     component: ApprovePendingAvatarComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "user" },
   },
   {
     path: "_admin/manageUser",
     component: ManageMemberComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "user" },
   },
   {
     path: "_admin/manageTeam",
     component: ManageSelectTeamComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "team" },
   },
   {
     path: "_admin/manageTeam/:id",
     component: ManageTeamViewComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "team" },
   },
   {
     path: "_admin/divisionMgmt",
     component: DivisionManagementComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "division" },
   },
   {
     path: "_admin/matchMgmt",
     component: MatchManagementComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "match" },
   },
   {
     path: "_admin/seasonRankRequirement",
     component: RankRequirementsComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "user" },
   },
   {
     path: "_admin/validateRanks",
     component: ValidateRankComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "user" },
   },
   {
     path: "_admin/streamMgmt",
     component: StreamManagerComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "match" },
   },
   {
     path: "_admin/matchMgmt/match/:id",
     component: MatchEditComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "match" },
   },
   {
     path: "_admin/userACLMgmt",
     component: AdminAclManagementComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "acl" },
   },
   {
     path: "_admin/userACLMgmt/:id",
     component: UpdateRolesComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "acl" },
   },
   {
     path: "_admin/scheduleGenerator",
     component: GenerateSeasonComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "schedulegen" },
   },
   // {
   //   path: "_admin/nonSeasonScheduleGenerator",
   //   component: GenerateNonSeasonalSchedulesComponent,
-  //   canActivate: [AuthGuardService],
+  //   canActivate: [ngsSecCanActivate],
   //   data: { role: "schedulegen" },
   // },
   {
     path: "_admin/deleteTournament",
     component: DeleteTournamentComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "schedulegen" },
   },
   {
     path: "_admin/tournamentGenerator",
     component: TournamentGeneratorComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "schedulegen" },
   },
   {
     path: "_admin/eventList",
     component: EventListComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "event" },
   },
   {
     path: "_admin/eventMgmt/:id",
     component: EventCreateComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "event" },
   },
   {
     path: "_admin/grandFinalCreator",
     component: GrandFinalGeneratorComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "event" },
   },
   {
     path: "schedule/scheduleMatch/:id",
     component: MatchSchedulerComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "tokenonly" },
   },
   {
     path: "reporting/:id",
     component: ReportingComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "tokenonly" },
   }, //accepts team name as url parameter
   {
     path: "_admin/dashboard",
     component: DashboardComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
   },
   {
     path: "_admin/archiveSeason",
     component: ArchiveSeasonComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "schedulegen" },
   },
   { path: "noAccess/:id", component: NoAccessComponent },
@@ -318,7 +318,7 @@ const APP_ROUTES: Routes = [
   {
     path: "_admin/matchMgmt/weekDeadline",
     component: SetDeadlineComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [ngsSecCanActivate],
     data: { role: "match" },
   },
   { path: "messageCenter", component: UserMessageCenterComponent },

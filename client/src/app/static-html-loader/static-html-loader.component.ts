@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { SafeHtmlPipe } from './safeHtml.pipe';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-static-html-loader',
