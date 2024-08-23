@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { DivisionService } from '../../services/division.service';
-import { type } from 'os';
 import { UtilitiesService } from '../../services/utilities.service';
 
 @Component({

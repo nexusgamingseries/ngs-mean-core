@@ -22,9 +22,12 @@
                             "src/favicon.ico",
                             "src/assets"
                         ],
-                        "styles": [{
-                                "input": "src/ang-mat-dark-theme.scss"
-                            },
+                        "styles": [
+                          {
+                            "inject": true,
+                            "input":"src/ang-mat-dark-theme.scss"
+                          },
+
                             "node_modules/croppie/croppie.css",
                             "node_modules/bootstrap/dist/css/bootstrap.css",
                             "src/styles.css"

@@ -83,7 +83,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { TournamentViewComponent } from './components/tournament-view/tournament-view.component';
 import { ReplayBrowserComponent } from './pages/replay-browser/replay-browser.component';
 import { DivisionSelectorComponent } from './components/division-selector/division-selector.component';
-import { DragScrollModule } from 'ngx-drag-scroll';
+
 
 import { TeamTournamentsComponent } from './components/schedule/team-tournaments/team-tournaments.component';
 import { TournamentReportingComponent } from './pages/reporting/tournament-reporting/tournament-reporting.component';
@@ -206,12 +206,12 @@ import { MembersReportingComponent } from './components/storm-rank-tools/members
 import { VerifiedStormRanksDisplayNameComponent } from './components/storm-rank-tools/verified-storm-ranks-display-name/verified-storm-ranks-display-name.component';
 import { PlayerSearchComponent } from './pages/player-search/player-search.component';
 import { SingleTeamDisplayComponent } from './components/team/team-display/single-team-display/single-team-display.component';
-import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-youtube-curator.component';
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
 import { CommonModule } from '@angular/common';
 import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 
 
@@ -426,8 +426,7 @@ import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
       useFactory: adapterFactory,
     }),
     DragDropModule,
-    DragScrollModule,
-    NgxMatColorPickerModule
+    ColorPickerModule,
   ],
   providers: [
     {
@@ -435,7 +434,6 @@ import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
       useClass: ResponseInterceptor,
       multi: true,
     },
-    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS },
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent],

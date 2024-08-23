@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { MvpService } from "src/app/services/mvp.service";
 import { forEach } from "lodash";
-import { url } from "inspector";
 import { UtilitiesService } from "src/app/services/utilities.service";
 
 @Component({

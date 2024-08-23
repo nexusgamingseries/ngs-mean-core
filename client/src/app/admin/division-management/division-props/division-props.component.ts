@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { AdminService } from 'src/app/services/admin.service';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { DeleteConfrimModalComponent } from '../../../modal/delete-confrim-modal/delete-confrim-modal.component';
-import { Color } from '@angular-material-components/color-picker';
 
 @Component({
   selector: 'app-division-props',
@@ -97,10 +96,10 @@ export class DivisionPropsComponent implements OnInit {
 
     //set the division color selector
     if(this.editDivision.divColor){
-      let color = this.hexToRgb(this.editDivision.divColor);
-      let z = new Color(color.r, color.g, color.b);
-      this.colorCtr.setValue(z.toString('hex'));
-      this.deColore = z;
+      // let color = this.hexToRgb(this.editDivision.divColor);
+      // let z = new Color(color.r, color.g, color.b);
+      // this.colorCtr.setValue(z.toString('hex'));
+      // this.deColore = z;
     }
   }
 
