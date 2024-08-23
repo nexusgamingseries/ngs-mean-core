@@ -404,13 +404,6 @@ import { SafeHtmlPipe } from './static-html-loader/safeHtml.pipe';
     GenerateNonSeasonalSchedulesComponent,
     SafeHtmlPipe,
   ],
-  // entryComponents:[
-  //   DeleteConfrimModalComponent,
-  //   ChangeCaptainModalComponent,
-  //   ConfirmRemoveMemberComponent,
-  //   EventModalComponent,
-  //   AssistantCaptainMgmtComponent
-  // ],
   imports: [
     CommonModule,
     BrowserModule,
