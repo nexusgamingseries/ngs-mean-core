@@ -22,7 +22,7 @@ const { s3putObject } = require('./server/methods/aws-s3/put-s3-file');
 const getRegisteredTeams = require('./server/methods/team/getRegistered');
 const AWS = require('aws-sdk');
 
-const CURRENT_WORKING_SEASON = 6;
+const CURRENT_WORKING_SEASON = 18;
 
 //bootstrap the program from AWS configs...
 loadConfig().finally(function () {
@@ -50,56 +50,100 @@ loadConfig().finally(function () {
     }
 
     //Operational code goes here now...
-    fixAllReplayLink();
+    fixSeasonReplay();
 
 });
 
+async function fixSeasonReplay(){
+    const ngsStatsOfTheStorm = process.env.s3bucketStats; //'ngs-stats-of-the-storm';
 
-async function fixAllReplayLink(){
-    let matches = await Match.find();
-
-    let grief = [];
-
-    for(i=2; i<matches.length; i++){
-        let match = matches[i];
-        console.log('working: ' + i + 1 + ' of ' + matches.length);
-        
-        if (match.postedToHP) {
-            const replays = match.toObject().replays;
-            for (key in replays) {
-                let v = replays[key];
-                if (_.has(v, 'parsedUrl')) {
-                    const copyOfObj = util.JSONCopy(v);
-                    console.log('v.get', v.parsedUrl);
-                    try {
-                        let orig = copyOfObj.parsedUrl;
-                        v.originalUrl = orig;
-                        let a = orig.split('?');
-                        let b = a[1].split('=')[1];
-                        v.parsedUrl = `https://www.heroesprofile.com/Esports/NGS/Match/Single/${b}`;
-                    } catch (e) {
-                        console.log('ERROR ON MATCH:', match.matchId);
-                        if(grief.indexOf(match.matchId)==-1){
-                            grief.push(match.matchId);
-                        }
-                    }
-                }
-            }
-
-            match.replays = replays;
-
-            match.markModified('replays');
-            await match.save();
-            
-        }
-    }
-
-    fs.writeFile('grief.json', JSON.stringify(grief), err => {
-        console.log(err);
+    AWS.config.update({
+        accessKeyId: process.env.S3accessKeyId,
+        secretAccessKey: process.env.S3secretAccessKey,
+        region: process.env.S3region,
     });
-    console.log('done');
-    return 1;
+
+    const s3 = new AWS.S3();
+
+    const params = {
+        Bucket: ngsStatsOfTheStorm,
+        Prefix: `${CURRENT_WORKING_SEASON}/`,
+    };
+
+    const data = await s3.listObjectsV2(params).promise();
+
+    let systemIds = [];
+    
+    data.Contents.forEach(
+        obj=>{
+            // console.log(obj.Key);
+            let parts = obj.Key.split('/');
+            let file = parts[parts.length-1]
+            let fileParts = file.split('.');
+            console.log(fileParts[0]);
+            systemIds.push(fileParts[0]);
+        }
+    )
+
+    const foundReplays = await ParsedReplay.find({systemId:{$in:systemIds}});
+    
+    foundReplays.forEach( element=>{
+        element.season = CURRENT_WORKING_SEASON;
+        element.markModified('season');
+        element.save().then(s=>{
+            console.log('saved', s)
+        },err=>{
+            console.log(err);
+        });
+    });
 }
+
+
+// async function fixAllReplayLink(){
+//     let matches = await Match.find();
+
+//     let grief = [];
+
+//     for(i=2; i<matches.length; i++){
+//         let match = matches[i];
+//         console.log('working: ' + i + 1 + ' of ' + matches.length);
+        
+//         if (match.postedToHP) {
+//             const replays = match.toObject().replays;
+//             for (key in replays) {
+//                 let v = replays[key];
+//                 if (_.has(v, 'parsedUrl')) {
+//                     const copyOfObj = util.JSONCopy(v);
+//                     console.log('v.get', v.parsedUrl);
+//                     try {
+//                         let orig = copyOfObj.parsedUrl;
+//                         v.originalUrl = orig;
+//                         let a = orig.split('?');
+//                         let b = a[1].split('=')[1];
+//                         v.parsedUrl = `https://www.heroesprofile.com/Esports/NGS/Match/Single/${b}`;
+//                     } catch (e) {
+//                         console.log('ERROR ON MATCH:', match.matchId);
+//                         if(grief.indexOf(match.matchId)==-1){
+//                             grief.push(match.matchId);
+//                         }
+//                     }
+//                 }
+//             }
+
+//             match.replays = replays;
+
+//             match.markModified('replays');
+//             await match.save();
+            
+//         }
+//     }
+
+//     fs.writeFile('grief.json', JSON.stringify(grief), err => {
+//         console.log(err);
+//     });
+//     console.log('done');
+//     return 1;
+// }
 
 // async function processReplayInfoFromS3(){
 //     const s3 = new AWS.S3({
