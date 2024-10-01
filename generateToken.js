@@ -21,6 +21,7 @@ const ParsedReplay = require('./server/models/replay-parsed-models');
 const { s3putObject } = require('./server/methods/aws-s3/put-s3-file');
 const getRegisteredTeams = require('./server/methods/team/getRegistered');
 const AWS = require('aws-sdk');
+const associateReplaysWorker = require('./server/workers/associate-replays');
 
 const CURRENT_WORKING_SEASON = 18;
 
@@ -50,7 +51,8 @@ loadConfig().finally(function () {
     }
 
     //Operational code goes here now...
-    fixSeasonReplay();
+    associateReplaysWorker();
+    // fixSeasonReplay();
 
 });
 
@@ -67,26 +69,54 @@ async function fixSeasonReplay(){
 
     const params = {
         Bucket: ngsStatsOfTheStorm,
-        Prefix: `${CURRENT_WORKING_SEASON}/`,
+        Prefix: `${CURRENT_WORKING_SEASON}/parsedReplays`,
     };
 
     const data = await s3.listObjectsV2(params).promise();
 
     let systemIds = [];
-    
-    data.Contents.forEach(
-        obj=>{
-            // console.log(obj.Key);
-            let parts = obj.Key.split('/');
-            let file = parts[parts.length-1]
-            let fileParts = file.split('.');
-            console.log(fileParts[0]);
-            systemIds.push(fileParts[0]);
+
+    data.Contents.forEach(obj => {
+        // console.log(obj.Key);
+        let parts = obj.Key.split('/');
+        let file = parts[parts.length - 1];
+        let fileParts = file.split('.');
+        console.log(fileParts[0]);
+        systemIds.push(fileParts[0]);
+    });
+
+    console.log(systemIds.length);
+
+    const result = await ParsedReplay.updateMany(
+        { season: 18 }, // Query condition to match documents with season 18
+        { $set: { season: null } } // Update operation to set season to null
+    );
+
+    console.log(`${result.nModified} replays updated.`);
+
+
+    // Write systemIds to a JSON file
+    fs.writeFile('systemIds.json', JSON.stringify(systemIds, null, 2), err => {
+        if (err) {
+            console.error('Error writing to file:', err);
+        } else {
+            console.log('systemIds have been written to systemIds.json');
         }
-    )
+    });
+
+    // data.Contents.forEach(
+    //     obj=>{
+    //         // console.log(obj.Key);
+    //         let parts = obj.Key.split('/');
+    //         let file = parts[parts.length-1]
+    //         let fileParts = file.split('.');
+    //         console.log(fileParts[0]);
+    //         systemIds.push(fileParts[0]);
+    //     }
+    // )
 
     const foundReplays = await ParsedReplay.find({systemId:{$in:systemIds}});
-    
+
     foundReplays.forEach( element=>{
         element.season = CURRENT_WORKING_SEASON;
         element.markModified('season');
@@ -96,6 +126,8 @@ async function fixSeasonReplay(){
             console.log(err);
         });
     });
+
+    
 }
 
 
