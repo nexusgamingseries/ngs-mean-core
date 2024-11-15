@@ -347,7 +347,7 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
                         util.errLogger(
                             location,
                             null,
-                            'HP post return:' + posted
+                            'HP post return:' + JSON.stringify(posted)
                         );
                         if (!errorReturn) {
                             fallThroughCheck = false;
@@ -547,7 +547,7 @@ function handleHpUrlUpdate(replayObj, returnedUrl){
 
     replayObj['orig'] = returnedUrl;
     //https://www.heroesprofile.com/NGS/Match/Single/?replayID=84
-    if(returnedUrl.indexOf('?replayID')){
+    if(returnedUrl.indexOf('?replayID')>0){
         let a = returnedUrl.split('?');
         let b = a[1].split('=')[1];
         replayObj.parsedUrl = `https://www.heroesprofile.com/Esports/NGS/Match/Single/${b}`;

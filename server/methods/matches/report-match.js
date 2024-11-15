@@ -214,6 +214,8 @@ async function moveAndParseTempFiles(matchId) {
     logObj.location = 'moveAndParseTempFiles';
     logObj.target = matchId;
 
+
+
     try {
         let match = await Match.findOne({
             matchId: matchId,
@@ -556,8 +558,9 @@ async function moveAndParseTempFiles(matchId) {
                         let map = parsedItem.match.map;
                         parsedItem.match = {map};
                         parsedItem.players = {};
+                        parsedItem.season = seasonNum;
                     }
-                )
+                );
 
                 //putting
                 ParsedReplay.collection.insertMany(parsed).then(
