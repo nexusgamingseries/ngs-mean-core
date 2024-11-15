@@ -2180,16 +2180,19 @@ router.get('/matchfiles', async(req, res) => {
                 s3makezipBucket.copyObject(param).promise()
             );
         }
-        let bestOf = utils.returnBoolByPath(matchData.boX) ? matchData.boX : 3;
+        let bestOf = utils.returnBoolByPath(matchData, 'boX') ? matchData.boX : 3;
         if (i < bestOf) {
-            buffer = Buffer.from("pulled a sneaky on you", "utf-8");
-            let data = {
-                Key: `${folderName}/game${i+1}/sneak.txt`,
-                Body: buffer
-            };
-            promiseArray.push(
-                s3makezipBucket.putObject(data).promise()
-            );
+            //while i is less than the best of, we need to add a placeholder file
+            for (i; i < bestOf; i++) {
+                let buffer = Buffer.from("pulled a sneaky on you", "utf-8");
+                let data = {
+                    Key: `${folderName}/game${i+1}/sneak.txt`,
+                    Body: buffer
+                };
+                promiseArray.push(
+                    s3makezipBucket.putObject(data).promise()
+                );
+            }
         }
 
         //resolve the writes to the makezip bucket...
@@ -2266,7 +2269,7 @@ router.get('/matchfiles', async(req, res) => {
         });
 
     } catch (e) {
-        res.status(500).send(utils.returnMessaging(req.originalUrl, 'Error Zipping', err))
+        res.status(500).send(utils.returnMessaging(req.originalUrl, 'Error Zipping', e))
     }
 });
 
