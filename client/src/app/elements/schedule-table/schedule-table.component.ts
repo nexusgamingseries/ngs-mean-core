@@ -74,7 +74,7 @@ export class ScheduleTableComponent implements OnInit {
 
           val.forEach((match, iindex) => {
 
-            if (match.round == round) {
+            if (match.round == round || match.type === "grandfinal") {
               found = true;
             }
 
