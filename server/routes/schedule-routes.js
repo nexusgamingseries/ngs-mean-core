@@ -878,8 +878,6 @@ router.post('/fetch/match', async(req, res) => {
 router.post('/fetch/match/list', async(req, res) => {
     const path = 'schedule/fetch/match/list';
 
-
-
     const requiredParameters = [{
         name: 'matches',
         type: 'array'
