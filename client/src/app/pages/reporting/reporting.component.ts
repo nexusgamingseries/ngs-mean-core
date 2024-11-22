@@ -37,7 +37,7 @@ export class ReportingComponent implements OnInit {
   rounds: any
   noMatches: Boolean;
   ngOnInit() {
-
+    this.grandFinalMatch = [];
     let getTeam;
     if (this.recTeam) {
       getTeam = this.recTeam;
@@ -49,12 +49,14 @@ export class ReportingComponent implements OnInit {
     if (getTeam && this.currentSeason) {
       this.divisionService.getDivisionTeam(getTeam).subscribe(
         res => {
+
           let divisionInfo = res;
           let rounds = this.util.calculateRounds(divisionInfo);
           this.scheduleService
             .getTeamSchedules(this.currentSeason, getTeam)
             .subscribe(
               (res) => {
+                this.grandFinalMatch = [];
 
                 let matches = res;
                 if (matches.length == 0) {
@@ -63,6 +65,14 @@ export class ReportingComponent implements OnInit {
                   this.noMatches = false;
                 }
                 let roundsArray = [];
+
+                let gfMatch = _.find(matches, {
+                  type: "grandfinal",
+                });
+                if (gfMatch) {
+                  this.grandFinalMatch.push(gfMatch);
+                }
+
                 for (var i = 0; i < rounds.length; i++) {
                   if (this.rounds == null || this.rounds == undefined) {
                     this.rounds = {};
@@ -85,12 +95,6 @@ export class ReportingComponent implements OnInit {
 
                   });
                 }
-
-                let gfMatch = _.find(matches, { type: 'grandfinal' });
-                if (gfMatch) {
-                  this.grandFinalMatch.push(gfMatch);
-                }
-
 
                 this.rounds;
                 this.roundsArray = roundsArray;
