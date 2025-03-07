@@ -206,6 +206,7 @@ import { AdminYoutubeCurator } from './admin/caster/admin-youtube-curator/admin-
 import { CreateThreadComponent } from './admin/thread/create-thread/create-thread.component';
 import { GenerateNonSeasonalSchedulesComponent } from './admin/match-admin/generate-non-seasonal-schedules/generate-non-seasonal-schedules.component';
 import { TournamentTitleComponent } from './components/tournament-title/tournament-title.component';
+import { ReplayFilesLinkComponent } from './elements/replay-files-link/replay-files-link.component';
 
 
 @NgModule({
@@ -397,6 +398,7 @@ import { TournamentTitleComponent } from './components/tournament-title/tourname
     CreateThreadComponent,
     GenerateNonSeasonalSchedulesComponent,
     TournamentTitleComponent
+    ReplayFilesLinkComponent
   ],
   entryComponents:[
     DeleteConfrimModalComponent,

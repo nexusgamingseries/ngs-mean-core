@@ -880,8 +880,6 @@ router.post('/fetch/match', async(req, res) => {
 router.post('/fetch/match/list', async(req, res) => {
     const path = 'schedule/fetch/match/list';
 
-
-
     const requiredParameters = [{
         name: 'matches',
         type: 'array'
@@ -2146,7 +2144,20 @@ router.get('/matchfiles', async(req, res) => {
         //use the match ID as the folder name
         var folderName = matchData.matchId;
         //create bans text string
-        let bansText = `${matchData.home.teamName}: Bans ${matchData.mapBans.homeOne}, ${matchData.mapBans.homeTwo} \n${matchData.away.teamName}: Bans ${matchData.mapBans.awayOne}, ${matchData.mapBans.awayTwo}  `;
+        //if the match was reported by the admin then the bans might not be captured... so we need to check for that
+        let bansText = '';
+        if(
+            utils.returnBoolByPath(matchData, 'mapBans')
+            && utils.returnBoolByPath(matchData, 'mapBans.homeOne')
+            && utils.returnBoolByPath(matchData, 'mapBans.homeTwo')
+            && utils.returnBoolByPath(matchData, 'mapBans.awayOne')
+            && utils.returnBoolByPath(matchData, 'mapBans.awayTwo')
+        ){
+          bansText = `${matchData.home.teamName}: Bans ${matchData.mapBans.homeOne}, ${matchData.mapBans.homeTwo} \n${matchData.away.teamName}: Bans ${matchData.mapBans.awayOne}, ${matchData.mapBans.awayTwo}  `;
+        }else{
+            bansText = 'Bans not captured';
+        }
+        
 
         AWS.config.update({
             accessKeyId: process.env.S3accessKeyId,
