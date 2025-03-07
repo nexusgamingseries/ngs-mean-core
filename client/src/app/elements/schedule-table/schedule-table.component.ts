@@ -27,6 +27,8 @@ export class ScheduleTableComponent implements OnInit {
 
   @Input() flexOnTop = false;
 
+  @Input() casterReplayDownloader = false;
+
 
   @Input() set matches(val) {
     if (val) {
