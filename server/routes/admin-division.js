@@ -8,6 +8,7 @@ const _ = require('lodash');
 const utils = require('../utils');
 const { commonResponseHandler } = require('./../commonResponseHandler');
 
+//tested 4-17-2025
 //this api retrieves all teams that do not have a division assigned, and have 
 //successuflly registered for the season
 router.get('/getTeamsUndivisioned', passport.authenticate('jwt', {
@@ -54,11 +55,8 @@ router.get('/getTeamsUndivisioned', passport.authenticate('jwt', {
 });
 
 
-//this api pulls back all divisions
-// passport.authenticate('jwt', {
-// session: false
-// }),
 
+//tested 4-17-2025
 //NOTICE this route is not secured because it is used for pulling back division lists et all - no use for replication
 router.get('/getDivisionInfo', (req, res) => {
     const path = '/admin/getDivisionInfo'
@@ -83,6 +81,7 @@ router.get('/getDivisionInfo', (req, res) => {
         res.status(500).send(utils.returnMessaging(path, 'Internal Server Error', e));
     }
 });
+
 
 //this api places a provided team in to a division according to provided name
 router.post('/divisionTeams',
@@ -136,6 +135,10 @@ router.post('/divisionTeams',
                         }, (err) => {
                             res.status(500).send(utils.returnMessaging(path, 'Error saving divsion', err, null, null, logObj));
                         })
+                    }else{
+                        logObj.logLevel = 'ERROR';
+                        logObj.error = 'Division was not found';
+                        res.status(500).send(utils.returnMessaging(path, 'No division found', false, foundDiv, null, logObj));
                     }
                 }, (err) => {
                     res.status(500).send(utils.returnMessaging(path, 'Error finding division', err, null, null, logObj))
@@ -158,6 +161,9 @@ router.post('/divisionTeams',
 
     });
 
+
+//tested 4-24-2025
+//this api will upsert a division object, if the division exists it will update it
 router.post('/upsertDivision', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.divisionLevel, utils.appendResHeader, (req, res) => {
@@ -230,10 +236,10 @@ router.post('/upsertDivision', passport.authenticate('jwt', {
         } else {
             let message = 'Error: ';
             if (!name.valid) {
-                message += 'name (string) parameter required ';
+                message += 'divName (string) parameter required ';
             }
             if (!division.valid) {
-                message += 'divisionName (object) parameter required ';
+                message += 'divObj (object) parameter required ';
             }
             res.status(500).send(utils.returnMessaging(path, message));
         }
@@ -245,6 +251,7 @@ router.post('/upsertDivision', passport.authenticate('jwt', {
 
 });
 
+//tested 4-24-2025
 router.post('/removeTeams', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.divisionLevel, utils.appendResHeader, (req, res) => {
@@ -310,6 +317,7 @@ router.post('/removeTeams', passport.authenticate('jwt', {
 
 })
 
+//tested 4-24-2025
 router.post('/createDivision', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.divisionLevel, utils.appendResHeader, (req, res) => {
@@ -369,6 +377,8 @@ router.post('/createDivision', passport.authenticate('jwt', {
 
 });
 
+
+//tested 4-24-2025
 router.post('/deleteDivision', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.divisionLevel, utils.appendResHeader, (req, res) => {

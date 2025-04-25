@@ -1,0 +1,214 @@
+[
+    {
+    
+    "assistantCaptain": [],
+    "invitedUsers": [],
+    "replays": [],
+    "history": [
+        {
+            "timestamp": 1.622683637169E12,
+            "action": "Added to division",
+            "target": "Division D East",
+            "season": 12
+        }
+    ],
+    "teamName": "TEST sunshine mynah birds",
+    "teamName_lower": "test sunshine mynah birds",
+    "teamMembers": [
+        {
+            "_id":  "5fe26e7fc311fadee4afb7f6",
+            "displayName": "TEST azalea#9539"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb7f7",
+            "displayName": "TEST narcissus#7376"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb7f8",
+            "displayName": "TEST hyena#4375"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb7f9",
+            "displayName": "TEST mountain goat#1399"
+        },
+        {
+            "_id":  "5fe26e7fc311fadee4afb7fa",
+            "displayName": "TEST zombie#1270"
+        }
+    ],
+    "pendingMembers": [],
+    "__v": 6,
+    "captain": "TEST azalea#9539",
+    "questionnaire": {
+        "registered": true
+    },
+    "ticker": "qqqq",
+    "ticker_lower": "qqqq",
+    "divisionDisplayName": "Division D Beast",
+    "divisionConcat": "d-beast"
+},
+{
+    
+    "assistantCaptain": [],
+    "invitedUsers": [],
+    "replays": [],
+    "history": [
+        {
+            "timestamp": 1.622683637169E12,
+            "action": "Added to division",
+            "target": "Division D East",
+            "season": 12
+        },
+        {
+            "timestamp": 1.641502184681E12,
+            "action": "Added to division",
+            "target": "Division D East",
+            "season": 13
+        }
+    ],
+    "teamName": "TEST inheriting weasels",
+    "teamName_lower": "test inheriting weasels",
+    "teamMembers": [
+        {
+            "_id":  "5fe26e7fc311fadee4afb80b",
+            "displayName": "TEST spectre#3398"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb80c",
+            "displayName": "TEST canary#1347"
+        },
+        {
+            "_id":  "5fe26e7fc311fadee4afb80d",
+            "displayName": "TEST elf#8618"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb80e",
+            "displayName": "TEST babys breath#6455"
+        },
+        {
+            "_id": "5fe26e7fc311fadee4afb80f",
+            "displayName": "TEST rhododendron#2047"
+        }
+    ],
+    "pendingMembers": [],
+    "__v": 7,
+    "captain": "TEST spectre#3398",
+    "questionnaire": {
+        "registered": true
+    },
+    "ticker": "eeee",
+    "ticker_lower": "eeee",
+    "divisionDisplayName": "Division D Beast",
+    "divisionConcat": "d-beast"
+},
+{
+    
+    "assistantCaptain": [
+        "wraithling#1178"
+    ],
+    "invitedUsers": [
+        "wraithling#1178"
+    ],
+    "replays": [],
+    "history": [
+        {
+            "timestamp": 1.622683637169E12,
+            "action": "Added to division",
+            "target": "Division D East",
+            "season": 12
+        }
+    ],
+    "teamName": "TEST woeful impalas",
+    "teamName_lower": "test woeful impalas",
+    "teamMembers": [
+        {
+            "_id": "5fe26e80c311fadee4afb820",
+            "displayName": "TEST delphinium#7009"
+        },
+        {
+            "_id": "5fe26e80c311fadee4afb821",
+            "displayName": "TEST sphinx#2422"
+        },
+        {
+            "_id":  "5fe26e80c311fadee4afb822",
+            "displayName": "wraithling#1178"
+        },
+        {
+            "_id": "5fe26e80c311fadee4afb823",
+            "displayName": "TEST raccoon#5861"
+        },
+        {
+            "_id":  "5fe26e80c311fadee4afb824",
+            "displayName": "TEST bugbear#6870"
+        }
+    ],
+    "pendingMembers": [
+        {
+            "displayName": "wraithling#1178"
+        }
+    ],
+    "__v": 9,
+    "captain": "wraithling#1178",
+    "questionnaire": {
+        "registered": true
+    },
+    "ticker": "rrrr",
+    "ticker_lower": "rrrr",
+    "divisionDisplayName": "Division D Beast",
+    "divisionConcat": "d-beast"
+},
+{
+    
+    "assistantCaptain": [],
+    "invitedUsers": [],
+    "replays": [],
+    "history": [
+        {
+            "timestamp": 1.638561397007E12,
+            "action": "Joined team",
+            "target": "TEST poltergeist#5773",
+            "season": null
+        },
+        {
+            "timestamp": 1.638561414295E12,
+            "action": "Joined team",
+            "target": "TEST siren#5098",
+            "season": null
+        },
+        {
+            "timestamp": 1.638561434595E12,
+            "action": "Joined team",
+            "target": "TEST violet#7305",
+            "season": null
+        },
+        {
+            "timestamp": 1.643310275868E12,
+            "action": "Added to division",
+            "target": "Division D Beast",
+            "season": 13
+        }
+    ],
+    "teamName": "TEST readable trolls",
+    "teamName_lower": "test readable trolls",
+    "teamMembers": [
+        {
+            "_id":  "5fe26e81c311fadee4afb835",
+            "displayName": "TEST faun#3985"
+        },
+        {
+            "_id": "61aa7686dd8ad2be1c6d5ac3",
+            "displayName": "TEST siren#5098"
+        }
+    ],
+    "pendingMembers": [],
+    "__v": 17,
+    "captain": "TEST poltergeist#5773",
+    "hpMmrAvg": null,
+    "ngsMmrAvg": null,
+    "teamMMRAvg": null,
+    "logo": "TEST_readable_trolls_1413.png",
+    "questionnaire": {
+        "registered": true
+    }
+}
+]

@@ -397,7 +397,7 @@ import { ReplayFilesLinkComponent } from './elements/replay-files-link/replay-fi
     AdminYoutubeCurator,
     CreateThreadComponent,
     GenerateNonSeasonalSchedulesComponent,
-    TournamentTitleComponent
+    TournamentTitleComponent,
     ReplayFilesLinkComponent
   ],
   entryComponents:[

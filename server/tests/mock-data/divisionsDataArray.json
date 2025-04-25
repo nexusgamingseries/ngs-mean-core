@@ -1,0 +1,47 @@
+[
+    {
+        "teams": [
+            "Mongoose's Team",
+            "TEST assigned daffodils",
+            "TEST sunshine mynah birds",
+            "TEST inheriting weasels",
+            "TEST woeful impalas"
+        ],
+        "participants": [],
+        "tournaments": [],
+        "displayName": "Division D Beast",
+        "divisionName": "D Beast",
+        "divisionConcat": "d-beast",
+        "sorting": 1,
+        "maxMMR": 12,
+        "minMMR": 1,
+        "moderator": "me",
+        "public": true,
+        "__v": 6,
+        "divColor": "2dd758",
+        "DRR": true,
+        "divisionCoast": ""
+    },
+    {
+        "teams": [
+            "TEST Team A",
+            "TEST Team B",
+            "TEST Team C",
+            "TEST Team D"
+        ],
+        "participants": [],
+        "tournaments": [],
+        "displayName": "Division Test A",
+        "divisionName": "Test A",
+        "divisionConcat": "test-a",
+        "sorting": 1,
+        "maxMMR": 12,
+        "minMMR": 1,
+        "moderator": "me",
+        "public": true,
+        "__v": 6,
+        "divColor": "2dd758",
+        "DRR": true,
+        "divisionCoast": ""
+    }
+]
