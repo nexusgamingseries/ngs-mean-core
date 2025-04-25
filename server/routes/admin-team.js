@@ -19,6 +19,7 @@ const { commonResponseHandler } = require('../commonResponseHandler');
 const TeamMethods = require('../methods/team/teamCommon');
 
 
+//tested
 //returns the lists of users who are awaiting admin attention to complete the team join process
 router.get('/pendingMemberQueue', passport.authenticate('jwt', {
     session: false
@@ -42,6 +43,7 @@ router.get('/pendingMemberQueue', passport.authenticate('jwt', {
 
 });
 
+//tested
 router.post('/pmq/delete', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {
@@ -81,6 +83,8 @@ router.post('/pmq/delete', passport.authenticate('jwt', {
 
 });
 
+
+//tested
 router.post('/pmq/addnote', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {
@@ -137,6 +141,7 @@ router.post('/pmq/addnote', passport.authenticate('jwt', {
 
 });
 
+//tested
 router.get('/pendingAvatarQueue', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -158,6 +163,7 @@ router.get('/pendingAvatarQueue', passport.authenticate('jwt', {
 });
 
 
+//tested
 router.get('/pendingRankQueues', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -181,6 +187,7 @@ router.get('/pendingRankQueues', passport.authenticate('jwt', {
 
 });
 
+//tested
 router.get('/pendingRankQueuesCount', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -202,6 +209,7 @@ router.get('/pendingRankQueuesCount', passport.authenticate('jwt', {
 
 });
 
+//tested
 //removes the supplied member from the supplied team
 router.post('/team/removeMember', passport.authenticate('jwt', {
     session: false
@@ -268,6 +276,7 @@ router.post('/team/removeMember', passport.authenticate('jwt', {
 
 });
 
+//tested
 //removes the supplied member from the invited array of team
 router.post('/team/removeInvitedMember', passport.authenticate('jwt', {
     session: false
@@ -327,6 +336,7 @@ router.post('/team/removeInvitedMember', passport.authenticate('jwt', {
 
 
 
+//tested
 //reassigns captain from the supplied team to the supplied teammember
 router.post('/reassignCaptain', passport.authenticate('jwt', {
     session: false
@@ -384,6 +394,7 @@ router.post('/reassignCaptain', passport.authenticate('jwt', {
 
 });
 
+//tested
 //approves a pending team member queue, removes the item from the queue and adds the member to the team
 //updates the members profile to now be part of the team
 router.post('/approveMemberAdd', passport.authenticate('jwt', {
@@ -501,6 +512,8 @@ router.post('/delete/team', passport.authenticate('jwt', {
 
 });
 
+
+//tested
 //forfeits the team matches ... will be used for withdrawl or removed teams
 router.post('/forfeit/team', passport.authenticate('jwt', {
     session: false
@@ -536,6 +549,7 @@ router.post('/forfeit/team', passport.authenticate('jwt', {
 
 });
 
+//tested
 //Saves a supplied team
 router.post('/teamSave', passport.authenticate('jwt', {
     session: false
@@ -948,6 +962,7 @@ router.post('/team/refreshMmr', passport.authenticate('jwt', {
 });
 
 
+//tested
 //returns a list of all teams!
 router.get('/get/teams/all', passport.authenticate('jwt', {
     session: false
@@ -975,6 +990,7 @@ router.get('/get/teams/all', passport.authenticate('jwt', {
 
 });
 
+//tested
 router.post('/team/memberAdd',
     passport.authenticate('jwt', {
         session: false
@@ -1089,6 +1105,7 @@ router.post('/team/memberAdd',
         });
     });
 
+//tested
 //admin get team info
 router.get('/team/get', (req, res) => {
     const path = '/admin/team/get';
@@ -1096,6 +1113,8 @@ router.get('/team/get', (req, res) => {
 
 });  
 
+
+//tested
 //upload a logo for a team
 router.post('/team/uploadLogo', passport.authenticate('jwt', {
     session: false
@@ -1138,6 +1157,8 @@ router.post('/team/uploadLogo', passport.authenticate('jwt', {
 
 });
 
+
+//tested
 router.post('/team/removeLogo', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.teamLevel, utils.appendResHeader, (req, res) => {
