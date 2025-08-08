@@ -68,22 +68,21 @@ export class ScheduleTableComponent implements OnInit {
       // show bye matches
       if (this.showBye) {
         let index = 0;
+        let byesfoundCount = 0;
+        let round = 0;
 
         for (var i = 0; i < val.length; i++) {
 
-          let round = i + 1;
+          round++;
           let found = false;
 
           val.forEach((match, iindex) => {
-
             if (match.round == round || match.type === "grandfinal") {
               found = true;
             }
-
           });
 
           if (found == false) {
-            // index = i;
             val.forEach((match, iindex) => {
               if (match.round == round - 1) {
                 index = iindex + 1;
@@ -94,7 +93,17 @@ export class ScheduleTableComponent implements OnInit {
               round: round,
               type: 'bye'
             });
+            byesfoundCount++;
           }
+        }
+
+        if (byesfoundCount == 0) {
+          round++;
+
+          val.push({
+            round: round,
+            type: 'bye'
+          });
         }
       }
 
