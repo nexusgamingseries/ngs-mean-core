@@ -1,3 +1,5 @@
+//fully tested
+
 const router = require('express').Router();
 const Division = require("../models/division-models");
 const TeamSubs = require('../subroutines/team-subs');
