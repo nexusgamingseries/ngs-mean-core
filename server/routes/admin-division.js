@@ -84,7 +84,7 @@ router.get('/getDivisionInfo', (req, res) => {
     }
 });
 
-
+//tested 4-17-2025
 //this api places a provided team in to a division according to provided name
 router.post('/divisionTeams',
     passport.authenticate('jwt', {

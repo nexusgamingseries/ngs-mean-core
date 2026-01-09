@@ -41,6 +41,7 @@ router.post('/mvp/upsert', passport.authenticate('jwt', {
 });
 
 
+//tested 1/8/2026
 router.post('/match/update', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
@@ -139,6 +140,7 @@ router.post('/match/update', passport.authenticate('jwt', {
 });
 
 
+//tested 1/8/2026
 router.post('/match/set/schedule/deadline', passport.authenticate('jwt', { session: false }), levelRestrict.matchLevel, util.appendResHeader, async(req, res) => {
     const path = 'admin/match/set/schedule/deadline';
     let div = req.body.division;
@@ -262,6 +264,7 @@ router.post('/match/uploadreplay', passport.authenticate('jwt', {
 
 });
 
+//tested 1/8/2026
 router.post('/match/deletereplay', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
@@ -296,6 +299,7 @@ router.post('/match/deletereplay', passport.authenticate('jwt', {
 
 });
 
+//tested 1/8/2026
 router.post('/match/create/grandfinal', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.multi(['MATCH']), util.appendResHeader, (req, res) => {
@@ -341,6 +345,7 @@ router.post('/match/create/grandfinal', passport.authenticate('jwt', {
 
 });
 
+//tested 1/8/2026
 router.post('/match/delete/grandfinal', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
@@ -390,7 +395,7 @@ router.post('/match/delete/grandfinal', passport.authenticate('jwt', {
 
 });
 
-
+//tested 1/8/2026
 router.post('/match/create/stream/link', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.multi(['MATCH', 'CASTER']), util.appendResHeader, (req, res) => {
@@ -428,6 +433,7 @@ router.post('/match/create/stream/link', passport.authenticate('jwt', {
 
 });
 
+//tested 1/8/2026
 router.post('/match/delete/stream/link', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.matchLevel, util.appendResHeader, (req, res) => {
@@ -469,6 +475,7 @@ router.post('/match/delete/stream/link', passport.authenticate('jwt', {
 
 });
 
+//tested 1/8/2026
 router.post('/season/reset', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.matchLevel, util.appendResHeader, async(req, res) => {
