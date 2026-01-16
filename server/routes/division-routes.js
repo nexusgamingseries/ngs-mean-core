@@ -7,6 +7,7 @@ const {
 
 
 // this API returns a division according to the recieved division name
+//tested
 router.get('/get', (req, res) => {
     const path = '/division/get';
 
@@ -33,6 +34,7 @@ router.get('/get', (req, res) => {
 
 });
 
+//tested
 router.get('/get/by/teamname', (req, res) => {
     const path = '/division/get/by/teamname';
     var teamName = decodeURIComponent(req.query.teamName);
@@ -87,6 +89,7 @@ router.get('/get/all', (req, res) => {
 });
 
 ///division/get/any
+//tested
 router.get('/get/any', (req, res) => {
 
 

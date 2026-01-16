@@ -5,6 +5,8 @@ const System = require("../models/system-models");
 const levelRestrict = require("../configs/admin-leveling");
 const seasonInfoCommon = require("../methods/seasonInfoMethods");
 
+
+//tested in admin-routes.test.js
 router.post('/upsertSeasonInfo', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.scheduleGenerator, (req, res) => {
@@ -70,6 +72,7 @@ router.post('/upsertSeasonInfo', passport.authenticate('jwt', {
 
 });
 
+//tested in admin-routes.test.js
 router.get('/getSeasonInfo', (req, res) => {
 
     const path = '/admin/getSeasonInfo';

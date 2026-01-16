@@ -101,5 +101,31 @@ describe("admin-routes",async function(){
         expect(res.body.message).to.include('value (number) is required!');
 
     });
+
+    it(`api/admin/getSeasonInfo returns season info without season param`,async function(){
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData);
+
+        const res = await request(app.app)
+            .get('/api/admin/getSeasonInfo');
+        
+        expect(res.status).to.equal(200);
+        expect(res.body.returnObject).to.have.property('value', 13);
+        expect(res.body.returnObject).to.have.property('registrationOpen', true);
+    });
+
+    it(`api/admin/getSeasonInfo returns season info with specific season param`,async function(){
+        await mongoUnit.dropDb();
+        await mongoUnit.load(mockData);
+
+        const res = await request(app.app)
+            .get('/api/admin/getSeasonInfo?season=13');
+        
+        expect(res.status).to.equal(200);
+        expect(res.body.returnObject).to.have.property('value', 13);
+        expect(res.body.returnObject).to.have.property('registrationOpen', true);
+    });
+
+    
     
 });

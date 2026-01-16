@@ -1,5 +1,6 @@
 const request = require('supertest');
 const assert = require('assert');
+require('dotenv').config();
 const mongoUnit = require('mongo-unit');
 const mockData = require('../../mock-data/standingsData.json');
 const utils = require('../../../utils');
@@ -18,15 +19,21 @@ var deleteAvatarStub;
 
 before(async function(){
     this.timeout(5000);
-    // await loadConfig();
-    const res = await mongoUnit.start();   
-    generateNewToken = require('../../../configs/passport-setup');
+    const res = await mongoUnit.start(); 
+    const passportSetup = require('../../../configs/passport-setup');  
+    generateNewToken = passportSetup.generateNewToken;
     console.log('fake mongo is started: ', mongoUnit.getUrl())
     process.env.mongoURI = mongoUnit.getUrl() // this var process.env.DATABASE_URL = will keep link to fake mongo
     app = require('../../../../server');
 })
 
 describe("admin-user-routes-2",async function(){
+
+    afterEach(function() {
+        if (deleteAvatarStub) {
+            deleteAvatarStub.restore();
+        }
+    });
 
     it('approve pending user avatar', async function(){
 
@@ -65,7 +72,7 @@ describe("admin-user-routes-2",async function(){
         
         deleteAvatarStub = sinon.stub(Avatar, "deleteAvatar").resolves(true);
 
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        const token = generateNewToken(utils.objectify(admin), false);
 
         let result = await request(app.app).post(requestUrl)
         .set({"Authorization": `Bearer ${token}`})
@@ -124,7 +131,7 @@ describe("admin-user-routes-2",async function(){
         // deleteAvatarStub = sinon.stub(Avatar, "deleteAvatar").resolves(true);
         deleteAvatarStub.reset();
         deleteAvatarStub.resolves(true);
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        const token = generateNewToken(utils.objectify(admin), false);
 
         let result = await request(app.app).post(requestUrl)
         .set({"Authorization": `Bearer ${token}`})
@@ -183,7 +190,7 @@ describe("admin-user-routes-2",async function(){
         // deleteAvatarStub = sinon.stub(Avatar, "deleteAvatar").resolves(true);
         deleteAvatarStub.reset();
         deleteAvatarStub.resolves(true);
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        const token = generateNewToken(utils.objectify(admin), false);
 
         let result = await request(app.app).post(requestUrl)
         .set({"Authorization": `Bearer ${token}`})
@@ -242,7 +249,7 @@ describe("admin-user-routes-2",async function(){
         // deleteAvatarStub = sinon.stub(Avatar, "deleteAvatar").resolves(true);
         deleteAvatarStub.reset();
         deleteAvatarStub.resolves(true);
-        const token = generateNewToken.generateNewToken(utils.objectify(admin), false);
+        const token = generateNewToken(utils.objectify(admin), false);
 
         let result = await request(app.app).post(requestUrl)
         .set({"Authorization": `Bearer ${token}`})
@@ -259,6 +266,8 @@ describe("admin-user-routes-2",async function(){
         assert(result.status === 500);
 
     })
+
+    
 
 
 })

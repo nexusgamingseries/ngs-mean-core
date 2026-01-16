@@ -14,6 +14,7 @@ const notesMethods = require('../methods/notes/notes');
 const prMethods = require('../methods/player-rank-upload');
 const { commonResponseHandler } = require('./../commonResponseHandler');
 
+//tested in admin-user-routes.test.js
 router.post('/user/delete', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -81,6 +82,7 @@ router.post('/user/delete', passport.authenticate('jwt', {
 
 });
 
+//tested in admin-user-routes.test.js
 router.post('/user/save', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -149,6 +151,7 @@ router.post('/user/save', passport.authenticate('jwt', {
 });
 
 //returns all users and acl lists
+//tested in admin-user-routes.test.js
 router.get('/user/get/usersacl/all', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userACL, utils.appendResHeader, (req, res) => {
@@ -257,6 +260,7 @@ router.post('/user/get/usersacl', passport.authenticate('jwt', {
 });
 
 //updates or creates user acl list
+//tested in admin-user-routes.test.js
 router.post('/user/upsertRoles', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userACL, utils.appendResHeader, (req, res) => {
@@ -315,7 +319,7 @@ router.post('/user/upsertRoles', passport.authenticate('jwt', {
 //admin/approveAvatar
 //approves a pending team member queue, removes the item from the queue and adds the member to the team
 //updates the members profile to now be part of the team
-//need test cases
+//tested in admin-user-routes-approve-avatar.test.js
 router.post('/approveAvatar', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
@@ -419,7 +423,8 @@ router.post('/approveAvatar', passport.authenticate('jwt', {
 
 });
 
-//need test cases
+
+//tested in admin-user-routes-approve-rank.test.js
 router.post('/approveRank', passport.authenticate('jwt', {
     session: false
 }), levelRestrict.userLevel, utils.appendResHeader, (req, res) => {
