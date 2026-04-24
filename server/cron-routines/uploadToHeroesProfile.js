@@ -431,7 +431,27 @@ async function sendToHp(divisions, matchCopy, match, logObj) {
             }
         );
     } catch (e) {
+
         util.errLogger(location, e, 'ln 381 try/catch caught');
+        
+        // TODO: Handle grandfinal matches gracefully
+        // Grandfinal matches are a special case that we don't currently fully support
+        // For now, we mark them as submitted to prevent them from getting stuck in the queue
+        // This should be revisited when we have better support for grandfinal match types
+        if (matchCopy.type == GRANDFINAL) {
+            match['postedToHP'] = true;
+            match.markModified('postedToHP');
+            await match.save().then(
+                saved => {
+                    util.errLogger(location, null, 'Grandfinal match marked as submitted despite error: ' + matchCopy.matchId);
+                    return saved;
+                },
+                err => {
+                    util.errLogger(location, err, 'Failed to save grandfinal match after error');
+                    return null;
+                }
+            );
+        }
     }
     return null;
 }

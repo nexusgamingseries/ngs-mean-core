@@ -6,7 +6,8 @@
     "scripts": {
         "start": "node --optimize_for_size --max_old_space_size=460 cluster.js",
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install",
-        "test": "mocha server/tests/routes/admin-routes/admin-routes.test.js"
+        "test": "mocha server/tests/setup.js 'server/tests/**/*.test.js' --reporter spec --timeout 10000",
+        "test:all": "npm test"
     },
     "author": "",
     "license": "ISC",
