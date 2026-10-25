@@ -82,19 +82,10 @@ router.post('/user/unteamed', passport.authenticate('jwt', {
                     displayName: regEx
                 },
                 {
-                    $or: [{
-                            teamName: null
-                        },
-                        {
-                            teamName: undefined
-                        },
-                        {
-                            teamId: null
-                        },
-                        {
-                            teamId: undefined
-                        }
-                    ]
+                    teamName: null
+                },
+                {
+                    teamId: null
                 },
                 {
                     $or: [{
@@ -321,7 +312,7 @@ router.post('/user/filtered/paginate', passport.authenticate('jwt', {
                         }
                         performQueryAndReturn();
                     } else {
-                        performQueryAndReturn
+                        performQueryAndReturn();
                     }
                 }, err => {
                     performQueryAndReturn();
@@ -440,33 +431,6 @@ router.post('/team/paginate', passport.authenticate('jwt', {
 });
 
 module.exports = router;
-
-async function filterInvitedUsers(req, ret) {
-    let teamName = req.user.teamName ? req.user.teamName.toLowerCase() : null;
-    if (teamName) {
-        let findTeam = await Team.find({
-            teamName_lower: teamName
-        }).then(team => {
-            if (team) {
-                //filter invited users out
-                ret = ret.filter(retUser => {
-                    let flt = true;
-                    team.invitedUsers.forEach(invitedUser => {
-                        if (retUser.displayName == invitedUser) {
-                            flt = false;
-                        }
-                    });
-                });
-                return ret;
-            } else {
-                //do nothing team not found
-            }
-        });
-    } else {
-        //do nothing team not found
-    }
-    return ret;
-}
 
 /*
 user query
@@ -942,13 +906,6 @@ function createTeamSearchObject(obj, reqUser) {
 }
 
 
-async function getUserProfile(id) {
-    let user = await User.findById(id).then(
-        res => { return res; },
-        err => { return null; }
-    )
-    return user;
-}
 
 function userUnteamed() {
     return {

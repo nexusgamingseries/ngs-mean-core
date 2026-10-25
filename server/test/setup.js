@@ -1,3 +1,7 @@
+// Defaults so server modules can load without a real .env
+const testEnv = { jwtToken: 'test-secret', bNetClientID: 'test', bNetClientSecret: 'test', bNetRedirect: 'http://localhost/callback', runWorkers: 'false', runNewRelic: 'false', environment: 'local' };
+Object.keys(testEnv).forEach(k => { if (process.env[k] === undefined) process.env[k] = testEnv[k]; });
+
 // Global test setup - logs which test file is running
 const path = require('path');
 

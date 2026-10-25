@@ -458,7 +458,12 @@ describe("team-routes",()=>{
         await mongoUnit.dropDb();
         await mongoUnit.load(standings); 
 
-        let result = await request(app.app).get("/api/schedule/get/matches/casted/playing")
+        // the route caches for 5 minutes; move the clock past it so the earlier test's result isn't served
+        const realNow = Date.now();
+        const nowStub = require('sinon').stub(Date, 'now').returns(realNow + 6 * 60 * 1000);
+        let result;
+        try {
+        result = await request(app.app).get("/api/schedule/get/matches/casted/playing")
         // .set({"Authorization": `Bearer ${token}`})
         .then((res)=>{
             return res;
@@ -467,6 +472,9 @@ describe("team-routes",()=>{
             console.log("error XXX", err);
             throw err;
         });
+        } finally {
+            nowStub.restore();
+        }
         let returnObject = result.body.returnObject;
         assert(Array.isArray(returnObject));
         assert(returnObject.length==0);

@@ -47,6 +47,7 @@ afterEach(()=>{
 describe("schedule-routes",()=>{
 
     it('/api/schedule/generate/tournament should delete tournament records',async ()=>{
+        const stub = sandbox.stub(challonge,'deleteTournament').resolves({});
         await mongoUnit.dropDb();
         await mongoUnit.load(mockTourn); 
 
@@ -90,6 +91,7 @@ describe("schedule-routes",()=>{
         });
 
         it('/api/schedule/generate/tournament error without proper access',async ()=>{
+            const stub = sandbox.stub(challonge,'deleteTournament').resolves({});
             await mongoUnit.dropDb();
             await mongoUnit.load(mockTourn); 
 

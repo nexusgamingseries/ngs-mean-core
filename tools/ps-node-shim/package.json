@@ -1,0 +1,8 @@
+{
+  "name": "ps-node",
+  "version": "0.1.6",
+  "description": "Replacement for ps-node (which depends on removed wmic). Used only by mongo-unit for stale mongod cleanup.",
+  "main": "index.js",
+  "license": "MIT"
+}
+

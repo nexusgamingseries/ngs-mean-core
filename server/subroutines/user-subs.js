@@ -37,9 +37,9 @@ function scrubUser(username) {
  * @param {Array.<User>} usersRemoved : Array of user objects
  */
 function clearUsersTeam(usersRemoved, wasPending) {
-    usersRemoved.forEach(function(user) {
-        clearUserTeam(user, wasPending);
-    });
+    return Promise.all(usersRemoved.map(function(user) {
+        return clearUserTeam(user, wasPending);
+    }));
 }
 
 
@@ -70,10 +70,10 @@ function clearUserTeam(user, wasPending) {
         logObj.logLevel = 'STD';
         //get the user from the db associated with this user
         
-        SeasonInfoCommon.getSeasonInfo().then(
+        return SeasonInfoCommon.getSeasonInfo().then(
             (rep) => {
                 let seasonNum = util.returnByPath(rep,'value') ? util.returnByPath(rep,'value'):'';
-                User.findOne({
+                return User.findOne({
                     displayName: username
                 }).then((foundUser) => {
                     //update the fetched users info
@@ -104,7 +104,7 @@ function clearUserTeam(user, wasPending) {
                             }
                         }
 
-                        foundUser.save().then((savedUser) => {
+                        return foundUser.save().then((savedUser) => {
 
                             logger(logObj);
                         }, (err) => {
@@ -132,8 +132,7 @@ function clearUserTeam(user, wasPending) {
 
     }
 
-
-
+    return Promise.resolve();
 }
 
 /**

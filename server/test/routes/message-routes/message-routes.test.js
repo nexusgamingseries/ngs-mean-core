@@ -38,25 +38,59 @@ before(() =>{
 })
 
 describe("message-routes",()=>{
-    it('api/message-routes/get does message?',async()=>{
-        
+    async function seed(){
         await mongoUnit.dropDb();
-        await mongoUnit.load(mockData); 
-       
-       
-        let requestUrl = `/api/message-routes/get?type=match_id&id=g3g51pqrk7xpbf77`;
+        await mongoUnit.load(mockData);
+        const user = (await User.find({}))[0];
+        await new Message({recipient: String(user._id), sender: String(user._id), subject:'s1', content:'c1', timeStamp: Date.now(), notSeen: true}).save();
+        await new Message({recipient: String(user._id), sender: String(user._id), subject:'s2', content:'c2', timeStamp: Date.now(), notSeen: false}).save();
+        const token = generateNewToken.generateNewToken(utils.objectify(user), false);
+        return {user, token};
+    }
 
-        let result = await request(app.app).get(requestUrl)
-        .then((res)=>{
-            return res;
-        },
-        (err)=>{
-            console.log("error XXX", err);
-            throw err;
-        });
-
+    it('/api/messageCenter/get/message returns the recipient messages',async()=>{
+        const {user, token} = await seed();
+        const result = await request(app.app).post('/api/messageCenter/get/message')
+            .set({"Authorization": `Bearer ${token}`})
+            .send({recipient: String(user._id)});
         assert(result.status == 200);
-        assert(result.body != null);
+        assert(result.body.returnObject.length == 2);
     });
-       
+
+    it('/api/messageCenter/get/message/numbers counts unseen messages',async()=>{
+        const {user} = await seed();
+        const result = await request(app.app).post('/api/messageCenter/get/message/numbers')
+            .send({recipient: String(user._id)});
+        assert(result.status == 200);
+        assert(result.body.returnObject == 1);
+    });
+
+    it('/api/messageCenter/mark/message/seen marks a message seen',async()=>{
+        const {token} = await seed();
+        const msg = await Message.findOne({notSeen: true});
+        const result = await request(app.app).post('/api/messageCenter/mark/message/seen')
+            .set({"Authorization": `Bearer ${token}`})
+            .send({message: String(msg._id)});
+        assert(result.status == 200);
+        assert((await Message.findById(msg._id)).notSeen == false);
+    });
+
+    it('/api/messageCenter/delete/message deletes a message',async()=>{
+        const {token} = await seed();
+        const msg = await Message.findOne();
+        const result = await request(app.app).post('/api/messageCenter/delete/message')
+            .set({"Authorization": `Bearer ${token}`})
+            .send({message: String(msg._id)});
+        assert(result.status == 200);
+        assert((await Message.find()).length == 1);
+    });
+
+    it('/api/messageCenter/get/message requires authentication',async()=>{
+        const result = await request(app.app).post('/api/messageCenter/get/message').send({recipient: 'x'});
+        assert(result.status == 401);
+    });
+})
+
+after(()=>{
+    app.server.close();
 })

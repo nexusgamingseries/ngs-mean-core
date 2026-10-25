@@ -6,8 +6,9 @@
     "scripts": {
         "start": "node --optimize_for_size --max_old_space_size=460 cluster.js",
         "heroku-postbuild": "node node_modules/heroprotocol/postinstall.js && cd client && npm install",
-        "test": "mocha server/tests/setup.js 'server/tests/**/*.test.js' --reporter spec --timeout 10000",
-        "test:all": "npm test"
+        "test": "mocha server/test/setup.js 'server/test/**/*.test.js' --reporter spec --timeout 10000 --exit",
+        "test:all": "npm test",
+        "test:coverage": "node tools/run-coverage.js"
     },
     "author": "",
     "license": "ISC",
@@ -33,7 +34,6 @@
         "medea": "^1.0.3",
         "medeadown": "^1.1.9",
         "moment": "^2.29.1",
-        "mongo-unit": "^3.3.0",
         "mongoose": "^5.9.12",
         "newrelic": "^8.14.1",
         "nodemailer": "^6.7.5",
@@ -52,10 +52,16 @@
         "uniqid": "^5.2.0",
         "ws": "^7.3.1"
     },
+    "overrides": {
+        "ps-node": "file:tools/ps-node-shim"
+    },
     "devDependencies": {
+        "c8": "^12.0.0",
         "chai": "^4.3.7",
         "eslint": "^5.16.0",
         "mocha": "^10.3.0",
+        "mongo-unit": "^3.5.1",
+        "ps-node": "file:tools/ps-node-shim",
         "sinon-chai": "^3.7.0",
         "supertest": "^6.2.4"
     }
