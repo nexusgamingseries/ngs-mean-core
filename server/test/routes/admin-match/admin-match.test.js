@@ -418,4 +418,83 @@ describe('admin-match routes', function(){
         }
     });
 
+    describe('mvp upsert and uploadreplay', function () {
+        let token;
+        let admin;
+
+        const authPost = (url, body) => request(app.app)
+            .post(url)
+            .set('Authorization', 'Bearer ' + token)
+            .send(body);
+
+        beforeEach(async function () {
+            await mongoUnit.dropDb();
+            await mongoUnit.load(mockData);
+            admin = (await User.find({ displayName: 'TEST azalea#9539' }))[0];
+            await new AdminLevel({ adminId: admin._id, MATCH: true }).save();
+            token = await generateNewToken(utils.objectify(admin), false);
+        });
+
+        it('POST /mvp/upsert creates a record stamped with the season', async function () {
+            const res = await authPost('/api/admin/mvp/upsert', { match_id: 'mvp-match-1', potg_link: 'http://x.test/p' });
+            expect(res.status).to.equal(200);
+            expect(res.body.returnObject.match_id).to.equal('mvp-match-1');
+            expect(res.body.returnObject.likes).to.equal(0);
+            expect(res.body.returnObject.season).to.be.a('number');
+        });
+
+        it('POST /mvp/upsert resolves player_id and echoes displayName', async function () {
+            const res = await authPost('/api/admin/mvp/upsert', { match_id: 'mvp-match-2', displayName: admin.displayName });
+            expect(res.status).to.equal(200);
+            expect(res.body.returnObject.displayName).to.equal(admin.displayName);
+            expect(res.body.returnObject.player_id).to.equal(admin._id.toString());
+        });
+
+        it('POST /mvp/upsert updates the existing record for the same match', async function () {
+            await authPost('/api/admin/mvp/upsert', { match_id: 'mvp-match-3', potg_link: 'a' });
+            await authPost('/api/admin/mvp/upsert', { match_id: 'mvp-match-3', potg_link: 'b' });
+            const Mvp = require('../../../models/mvp-models');
+            const all = await Mvp.find({ match_id: 'mvp-match-3' });
+            expect(all).to.have.length(1);
+            expect(all[0].potg_link).to.equal('b');
+        });
+
+        it('POST /mvp/upsert returns 500 when the upsert fails', async function () {
+            const MvpMethods = require('../../../methods/mvpMethods');
+            const stub = sinon.stub(MvpMethods, 'upsert').rejects('boom');
+            try {
+                const res = await authPost('/api/admin/mvp/upsert', { match_id: 'x' });
+                expect(res.status).to.equal(500);
+                expect(res.body.message).to.equal('Error creating record');
+            } finally {
+                stub.restore();
+            }
+        });
+
+        it('POST /match/uploadreplay returns 500 when the match does not exist', async function () {
+            const res = await authPost('/api/admin/match/uploadreplay', { matchId: 'does-not-exist' });
+            expect(res.status).to.equal(500);
+            expect(res.body.message).to.equal('Error reporting match result');
+        });
+
+        it('POST /match/uploadreplay reports scores on an existing match', async function () {
+            const [teamA, teamB] = await Team.find({}).limit(2);
+            const found = await new Match({
+                matchId: 'report-test-match',
+                home: { id: teamA._id, teamName: teamA.teamName },
+                away: { id: teamB._id, teamName: teamB.teamName }
+            }).save();
+            const res = await authPost('/api/admin/match/uploadreplay', {
+                matchId: found.matchId,
+                homeTeamScore: 2,
+                awayTeamScore: 0
+            });
+            expect(res.status).to.equal(200);
+            expect(res.body.message).to.equal('Match Reported');
+            const updated = await Match.findOne({ matchId: found.matchId });
+            expect(updated.home.score).to.equal(2);
+            expect(updated.home.dominator).to.equal(true);
+        });
+    });
+
 });

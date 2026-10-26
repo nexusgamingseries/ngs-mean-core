@@ -464,14 +464,14 @@ function removeUser(team, user) {
     Team.findOne({ teamName_lower: team }).then((foundTeam) => {
         //get the index of the user from the members array
         let index;
-        for (var i = 0; i < foundTeam.teamMembers; i++) {
+        for (var i = 0; i < foundTeam.teamMembers.length; i++) {
             let element = foundTeam.teamMembers[i];
             if (element.displayName == user) {
                 index = i;
             }
         }
         //remove the user from the members array and save the team.
-        if (index && index > -1) {
+        if (index !== undefined && index > -1) {
             foundTeam.teamMembers.splice(index, 1);
             foundTeam.save().then((saved) => {
                 util.errLogger(location, null, 'user successfully removed from team');

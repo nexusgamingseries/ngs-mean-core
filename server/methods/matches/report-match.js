@@ -161,7 +161,7 @@ async function reportMatch(caller, matchReport, requester, bypass) {
         } else {
             match.reported = true;
             match.postedToHP = false;
-            return match.save(
+            return match.save().then(
                 saved => {
                     //if this match was a tournmanet match then we need to promote the winner to the parent match
                     matchCommon.promoteTournamentMatch(match.toObject());
@@ -523,28 +523,13 @@ async function moveAndParseTempFiles(matchId) {
                 });
 
                 //if we have failed parse - remove those junk objects from the array before inserting them into the database.
-                indiciesToRemove = [];
                 let season = await SeasonInfoCommon.getSeasonInfo();
                 const seasonNum = season.value;
 
-                //reset index to only the parsed obj data
-                parsed.forEach((element, index) => {
-                    parsed[index] = element.parseObj;
-                });
-
-                parsed.forEach((element, index) => {
-                    // element.season = seasonNum;
-                    if (
-                        element.hasOwnProperty('failed') &&
-                        element.failed == true
-                    ) {
-                        indiciesToRemove.push(index);
-                    }
-                });
-
-                indiciesToRemove.forEach(index => {
-                    parsed.splice(index, 1);
-                });
+                //reset index to only the parsed obj data, dropping failed parses
+                parsed = parsed
+                    .map(element => element.parseObj)
+                    .filter(element => !(element.hasOwnProperty('failed') && element.failed == true));
 
                 
                 parsed.forEach(

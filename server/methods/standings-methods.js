@@ -36,7 +36,7 @@ async function calculateStandings(divisionConcat, season, pastSeason, noDeltas) 
 
         if (dbDiv) {
             if (util.returnBoolByPath(dbDiv.toObject(), 'cupDiv') && dbDiv.cupDiv == true) {
-                standings = await cupDivStanding(division, season).then(answer => {
+                standings = await cupDivStanding(dbDiv.divisionConcat, season).then(answer => {
                     return answer;
                 });
             } else {
@@ -517,7 +517,7 @@ module.exports = {
 function bestOfThree(matchesForDivision, nonReportedMatchCount, teams, standings, season) {
     try {
         matchesForDivision.forEach(match => {
-            if (util.returnBoolByPath(match, 'reported') == false) {
+            if (!match.reported) {
                 nonReportedMatchCount++;
             }
         });
@@ -559,7 +559,7 @@ function bestOfThree(matchesForDivision, nonReportedMatchCount, teams, standings
                 }
                 
                 //if the match is not reported; ignore it
-                if (util.returnBoolByPath(match, 'reported') == false) {
+                if (!match.reported) {
                     return;
                 }
 
@@ -611,7 +611,7 @@ function bestOfThree(matchesForDivision, nonReportedMatchCount, teams, standings
 function bestOfX(matchesForDivision, nonReportedMatchCount, teams, standings) {
     try {
         matchesForDivision.forEach(match => {
-            if (util.returnBoolByPath(match, 'reported') == false) {
+            if (!match.reported) {
                 nonReportedMatchCount++;
             }
         });
@@ -641,7 +641,7 @@ function bestOfX(matchesForDivision, nonReportedMatchCount, teams, standings) {
                     }
                 }
                 //if the match is not reported; ignore it
-                if (util.returnBoolByPath(match, 'reported') == false) {
+                if (!match.reported) {
                     return;
                 } else {
                     //match the team id

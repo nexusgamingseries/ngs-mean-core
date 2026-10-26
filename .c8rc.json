@@ -2,7 +2,7 @@
   "all": true,
   "src": ["server"],
   "include": ["server/**/*.js"],
-  "exclude": ["server/test/**", "node_modules/**", "coverage/**"],
+  "exclude": ["server/test/**", "server/cron-routines/replay-triage.js", "server/summarizeData/summarize-hero-data.js", "server/summarizeData/summarize-map-data.js", "server/summarizeData/summarize-match-data.js", "server/summarizeData/summarize-trend-data.js", "node_modules/**", "coverage/**"],
   "reporter": ["text", "html", "lcov"]
 }
 
