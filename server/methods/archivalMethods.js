@@ -46,36 +46,27 @@ async function archiveDivisions() {
 
     util.errLogger(location, null, 'found divisions ' + divisions.eo.length + ' for archival')
 
-    let archivedDivisions = 0;
-    let archivedTeams = 0;
+    let dbTeams = {};
 
     if (divisions.cont) {
 
         for (var i = 0; i < divisions.eo.length; i++) {
 
             let division = divisions.eo[i];
-            let divTeams = division.teams || [];
-
-            if (divTeams.length === 0) {
-                util.errLogger(location, null, 'skipping empty division ' + division.displayName);
-                continue;
-            }
-
             util.errLogger(location, null, 'archiving division ' + division.displayName)
-            
             let divArch = await new Archive({
                 type: 'division',
                 season: seasonNum,
                 object: division.toObject(),
                 timeStamp: Date.now()
             }).save();
-            archivedDivisions++;
 
             //hide the division
             division.public = false;
             division.save();
 
-            let dbTeams = await Team.find({ teamName: { $in: divTeams } }).then(
+            let divTeams = division.teams;
+            dbTeams = await Team.find({ teamName: { $in: divTeams } }).then(
                 foundTeams => {
                     return { cont: true, eo: foundTeams };
                 },
@@ -99,7 +90,6 @@ async function archiveDivisions() {
                         object: teamObject,
                         timeStamp: Date.now()
                     }).save();
-                    archivedTeams++;
 
                     if (team.logo) {
                         archiveTeamLogo(team.logo);
@@ -123,8 +113,8 @@ async function archiveDivisions() {
     } else {
         //error handling
     }
-    returnObject.archivedDivisions = archivedDivisions;
-    returnObject.archivedTeams = archivedTeams;
+    returnObject.archivedDivisions = divisions.eo.length;
+    returnObject.archivedTeams = dbTeams.eo.length;
     return returnObject;
 
 };
